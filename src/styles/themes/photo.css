@@ -1,0 +1,70 @@
+[data-theme|='photo'] {
+  --quote-font-family: 'Abril Fatface', sans-serif;
+}
+
+[data-theme|='photo'] body {
+  background-size: cover;
+  background-position: center;
+}
+
+[data-theme|='photo'] #photo-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--background);
+  transition: all 0.5s;
+}
+
+[data-theme|='photo'] blockquote:before,
+[data-theme|='photo'] blockquote:after {
+  content: none;
+}
+
+[data-theme|='photo'] #progress-bar {
+  z-index: 3;
+}
+
+[data-theme='photo-light'] #time-clock {
+  color: #111111;
+}
+
+[data-theme='photo-light'] {
+  --background: #dddddd;
+  --font-color: #282826;
+  --accent-color: #e33725;
+}
+
+[data-theme='photo-light'] #photo-overlay {
+  opacity: 0.4;
+}
+
+[data-theme='photo-light'] #quote {
+  text-shadow: 0px 0px 25px #dfdfdf;
+  color: #111111;
+}
+
+[data-theme='photo-light'] body:not(.zen) footer {
+  background: #ffffff60;
+}
+
+[data-theme='photo-dark'] #time-clock {
+  color: #eeeeee;
+}
+
+[data-theme='photo-dark'] {
+  --background: #111111;
+  --font-color: #d7d7d7;
+  --accent-color: #fd3622;
+}
+
+[data-theme='photo-dark'] #photo-overlay {
+  opacity: 0.5;
+}
+
+[data-theme='photo-dark'] #quote {
+  text-shadow: 0px 0px 25px #1c1c1c;
+  color: #eeeeee;
+}
+
+[data-theme='photo-dark'] body:not(.zen) footer {
+  background: #00000093;
+}
