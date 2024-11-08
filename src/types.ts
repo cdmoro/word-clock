@@ -21,7 +21,29 @@ export interface ResolvedQuote extends Quote {
   quote_raw: string;
 }
 
-export interface GridProps {
+type CommonWordsKey =
+  | 'ONE'
+  | 'TWO'
+  | 'THREE'
+  | 'FOUR'
+  | 'FIVE'
+  | 'SIX'
+  | 'SEVEN'
+  | 'EIGHT'
+  | 'NINE'
+  | 'TEN'
+  | 'ELEVEN'
+  | 'TWELVE'
+  | 'FIVE_MIN'
+  | 'TEN_MIN'
+  | 'QUARTER_MIN'
+  | 'TWENTY_MIN'
+  | 'TWENTYFIVE_MIN'
+  | 'HALF';
+
+export type CommonWords = Record<CommonWordsKey, number[]>;
+
+export interface LocaleGridConfig {
   grid: string[];
   charsWithAphostrophe?: number[];
   getWordsToHighlight: (hours: number, minutes: number) => string[];

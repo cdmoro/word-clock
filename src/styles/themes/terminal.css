@@ -44,51 +44,24 @@
   animation: flicker 0.5s infinite;
 }
 
-[data-theme|='terminal'] blockquote {
-  font-weight: bold;
-  text-shadow:
-    rgba(0, 24, 204, 0.5) 2px 0px 1px,
-    rgba(204, 0, 64, 0.3) -2px 0px 1px,
-    0px 0px 3px,
-    color-mix(in srgb, var(--accent-color), transparent 70%) 0px 0px 15px;
+[data-theme|='terminal'] .char.active {
+  border: var(--accent-color) solid 1px;
+  border-left: none;
+  border-right: none;
 }
 
-[data-theme|='terminal'] blockquote:before,
-[data-theme|='terminal'] blockquote:after {
-  content: none;
+[data-theme|='terminal'] .char.active.first-child {
+  border: var(--accent-color) solid 1px;
+  border-right: none;
 }
 
-[data-theme|='terminal'] blockquote p {
-  max-height: 50vh;
+[data-theme|='terminal'] .char.active.last-child {
+  border: var(--accent-color) solid 1px;
+  border-left: none;
 }
 
-[data-theme|='terminal'] cite {
-  font-style: normal;
-}
-
-[data-theme|='terminal'] cite:before {
-  content: '> ';
-}
-
-[data-theme|='terminal'] cite #hyphen {
-  display: none;
-}
-
-[data-theme|='terminal'] cite:after {
-  content: '_';
-  display: inline-block;
-  animation: blink 1s step-start 0s infinite;
-  transform: translateY(-1px);
-}
-
-[data-theme|='terminal'] #progress-bar {
-  background: var(--accent-color);
-  height: 7px;
-  box-shadow:
-    rgba(0, 24, 204, 0.5) 2px 0px 1px,
-    rgba(204, 0, 64, 0.3) -2px 0px 1px,
-    0px 0px 3px,
-    color-mix(in srgb, var(--accent-color), transparent 70%) 0px 0px 15px;
+[data-theme|='terminal'] .char.active.first-child.last-child {
+  border: var(--accent-color) solid 1px;
 }
 
 [data-theme='terminal-light'] {
@@ -99,13 +72,6 @@
 
 [data-theme='terminal-light'] body:after {
   background-color: rgba(18, 16, 16, 0.025);
-}
-
-[data-theme='terminal-light'] cite {
-  text-shadow:
-    rgba(0, 24, 204, 0.5) 1.5px 0px 1px,
-    rgba(204, 0, 64, 0.3) -1.5px 0px 1px,
-    0px 0px 3px;
 }
 
 [data-theme='terminal-dark'] {

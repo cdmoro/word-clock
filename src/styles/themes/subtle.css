@@ -3,67 +3,14 @@
   --quote-line-height: 1.2;
 }
 
-[data-theme|='subtle'] blockquote[aria-label]:before,
-[data-theme|='subtle'] blockquote[aria-label]:after {
-  content: '';
-  height: 2px;
-  width: 90px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: var(--accent-color);
-}
-
-[data-theme|='subtle'] blockquote[aria-label]:after {
-  bottom: -2rem;
-}
-
-[data-theme|='subtle'] blockquote[aria-label] {
-  text-align: center;
-  text-wrap: balance;
-  position: relative;
-}
-
-[data-theme|='subtle'] p {
-  max-height: 45vh;
-}
-
-[data-theme|='subtle'] cite #hyphen {
-  display: none;
-}
-
-[data-theme|='subtle'] cite #comma {
-  display: none;
-}
-
-[data-theme|='subtle'] cite #author {
-  display: block;
-}
-
-[data-theme|='subtle'] cite {
-  font-variant: small-caps;
-  display: inline-block;
-  color: color-mix(in srgb, var(--accent-color), transparent 5%);
-}
-
 [data-theme|='subtle'] .time {
   -webkit-text-fill-color: var(--accent-color);
 }
 
-[data-theme|='subtle'] p {
+[data-theme|='subtle'] .active {
   background: var(--linear-gradient);
   background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-[data-theme|='subtle'] body.share-quote p {
-  background: unset;
-  background-clip: unset;
-  -webkit-text-fill-color: unset;
-  color: rgb(238, 3, 117);
-}
-
-[data-theme|='subtle'] #progress-bar {
-  background: var(--linear-gradient);
 }
 
 [data-theme='subtle-light'] {

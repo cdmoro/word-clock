@@ -53,12 +53,6 @@ export function initTheme() {
 }
 
 export function setTheme({ isVariantChange = false, syncToUrl = true } = {}) {
-  const p = document.querySelector<HTMLParagraphElement>('blockquote p');
-
-  if (p) {
-    p.style.visibility = 'hidden';
-  }
-
   let theme = document.querySelector<HTMLSelectElement>('#theme-select')?.value;
   let variant = document.querySelector<HTMLSelectElement>('#variant-select')?.value;
 
@@ -93,10 +87,6 @@ export function setTheme({ isVariantChange = false, syncToUrl = true } = {}) {
 
   document.documentElement.dataset.theme = `${theme}-${variant}`;
   fitQuote();
-
-  if (p) {
-    setTimeout(() => (p.style.visibility = 'visible'), 50);
-  }
 }
 
 export function setDynamicBackgroundPicture() {

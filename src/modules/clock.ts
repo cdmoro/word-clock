@@ -1,56 +1,46 @@
 import { getTime, updateFavicon } from '../utils';
 import { setDayParameters } from './dynamic';
-import { fadeOutQuote } from './fade';
 import { store } from '../store';
 import { highlightGrid } from './grid';
-
-let lastTime: string;
 
 function getMillisecondsToNextMinute() {
   const now = new Date();
   return (60 - now.getSeconds()) * 1000 - now.getMilliseconds();
 }
 
-function updateTime() {
+function updateTime(forceUpdate?: boolean) {
   const time = store.get('time') || getTime();
+  const minute = time.slice(-1);
 
-  if (store.get('fade')) {
-    fadeOutQuote();
+  if (time.includes(':00') || time.includes(':30')) {
+    updateFavicon(time);
   }
 
-  if (lastTime !== time) {
-    if (time.includes(':00') || time.includes(':30')) {
-      updateFavicon(time);
-    }
+  if (store.get('theme')?.startsWith('dynamic')) {
+    setDayParameters();
+  }
 
-    if (store.get('theme')?.startsWith('dynamic')) {
-      setDayParameters();
-    }
+  document.title = document.title.replace(/[0-9]{2}:[0-9]{2}/, time);
 
-    document.title = document.title.replace(/[0-9]{2}:[0-9]{2}/, time);
+  const timeEl = document.getElementById('time-clock');
+  if (timeEl) {
+    timeEl.innerHTML = time;
+  }
 
-    const timeEl = document.getElementById('time-clock');
-    if (timeEl) {
-      timeEl.innerHTML = time;
-    }
-
+  if (forceUpdate || minute === '0' || minute === '5') {
     highlightGrid(time);
-
-    lastTime = time;
   }
 }
 
 export function initClock() {
-  const testTime = store.get('time');
-  const testQuote = store.get('quote');
-  const isTest = !!(testTime || testQuote);
+  const isTest = !!store.get('time');
   const timeToNextMinute = getMillisecondsToNextMinute();
 
-  updateTime();
+  updateTime(true);
 
   if (!isTest) {
     setTimeout(() => {
-      updateTime();
+      updateTime(true);
       setInterval(updateTime, 60000);
     }, timeToNextMinute);
   }

@@ -3,21 +3,6 @@
   --quote-line-height: 1.4;
 }
 
-[data-theme|='kindle'] blockquote:before,
-[data-theme|='kindle'] blockquote:after {
-  content: none;
-}
-
-[data-theme|='kindle'] blockquote {
-  font-weight: bold;
-}
-
-[data-theme|='kindle'] cite {
-    display: block;
-    text-align: right;
-    color: var(--accent-color);
-}
-
 [data-theme='kindle-light'] {
   --background: #dcd8d0;
   --font-color: #646862;

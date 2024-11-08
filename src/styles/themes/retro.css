@@ -19,13 +19,15 @@
 [data-theme|='retro'] .char.active.first-child {
   border: var(--accent-color) solid 1px;
   border-right: none;
-  border-radius: .5rem 0 0 .5rem;
+  border-start-start-radius: .5rem;
+  border-end-start-radius: .5rem;
 }
 
 [data-theme|='retro'] .char.active.last-child {
   border: var(--accent-color) solid 1px;
   border-left: none;
-  border-radius: 0 .5rem .5rem 0;
+  border-start-end-radius: .5rem;
+  border-end-end-radius: .5rem;
 }
 
 [data-theme='retro-light'] {
