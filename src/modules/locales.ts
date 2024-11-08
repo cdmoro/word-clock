@@ -8,6 +8,7 @@ import { drawGrid, highlightGrid } from './grid';
 export const DOMINANT_LOCALES: Record<string, Locale> = {
   en: 'en-US',
   es: 'es-ES',
+  pt: 'pt-BR',
   fr: 'fr-FR',
   it: 'it-IT',
 } as const;

@@ -31,7 +31,7 @@ export const CITE_FACTOR = {
   kindle: 0.5,
 } as const;
 
-const FONTS = ['Special Elite', ...new Set(Object.values(THEME_FONTS))].flat();
+const FONTS = ['Gugi', ...new Set(Object.values(THEME_FONTS))].flat();
 const CSS_FONT_VARIABLE = '--override-quote-font-family';
 
 function createOption(value: string) {

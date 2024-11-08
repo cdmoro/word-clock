@@ -25,18 +25,17 @@ const words = {
   SIETE: [37, 38, 39, 40, 41],
   OCHO: [44, 45, 46, 47],
   NUEVE: [48, 49, 50, 51, 52],
-  DIEZ_HOUR: [55, 56, 57, 58],
-  ONCE: [59, 60, 61, 62],
+  DIEZ_HOUR: [57, 58, 59, 60],
+  ONCE: [62, 63, 64, 65],
   DOCE: [66, 67, 68, 69],
   MENOS: [72, 73, 74, 75, 76],
   Y: [71],
-  VEINTE: [77, 78, 79, 80, 81, 82],
+  VEINTE: [78, 79, 80, 81, 82, 83],
   DIEZ_MIN: [84, 85, 86, 87],
-  VEINTICINCO: [88, 89, 90, 91, 92, 93, 94, 95, 96],
+  VEINTICINCO: [88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98],
   MEDIA: [99, 100, 101, 102, 103],
   CUARTO: [104, 105, 106, 107, 108, 109],
-  MENOS_DIEZ: [84, 85, 86, 87],
-  MENOS_CINCO: [94, 95, 96, 97, 98],
+  CINCO_MIN: [94, 95, 96, 97, 98],
 };
 
 const hourWords = [
@@ -54,7 +53,7 @@ const hourWords = [
   'ONCE',
 ];
 
-function getPositionsToHighlight(hours: number, minutes: number) {
+function getWordsToHighlight(hours: number, minutes: number) {
   const wordKeys = [];
 
   // Use "ES" for one o'clock, otherwise use "SON" for other hours
@@ -79,17 +78,17 @@ function getPositionsToHighlight(hours: number, minutes: number) {
   else if (minutes >= 15 && minutes < 20) wordKeys.push('CUARTO');
   else if (minutes >= 20 && minutes < 30) wordKeys.push('VEINTICINCO');
   else if (minutes >= 30 && minutes < 35) wordKeys.push('MEDIA');
-  else if (minutes >= 50 && minutes < 55) wordKeys.push('MENOS_DIEZ');
-  else if (minutes >= 55 && minutes < 59) wordKeys.push('MENOS_CINCO');
+  else if (minutes >= 35 && minutes < 45) wordKeys.push('VEINTE');
+  else if (minutes >= 45 && minutes < 50) wordKeys.push('CUARTO');
+  else if (minutes >= 50 && minutes < 55) wordKeys.push('DIEZ_MIN');
+  else if (minutes >= 55 && minutes < 60) wordKeys.push('CINCO_MIN');
 
   // Return a sorted array of all grid positions to be highlighted
-  return wordKeys
-    .map((word) => words[word as keyof typeof words])
-    .flat()
-    .sort((a, b) => a - b);
+  return wordKeys;
 }
 
 export default {
   grid,
-  getPositionsToHighlight,
+  getWordsToHighlight,
+  words,
 };

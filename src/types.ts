@@ -24,5 +24,6 @@ export interface ResolvedQuote extends Quote {
 export interface GridProps {
   grid: string[];
   charsWithAphostrophe?: number[];
-  getPositionsToHighlight: (hours: number, minutes: number) => number[];
+  getWordsToHighlight: (hours: number, minutes: number) => string[];
+  words: Record<string, number[]>;
 }

@@ -2,7 +2,7 @@
   --accent-color: #d24335;
   --background: #12121a;
   --font-color: #a3a29a;
-  --quote-font-family: 'Special Elite', cursive;
+  --quote-font-family: 'Gugi', sans-serif;
 }
 
 [data-theme$='light'] {

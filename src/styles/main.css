@@ -66,16 +66,16 @@ body:not(.screensaver) blockquote {
   position: relative;
   display: grid;
   grid-template-columns: repeat(11, 1fr);
-  gap: 5px;
+  row-gap: 5px;
   margin: 0 auto;
   z-index: 2;
   padding: .5rem;
-  font-family: var(--quote-font-family);
+  font-family: var(--override-quote-font-family, var(--quote-font-family));
+  font-size: 2.5vw;
 }
 
 .char {
-  padding: 10px;
-  font-size: 20px;
+  padding: 1.5vw 2vw;
   text-align: center;
   color: color-mix(in srgb, var(--font-color), transparent 85%);
   transition: color 0.3s;
@@ -94,8 +94,6 @@ a,
 a:visited {
   color: var(--accent-color);
 }
-
-
 
 select {
   -moz-appearance: none;
@@ -304,15 +302,19 @@ footer {
   border: 0;
 }
 
-@media screen and (min-width: 1700px) {
+@media screen and (min-width: 1000px) {
   #clock {
-    max-width: 1500px;
+    font-size: 1.7rem;
+  }
+
+  .char {
+    padding: 1.2rem 1.5rem;
   }
 }
 
 @media only screen and (max-width: 750px) {
   #clock {
-    max-width: 90vw;
+    font-size: 3vw;
   }
 
   #exit-zen {
@@ -347,11 +349,5 @@ footer {
   #theme,
   #made-by {
     display: none;
-  }
-}
-
-@media only screen and (max-width: 450px) {
-  #clock {
-    max-width: initial;
   }
 }

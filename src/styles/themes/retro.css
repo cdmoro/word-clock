@@ -9,6 +9,25 @@
   background: linear-gradient(90deg, rgba(0, 0, 0, 0), var(--accent-color));
 }
 
+[data-theme|='retro'] .char.active {
+  background: var(--accent-color);
+  border-left: none;
+  border-right: none;
+  color: #000;
+}
+
+[data-theme|='retro'] .char.active.first-child {
+  border: var(--accent-color) solid 1px;
+  border-right: none;
+  border-radius: .5rem 0 0 .5rem;
+}
+
+[data-theme|='retro'] .char.active.last-child {
+  border: var(--accent-color) solid 1px;
+  border-left: none;
+  border-radius: 0 .5rem .5rem 0;
+}
+
 [data-theme='retro-light'] {
   --accent-color: #daa908;
   --background: #f8f8f8;

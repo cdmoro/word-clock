@@ -11,16 +11,16 @@ const grid = [
   'TENSEOCLOCK', // 99-109
 ];
 
-const charsWithAphostrophe = [104];
-
 const words = {
-  IT_IS: [0, 1, 3, 4],
-  A_QUARTER: [12, 13, 14, 15, 16, 17, 18],
+  IT: [0, 1],
+  IS: [3, 4],
+  A_QUARTER: [13, 14, 15, 16, 17, 18, 19],
   TWENTY: [22, 23, 24, 25, 26, 27],
+  TWENTYFIVE: [22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
   FIVE_MINUTES: [28, 29, 30, 31],
   HALF: [33, 34, 35, 36],
   TEN_MINUTES: [37, 38, 39],
-  TO: [40, 41],
+  TO: [42, 43],
   PAST: [44, 45, 46, 47],
   ONE: [55, 56, 57],
   SIX: [58, 59, 60],
@@ -51,11 +51,11 @@ const hourWords = [
   'ELEVEN',
 ];
 
-function getPositionsToHighlight(hours: number, minutes: number): number[] {
-  const wordKeys = ['IT_IS'];
+function getWordsToHighlight(hours: number, minutes: number) {
+  const wordKeys = ['IT', 'IS'];
 
   // Determine whether to use "TO" or "PAST"
-  if (minutes >= 45) {
+  if (minutes >= 35) {
     // Advance to the next hour if the time is between :45 and :59
     hours = (hours + 1) % 12 || 12;
     wordKeys.push('TO');
@@ -70,19 +70,23 @@ function getPositionsToHighlight(hours: number, minutes: number): number[] {
   if (minutes >= 5 && minutes < 10) wordKeys.push('FIVE_MINUTES');
   else if (minutes >= 10 && minutes < 15) wordKeys.push('TEN_MINUTES');
   else if (minutes >= 15 && minutes < 20) wordKeys.push('A_QUARTER');
-  else if (minutes >= 20 && minutes < 30) wordKeys.push('TWENTY');
-  else if (minutes >= 30 && minutes < 40) wordKeys.push('HALF');
+  else if (minutes >= 20 && minutes < 25) wordKeys.push('TWENTY');
+  else if (minutes >= 25 && minutes < 30) wordKeys.push('TWENTYFIVE');
+  else if (minutes >= 30 && minutes < 35) wordKeys.push('HALF');
+  else if (minutes >= 35 && minutes < 45) wordKeys.push('TWENTY');
+  else if (minutes >= 45 && minutes < 50) wordKeys.push('A_QUARTER');
+  else if (minutes >= 50 && minutes < 55) wordKeys.push('TEN_MINUTES');
+  else if (minutes >= 55 && minutes < 60) wordKeys.push('FIVE_MINUTES');
 
   // Add "O'CLOCK" for exact hours
-  if (minutes < 5 || minutes >= 55) wordKeys.push('O_CLOCK');
-  return wordKeys
-    .map((word) => words[word as keyof typeof words])
-    .flat()
-    .sort((a, b) => a - b);
+  if (minutes < 5) wordKeys.push('O_CLOCK');
+
+  return wordKeys;
 }
 
 export default {
   grid,
-  charsWithAphostrophe,
-  getPositionsToHighlight,
+  charsWithAphostrophe: [104],
+  getWordsToHighlight,
+  words,
 };

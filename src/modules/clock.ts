@@ -4,21 +4,14 @@ import { fadeOutQuote } from './fade';
 import { store } from '../store';
 import { highlightGrid } from './grid';
 
-const timeProgressBar = document.getElementById('progress-bar');
 let lastTime: string;
 
-function updateProgressBar() {
+function getMillisecondsToNextMinute() {
   const now = new Date();
-  const time = parseFloat(`${now.getSeconds()}.${now.getMilliseconds().toString().padStart(3, '0')}`);
-  const percentage = ((time / 60) * 100).toFixed(4);
-
-  if (timeProgressBar) {
-    timeProgressBar.setAttribute('aria-valuenow', percentage);
-    timeProgressBar.style.width = `${percentage}%`;
-  }
+  return (60 - now.getSeconds()) * 1000 - now.getMilliseconds();
 }
 
-async function updateTime() {
+function updateTime() {
   const time = store.get('time') || getTime();
 
   if (store.get('fade')) {
@@ -51,11 +44,14 @@ export function initClock() {
   const testTime = store.get('time');
   const testQuote = store.get('quote');
   const isTest = !!(testTime || testQuote);
+  const timeToNextMinute = getMillisecondsToNextMinute();
 
   updateTime();
 
   if (!isTest) {
-    setInterval(updateTime, 1000);
-    setInterval(updateProgressBar, 10);
+    setTimeout(() => {
+      updateTime();
+      setInterval(updateTime, 60000);
+    }, timeToNextMinute);
   }
 }

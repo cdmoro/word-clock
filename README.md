@@ -1,15 +1,15 @@
-# Word Clock
+# Word O’Clock
 
 
 
 ## Features
 
-- Zen mode: remove all the distractions ([link](https://literatureclock.netlify.app/?zen=true))
-- [Screensaver mode](#screensaver): make the quotes dance around the screen! ([link](https://literatureclock.netlify.app/?screensaver=true))
+- Zen mode: remove all the distractions ([link](https://wordoclock.netlify.app/?zen=true))
+- [Screensaver mode](#screensaver): make the quotes dance around the screen! ([link](https://wordoclock.netlify.app/?screensaver=true))
 - Languages: supports English, Spanish, Portuguese, French, and Italian (by default, it will try to use the system language)
-  - Random language: see a quote in a different language each minute, isn't that cool? ([link]([https://literatureclock.netlify.app/?locale=random](https://literatureclock.netlify.app/?random-locale=true)))
+  - Random language: see a quote in a different language each minute, isn't that cool? ([link]([https://wordoclock.netlify.app/?locale=random](https://wordoclock.netlify.app/?random-locale=true)))
 - [Themes](#themes): the clock has `colour themes` and `special themes` and each theme has light and dark variants, of course
-  - Random colour theme: see a different colour theme each minute, isn't that even cooler? ([link](https://literatureclock.netlify.app/?theme=color-system))
+  - Random colour theme: see a different colour theme each minute, isn't that even cooler? ([link](https://wordoclock.netlify.app/?theme=color-system))
 - Fade effect
 - Font personalization: if you don't like the default font of a theme, that's perfectly fine, we won't judge you, so you can change it for another using the `font` param!
 - Responsive: no matter how long a quote is, it will always look good on desktop and mobile 😎
@@ -31,7 +31,7 @@ The clock can be controlled using URL parameters, these parameters will overwrit
 
 Developer settings
 
-- `time`: get the quotes for a particular time ([link](https://literatureclock.netlify.app/?time=12:30))
+- `time`: get the quotes for a particular time ([link](https://wordoclock.netlify.app/?time=12:30))
 
 ## Languages
 
