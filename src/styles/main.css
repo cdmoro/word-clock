@@ -299,11 +299,11 @@ footer {
 
 @media screen and (min-width: 1000px) {
   #clock {
-    font-size: 1.7rem;
+    font-size: 2vw;
   }
 
   .char {
-    padding: 1.2rem 1.5rem;
+    padding: 1.5vh 1.5vw;
   }
 }
 
