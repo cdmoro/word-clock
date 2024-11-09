@@ -1,5 +1,4 @@
 import { CommonWords, LocaleGridConfig } from '../../types';
-import { HOURS, MINUTES } from './constants';
 
 const grid = [
   'ÉSÃOUMATRÊS', // 0-10: É, SÃO, UMA, TRÊS
@@ -35,13 +34,13 @@ const commonWords: CommonWords = {
   HALF: [84, 85, 86, 87],
 };
 
-const words = {
+const localeWords = {
   É: [0],
   SÃO: [1, 2, 3],
   MEIA: [56, 57, 58, 59],
   NOITE: [61, 62, 63, 64, 65],
   MEIO: [11, 12, 13, 14],
-  DIA: [13, 14, 15],
+  DIA: [16, 17, 18],
   HORAS: [66, 67, 68, 69, 70],
   E: [73],
   E_MIN: [103],
@@ -50,13 +49,11 @@ const words = {
   ...commonWords,
 };
 
-function getWordsToHighlight(hours: number, minutes: number) {
+function getLocaleWordKeys(hours: number, minutes: number) {
   const wordKeys = [];
 
   // Determine whether to use "Y" or "MENOS"
   if (minutes >= 35) {
-    // Use "MENOS" and move to the next hour
-    hours = (hours + 1) % 12 || 12;
     wordKeys.push('MENOS');
   } else if (minutes >= 5) {
     wordKeys.push('E');
@@ -68,43 +65,17 @@ function getWordsToHighlight(hours: number, minutes: number) {
   // Map hour value to the corresponding word
   if (hours === 12) wordKeys.push('MEIO', 'DIA');
   else if (hours === 0) wordKeys.push('MEIA', 'NOITE');
-  else wordKeys.push(HOURS[hours % 12], 'HORAS');
+  else wordKeys.push('HORAS');
 
   // Determine minute words
   if (minutes >= 20 && minutes < 30) wordKeys.push('VINTE', 'E_MIN', 'FIVE_MIN');
-  else if (minutes >= 5) {
-    wordKeys.push(MINUTES[Math.floor(minutes / 5) - 1]);
-  }
-  // if (minutes >= 5 && minutes < 10) wordKeys.push('CINCO_MIN');
-  // else if (minutes >= 10 && minutes < 15) wordKeys.push('DEZ_MIN');
-  // else if (minutes >= 15 && minutes < 20) wordKeys.push('QUARTO');
-  // else if (minutes >= 20 && minutes < 30) wordKeys.push('VINTE', 'E_MIN', 'CINCO_MIN');
-  // else if (minutes >= 30 && minutes < 35) wordKeys.push('MEIA');
-  // else if (minutes >= 35 && minutes < 40) wordKeys.push('VINTE');
-  // else if (minutes >= 40 && minutes < 45) wordKeys.push('VINTE');
-  // else if (minutes >= 45 && minutes < 50) wordKeys.push('QUARTO');
-  // else if (minutes >= 50 && minutes < 55) wordKeys.push('DEZ_MIN');
-  // else if (minutes >= 55 && minutes < 60) wordKeys.push('CINCO_MIN');
 
-  // Return a sorted array of all grid positions to be highlighted
   return wordKeys;
 }
 
 export default {
   grid,
-  getWordsToHighlight,
-  words,
+  getLocaleWordKeys,
+  commonWords,
+  localeWords,
 } satisfies LocaleGridConfig;
-
-// Que horas são?
-// são oito horas
-// são oito e cinco
-// são oito e dez
-// são oito e vinte
-// são oito e vinte e cinco
-// são oito e meia
-// são vinte e cinco para as oito
-// são vinte minutos para as oito
-// são um quarto para as oito
-// são dez para as oito
-// são cinco para as oito

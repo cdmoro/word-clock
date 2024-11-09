@@ -50,17 +50,17 @@
   border-right: none;
 }
 
-[data-theme|='terminal'] .char.active.first-child {
+[data-theme|='terminal'] .char.active.first {
   border: var(--accent-color) solid 1px;
   border-right: none;
 }
 
-[data-theme|='terminal'] .char.active.last-child {
+[data-theme|='terminal'] .char.active.last {
   border: var(--accent-color) solid 1px;
   border-left: none;
 }
 
-[data-theme|='terminal'] .char.active.first-child.last-child {
+[data-theme|='terminal'] .char.active.first.last {
   border: var(--accent-color) solid 1px;
 }
 

@@ -46,6 +46,7 @@ export type CommonWords = Record<CommonWordsKey, number[]>;
 export interface LocaleGridConfig {
   grid: string[];
   charsWithAphostrophe?: number[];
-  getWordsToHighlight: (hours: number, minutes: number) => string[];
-  words: Record<string, number[]>;
+  commonWords: CommonWords;
+  getLocaleWordKeys: (hours: number, minutes: number) => string[];
+  localeWords: Record<string, number[]>;
 }

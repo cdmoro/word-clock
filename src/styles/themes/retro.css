@@ -16,14 +16,14 @@
   color: #000;
 }
 
-[data-theme|='retro'] .char.active.first-child {
+[data-theme|='retro'] .char.active.first {
   border: var(--accent-color) solid 1px;
   border-right: none;
   border-start-start-radius: .5rem;
   border-end-start-radius: .5rem;
 }
 
-[data-theme|='retro'] .char.active.last-child {
+[data-theme|='retro'] .char.active.last {
   border: var(--accent-color) solid 1px;
   border-left: none;
   border-start-end-radius: .5rem;

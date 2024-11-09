@@ -1,12 +1,13 @@
 import { store } from '../../store';
 import { LocaleGridConfig, Locale } from '../../types';
+import { HOURS, MINUTES } from './constants';
 import en from './en';
 import es from './es';
 import fr from './fr';
 import it from './it';
 import pt from './pt';
 
-const GRID_CONFIG_BY_LOCALE: Record<Locale, LocaleGridConfig> = {
+const LOCALE_CONFIG: Record<Locale, LocaleGridConfig> = {
   'en-US': en,
   'es-ES': es,
   'it-IT': it,
@@ -14,14 +15,38 @@ const GRID_CONFIG_BY_LOCALE: Record<Locale, LocaleGridConfig> = {
   'pt-BR': pt,
 };
 
-function getGridConfig(locale: Locale) {
-  return GRID_CONFIG_BY_LOCALE[locale];
+function getLocaleConfig(locale: Locale) {
+  return LOCALE_CONFIG[locale];
+}
+
+export function getWordsKeys(locale: Locale, time: string) {
+  // eslint-disable-next-line prefer-const
+  let [hours, minutes] = time.split(':').map((t) => parseInt(t));
+  const { getLocaleWordKeys } = getLocaleConfig(locale);
+  const wordKeys = [];
+
+  if (minutes >= 35) {
+    hours = (hours + 1) % 12 || 12;
+  }
+
+  wordKeys.push(HOURS[hours % 12]);
+  if (minutes >= 5) {
+    wordKeys.push(MINUTES[Math.floor(minutes / 5) - 1]);
+  }
+
+  return [...getLocaleWordKeys(hours, minutes), ...wordKeys];
 }
 
 export function highlightGrid(time: string) {
-  const { getWordsToHighlight, words: wordObj } = getGridConfig(store.get('locale'));
-  const [hours, minutes] = time.split(':').map((t) => parseInt(t));
-  const words = getWordsToHighlight(hours, minutes).map((word) => wordObj[word as keyof typeof wordObj]);
+  const locale = store.get('locale');
+  const { localeWords, commonWords } = getLocaleConfig(locale);
+
+  const clockWords = {
+    ...commonWords,
+    ...localeWords,
+  };
+
+  const words = getWordsKeys(locale, time).map((word) => clockWords[word as keyof typeof clockWords]);
 
   const chars = document.querySelectorAll('#clock .char');
   chars.forEach((cell) => cell.classList.remove('active'));
@@ -33,8 +58,8 @@ export function highlightGrid(time: string) {
           const char = chars[index];
 
           char.classList.add('active');
-          char.classList.toggle('first-child', pos === 0);
-          char.classList.toggle('last-child', pos === word.length - 1);
+          char.classList.toggle('first', pos === 0);
+          char.classList.toggle('last', pos === word.length - 1);
         }),
       );
     },
@@ -44,7 +69,7 @@ export function highlightGrid(time: string) {
 
 export function drawGrid() {
   const clock = document.querySelector<HTMLDivElement>('#clock');
-  const { grid, charsWithAphostrophe } = getGridConfig(store.get('locale'));
+  const { grid, charsWithAphostrophe } = getLocaleConfig(store.get('locale'));
 
   while (clock?.firstChild) {
     clock.removeChild(clock.firstChild);
