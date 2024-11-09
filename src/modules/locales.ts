@@ -13,17 +13,6 @@ export const DOMINANT_LOCALES: Record<string, Locale> = {
   it: 'it-IT',
 } as const;
 
-export function getRandomLocale() {
-  const locales = Object.keys(TRANSLATIONS) as Locale[];
-  const localeQuote = store.get('active-quote')?.locale;
-
-  if (localeQuote) {
-    locales.splice(locales.indexOf(localeQuote), 1);
-  }
-
-  return locales[Math.floor(Math.random() * locales.length)];
-}
-
 export function resolveLocale(locale = navigator.language): Locale {
   if (locale.length === 2) {
     locale = DOMINANT_LOCALES[locale];

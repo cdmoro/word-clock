@@ -1,4 +1,3 @@
-import { startScreensaver } from '../modules/screensaver';
 import { CITE_FACTOR, INITIAL_THEME_FONT_SIZE } from '../modules/font';
 import { store } from '../store';
 
@@ -41,10 +40,6 @@ export function fitQuote() {
   const interval = setInterval(doFitQuote, 1);
   setTimeout(() => {
     clearInterval(interval);
-
-    if (store.get('screensaver')) {
-      startScreensaver();
-    }
   }, 500);
 }
 

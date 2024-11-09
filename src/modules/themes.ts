@@ -1,6 +1,5 @@
 import { THEME_FONTS, resetFont } from './font';
 import { doFitQuote, fitQuote, loadFontIfNotExists } from '../utils';
-import { setDayParameters } from './dynamic';
 import { store } from '../store';
 
 function getRandomThemeColor() {
@@ -73,10 +72,6 @@ export function setTheme({ isVariantChange = false, syncToUrl = true } = {}) {
     variant = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
 
-  if (theme === 'dynamic') {
-    setDayParameters();
-  }
-
   if (theme === 'photo' && !isVariantChange) {
     setDynamicBackgroundPicture();
   }
@@ -92,8 +87,7 @@ export function setTheme({ isVariantChange = false, syncToUrl = true } = {}) {
 export function setDynamicBackgroundPicture() {
   const photoOverlay = document.getElementById('photo-overlay');
   const now = new Date();
-  const quote = store.get('active-quote');
-  const seed = `${now.getFullYear()}${now.getMonth() + 1}${now.getDay()}${quote?.id}${quote?.locale}`;
+  const seed = `${now.getFullYear()}${now.getMonth() + 1}${now.getDay()}${now.getHours()}${now.getMinutes()}`;
   let innerHeight = window.innerHeight;
   let innerWidth = window.innerWidth;
 

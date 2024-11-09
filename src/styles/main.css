@@ -70,10 +70,11 @@ body:not(.show-time) #time-clock {
   padding: 1.5vw 2vw;
   text-align: center;
   color: color-mix(in srgb, var(--font-color), transparent 85%);
+  transition: opacity 1s;
 }
 
 .fade .char {
-  transition: color .5s;
+  transition: opacity 1s, color .5s;
 }
 
 .char.active {
@@ -83,6 +84,18 @@ body:not(.show-time) #time-clock {
 .char.aphostrophe:after {
   content: '’';
   position: absolute;
+}
+
+body.focus .char:not(.active) {
+  opacity: .1;
+}
+
+body.fuzzy .char:not(.active) {
+  display: none;
+}
+
+body.fuzzy .char.active.first {
+  grid-column: 1;
 }
 
 a,

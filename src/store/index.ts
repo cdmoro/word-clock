@@ -1,35 +1,29 @@
 import { resolveLocale, DOMINANT_LOCALES } from '../modules/locales';
-import { Locale, ResolvedQuote } from '../types';
+import { Locale } from '../types';
 
 interface Stateful {
   locale: Locale;
   zen: boolean;
-  work: boolean;
-  screensaver: boolean;
   fade: boolean;
   'show-time': boolean;
   font: string;
   theme: string;
-  progressbar: boolean;
-  'random-locale': boolean;
+  focus: boolean;
+  fuzzy: boolean;
 }
 
 export interface Stateless {
   'custom-font'?: string;
   time?: string;
-  quote?: string;
   scene?: string;
-  progress?: string;
-  index?: string;
   static?: boolean;
-  'active-quote'?: ResolvedQuote;
 }
 
 type State = Stateful & Stateless;
 
 type Listener = (newState: State, oldState: State) => void;
 
-const IGNORE_FROM_URL: (keyof State)[] = ['custom-font', 'active-quote'];
+const IGNORE_FROM_URL: (keyof State)[] = ['custom-font'];
 const REMOVE_VALUES_FROM_URL: Partial<State> = {
   font: 'default',
   theme: 'base-system',
@@ -186,14 +180,12 @@ export let store: Store;
 export function createStore() {
   store = new Store({
     locale: resolveLocale(navigator.language),
-    screensaver: false,
-    work: false,
     zen: false,
     fade: true,
     'show-time': true,
     font: 'default',
     theme: 'base-system',
-    progressbar: true,
-    'random-locale': false,
+    focus: false,
+    fuzzy: false,
   });
 }

@@ -21,10 +21,12 @@ export type Translations = {
   exit_zen_title: string;
   fade_mode: string;
   festive: string;
+  focus_mode: string;
   font: string;
   fr_FR: string;
   frame: string;
   fullscreen_mode: string;
+  fuzzy_mode: string;
   gray: string;
   green: string;
   handwriting: string;

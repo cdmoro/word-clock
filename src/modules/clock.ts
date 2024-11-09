@@ -1,5 +1,4 @@
 import { getTime, updateFavicon } from '../utils';
-import { setDayParameters } from './dynamic';
 import { store } from '../store';
 import { highlightGrid } from './grid';
 
@@ -14,10 +13,6 @@ function updateTime(forceUpdate?: boolean) {
 
   if (time.includes(':00') || time.includes(':30')) {
     updateFavicon(time);
-  }
-
-  if (store.get('theme')?.startsWith('dynamic')) {
-    setDayParameters();
   }
 
   document.title = document.title.replace(/[0-9]{2}:[0-9]{2}/, time);
