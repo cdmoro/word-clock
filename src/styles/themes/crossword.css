@@ -1,0 +1,22 @@
+[data-theme|='crossword'] #clock {
+    border: var(--font-color) solid 1px;
+    row-gap: 0;
+    padding: 0;
+}
+
+[data-theme|='crossword'] .char {
+    border: var(--font-color) solid 1px;
+}
+
+[data-theme|='crossword'] .char.active {
+    background-color: var(--font-color);
+    color: var(--background);
+}
+
+[data-theme|='crossword'] body.focus #clock {
+    border: none;
+}
+
+[data-theme|='crossword'] body.fuzzy #clock {
+    border: none;
+}
