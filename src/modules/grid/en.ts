@@ -1,4 +1,4 @@
-import { CommonWords, LocaleGridConfig } from '../../types';
+import { CommonWords, LocaleGridConfig, WordKeys } from '../../types';
 
 const grid = [
   'ITLISASAMPM', // 0-10
@@ -43,7 +43,7 @@ const localeWords = {
 };
 
 function getLocaleWordKeys(_hours: number, minutes: number) {
-  const wordKeys = ['IT', 'IS'];
+  const wordKeys: WordKeys<typeof localeWords>[] = ['IT', 'IS'];
 
   // Determine whether to use "TO" or "PAST"
   if (minutes >= 35) {

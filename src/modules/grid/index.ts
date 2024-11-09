@@ -46,7 +46,12 @@ export function highlightGrid(time: string) {
     ...localeWords,
   };
 
-  const words = getWordsKeys(locale, time).map((word) => clockWords[word as keyof typeof clockWords]);
+  const words = getWordsKeys(locale, time)
+    .map((word) => clockWords[word as keyof typeof clockWords])
+    .reduce<number[][]>((acc, item) => {
+      if (Array.isArray(item[0])) return acc.concat(item);
+      return acc.concat([item as number[]]);
+    }, []);
 
   const chars = document.querySelectorAll('#clock .char');
   chars.forEach((cell) => cell.classList.remove('active'));

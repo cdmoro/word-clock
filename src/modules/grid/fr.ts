@@ -1,4 +1,4 @@
-import { CommonWords, LocaleGridConfig } from '../../types';
+import { CommonWords, LocaleGridConfig, WordKeys } from '../../types';
 
 const grid = [
   'ILNESTODEUX', // 0-10: "IL", "EST" and numbers (2)
@@ -45,7 +45,7 @@ const localeWords = {
 };
 
 function getLocaleWordKeys(hours: number, minutes: number) {
-  const wordKeys = [];
+  const wordKeys: WordKeys<typeof localeWords>[] = [];
 
   // Use "IL EST" regardless of the hour
   wordKeys.push('IL', 'EST');

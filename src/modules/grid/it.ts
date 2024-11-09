@@ -1,4 +1,4 @@
-import { CommonWords, LocaleGridConfig } from '../../types';
+import { CommonWords, LocaleGridConfig, WordKeys } from '../../types';
 
 const grid = [
   'SONORLEBORE', // 0-10: "SONO", "LE"
@@ -45,7 +45,7 @@ const localeWords = {
 };
 
 function getLocaleWordKeys(hours: number, minutes: number) {
-  const wordKeys = [];
+  const wordKeys: WordKeys<typeof localeWords>[] = [];
 
   // Determine whether to use "E" or "MENO"
   if (minutes >= 35) {

@@ -1,4 +1,4 @@
-import { CommonWords, LocaleGridConfig } from '../../types';
+import { CommonWords, LocaleGridConfig, WordKeys } from '../../types';
 
 const grid = [
   'ESONELASUNA', // 0-10
@@ -44,7 +44,7 @@ const localeWords = {
 };
 
 function getLocaleWordKeys(hours: number, minutes: number) {
-  const wordKeys = [];
+  const wordKeys: WordKeys<typeof localeWords>[] = [];
 
   // Determine whether to use "Y" or "MENOS"
   if (minutes >= 35) {

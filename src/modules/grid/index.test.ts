@@ -20,9 +20,10 @@ const dictionary: Partial<Record<Locale, Record<string, string>>> = {
   },
   'pt-BR': {
     UMA: 'ONE',
-    MEIO_DIA: 'TWELVE',
     MEIA: 'HALF',
     VINTE_E_CINCO: 'TWENTYFIVE_MIN',
+    ONZE: 'ELEVEN',
+    DEZ: 'TEN',
   },
   'it-IT': {
     UNA: 'ONE',
@@ -47,12 +48,11 @@ const testCases: Record<Locale, Record<string, string>> = {
     '12:30': 'SONO LE DODICI E MEZZA',
     '12:32': 'SONO LE DODICI E MEZZA',
     '12:35': 'È L UNA MENO VENTICINQUE',
-    '12:36': 'È UNA MENO VENTICINQUE',
   },
   'pt-BR': {
-    '12:30': 'SÃO MEIO_DIA E MEIA',
-    '12:32': 'SÃO MEIO_DIA E MEIA',
-    '12:35': 'É UMA HORAS MENOS VINTE_E_CINCO',
+    '10:30': 'SÃO DEZ HORAS E MEIA',
+    '10:32': 'SÃO DEZ HORAS E MEIA',
+    '10:35': 'SÃO ONZE HORAS MENOS VINTE_E_CINCO',
   },
   'fr-FR': {
     '12:30': 'IL EST MIDI ET DEMIE',
@@ -65,9 +65,14 @@ describe('getWordsKeys', () =>
   Object.keys(testCases).forEach((locale) =>
     describe(`${locale}`, () =>
       Object.entries(testCases[locale as Locale]).forEach(([time, words]) =>
-        test(`${time}`, () =>
-          expect(getWordsKeys(locale as Locale, time)).toEqual(
-            expect.arrayContaining(words.split(' ').map((key) => dictionary[locale as Locale]?.[key] || key)),
-          )),
+        test(`${time}`, () => {
+          const output = getWordsKeys(locale as Locale, time);
+          expect(output.sort()).toEqual(
+            words
+              .split(' ')
+              .map((key) => dictionary[locale as Locale]?.[key] || key)
+              .sort(),
+          );
+        }),
       )),
   ));

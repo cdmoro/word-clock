@@ -21,7 +21,7 @@ export interface ResolvedQuote extends Quote {
   quote_raw: string;
 }
 
-type CommonWordsKey =
+export type CommonWordsKey =
   | 'ONE'
   | 'TWO'
   | 'THREE'
@@ -41,7 +41,8 @@ type CommonWordsKey =
   | 'TWENTYFIVE_MIN'
   | 'HALF';
 
-export type CommonWords = Record<CommonWordsKey, number[]>;
+export type CommonWords = Record<CommonWordsKey, number[] | number[][]>;
+export type WordKeys<T> = CommonWordsKey | keyof T;
 
 export interface LocaleGridConfig {
   grid: string[];

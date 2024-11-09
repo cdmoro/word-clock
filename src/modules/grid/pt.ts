@@ -1,4 +1,4 @@
-import { CommonWords, LocaleGridConfig } from '../../types';
+import { CommonWords, LocaleGridConfig, WordKeys } from '../../types';
 
 const grid = [
   'ÉSÃOUMATRÊS', // 0-10: É, SÃO, UMA, TRÊS
@@ -24,13 +24,13 @@ const commonWords: CommonWords = {
   SEVEN: [30, 31, 32],
   EIGHT: [48, 49, 50, 51],
   NINE: [40, 41, 42, 43],
-  TEN: [18, 19, 20],
+  TEN: [19, 20, 21],
   ELEVEN: [51, 52, 53, 54],
   FIVE_MIN: [105, 106, 107, 108, 109],
   TEN_MIN: [99, 100, 101],
   QUARTER_MIN: [91, 92, 93, 94, 95, 96],
   TWENTY_MIN: [77, 78, 79, 80, 81],
-  TWENTYFIVE_MIN: [],
+  TWENTYFIVE_MIN: [[77, 78, 79, 80, 81], [103], [105, 106, 107, 108, 109]],
   HALF: [84, 85, 86, 87],
 };
 
@@ -43,21 +43,14 @@ const localeWords = {
   DIA: [16, 17, 18],
   HORAS: [66, 67, 68, 69, 70],
   E: [73],
-  E_MIN: [103],
   MENOS: [72, 73, 74, 75, 76],
-  VINTE: [77, 78, 79, 80, 81],
-  ...commonWords,
 };
 
 function getLocaleWordKeys(hours: number, minutes: number) {
-  const wordKeys = [];
+  const wordKeys: WordKeys<typeof localeWords>[] = [];
 
-  // Determine whether to use "Y" or "MENOS"
-  if (minutes >= 35) {
-    wordKeys.push('MENOS');
-  } else if (minutes >= 5) {
-    wordKeys.push('E');
-  }
+  if (minutes >= 35) wordKeys.push('MENOS');
+  else if (minutes >= 5) wordKeys.push('E');
 
   // Use "É" for one o'clock, otherwise use "SÃO" for other hours
   wordKeys.push(hours % 12 === 1 ? 'É' : 'SÃO');
@@ -66,9 +59,6 @@ function getLocaleWordKeys(hours: number, minutes: number) {
   if (hours === 12) wordKeys.push('MEIO', 'DIA');
   else if (hours === 0) wordKeys.push('MEIA', 'NOITE');
   else wordKeys.push('HORAS');
-
-  // Determine minute words
-  if (minutes >= 20 && minutes < 30) wordKeys.push('VINTE', 'E_MIN', 'FIVE_MIN');
 
   return wordKeys;
 }
