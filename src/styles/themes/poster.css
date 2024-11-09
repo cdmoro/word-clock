@@ -1,14 +1,14 @@
 [data-theme|='poster'] {
-  --quote-font-family: 'Averia Serif Libre', sans-serif;
+  --clock-font-family: 'Averia Serif Libre', sans-serif;
   --cite-font-family: 'Allura', sans-serif;
   --accent-color: #fd4533;
-  --quote-line-height: 1.5;
+  --clock-line-height: 1;
 }
 
 [data-theme|='poster'] #clock {
   border-width: 1rem;
   border-style: solid;
-  padding: 2rem;
+  padding: 1.5rem;
   overflow: hidden;
   background-image: url('/assets/poster-bg.png');
 }

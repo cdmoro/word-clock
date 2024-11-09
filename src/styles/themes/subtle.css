@@ -1,6 +1,6 @@
 [data-theme|='subtle'] {
-  --quote-font-family: 'Unna', sans-serif;
-  --quote-line-height: 1.2;
+  --clock-font-family: 'Unna', sans-serif;
+  --clock-line-height: 1.2;
 }
 
 [data-theme|='subtle'] .time {

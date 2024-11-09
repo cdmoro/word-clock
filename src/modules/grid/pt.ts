@@ -44,8 +44,9 @@ const words = {
   DIA: [13, 14, 15],
   HORAS: [66, 67, 68, 69, 70],
   E: [73],
-  E_MIN: [105],
+  E_MIN: [103],
   MENOS: [72, 73, 74, 75, 76],
+  VINTE: [77, 78, 79, 80, 81],
   ...commonWords,
 };
 
@@ -71,7 +72,7 @@ function getWordsToHighlight(hours: number, minutes: number) {
   else wordKeys.push(HOURS[hours % 12]);
 
   // Determine minute words
-  if (minutes >= 20 && minutes < 30) wordKeys.push('VINTE', 'E_MIN', 'CINCO_MIN');
+  if (minutes >= 20 && minutes < 30) wordKeys.push('VINTE', 'E_MIN', 'FIVE_MIN');
   else if (minutes >= 5) {
     wordKeys.push(MINUTES[Math.floor(minutes / 5) - 1]);
   }

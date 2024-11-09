@@ -1,12 +1,12 @@
 [data-theme|='terminal'] {
-  --quote-font-family: 'B612 Mono', sans-serif;
-  --quote-line-height: 1.3;
+  --clock-font-family: 'B612 Mono', sans-serif;
+  --clock-line-height: 1.3;
 }
 
 [data-theme|='terminal'] body,
 [data-theme|='terminal'] select,
 [data-theme|='terminal'] button {
-  font-family: var(--quote-font-family);
+  font-family: var(--clock-font-family);
 }
 
 [data-theme|='terminal'] body:before {

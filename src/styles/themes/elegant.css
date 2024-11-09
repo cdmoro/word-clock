@@ -1,6 +1,6 @@
 [data-theme|='elegant'] {
-  --quote-font-family: 'Playfair Display', sans-serif;
-  --quote-line-height: 1.5;
+  --clock-font-family: 'Playfair Display', sans-serif;
+  --clock-line-height: 1;
   --accent-color: #9f5bd5;
 }
 

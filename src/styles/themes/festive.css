@@ -1,6 +1,6 @@
 [data-theme|='festive'] {
-  --quote-font-family: 'Borel', sans-serif;
-  --quote-line-height: 1.5;
+  --clock-font-family: 'Leckerli One', sans-serif;
+  --clock-line-height: 1;
   --accent-color: #e74c3c;
 }
 

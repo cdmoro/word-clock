@@ -1,6 +1,6 @@
 [data-theme|='retro'] {
-  --quote-font-family: 'VT323', sans-serif;
-  --quote-line-height: 1;
+  --clock-font-family: 'VT323', sans-serif;
+  --clock-line-height: 1;
 }
 
 [data-theme|='retro'] #progress-bar {

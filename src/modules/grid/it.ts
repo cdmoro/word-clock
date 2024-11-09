@@ -31,7 +31,7 @@ const commonWords: CommonWords = {
   TEN_MIN: [99, 100, 101, 102, 103],
   QUARTER_MIN: [82, 83, 84, 85, 86, 87],
   TWENTY_MIN: [88, 89, 90, 91, 92],
-  TWENTYFIVE_MIN: [88, 89, 90, 91, 92, 93, 94, 95, 96],
+  TWENTYFIVE_MIN: [88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98],
   HALF: [105, 106, 107, 108, 109],
 };
 

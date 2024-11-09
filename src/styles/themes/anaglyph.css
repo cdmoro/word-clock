@@ -1,6 +1,6 @@
 [data-theme|='anaglyph'] {
-  --quote-font-family: 'Anton', sans-serif;
-  --quote-line-height: 1.2;
+  --clock-font-family: 'Anton', sans-serif;
+  --clock-line-height: 1.2;
 }
 
 [data-theme|='anaglyph'] blockquote {

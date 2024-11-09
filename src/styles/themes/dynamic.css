@@ -24,7 +24,7 @@
   --background: #fff;
   --font-color: #000;
   --background-image: linear-gradient(to top, rgb(230, 174, 41), rgb(246, 248, 98) 18.49%, #9dc6ff 57.98%);
-  --quote-font-family: 'Caveat', cursive;
+  --clock-font-family: 'Caveat', cursive;
   --font-color: #333;
 }
 
@@ -42,7 +42,7 @@
   --background: #c2e9fb;
   --font-color: #000;
   --background-image: linear-gradient(to top, #c2e9fb, #a1c4fd);
-  --quote-font-family: 'Indie Flower', cursive;
+  --clock-font-family: 'Indie Flower', cursive;
 }
 
 [data-theme|='dynamic'][data-scene='afternoon'] .sphere {
@@ -66,7 +66,7 @@
     rgba(50, 47, 76, 1) 26.89%,
     rgb(14, 14, 36) 60.34%
   );
-  --quote-font-family: 'Yeseva One', serif;
+  --clock-font-family: 'Yeseva One', serif;
   --font-color: #fafafa;
   --accent-color: #ffa700;
 }
@@ -99,7 +99,7 @@
   --glow-box-shadow: 0 0 70px 10px #fff;
   --background-image: linear-gradient(to bottom, rgba(0, 1, 32, var(--bg-opacity)), rgba(0, 0, 0, var(--bg-opacity))),
     linear-gradient(to top, rgb(241, 114, 21), rgb(246, 248, 98) 10%, #9dc6ff 60%);
-  --quote-font-family: 'Sacramento', serif;
+  --clock-font-family: 'Sacramento', serif;
 }
 
 [data-theme|='dynamic'][data-scene='night'] body::before {

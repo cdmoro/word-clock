@@ -1,6 +1,6 @@
 [data-theme|='bohemian'] {
-  --quote-font-family: 'Comfortaa', sans-serif;
-  --quote-line-height: 1.2;
+  --clock-font-family: 'Comfortaa', sans-serif;
+  --clock-line-height: 1.2;
   --accent-color: #1abc9c;
 }
 

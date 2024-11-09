@@ -4,9 +4,9 @@ import { store } from '../store';
 export const THEME_FONTS: Record<string, string[]> = {
   retro: ['VT323'],
   elegant: ['Playfair Display'],
-  festive: ['Borel'],
+  festive: ['Leckerli One'],
   bohemian: ['Comfortaa'],
-  handwriting: ['Reenie Beanie'],
+  handwriting: ['Indie Flower'],
   anaglyph: ['Anton'],
   whatsapp: ['Roboto'],
   terminal: ['B612 Mono'],

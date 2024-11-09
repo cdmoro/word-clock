@@ -1,6 +1,6 @@
 [data-theme|='kindle'] {
-  --quote-font-family: 'Noto Serif', sans-serif;
-  --quote-line-height: 1.4;
+  --clock-font-family: 'Noto Serif', sans-serif;
+  --clock-line-height: 1;
 }
 
 [data-theme='kindle-light'] {
