@@ -15,7 +15,7 @@ const grid = [
 ];
 
 const commonWords: CommonWords = {
-  TWELVE: [66, 67, 68, 69],
+  TWELVE: [44, 45, 46, 47],
   ONE: [26, 27, 28],
   TWO: [7, 8, 9, 10],
   THREE: [17, 18, 19, 20, 21],
@@ -64,7 +64,7 @@ function getWordsToHighlight(hours: number, minutes: number) {
   // Map hour value to the corresponding word
   wordKeys.push(HOURS[hours % 12]);
 
-  wordKeys.push('HEURES');
+  if (hours !== 0 && hours !== 12) wordKeys.push('HEURES');
 
   // Determine minute words
   if (minutes >= 5) {

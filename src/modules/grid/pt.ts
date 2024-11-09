@@ -64,12 +64,11 @@ function getWordsToHighlight(hours: number, minutes: number) {
 
   // Use "É" for one o'clock, otherwise use "SÃO" for other hours
   wordKeys.push(hours % 12 === 1 ? 'É' : 'SÃO');
-  wordKeys.push('HORAS');
 
   // Map hour value to the corresponding word
   if (hours === 12) wordKeys.push('MEIO', 'DIA');
   else if (hours === 0) wordKeys.push('MEIA', 'NOITE');
-  else wordKeys.push(HOURS[hours % 12]);
+  else wordKeys.push(HOURS[hours % 12], 'HORAS');
 
   // Determine minute words
   if (minutes >= 20 && minutes < 30) wordKeys.push('VINTE', 'E_MIN', 'FIVE_MIN');
