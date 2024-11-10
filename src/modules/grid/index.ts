@@ -90,10 +90,6 @@ export function drawGrid() {
   const gridExists = !!document.querySelector<HTMLDivElement>('#clock .char');
   const { grid, charsWithAphostrophe, secondaryChars } = getLocaleConfig(store.get('locale'));
 
-  // while (clock?.firstChild) {
-  //   clock.removeChild(clock.firstChild);
-  // }
-
   grid
     .join('')
     .split('')
