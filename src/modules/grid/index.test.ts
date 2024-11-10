@@ -48,7 +48,7 @@ const testCases: Record<Locale, Record<string, string>> = {
   'it-IT': {
     '12:30': 'SONO LE DODICI E MEZZA',
     '12:32': 'SONO LE DODICI E MEZZA',
-    '12:35': 'È L UNA MENO VENTICINQUE',
+    '12:35': 'È UNA MENO VENTICINQUE',
   },
   'pt-BR': {
     '12:30': 'SÃO MEIO_DIA E MEIA',
