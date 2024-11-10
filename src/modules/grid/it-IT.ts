@@ -20,7 +20,7 @@ const commonWords: CommonWords = {
   THREE: [22, 23, 24],
   FOUR: [55, 56, 57, 58, 59, 60, 61],
   FIVE: [66, 67, 68, 69, 70, 71],
-  SIX: [62, 63, 64],
+  SIX: [63, 64, 65],
   SEVEN: [50, 51, 52, 53, 54],
   EIGHT: [25, 26, 27, 28],
   NINE: [29, 30, 31, 32],
@@ -71,5 +71,5 @@ export default {
   getLocaleWordKeys,
   commonWords,
   localeWords,
-  secondaryChars: [0, 1, 2, 3, 4, 5, 6],
+  secondaryChars: [0, 1, 2, 3, 4, 5, 6, 11],
 } satisfies LocaleGridConfig;

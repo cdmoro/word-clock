@@ -87,25 +87,32 @@ export function highlightGrid(time: string) {
 
 export function drawGrid() {
   const clock = document.querySelector<HTMLDivElement>('#clock');
+  const gridExists = !!document.querySelector<HTMLDivElement>('#clock .char');
   const { grid, charsWithAphostrophe, secondaryChars } = getLocaleConfig(store.get('locale'));
 
-  while (clock?.firstChild) {
-    clock.removeChild(clock.firstChild);
-  }
+  // while (clock?.firstChild) {
+  //   clock.removeChild(clock.firstChild);
+  // }
 
   grid
     .join('')
     .split('')
     .forEach((char, index) => {
-      const charEl = document.createElement('div');
+      let charEl = document.querySelector<HTMLDivElement>(`#clock .char:nth-child(${index + 1})`);
+
+      if (!charEl) {
+        charEl = document.createElement('div');
+      }
+
       charEl.classList.add('char');
       charEl.dataset.index = index.toString();
       charEl.classList.toggle('aphostrophe', !!charsWithAphostrophe?.includes(index));
       charEl.classList.toggle('secondary', !!secondaryChars?.includes(index));
-
       charEl.textContent = char;
 
-      clock?.appendChild(charEl);
+      if (!gridExists) {
+        clock?.appendChild(charEl);
+      }
     });
 }
 
