@@ -68,7 +68,7 @@ function getLocaleWordKeys(hours: number, minutes: number) {
   // Map hour value to the corresponding word
   // if (hours === 12) wordKeys.push('MEIO', 'DIA');
   // else if (hours === 0) wordKeys.push('MEIA', 'NOITE');
-  if (hours !== 12) wordKeys.push('HORAS');
+  // if (hours !== 12) wordKeys.push('HORAS');
 
   return wordKeys;
 }
