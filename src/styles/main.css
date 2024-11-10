@@ -70,10 +70,7 @@ body:not(.show-time) #time-clock {
 .char {
   padding: 1.5vw 2vw;
   text-align: center;
-  color: color-mix(in srgb, var(--font-color), transparent 85%);
-}
-
-.fade .char {
+  color: color-mix(in srgb, var(--font-color), transparent 80%);
   transition: opacity 1s, color .5s, background .5s;
 }
 
@@ -100,6 +97,18 @@ body.fuzzy .char.active.first {
 
 body.fuzzy .char.first.last {
   opacity: .3;
+}
+
+body.solid #clock {
+  border-radius: .5rem;
+}
+
+[data-theme$='light'] body.solid #clock {
+  background-color: #FFFA;
+}
+
+[data-theme$='dark'] body.solid #clock {
+  background-color: #0009;
 }
 
 a,

@@ -6,6 +6,7 @@
 
 [data-theme|='crossword'] .char {
     border: var(--font-color) solid 1px;
+    color: var(--font-color);
 }
 
 [data-theme|='crossword'] .char.active {
@@ -19,4 +20,5 @@
 
 [data-theme|='crossword'] body.fuzzy #clock {
     border: none;
+    row-gap: 5px;
 }

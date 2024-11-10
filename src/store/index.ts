@@ -4,12 +4,12 @@ import { Locale } from '../types';
 interface Stateful {
   locale: Locale;
   zen: boolean;
-  fade: boolean;
   'show-time': boolean;
   font: string;
   theme: string;
   focus: boolean;
   fuzzy: boolean;
+  solid: boolean;
 }
 
 export interface Stateless {
@@ -181,11 +181,11 @@ export function createStore() {
   store = new Store({
     locale: resolveLocale(navigator.language),
     zen: false,
-    fade: true,
     'show-time': true,
     font: 'default',
     theme: 'base-system',
     focus: false,
     fuzzy: false,
+    solid: false,
   });
 }

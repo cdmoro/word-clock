@@ -61,20 +61,17 @@ export function highlightGrid(time: string) {
   const chars = document.querySelectorAll('#clock .char');
   chars.forEach((cell) => cell.classList.remove('active'));
 
-  setTimeout(
-    () => {
-      words.forEach((word) =>
-        word.forEach((index, pos) => {
-          const char = chars[index];
+  setTimeout(() => {
+    words.forEach((word) =>
+      word.forEach((index, pos) => {
+        const char = chars[index];
 
-          char.classList.add('active');
-          char.classList.toggle('first', pos === 0);
-          char.classList.toggle('last', pos === word.length - 1);
-        }),
-      );
-    },
-    store.get('fade') ? 500 : 0,
-  );
+        char.classList.add('active');
+        char.classList.toggle('first', pos === 0);
+        char.classList.toggle('last', pos === word.length - 1);
+      }),
+    );
+  }, 500);
 }
 
 export function drawGrid() {
