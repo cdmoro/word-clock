@@ -60,7 +60,7 @@ body:not(.show-time) #time-clock {
   row-gap: 5px;
   margin: 0 auto;
   z-index: 2;
-  padding: .5rem;
+  padding: .7rem .5rem;
   font-family: var(--override-quote-font-family, var(--clock-font-family));
   font-size: 2.5vw;
   line-height: var(--clock-line-height, 1);
@@ -71,7 +71,7 @@ body:not(.show-time) #time-clock {
   padding: 1.5vw 2vw;
   text-align: center;
   color: color-mix(in srgb, var(--font-color), transparent 80%);
-  transition: opacity 1s, color .5s, background .5s;
+  transition: opacity 1s, color .5s, background .5s, border-radius .5s;
 }
 
 .char.active {
@@ -84,7 +84,11 @@ body:not(.show-time) #time-clock {
 }
 
 body.focus .char:not(.active) {
-  color: color-mix(in srgb, var(--font-color), transparent 98%);
+  color: color-mix(in srgb, var(--font-color), transparent 95%);
+}
+
+body.focus .char.secondary {
+  opacity: .5;
 }
 
 body.fuzzy #clock {
@@ -97,6 +101,10 @@ body.fuzzy .char:not(.active) {
 
 body.fuzzy .char.active.first {
   grid-column: 1;
+}
+
+body.fuzzy .char.secondary {
+  opacity: .5;
 }
 
 body.solid #clock {

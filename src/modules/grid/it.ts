@@ -15,7 +15,7 @@ const grid = [
 
 const commonWords: CommonWords = {
   TWELVE: [44, 45, 46, 47, 48, 49],
-  ONE: [14, 15, 16],
+  ONE: [13, 14, 15, 16],
   TWO: [18, 19, 20],
   THREE: [22, 23, 24],
   FOUR: [55, 56, 57, 58, 59, 60, 61],
@@ -38,7 +38,7 @@ const localeWords = {
   SONO: [0, 1, 2, 3],
   È: [11],
   LE: [5, 6],
-  L: [13],
+  // L: [13],
   ORE: [6, 7, 8, 9, 10],
   MENO: [73, 74, 75, 76],
   E: [77],
@@ -60,7 +60,7 @@ function getLocaleWordKeys(hours: number, minutes: number) {
   wordKeys.push(hours % 12 === 1 ? 'È' : 'SONO');
   // wordKeys.push(hours % 12 === 1 ? 'L' : 'LE');
   if (hours % 12 !== 1) wordKeys.push('LE');
-  else if (hours === 1) wordKeys.push('L');
+  // else if (hours === 1) wordKeys.push('L');
 
   return wordKeys;
 }
@@ -71,4 +71,5 @@ export default {
   getLocaleWordKeys,
   commonWords,
   localeWords,
+  secondaryChars: [0, 1, 2, 3, 4, 5, 6],
 } satisfies LocaleGridConfig;

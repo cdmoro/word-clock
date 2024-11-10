@@ -66,9 +66,7 @@ export function highlightGrid(time: string) {
 
   setTimeout(() => {
     words.forEach((word, wordIdx) => {
-      if (word.length > longestWord) {
-        longestWord = word.length;
-      }
+      longestWord = Math.max(word.length, longestWord);
 
       word.forEach((index, pos) => {
         const char = chars[index];
@@ -89,7 +87,7 @@ export function highlightGrid(time: string) {
 
 export function drawGrid() {
   const clock = document.querySelector<HTMLDivElement>('#clock');
-  const { grid, charsWithAphostrophe } = getLocaleConfig(store.get('locale'));
+  const { grid, charsWithAphostrophe, secondaryChars } = getLocaleConfig(store.get('locale'));
 
   while (clock?.firstChild) {
     clock.removeChild(clock.firstChild);
@@ -103,6 +101,7 @@ export function drawGrid() {
       charEl.classList.add('char');
       charEl.dataset.index = index.toString();
       charEl.classList.toggle('aphostrophe', !!charsWithAphostrophe?.includes(index));
+      charEl.classList.toggle('secondary', !!secondaryChars?.includes(index));
 
       charEl.textContent = char;
 
