@@ -1,7 +1,18 @@
 import json
 
-with open('src/strings/translations.json', 'r', encoding='utf-8') as file:
-    languages = json.load(file)
+# Cargar y ordenar las keys de segundo nivel en el archivo translations.json
+def load_and_sort_translations(file_path):
+    with open(file_path, 'r', encoding='utf-8') as file:
+        languages = json.load(file)
+    
+    # Ordenar las keys de segundo nivel en cada idioma
+    sorted_languages = {lang: dict(sorted(keys.items())) for lang, keys in languages.items()}
+    
+    # Guardar el archivo ordenado
+    with open(file_path, 'w', encoding='utf-8') as file:
+        json.dump(sorted_languages, file, ensure_ascii=False, indent=2)
+    
+    return sorted_languages
 
 def check_keys_consistency(languages):
     base_keys = set(languages[next(iter(languages))].keys())
@@ -34,5 +45,10 @@ def generate_typescript_type(languages):
 
     print("TypeScript type generated successfully in 'src/strings/types.ts'.")
 
+# Ruta del archivo de traducciones
+file_path = 'src/strings/translations.json'
+
+# Cargar, ordenar y verificar consistencia
+languages = load_and_sort_translations(file_path)
 check_keys_consistency(languages)
 generate_typescript_type(languages)
