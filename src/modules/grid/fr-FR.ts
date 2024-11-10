@@ -19,9 +19,9 @@ const commonWords: CommonWords = {
   TWO: [7, 8, 9, 10],
   THREE: [17, 18, 19, 20, 21],
   FOUR: [11, 12, 13, 14, 15, 16],
-  FIVE: [33, 34, 35, 36],
+  FIVE: [40, 41, 42, 43],
   SIX: [37, 38, 39],
-  SEVEN: [25, 26, 27, 28],
+  SEVEN: [29, 30, 31, 32],
   EIGHT: [33, 34, 35, 36],
   NINE: [22, 23, 24, 25],
   TEN: [46, 47, 48],
@@ -41,7 +41,7 @@ const localeWords = {
   MIDI: [44, 45, 46, 47],
   MINUIT: [48, 49, 50, 51, 52, 53],
   MOINS: [66, 67, 68, 69, 70],
-  ET: [77, 78],
+  ET: [99, 100],
 };
 
 function getLocaleWordKeys(hours: number, minutes: number) {
