@@ -14,11 +14,12 @@
     color: var(--background);
 }
 
-[data-theme|='crossword'] body.focus #clock {
-    border: none;
-}
-
 [data-theme|='crossword'] body.fuzzy #clock {
     border: none;
     row-gap: 5px;
+    padding: .5rem;
+}
+
+[data-theme|='crossword'] body.solid #clock {
+    border-radius: 0;
 }

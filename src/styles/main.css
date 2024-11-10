@@ -84,7 +84,7 @@ body:not(.show-time) #time-clock {
 }
 
 body.focus .char:not(.active) {
-  opacity: 0;
+  color: color-mix(in srgb, var(--font-color), transparent 98%);
 }
 
 body.fuzzy #clock {
@@ -97,10 +97,6 @@ body.fuzzy .char:not(.active) {
 
 body.fuzzy .char.active.first {
   grid-column: 1;
-}
-
-body.fuzzy .char.first.last {
-  opacity: .3;
 }
 
 body.solid #clock {
