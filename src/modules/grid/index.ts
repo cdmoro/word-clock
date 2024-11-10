@@ -1,6 +1,7 @@
 import { store } from '../../store';
 import { LocaleGridConfig, Locale } from '../../types';
 import { HOURS, MINUTES } from './constants';
+import de from './de';
 import en from './en';
 import es from './es';
 import fr from './fr';
@@ -13,6 +14,7 @@ const LOCALE_CONFIG: Record<Locale, LocaleGridConfig> = {
   'it-IT': it,
   'fr-FR': fr,
   'pt-BR': pt,
+  'de-DE': de,
 };
 
 function getLocaleConfig(locale: Locale) {
