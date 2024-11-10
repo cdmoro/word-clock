@@ -1,18 +1,18 @@
 import { store } from '../../store';
 import { LocaleGridConfig, Locale } from '../../types';
 import { HOURS, MINUTES } from './constants';
-import en from './en';
-import es from './es';
-import fr from './fr';
-import it from './it';
-import pt from './pt';
+import enUS from './en-US';
+import esES from './es-ES';
+import frFR from './fr-FR';
+import itIT from './it-IT';
+import ptBR from './pt-BR';
 
 const LOCALE_CONFIG: Record<Locale, LocaleGridConfig> = {
-  'en-US': en,
-  'es-ES': es,
-  'it-IT': it,
-  'fr-FR': fr,
-  'pt-BR': pt,
+  'en-US': enUS,
+  'es-ES': esES,
+  'it-IT': itIT,
+  'fr-FR': frFR,
+  'pt-BR': ptBR,
 };
 
 function getLocaleConfig(locale: Locale) {
