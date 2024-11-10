@@ -31,7 +31,7 @@ export const CITE_FACTOR = {
   kindle: 0.5,
 } as const;
 
-const FONTS = ['Gugi', ...new Set(Object.values(THEME_FONTS))].flat();
+const FONTS = ['Exo 2', ...new Set(Object.values(THEME_FONTS))].flat();
 const CSS_FONT_VARIABLE = '--override-quote-font-family';
 
 function createOption(value: string) {
@@ -67,7 +67,7 @@ export function initFont() {
   if (font !== 'default') {
     loadFontIfNotExists(font);
     const root = document.querySelector<HTMLElement>(':root');
-    root?.style.setProperty(CSS_FONT_VARIABLE, `${font}, sans-serif`);
+    root?.style.setProperty(CSS_FONT_VARIABLE, `'${font}', sans-serif`);
   }
 
   fontSelect?.addEventListener('change', setFont);
@@ -85,7 +85,7 @@ function setFont() {
       root?.style.removeProperty(CSS_FONT_VARIABLE);
     } else {
       loadFontIfNotExists(font);
-      root?.style.setProperty(CSS_FONT_VARIABLE, `${font}, sans-serif`);
+      root?.style.setProperty(CSS_FONT_VARIABLE, `'${font}', sans-serif`);
     }
   }
 
