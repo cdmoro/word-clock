@@ -21,7 +21,7 @@ const commonWords: CommonWords = {
   FIVE: [8, 9, 10], // FÜNF
   SIX: [77, 78, 79, 80, 81], // SECHS
   SEVEN: [88, 89, 90, 91, 92], // SIEBEN
-  EIGHT: [82, 83, 84, 85], // ACHT
+  EIGHT: [84, 85, 86, 87], // ACHT
   NINE: [103, 104, 105], // NEUN
   TEN: [11, 12, 13], // ZEHN
   ELEVEN: [44, 45, 46], // ELF
@@ -53,12 +53,15 @@ function getLocaleWordKeys(_hours: number, minutes: number) {
   if (minutes >= 35) {
     // Use "VOR" and move to the next hour
     wordKeys.push('VOR');
-  } else if (minutes >= 5) {
-    wordKeys.push('NACH');
   }
+  // else if (minutes >= 5) {
+  //   wordKeys.push('NACH');
+  // }
 
   // Use "ES" and "IST" for the phrase in German
   wordKeys.push('ES', 'IST');
+
+  if (minutes >= 0 && minutes < 5) wordKeys.push('UHR');
 
   return wordKeys;
 }
@@ -68,4 +71,5 @@ export default {
   getLocaleWordKeys,
   commonWords,
   localeWords,
+  secondaryChars: [0, 1, 3, 4, 5],
 } satisfies LocaleGridConfig;
