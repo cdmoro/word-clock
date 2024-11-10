@@ -1,6 +1,5 @@
 import { initStaticMode } from './static';
 import { initClock } from './clock';
-import { initFadeMode } from './fade';
 import { initFont } from './font';
 import { initFullscreenMode } from './fullscreen';
 import { initLocale } from './locales';
@@ -10,12 +9,12 @@ import { initZenMode } from './zen';
 import { initGrid } from './grid';
 import { initFocus } from './focus';
 import { initFuzzy } from './fuzzy';
+import { initSolid } from './solid';
 
 const MODULES = [
   initStaticMode,
   initGrid,
   initClock,
-  initFadeMode,
   initFont,
   initFullscreenMode,
   initLocale,
@@ -24,6 +23,7 @@ const MODULES = [
   initZenMode,
   initFocus,
   initFuzzy,
+  initSolid,
 ];
 
 export function initModules() {

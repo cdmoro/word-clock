@@ -48,7 +48,7 @@ Want to implement a new language? Sure thing, ping me and let's talk about it!
 
 If you want to help you can:
 
-- [Raise an issue to add a new quote](https://github.com/cdmoro/literature-clock/issues/new?template=add-quote.yml&labels=add-quote&title=%5B23%3A28%5D%5Ben%5D+Add+quote) or a new variant for a specific time
+- [Raise an issue to add a new quote](https://github.com/cdmoro/wordoclock/issues/new?template=add-quote.yml&labels=add-quote&title=%5B23%3A28%5D%5Ben%5D+Add+quote) or a new variant for a specific time
 - Raise an issue reporting a bug related to a quote (i.e. a typo)
 - Contact me and share your thoughts about a quote, the project, or anything you want :D
 - Show me your love in the form of [coffees](https://buymeacoffee.com/cdmoro), [cafecitos](http://cafecito.app/cdmoro)

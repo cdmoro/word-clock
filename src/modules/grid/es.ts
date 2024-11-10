@@ -66,4 +66,5 @@ export default {
   getLocaleWordKeys,
   commonWords,
   localeWords,
+  secondaryChars: [0, 1, 2, 3, 5, 6, 7],
 } satisfies LocaleGridConfig;

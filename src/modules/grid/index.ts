@@ -60,28 +60,36 @@ export function highlightGrid(time: string) {
       else words.push(item as number[]);
     });
 
-  const chars = document.querySelectorAll('#clock .char');
+  let longestWord = 0;
+  document.documentElement.style.removeProperty('--longest-word');
+
+  const chars = document.querySelectorAll<HTMLDivElement>('#clock .char');
   chars.forEach((cell) => cell.classList.remove('active'));
 
-  setTimeout(
-    () => {
-      words.forEach((word) =>
-        word.forEach((index, pos) => {
-          const char = chars[index];
+  setTimeout(() => {
+    words.forEach((word, wordIdx) => {
+      longestWord = Math.max(word.length, longestWord);
 
-          char.classList.add('active');
-          char.classList.toggle('first', pos === 0);
-          char.classList.toggle('last', pos === word.length - 1);
-        }),
-      );
-    },
-    store.get('fade') ? 500 : 0,
-  );
+      word.forEach((index, pos) => {
+        const char = chars[index];
+
+        char.classList.add('active');
+        char.classList.toggle('first', pos === 0);
+        char.classList.toggle('last', pos === word.length - 1);
+
+        char.dataset.word = wordIdx.toString();
+      });
+
+      if (longestWord > 0) {
+        document.documentElement.style.setProperty('--longest-word', longestWord.toString());
+      }
+    });
+  }, 500);
 }
 
 export function drawGrid() {
   const clock = document.querySelector<HTMLDivElement>('#clock');
-  const { grid, charsWithAphostrophe } = getLocaleConfig(store.get('locale'));
+  const { grid, charsWithAphostrophe, secondaryChars } = getLocaleConfig(store.get('locale'));
 
   while (clock?.firstChild) {
     clock.removeChild(clock.firstChild);
@@ -95,6 +103,7 @@ export function drawGrid() {
       charEl.classList.add('char');
       charEl.dataset.index = index.toString();
       charEl.classList.toggle('aphostrophe', !!charsWithAphostrophe?.includes(index));
+      charEl.classList.toggle('secondary', !!secondaryChars?.includes(index));
 
       charEl.textContent = char;
 
