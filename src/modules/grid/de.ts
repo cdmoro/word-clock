@@ -39,9 +39,9 @@ const commonWords: CommonWords = {
 
 const localeWords = {
   ES: [0, 1],
-  IST: [2, 3, 4],
+  IST: [3, 4, 5],
   VOR: [33, 34, 35],
-  NACH: [39, 40, 41, 42],
+  NACH: [40, 41, 42, 43],
   HALB: [44, 45, 46, 47],
   UHR: [107, 108, 109],
 };
@@ -58,8 +58,7 @@ function getLocaleWordKeys(_hours: number, minutes: number) {
   }
 
   // Use "ES" and "IST" for the phrase in German
-  wordKeys.push('ES');
-  wordKeys.push('IST');
+  wordKeys.push('ES', 'IST');
 
   return wordKeys;
 }
