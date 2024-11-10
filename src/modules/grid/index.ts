@@ -1,19 +1,18 @@
 import { store } from '../../store';
 import { LocaleGridConfig, Locale } from '../../types';
 import { HOURS, MINUTES } from './constants';
-import el from './el';
-import en from './en';
-import es from './es';
-import fr from './fr';
-import it from './it';
-import pt from './pt';
+import enUS from './en-US';
+import esES from './es-ES';
+import frFR from './fr-FR';
+import itIT from './it-IT';
+import ptBR from './pt-BR';
 
 const LOCALE_CONFIG: Record<Locale, LocaleGridConfig> = {
-  'en-US': en,
-  'es-ES': es,
-  'it-IT': it,
-  'fr-FR': fr,
-  'pt-BR': pt,
+  'en-US': enUS,
+  'es-ES': esES,
+  'it-IT': itIT,
+  'fr-FR': frFR,
+  'pt-BR': ptBR,
   'el-GR': el,
 };
 
@@ -89,25 +88,28 @@ export function highlightGrid(time: string) {
 
 export function drawGrid() {
   const clock = document.querySelector<HTMLDivElement>('#clock');
+  const gridExists = !!document.querySelector<HTMLDivElement>('#clock .char');
   const { grid, charsWithAphostrophe, secondaryChars } = getLocaleConfig(store.get('locale'));
-
-  while (clock?.firstChild) {
-    clock.removeChild(clock.firstChild);
-  }
 
   grid
     .join('')
     .split('')
     .forEach((char, index) => {
-      const charEl = document.createElement('div');
+      let charEl = document.querySelector<HTMLDivElement>(`#clock .char:nth-child(${index + 1})`);
+
+      if (!charEl) {
+        charEl = document.createElement('div');
+      }
+
       charEl.classList.add('char');
       charEl.dataset.index = index.toString();
       charEl.classList.toggle('aphostrophe', !!charsWithAphostrophe?.includes(index));
       charEl.classList.toggle('secondary', !!secondaryChars?.includes(index));
-
       charEl.textContent = char;
 
-      clock?.appendChild(charEl);
+      if (!gridExists) {
+        clock?.appendChild(charEl);
+      }
     });
 }
 
