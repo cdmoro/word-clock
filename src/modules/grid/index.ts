@@ -20,11 +20,11 @@ function getLocaleConfig(locale: Locale) {
 }
 
 export function getWordsKeys(locale: Locale, time: string) {
-  // eslint-disable-next-line prefer-const
-  let [hours, minutes] = time.split(':').map((t) => parseInt(t));
   const { getLocaleWordKeys } = getLocaleConfig(locale);
   const wordKeys = [];
 
+  // eslint-disable-next-line prefer-const
+  let [hours, minutes] = time.split(':').map((t) => parseInt(t));
   if (minutes >= 35) {
     hours = (hours + 1) % 12 || 12;
   }
@@ -40,18 +40,23 @@ export function getWordsKeys(locale: Locale, time: string) {
 export function highlightGrid(time: string) {
   const locale = store.get('locale');
   const { localeWords, commonWords } = getLocaleConfig(locale);
+  let words: number[][] = [];
 
   const clockWords = {
     ...commonWords,
     ...localeWords,
   };
 
-  const words = getWordsKeys(locale, time)
+  getWordsKeys(locale, time)
     .map((word) => clockWords[word as keyof typeof clockWords])
-    .reduce<number[][]>((acc, item) => {
-      if (Array.isArray(item[0])) return acc.concat(item);
-      return acc.concat([item as number[]]);
-    }, []);
+    .forEach((item) => {
+      if (typeof item === 'function') {
+        const [hours, minutes] = time.split(':').map((t) => parseInt(t));
+        item = item(hours, minutes);
+      }
+      if (Array.isArray(item[0])) words = words.concat(item);
+      else words.push(item as number[]);
+    });
 
   const chars = document.querySelectorAll('#clock .char');
   chars.forEach((cell) => cell.classList.remove('active'));

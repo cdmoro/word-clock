@@ -14,7 +14,17 @@ const grid = [
 ];
 
 const commonWords: CommonWords = {
-  TWELVE: [],
+  TWELVE: (hours) => {
+    return hours === 11 || hours === 12
+      ? [
+          [11, 12, 13, 14],
+          [16, 17, 18],
+        ]
+      : [
+          [56, 57, 58, 59],
+          [61, 62, 63, 64, 65],
+        ];
+  },
   ONE: [4, 5, 6],
   TWO: [22, 23, 24, 25],
   THREE: [7, 8, 9, 10],
@@ -56,9 +66,9 @@ function getLocaleWordKeys(hours: number, minutes: number) {
   wordKeys.push(hours % 12 === 1 ? 'É' : 'SÃO');
 
   // Map hour value to the corresponding word
-  if (hours === 12) wordKeys.push('MEIO', 'DIA');
-  else if (hours === 0) wordKeys.push('MEIA', 'NOITE');
-  else wordKeys.push('HORAS');
+  // if (hours === 12) wordKeys.push('MEIO', 'DIA');
+  // else if (hours === 0) wordKeys.push('MEIA', 'NOITE');
+  if (hours !== 12) wordKeys.push('HORAS');
 
   return wordKeys;
 }

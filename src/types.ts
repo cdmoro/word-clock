@@ -24,7 +24,8 @@ export type CommonWordsKey =
   | 'TWENTYFIVE_MIN'
   | 'HALF';
 
-export type CommonWords = Record<CommonWordsKey, number[] | number[][]>;
+type Word = number[] | number[][];
+export type CommonWords = Record<CommonWordsKey, Word | ((hours: number, minutes: number) => Word)>;
 export type WordKeys<T> = CommonWordsKey | keyof T;
 
 export interface LocaleGridConfig {
