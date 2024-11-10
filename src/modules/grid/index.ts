@@ -58,19 +58,32 @@ export function highlightGrid(time: string) {
       else words.push(item as number[]);
     });
 
-  const chars = document.querySelectorAll('#clock .char');
+  let longestWord = 0;
+  document.documentElement.style.removeProperty('--longest-word');
+
+  const chars = document.querySelectorAll<HTMLDivElement>('#clock .char');
   chars.forEach((cell) => cell.classList.remove('active'));
 
   setTimeout(() => {
-    words.forEach((word) =>
+    words.forEach((word, wordIdx) => {
+      if (word.length > longestWord) {
+        longestWord = word.length;
+      }
+
       word.forEach((index, pos) => {
         const char = chars[index];
 
         char.classList.add('active');
         char.classList.toggle('first', pos === 0);
         char.classList.toggle('last', pos === word.length - 1);
-      }),
-    );
+
+        char.dataset.word = wordIdx.toString();
+      });
+
+      if (longestWord > 0) {
+        document.documentElement.style.setProperty('--longest-word', longestWord.toString());
+      }
+    });
   }, 500);
 }
 

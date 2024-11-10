@@ -16,7 +16,7 @@ const grid = [
 const commonWords: CommonWords = {
   TWELVE: [44, 45, 46, 47, 48, 49],
   ONE: [14, 15, 16],
-  TWO: [19, 20, 21],
+  TWO: [18, 19, 20],
   THREE: [22, 23, 24],
   FOUR: [55, 56, 57, 58, 59, 60, 61],
   FIVE: [66, 67, 68, 69, 70, 71],
