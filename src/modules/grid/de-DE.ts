@@ -15,24 +15,24 @@ const grid = [
 
 const commonWords: CommonWords = {
   ONE: [55, 56, 57, 58], // EINS
-  TWO: [63, 64, 65], // ZWEI
+  TWO: [62, 63, 64, 65], // ZWEI
   THREE: [66, 67, 68, 69], // DREI
   FOUR: [73, 74, 75, 76], // VIER
-  FIVE: [8, 9, 10], // FÜNF
+  FIVE: [51, 52, 53, 54], // FÜNF
   SIX: [77, 78, 79, 80, 81], // SECHS
   SEVEN: [88, 89, 90, 91, 92], // SIEBEN
   EIGHT: [84, 85, 86, 87], // ACHT
-  NINE: [103, 104, 105], // NEUN
-  TEN: [11, 12, 13], // ZEHN
-  ELEVEN: [44, 45, 46], // ELF
-  TWELVE: [93, 94, 95, 96], // ZWÖLF
-  FIVE_MIN: [8, 9, 10], // FÜNF (reutilizando la palabra "cinco")
-  TEN_MIN: [11, 12, 13], // ZEHN
-  QUARTER_MIN: [22, 23, 24, 25, 26, 27, 28, 29, 30], // VIERTEL
-  TWENTY_MIN: [11, 12, 13, 14, 15, 16, 17], // ZWANZIG
+  NINE: [102, 103, 104, 105], // NEUN
+  TEN: [99, 100, 101, 102], // ZEHN
+  ELEVEN: [49, 50, 51], // ELF
+  TWELVE: [94, 95, 96, 97, 98], // ZWÖLF
+  FIVE_MIN: [7, 8, 9, 10], // FÜNF (reutilizando la palabra "cinco")
+  TEN_MIN: [11, 12, 13, 14], // ZEHN
+  QUARTER_MIN: [26, 27, 28, 29, 30, 31, 32], // VIERTEL
+  TWENTY_MIN: [15, 16, 17, 18, 19, 20, 21], // ZWANZIG
   TWENTYFIVE_MIN: [
-    [8, 9, 10],
-    [11, 12, 13, 14, 15, 16],
+    [7, 8, 9, 10],
+    [15, 16, 17, 18, 19, 20, 21],
   ], // FÜNF + ZWANZIG
   HALF: [44, 45, 46, 47], // HALB
 };
@@ -53,10 +53,9 @@ function getLocaleWordKeys(_hours: number, minutes: number) {
   if (minutes >= 35) {
     // Use "VOR" and move to the next hour
     wordKeys.push('VOR');
+  } else if (minutes >= 5 && minutes < 30) {
+    wordKeys.push('NACH');
   }
-  // else if (minutes >= 5) {
-  //   wordKeys.push('NACH');
-  // }
 
   // Use "ES" and "IST" for the phrase in German
   wordKeys.push('ES', 'IST');
