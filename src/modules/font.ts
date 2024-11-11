@@ -2,6 +2,7 @@ import { fitQuote, loadFontIfNotExists } from '../utils';
 import { store } from '../store';
 
 export const THEME_FONTS: Record<string, string[]> = {
+  base: ['Exo 2', 'Comfortaa'],
   retro: ['VT323'],
   elegant: ['Playfair Display'],
   festive: ['Leckerli One'],
@@ -31,7 +32,7 @@ export const CITE_FACTOR = {
   kindle: 0.5,
 } as const;
 
-const FONTS = ['Exo 2', ...new Set(Object.values(THEME_FONTS))].flat();
+const FONTS = [...new Set(Object.values(THEME_FONTS))].flat();
 const CSS_FONT_VARIABLE = '--override-quote-font-family';
 
 function createOption(value: string) {

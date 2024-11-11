@@ -12,10 +12,12 @@ export type Translations = {
   copy_title: string;
   crossword: string;
   dark: string;
+  'de-DE': string;
   default_font: string;
   document_title: string;
   download: string;
   dynamic: string;
+  'el-GR': string;
   elegant: string;
   'en-US': string;
   'es-ES': string;

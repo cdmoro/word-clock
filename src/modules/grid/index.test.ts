@@ -65,7 +65,7 @@ const testCases: Partial<Record<Locale, Record<string, string>>> = {
 describe('getWordsKeys', () =>
   Object.keys(testCases).forEach((locale) =>
     describe(`${locale}`, () =>
-      // @ts-expect-error Add German test cases
+      // @ts-expect-error TODO: add tests
       Object.entries(testCases[locale as Locale]).forEach(([time, words]) =>
         test(`${time}`, () => {
           const output = getWordsKeys(locale as Locale, time);

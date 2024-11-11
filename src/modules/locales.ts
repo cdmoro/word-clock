@@ -11,6 +11,7 @@ export const DOMINANT_LOCALES: Record<string, Locale> = {
   pt: 'pt-BR',
   fr: 'fr-FR',
   it: 'it-IT',
+  el: 'el-GR',
   de: 'de-DE',
 } as const;
 
