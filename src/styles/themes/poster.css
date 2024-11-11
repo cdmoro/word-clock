@@ -13,6 +13,14 @@
   background-image: url('/assets/poster-bg.png');
 }
 
+[data-theme|='poster'] body.solid #clock {
+  border-radius: 0;
+}
+
+[data-theme|='poster'] .char:not(.active) {
+  color: color-mix(in srgb, var(--font-color), transparent 70%)
+}
+
 [data-theme='poster-light'] #clock {
   border-color: #111111;
   box-shadow:

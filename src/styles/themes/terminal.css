@@ -64,6 +64,10 @@
   border: var(--accent-color) solid 1px;
 }
 
+[data-theme|='terminal'] body.solid #clock {
+  border-radius: 0;
+}
+
 [data-theme='terminal-light'] {
   --font-color: #181702;
   --background: #fff6ae;
