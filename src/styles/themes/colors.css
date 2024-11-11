@@ -1,10 +1,10 @@
 [data-theme='base-light'] {
-  --accent-color: #d24335;
+  --accent-color: #f73625;
   --background: #eaeaec;
 }
 
 [data-theme='base-dark'] {
-  --accent-color: #d24335;
+  --accent-color: #f73625;
   --background: #12121a;
 }
 
