@@ -5,7 +5,7 @@ import enUS from './en-US';
 import esES from './es-ES';
 import frFR from './fr-FR';
 import itIT from './it-IT';
-import ptBR from './pt-BR';
+import ptPT from './pt-PT';
 import elGR from './el-GR';
 import deDE from './de-DE';
 
@@ -14,7 +14,7 @@ const LOCALE_CONFIG: Record<Locale, LocaleGridConfig> = {
   'es-ES': esES,
   'it-IT': itIT,
   'fr-FR': frFR,
-  'pt-BR': ptBR,
+  'pt-PT': ptPT,
   'el-GR': elGR,
   'de-DE': deDE,
 };
@@ -51,6 +51,8 @@ export function highlightGrid(time: string) {
     ...localeWords,
   };
 
+  document.querySelector('#clock')?.classList.add('loading');
+
   getWordsKeys(locale, time)
     .map((word) => clockWords[word as keyof typeof clockWords])
     .forEach((item) => {
@@ -85,6 +87,8 @@ export function highlightGrid(time: string) {
       if (longestWord > 0) {
         document.documentElement.style.setProperty('--longest-word', longestWord.toString());
       }
+
+      document.querySelector('#clock')?.classList.remove('loading');
     });
   }, 500);
 }

@@ -18,7 +18,7 @@ const dictionary: Partial<Record<Locale, Record<string, string>>> = {
     DEMIE: 'HALF',
     'VINGT-CINQ': 'TWENTYFIVE_MIN',
   },
-  'pt-BR': {
+  'pt-PT': {
     UMA: 'ONE',
     MEIA: 'HALF',
     VINTE_E_CINCO: 'TWENTYFIVE_MIN',
@@ -50,7 +50,7 @@ const testCases: Partial<Record<Locale, Record<string, string>>> = {
     '12:32': 'SONO LE DODICI E MEZZA',
     '12:35': 'È UNA MENO VENTICINQUE',
   },
-  'pt-BR': {
+  'pt-PT': {
     '12:30': 'SÃO MEIO_DIA E MEIA',
     '12:32': 'SÃO MEIO_DIA E MEIA',
     '12:35': 'É UMA MENOS VINTE_E_CINCO',

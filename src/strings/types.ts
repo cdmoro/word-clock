@@ -44,7 +44,7 @@ export type Translations = {
   poster: string;
   progressbar_mode: string;
   project: string;
-  'pt-BR': string;
+  'pt-PT': string;
   purple: string;
   random: string;
   report_error: string;

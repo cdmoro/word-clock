@@ -108,15 +108,27 @@ body.solid #clock {
   border-radius: .5rem;
 }
 
-body #clock:has(:not(.active)) {
+/* body #clock:has(:not(.active)) {
+  transition: none;
+} */
+
+#clock.loading {
   transition: none;
 }
 
-[data-theme$='light'] body.solid #clock:has(.active) {
+[data-theme$='light'] body.solid:not(.fuzzy) #clock {
   background-color: #FFFA;
 }
 
-[data-theme$='dark'] body.solid #clock:has(.active) {
+[data-theme$='dark'] body.solid:not(.fuzzy) #clock {
+  background-color: #0009;
+}
+
+[data-theme$='light'] body.solid.fuzzy #clock:has(.active) {
+  background-color: #FFFA;
+}
+
+[data-theme$='dark'] body.solid.fuzzy #clock:has(.active) {
   background-color: #0009;
 }
 
