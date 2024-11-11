@@ -2,6 +2,8 @@ import { getTime, updateFavicon } from '../utils';
 import { store } from '../store';
 import { highlightGrid } from './grid';
 
+let lastTime: string;
+
 function getMillisecondsToNextMinute() {
   const now = new Date();
   return (60 - now.getSeconds()) * 1000 - now.getMilliseconds();
@@ -22,7 +24,8 @@ function updateTime(forceUpdate?: boolean) {
     timeEl.innerHTML = time;
   }
 
-  if (forceUpdate || minute === '0' || minute === '5') {
+  if ((forceUpdate || minute === '0' || minute === '5') && lastTime !== time) {
+    lastTime = time;
     highlightGrid(time);
   }
 }
