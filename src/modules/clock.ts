@@ -1,8 +1,7 @@
 import { getTime, updateFavicon } from '../utils';
 import { store } from '../store';
 import { highlightGrid } from './grid';
-
-let lastTime: string;
+import { getRandomThemeColor } from './themes';
 
 function getMillisecondsToNextMinute() {
   const now = new Date();
@@ -11,7 +10,6 @@ function getMillisecondsToNextMinute() {
 
 function updateTime(forceUpdate?: boolean) {
   const time = store.get('time') || getTime();
-  const minute = time.slice(-1);
 
   if (time.includes(':00') || time.includes(':30')) {
     updateFavicon(time);
@@ -24,8 +22,11 @@ function updateTime(forceUpdate?: boolean) {
     timeEl.innerHTML = time;
   }
 
-  if ((forceUpdate || minute === '0' || minute === '5') && lastTime !== time) {
-    lastTime = time;
+  if (store.get('theme')?.includes('color')) {
+    document.documentElement.dataset.theme = getRandomThemeColor();
+  }
+
+  if (forceUpdate || time.includes(':00') || time.includes(':05')) {
     highlightGrid(time);
   }
 }
@@ -38,7 +39,7 @@ export function initClock() {
 
   if (!isTest) {
     setTimeout(() => {
-      updateTime(true);
+      updateTime();
       setInterval(updateTime, 60000);
     }, timeToNextMinute);
   }

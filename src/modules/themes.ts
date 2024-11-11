@@ -2,7 +2,7 @@ import { THEME_FONTS, resetFont } from './font';
 import { doFitQuote, fitQuote, loadFontIfNotExists } from '../utils';
 import { store } from '../store';
 
-function getRandomThemeColor() {
+export function getRandomThemeColor() {
   const colors = Array.from(document.querySelectorAll<HTMLOptionElement>('#colors option')).map((op) => op.value);
   const [theme] = store.get('theme').split('-');
 
