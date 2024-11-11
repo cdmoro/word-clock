@@ -108,6 +108,10 @@ body.solid #clock {
   border-radius: .5rem;
 }
 
+body #clock:has(:not(.active)) {
+  transition: none;
+}
+
 [data-theme$='light'] body.solid #clock:has(.active) {
   background-color: #FFFA;
 }

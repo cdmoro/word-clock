@@ -7,6 +7,7 @@ import frFR from './fr-FR';
 import itIT from './it-IT';
 import ptBR from './pt-BR';
 import elGR from './el-GR';
+import deDE from './de-DE';
 
 const LOCALE_CONFIG: Record<Locale, LocaleGridConfig> = {
   'en-US': enUS,
@@ -15,6 +16,7 @@ const LOCALE_CONFIG: Record<Locale, LocaleGridConfig> = {
   'fr-FR': frFR,
   'pt-BR': ptBR,
   'el-GR': elGR,
+  'de-DE': deDE,
 };
 
 function getLocaleConfig(locale: Locale) {
