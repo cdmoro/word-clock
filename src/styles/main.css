@@ -65,6 +65,7 @@ body:not(.show-time) #time-clock {
   font-size: 2.5vw;
   line-height: var(--clock-line-height, 1);
   transition: all .5s;
+  font-weight: var(--clock-font-weight, normal);
 }
 
 .char {
