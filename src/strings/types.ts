@@ -1,3 +1,4 @@
+export type Locale = 'en-US';
 export type Translations = {
   add_quote: string;
   anaglyph: string;

@@ -33,7 +33,9 @@ def check_keys_consistency(languages):
 def generate_typescript_type(languages):
     subkeys = languages[next(iter(languages))].keys()
 
-    ts_type = "export type Translations = {\n"
+    ts_type = "export type Locale = 'en-US';\n\n"
+
+    ts_type += "export type Translations = {\n"
     for key in subkeys:
         if "-" in key:
             key = f"'{key}'"

@@ -45,7 +45,7 @@ export function getWordsKeys(locale: Locale, time: string) {
 
 export function highlightGrid(time: string) {
   const locale = store.get('locale');
-  const { localeWords, commonWords } = getLocaleConfig(locale);
+  const { localeWords, commonWords, getCustomWordKeys } = getLocaleConfig(locale);
   let words: number[][] = [];
 
   const clockWords = {
@@ -55,7 +55,9 @@ export function highlightGrid(time: string) {
 
   document.querySelector('#clock')?.classList.add('loading');
 
-  getWordsKeys(locale, time)
+  const wordsKeys = getCustomWordKeys ? getCustomWordKeys(locale, time) : getWordsKeys(locale, time);
+
+  wordsKeys
     .map((word) => clockWords[word as keyof typeof clockWords])
     .forEach((item) => {
       if (typeof item === 'function') {

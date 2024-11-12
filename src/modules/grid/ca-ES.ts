@@ -1,4 +1,5 @@
-import { CommonWords, LocaleGridConfig, WordKeys } from '../../types';
+import { CommonWords, Locale, LocaleGridConfig, WordKeys } from '../../types';
+import { HOURS, MINUTES } from './constants';
 
 const grid = [
   'ÉSÓNRLAMUNA', // 0-10 ("ÉS", "UNA")
@@ -69,10 +70,27 @@ function getLocaleWordKeys(hours: number, minutes: number) {
 
   if (hours === 1 && minutes >= 30 && minutes < 35) wordKeys.push('SON', 'UNA');
   else if (hours === 1) wordKeys.push('ÉS', 'LA');
-  else if (minutes !== 30) wordKeys.push('LES');
+  else if (minutes !== 30) wordKeys.push('SON', 'LES');
   else wordKeys.push('SON');
 
   return wordKeys;
+}
+
+export function getCustomWordKeys(_locale: Locale, time: string) {
+  const wordKeys = [];
+
+  // eslint-disable-next-line prefer-const
+  let [hours, minutes] = time.split(':').map((t) => parseInt(t));
+  if (minutes >= 35) {
+    hours = (hours + 1) % 12 || 12;
+  }
+
+  wordKeys.push(HOURS[hours % 12]);
+  if (minutes >= 5) {
+    wordKeys.push(MINUTES[Math.floor(minutes / 5) - 1]);
+  }
+
+  return [...getLocaleWordKeys(hours, minutes), ...wordKeys];
 }
 
 export default {
@@ -82,4 +100,5 @@ export default {
   getLocaleWordKeys,
   commonWords,
   localeWords,
+  getCustomWordKeys,
 } satisfies LocaleGridConfig;
