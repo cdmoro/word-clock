@@ -2,11 +2,7 @@
   --accent-color: #f73625;
   --background: #12121a;
   --font-color: #a3a29a;
-  --clock-font-family: 'Concert One', sans-serif; /* Gugi */
-}
-
-[lang=el] {
-  --clock-font-family: 'Tektur', sans-serif;
+  --clock-font-family: 'Tektur', sans-serif; /* Gugi */
 }
 
 [data-theme$='light'] {
