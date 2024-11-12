@@ -52,6 +52,7 @@ export type Translations = {
   screensaver_mode: string;
   share: string;
   subtle: string;
+  'sv-SE': string;
   system: string;
   terminal: string;
   theme: string;
