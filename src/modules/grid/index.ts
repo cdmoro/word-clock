@@ -55,9 +55,10 @@ export function highlightGrid(time: string) {
 
   document.querySelector('#clock')?.classList.add('loading');
 
-  const wordsKeys = getCustomWordKeys ? getCustomWordKeys(locale, time) : getWordsKeys(locale, time);
+  const wordsKeys = getCustomWordKeys?.(locale, time) || getWordsKeys(locale, time);
 
   wordsKeys
+    .filter((word) => word.length > 0)
     .map((word) => clockWords[word as keyof typeof clockWords])
     .forEach((item) => {
       if (typeof item === 'function') {
