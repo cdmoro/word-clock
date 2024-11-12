@@ -4,7 +4,7 @@
   --accent-color: #077fc6;
 }
 
-[lang=el] {
+[data-theme|='handwriting'][lang=el] {
   --clock-font-family: 'Mynerve', sans-serif;
 }
 

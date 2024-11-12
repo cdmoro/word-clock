@@ -5,7 +5,7 @@
   --clock-font-family: 'Concert One', sans-serif; /* Gugi */
 }
 
-[lang=el] {
+[data-theme|='base'][lang=el] {
   --clock-font-family: 'Tektur', sans-serif;
 }
 
