@@ -4,6 +4,10 @@
   --accent-color: #077fc6;
 }
 
+[lang=el] {
+  --clock-font-family: 'Mynerve', sans-serif;
+}
+
 [data-theme|='handwriting'] .char {
   border-bottom: solid 1px color-mix(in srgb, var(--font-color), transparent 75%);
 }
