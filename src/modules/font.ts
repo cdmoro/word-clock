@@ -2,12 +2,12 @@ import { fitQuote, loadFontIfNotExists } from '../utils';
 import { store } from '../store';
 
 export const THEME_FONTS: Record<string, string[]> = {
-  base: ['Exo 2', 'Comfortaa'],
+  base: ['Concert One', 'Tektur'],
   retro: ['VT323'],
   elegant: ['Playfair Display'],
   festive: ['Leckerli One'],
   bohemian: ['Comfortaa'],
-  handwriting: ['Indie Flower'],
+  handwriting: ['Indie Flower', 'Mynerve'],
   anaglyph: ['Anton'],
   whatsapp: ['Roboto'],
   terminal: ['B612 Mono'],
