@@ -2,7 +2,7 @@ import { fitQuote, loadFontIfNotExists } from '../utils';
 import { store } from '../store';
 
 export const THEME_FONTS: Record<string, string[]> = {
-  base: ['Concert One', 'Tektur'],
+  base: ['Tektur'],
   retro: ['VT323'],
   elegant: ['Playfair Display'],
   festive: ['Leckerli One'],
