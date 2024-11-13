@@ -23,28 +23,31 @@ export function getLocaleConfig(locale: Locale) {
   return LOCALE_CONFIG[locale];
 }
 
-export function getCharCoords(locale: Locale, time: string) {
-  const { getLocaleWordKeys, clockWords, getCustomWordKeys } = getLocaleConfig(locale);
-  let charCoords: number[][] = [];
-  let wordKeys = [];
+function getCommonCharCoords(locale: Locale, time: string) {
+  const { getLocaleWordKeys } = getLocaleConfig(locale);
+  const wordKeys = [];
 
-  if (getCustomWordKeys) {
-    wordKeys = getCustomWordKeys?.(time);
-  } else {
-    // eslint-disable-next-line prefer-const
-    let [hours, minutes] = time.split(':').map((t) => parseInt(t));
+  // eslint-disable-next-line prefer-const
+  let [hours, minutes] = time.split(':').map((t) => parseInt(t));
 
-    if (minutes >= 35) {
-      hours = (hours + 1) % 12 || 12;
-    }
-
-    wordKeys.push(...getLocaleWordKeys(hours, minutes));
-    wordKeys.push(HOURS[hours % 12]);
-
-    if (minutes >= 5) {
-      wordKeys.push(MINUTES[Math.floor(minutes / 5) - 1]);
-    }
+  if (minutes >= 35) {
+    hours = (hours + 1) % 12 || 12;
   }
+
+  wordKeys.push(...getLocaleWordKeys(hours, minutes));
+  wordKeys.push(HOURS[hours % 12]);
+
+  if (minutes >= 5) {
+    wordKeys.push(MINUTES[Math.floor(minutes / 5) - 1]);
+  }
+
+  return wordKeys;
+}
+
+export function getCharCoords(locale: Locale, time: string) {
+  const { clockWords, getCustomWordKeys } = getLocaleConfig(locale);
+  let charCoords: number[][] = [];
+  const wordKeys = getCustomWordKeys?.(time) || getCommonCharCoords(locale, time);
 
   wordKeys
     .filter((word) => word.length > 0)
@@ -62,14 +65,12 @@ export function getCharCoords(locale: Locale, time: string) {
 }
 
 export function highlightGrid(time: string) {
-  const locale = store.get('locale');
-
   document.querySelector('#clock')?.classList.add('loading');
-
-  const words = getCharCoords(locale, time);
-
-  let longestWord = 0;
   document.documentElement.style.removeProperty('--longest-word');
+
+  const locale = store.get('locale');
+  const words = getCharCoords(locale, time);
+  let longestWord = 0;
 
   const chars = document.querySelectorAll<HTMLDivElement>('#clock .char');
   chars.forEach((cell) => cell.classList.remove('active'));
