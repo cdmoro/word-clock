@@ -21,13 +21,14 @@ const LOCALE_CONFIG: Record<Locale, LocaleGridConfig> = {
   'sv-SE': svSE,
 };
 
-function getLocaleConfig(locale: Locale) {
+export function getLocaleConfig(locale: Locale) {
   return LOCALE_CONFIG[locale];
 }
 
-export function getWordsKeys(locale: Locale, time: string) {
-  const { getLocaleWordKeys } = getLocaleConfig(locale);
+export function getCharCoords(locale: Locale, time: string) {
+  const { getLocaleWordKeys, commonWords, localeWords } = getLocaleConfig(locale);
   const wordKeys = [];
+  let words: number[][] = [];
 
   // eslint-disable-next-line prefer-const
   let [hours, minutes] = time.split(':').map((t) => parseInt(t));
@@ -40,22 +41,12 @@ export function getWordsKeys(locale: Locale, time: string) {
     wordKeys.push(MINUTES[Math.floor(minutes / 5) - 1]);
   }
 
-  return [...getLocaleWordKeys(hours, minutes), ...wordKeys];
-}
-
-export function highlightGrid(time: string) {
-  const locale = store.get('locale');
-  const { localeWords, commonWords } = getLocaleConfig(locale);
-  let words: number[][] = [];
-
   const clockWords = {
     ...commonWords,
     ...localeWords,
   };
 
-  document.querySelector('#clock')?.classList.add('loading');
-
-  getWordsKeys(locale, time)
+  [...getLocaleWordKeys(hours, minutes), ...wordKeys]
     .map((word) => clockWords[word as keyof typeof clockWords])
     .forEach((item) => {
       if (typeof item === 'function') {
@@ -65,6 +56,16 @@ export function highlightGrid(time: string) {
       if (Array.isArray(item[0])) words = words.concat(item);
       else words.push(item as number[]);
     });
+
+  return words;
+}
+
+export function highlightGrid(time: string) {
+  const locale = store.get('locale');
+
+  document.querySelector('#clock')?.classList.add('loading');
+
+  const words = getCharCoords(locale, time);
 
   let longestWord = 0;
   document.documentElement.style.removeProperty('--longest-word');
