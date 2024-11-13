@@ -1,40 +1,8 @@
 import { describe, expect, test } from 'vitest';
-import { getWordsKeys } from './index';
+import { getCharCoords, getLocaleConfig } from './index';
 import { Locale } from '../../types';
 
-const dictionary: Partial<Record<Locale, Record<string, string>>> = {
-  'en-US': {
-    TWENTYFIVE: 'TWENTYFIVE_MIN',
-  },
-  'es-ES': {
-    UNA: 'ONE',
-    DOCE: 'TWELVE',
-    MEDIA: 'HALF',
-    VEINTICINCO: 'TWENTYFIVE_MIN',
-  },
-  'fr-FR': {
-    UNE: 'ONE',
-    MIDI: 'TWELVE',
-    DEMIE: 'HALF',
-    'VINGT-CINQ': 'TWENTYFIVE_MIN',
-  },
-  'pt-PT': {
-    UMA: 'ONE',
-    MEIA: 'HALF',
-    VINTE_E_CINCO: 'TWENTYFIVE_MIN',
-    MEIO_DIA: 'TWELVE',
-    ONZE: 'ELEVEN',
-    DEZ: 'TEN',
-  },
-  'it-IT': {
-    UNA: 'ONE',
-    DODICI: 'TWELVE',
-    MEZZA: 'HALF',
-    VENTICINQUE: 'TWENTYFIVE_MIN',
-  },
-};
-
-const testCases: Partial<Record<Locale, Record<string, string>>> = {
+const testCases: Record<Locale, Record<string, string>> = {
   'en-US': {
     '12:30': 'IT IS HALF PAST TWELVE',
     '12:32': 'IT IS HALF PAST TWELVE',
@@ -48,33 +16,50 @@ const testCases: Partial<Record<Locale, Record<string, string>>> = {
   'it-IT': {
     '12:30': 'SONO LE DODICI E MEZZA',
     '12:32': 'SONO LE DODICI E MEZZA',
-    '12:35': 'È UNA MENO VENTICINQUE',
+    '12:35': 'È LUNA MENO VENTICINQUE',
   },
   'pt-PT': {
-    '12:30': 'SÃO MEIO_DIA E MEIA',
-    '12:32': 'SÃO MEIO_DIA E MEIA',
-    '12:35': 'É UMA MENOS VINTE_E_CINCO',
+    '12:30': 'SÃO MEIO DIA E MEIA',
+    '12:32': 'SÃO MEIO DIA E MEIA',
+    '12:35': 'É UMA MENOS VINTE E CINCO',
   },
   'fr-FR': {
     '12:30': 'IL EST MIDI ET DEMIE',
     '12:32': 'IL EST MIDI ET DEMIE',
     '12:35': 'IL EST UNE HEURES MOINS VINGT-CINQ',
   },
+  'de-DE': {
+    '17:05': 'ES IST FÜNF NACH FÜNF',
+  },
+  'el-GR': {
+    '17:05': 'Η ΩΡΑ ΕΙΝΑΙ ΠΕΝΤΕ ΚΑΙ ΠΕΝΤΕ',
+  },
 };
 
 describe('getWordsKeys', () =>
   Object.keys(testCases).forEach((locale) =>
-    describe(`${locale}`, () =>
-      // @ts-expect-error TODO: add tests
-      Object.entries(testCases[locale as Locale]).forEach(([time, words]) =>
+    describe(`${locale}`, () => {
+      const { grid } = getLocaleConfig(locale as Locale);
+
+      Object.entries(testCases[locale as Locale]).forEach(([time, phrase]) =>
         test(`${time}`, () => {
-          const output = getWordsKeys(locale as Locale, time);
-          expect(output.sort()).toEqual(
-            words
-              .split(' ')
-              .map((key) => dictionary[locale as Locale]?.[key] || key)
-              .sort(),
-          );
+          const output = getCharCoords(locale as Locale, time);
+
+          const outputPhrase = output
+            .sort((a, b) => a[0] - b[0])
+            .map((word) =>
+              word
+                .map((index) => {
+                  const row = Math.floor(index / 11);
+                  const col = index % 11;
+                  return grid[row][col];
+                })
+                .join(''),
+            )
+            .join(' ');
+
+          expect(outputPhrase).toEqual(phrase);
         }),
-      )),
+      );
+    }),
   ));
