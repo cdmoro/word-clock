@@ -1,0 +1,11 @@
+body.fuzzy #clock {
+  grid-template-columns: repeat(var(--longest-word, 11), 1fr);
+}
+
+body.fuzzy .char:not(.active) {
+  display: none;
+}
+
+body.fuzzy .char.active.first {
+  grid-column: 1;
+}

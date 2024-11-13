@@ -1,0 +1,19 @@
+body.solid #clock {
+  border-radius: 0.5rem;
+}
+
+[data-theme$='light'] body.solid:not(.fuzzy) #clock {
+  background-color: #fffa;
+}
+
+[data-theme$='dark'] body.solid:not(.fuzzy) #clock {
+  background-color: #0009;
+}
+
+[data-theme$='light'] body.solid.fuzzy #clock:has(.active) {
+  background-color: #fffa;
+}
+
+[data-theme$='dark'] body.solid.fuzzy #clock:has(.active) {
+  background-color: #0009;
+}
