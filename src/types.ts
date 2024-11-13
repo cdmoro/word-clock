@@ -35,4 +35,5 @@ export interface LocaleGridConfig {
   getLocaleWordKeys: (hours: number, minutes: number) => string[];
   localeWords: Record<string, number[]>;
   secondaryChars?: number[];
+  getCustomWordKeys?: (time: string) => string[];
 }
