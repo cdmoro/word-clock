@@ -24,7 +24,7 @@ export function getLocaleConfig(locale: Locale) {
 }
 
 export function getCharCoords(locale: Locale, time: string) {
-  const { getLocaleWordKeys, commonWords, localeWords, getCustomWordKeys } = getLocaleConfig(locale);
+  const { getLocaleWordKeys, clockWords, getCustomWordKeys } = getLocaleConfig(locale);
   let charCoords: number[][] = [];
   let wordKeys = [];
 
@@ -46,11 +46,6 @@ export function getCharCoords(locale: Locale, time: string) {
     }
   }
 
-  const clockWords = {
-    ...commonWords,
-    ...localeWords,
-  };
-
   wordKeys
     .filter((word) => word.length > 0)
     .map((word) => clockWords[word as keyof typeof clockWords])
@@ -59,7 +54,7 @@ export function getCharCoords(locale: Locale, time: string) {
         const [hours, minutes] = time.split(':').map((t) => parseInt(t));
         item = item(hours, minutes);
       }
-      if (Array.isArray(item[0])) charCoords = charCoords.concat(item);
+      if (Array.isArray(item) && Array.isArray(item[0])) charCoords = charCoords.concat(item);
       else charCoords.push(item as number[]);
     });
 

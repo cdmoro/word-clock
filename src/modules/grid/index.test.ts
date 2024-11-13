@@ -30,9 +30,11 @@ const testCases: Record<Locale, Record<string, string>> = {
   },
   'de-DE': {
     '17:05': 'ES IST FÜNF NACH FÜNF',
+    '20:26': 'ES IST FÜNF ZWANZIG NACH ACHT',
   },
   'el-GR': {
     '17:05': 'Η ΩΡΑ ΕΙΝΑΙ ΠΕΝΤΕ ΚΑΙ ΠΕΝΤΕ',
+    '20:26': 'Η ΩΡΑ ΕΙΝΑΙ ΟΧΤΩ ΚΑΙ ΕΙΚΟΣΙ ΠΕΝΤΕ',
   },
 };
 
