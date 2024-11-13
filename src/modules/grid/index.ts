@@ -93,7 +93,17 @@ export function highlightGrid(time: string) {
         document.documentElement.style.setProperty('--longest-word', longestWord.toString());
       }
 
+      const ariaDescription = Array.from(document.querySelectorAll('#clock .char.active'))
+        .map(
+          (el) =>
+            `${el.classList.contains('first') ? ' ' : ''}${el.textContent}${el.classList.contains('aphostrophe') ? '’' : ''}`,
+        )
+        .join('')
+        .trim();
+
       document.querySelector('#clock')?.classList.remove('loading');
+      document.querySelector('#clock')?.setAttribute('aria-label', time);
+      document.querySelector('#clock')?.setAttribute('aria-description', ariaDescription);
     });
   }, 500);
 }
