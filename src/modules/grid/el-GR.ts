@@ -62,7 +62,9 @@ function getLocaleWordKeys(_hours: number, minutes: number) {
 export default {
   grid,
   getLocaleWordKeys,
-  commonWords,
-  localeWords,
+  clockWords: {
+    ...commonWords,
+    ...localeWords,
+  },
   secondaryChars: [0, 2, 3, 4, 6, 7, 8, 9, 10],
 } satisfies LocaleGridConfig;
