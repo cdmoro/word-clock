@@ -21,43 +21,39 @@ const LOCALE_CONFIG: Record<Locale, LocaleGridConfig> = {
   'ca-ES': caES,
 };
 
-function getLocaleConfig(locale: Locale) {
+export function getLocaleConfig(locale: Locale) {
   return LOCALE_CONFIG[locale];
 }
 
-export function getWordsKeys(locale: Locale, time: string) {
-  const { getLocaleWordKeys } = getLocaleConfig(locale);
-  const wordKeys = [];
+export function getCharCoords(locale: Locale, time: string) {
+  const { getLocaleWordKeys, commonWords, localeWords, getCustomWordKeys } = getLocaleConfig(locale);
+  let charCoords: number[][] = [];
+  let wordKeys = [];
 
-  // eslint-disable-next-line prefer-const
-  let [hours, minutes] = time.split(':').map((t) => parseInt(t));
-  if (minutes >= 35) {
-    hours = (hours + 1) % 12 || 12;
+  if (getCustomWordKeys) {
+    wordKeys = getCustomWordKeys?.(time);
+  } else {
+    // eslint-disable-next-line prefer-const
+    let [hours, minutes] = time.split(':').map((t) => parseInt(t));
+
+    if (minutes >= 35) {
+      hours = (hours + 1) % 12 || 12;
+    }
+
+    wordKeys.push(...getLocaleWordKeys(hours, minutes));
+    wordKeys.push(HOURS[hours % 12]);
+
+    if (minutes >= 5) {
+      wordKeys.push(MINUTES[Math.floor(minutes / 5) - 1]);
+    }
   }
-
-  wordKeys.push(HOURS[hours % 12]);
-  if (minutes >= 5) {
-    wordKeys.push(MINUTES[Math.floor(minutes / 5) - 1]);
-  }
-
-  return [...getLocaleWordKeys(hours, minutes), ...wordKeys];
-}
-
-export function highlightGrid(time: string) {
-  const locale = store.get('locale');
-  const { localeWords, commonWords, getCustomWordKeys } = getLocaleConfig(locale);
-  let words: number[][] = [];
 
   const clockWords = {
     ...commonWords,
     ...localeWords,
   };
 
-  document.querySelector('#clock')?.classList.add('loading');
-
-  const wordsKeys = getCustomWordKeys?.(locale, time) || getWordsKeys(locale, time);
-
-  wordsKeys
+  wordKeys
     .filter((word) => word.length > 0)
     .map((word) => clockWords[word as keyof typeof clockWords])
     .forEach((item) => {
@@ -65,9 +61,19 @@ export function highlightGrid(time: string) {
         const [hours, minutes] = time.split(':').map((t) => parseInt(t));
         item = item(hours, minutes);
       }
-      if (Array.isArray(item[0])) words = words.concat(item);
-      else words.push(item as number[]);
+      if (Array.isArray(item[0])) charCoords = charCoords.concat(item);
+      else charCoords.push(item as number[]);
     });
+
+  return charCoords;
+}
+
+export function highlightGrid(time: string) {
+  const locale = store.get('locale');
+
+  document.querySelector('#clock')?.classList.add('loading');
+
+  const words = getCharCoords(locale, time);
 
   let longestWord = 0;
   document.documentElement.style.removeProperty('--longest-word');
