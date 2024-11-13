@@ -26,19 +26,26 @@ export function getLocaleConfig(locale: Locale) {
 }
 
 export function getCharCoords(locale: Locale, time: string) {
-  const { getLocaleWordKeys, commonWords, localeWords } = getLocaleConfig(locale);
-  const wordKeys = [];
-  let words: number[][] = [];
+  const { getLocaleWordKeys, commonWords, localeWords, getCustomWordKeys } = getLocaleConfig(locale);
+  let charCoords: number[][] = [];
+  let wordKeys = [];
 
-  // eslint-disable-next-line prefer-const
-  let [hours, minutes] = time.split(':').map((t) => parseInt(t));
-  if (minutes >= 35) {
-    hours = (hours + 1) % 12 || 12;
-  }
+  if (getCustomWordKeys) {
+    wordKeys = getCustomWordKeys?.(time);
+  } else {
+    // eslint-disable-next-line prefer-const
+    let [hours, minutes] = time.split(':').map((t) => parseInt(t));
 
-  wordKeys.push(HOURS[hours % 12]);
-  if (minutes >= 5) {
-    wordKeys.push(MINUTES[Math.floor(minutes / 5) - 1]);
+    if (minutes >= 35) {
+      hours = (hours + 1) % 12 || 12;
+    }
+
+    wordKeys.push(...getLocaleWordKeys(hours, minutes));
+    wordKeys.push(HOURS[hours % 12]);
+
+    if (minutes >= 5) {
+      wordKeys.push(MINUTES[Math.floor(minutes / 5) - 1]);
+    }
   }
 
   const clockWords = {
@@ -46,18 +53,19 @@ export function getCharCoords(locale: Locale, time: string) {
     ...localeWords,
   };
 
-  [...getLocaleWordKeys(hours, minutes), ...wordKeys]
+  wordKeys
+    .filter((word) => word.length > 0)
     .map((word) => clockWords[word as keyof typeof clockWords])
     .forEach((item) => {
       if (typeof item === 'function') {
         const [hours, minutes] = time.split(':').map((t) => parseInt(t));
         item = item(hours, minutes);
       }
-      if (Array.isArray(item[0])) words = words.concat(item);
-      else words.push(item as number[]);
+      if (Array.isArray(item[0])) charCoords = charCoords.concat(item);
+      else charCoords.push(item as number[]);
     });
 
-  return words;
+  return charCoords;
 }
 
 export function highlightGrid(time: string) {
