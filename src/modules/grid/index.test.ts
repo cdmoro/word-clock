@@ -37,7 +37,7 @@ const testCases: Record<Locale, Record<string, string>> = {
     '20:26': 'Η ΩΡΑ ΕΙΝΑΙ ΟΧΤΩ ΚΑΙ ΕΙΚΟΣΙ ΠΕΝΤΕ',
   },
   'ca-ES': {
-    '20:45': 'SÓN TRES QUARTS QUART DE NOU',
+    '20:45': 'SÓN TRES QUARTS DE NOU',
   },
 };
 
@@ -47,7 +47,7 @@ describe('getWordsKeys', () =>
       const { grid } = getLocaleConfig(locale as Locale);
 
       Object.entries(testCases[locale as Locale]).forEach(([time, phrase]) =>
-        test(`${time}`, () => {
+        test(`${time} - ${phrase}`, () => {
           const output = getCharCoords(locale as Locale, time);
 
           const outputPhrase = output
