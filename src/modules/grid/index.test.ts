@@ -36,6 +36,9 @@ const testCases: Record<Locale, Record<string, string>> = {
     '17:05': 'Η ΩΡΑ ΕΙΝΑΙ ΠΕΝΤΕ ΚΑΙ ΠΕΝΤΕ',
     '20:26': 'Η ΩΡΑ ΕΙΝΑΙ ΟΧΤΩ ΚΑΙ ΕΙΚΟΣΙ ΠΕΝΤΕ',
   },
+  'ca-ES': {
+    '20:45': 'SÓN TRES QUARTS DE NOU',
+  },
 };
 
 describe('getWordsKeys', () =>

@@ -1,4 +1,4 @@
-import { CommonWords, Locale, LocaleGridConfig, WordKeys } from '../../types';
+import { CommonWords, LocaleGridConfig, WordKeys } from '../../types';
 import { HOURS, MINUTES } from './constants';
 
 const grid = [
@@ -97,7 +97,7 @@ function getLocaleWordKeys(hours: number, minutes: number) {
   return wordKeys;
 }
 
-export function getCustomWordKeys(_locale: Locale, time: string) {
+export function getCustomWordKeys(time: string) {
   const wordKeys = [];
 
   // eslint-disable-next-line prefer-const
@@ -119,7 +119,9 @@ export default {
   charsWithAphostrophe: [46],
   secondaryChars: [0, 1, 2, 3, 14, 15, 16],
   getLocaleWordKeys,
-  commonWords,
-  localeWords,
+  clockWords: {
+    ...commonWords,
+    ...localeWords,
+  },
   getCustomWordKeys,
 } satisfies LocaleGridConfig;
