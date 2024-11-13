@@ -24,16 +24,19 @@ export type CommonWordsKey =
   | 'TWENTYFIVE_MIN'
   | 'HALF';
 
-type Word = number[] | number[][];
-export type CommonWords = Record<CommonWordsKey, Word | ((hours: number, minutes: number) => Word)>;
+type Word = number[] | number[][] | ((hours: number, minutes: number) => Word);
+
+export type CommonWords = Record<CommonWordsKey, Word>;
+
+export type LocaleWords = Record<string, Word>;
+
 export type WordKeys<T> = CommonWordsKey | keyof T;
 
 export interface LocaleGridConfig {
   grid: string[];
   charsWithAphostrophe?: number[];
-  commonWords: CommonWords;
+  clockWords: CommonWords & Record<string, Word>;
   getLocaleWordKeys: (hours: number, minutes: number) => string[];
-  localeWords: Record<string, number[]>;
   secondaryChars?: number[];
   getCustomWordKeys?: (time: string) => string[];
 }

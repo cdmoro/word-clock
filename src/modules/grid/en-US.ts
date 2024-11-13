@@ -62,7 +62,9 @@ export default {
   grid,
   charsWithAphostrophe: [104],
   getLocaleWordKeys,
-  commonWords,
-  localeWords,
+  clockWords: {
+    ...commonWords,
+    ...localeWords,
+  },
   secondaryChars: [0, 1, 3, 4],
 } satisfies LocaleGridConfig;
