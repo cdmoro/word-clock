@@ -70,6 +70,21 @@ const testCases: Record<Locale, Record<string, string>> = {
     '01:55': 'KLOCKAN ÄR FEM I TVÅ',
     '02:00': 'KLOCKAN ÄR TVÅ',
   },
+  'no-NO': {
+    '01:00': 'KLOKKEN ER ETT',
+    '01:05': 'KLOKKEN ER FEM OVER ETT',
+    '01:10': 'KLOKKEN ER TI OVER ETT',
+    '01:15': 'KLOKKEN ER KVART OVER ETT',
+    // '01:20': 'KLOKKEN ER TI PÅ HALV TO',
+    // '01:25': 'KLOKKEN ER FEM PÅ HALV TO',
+    // '01:30': 'KLOKKEN ER HALV TO',
+    // '01:35': 'KLOKKEN ER FEM OVER HALV TO',
+    // '01:40': 'KLOKKEN ER TI OVER HALV TO',
+    // '01:45': 'KLOKKEN ER KVART PÅ TO',
+    // '01:50': 'KLOKKEN ER TI PÅ TO',
+    // '01:55': 'KLOKKEN ER FEM PÅ TO',
+    '02:00': 'KLOKKEN ER TO',
+  },
 };
 
 describe('getWordsKeys', () =>
