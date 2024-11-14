@@ -8,6 +8,7 @@ import itIT from './it-IT';
 import ptPT from './pt-PT';
 import elGR from './el-GR';
 import deDE from './de-DE';
+import { getTime } from '../../utils';
 
 const LOCALE_CONFIG: Record<Locale, LocaleGridConfig> = {
   'en-US': enUS,
@@ -64,8 +65,12 @@ export function getCharCoords(locale: Locale, time: string) {
   return charCoords;
 }
 
-export function highlightGrid(time: string) {
+export function highlightGrid(time: string = getTime()) {
   document.documentElement.style.removeProperty('--longest-word');
+
+  if (store.get('solid') && store.get('fuzzy')) {
+    document.body?.classList.add('no-transitions');
+  }
 
   const locale = store.get('locale');
   const words = getCharCoords(locale, time);
@@ -137,3 +142,5 @@ export function drawGrid() {
 export function initGrid() {
   drawGrid();
 }
+
+(<any>window).highlightGrid = highlightGrid;
