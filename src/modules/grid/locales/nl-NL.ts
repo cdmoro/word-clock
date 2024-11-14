@@ -1,4 +1,4 @@
-import { CommonWords, LocaleGridConfig, WordKeys } from '../../types';
+import { CommonWords, LocaleGridConfig, WordKeys } from '../../../types';
 
 const grid = [
   'HETKISAVIJF', // 0-10 ("HET", "IS", "VIJF")
@@ -29,10 +29,10 @@ const commonWords: CommonWords = {
   FIVE_MIN: [7, 8, 9, 10], // VIJF (five minutes)
   TEN_MIN: [11, 12, 13, 14], // TIEN (ten minutes)
   QUARTER_MIN: [28, 29, 30, 31, 32], // KWART (quarter)
-  TWENTY_MIN: [11, 12, 13, 14, 15], // TWINTIG (optional, if "twenty" is used in other variations)
+  TWENTY_MIN: [11, 12, 13, 14], // TWINTIG (optional, if "twenty" is used in other variations)
   TWENTYFIVE_MIN: [
     [7, 8, 9, 10],
-    [11, 12, 13, 14, 15],
+    [33, 34, 35, 36],
   ],
   HALF: [33, 34, 35, 36], // HALF
 };
@@ -40,8 +40,9 @@ const commonWords: CommonWords = {
 const localeWords = {
   HET: [0, 1, 2], // HET
   IS: [4, 5], // IS
-  VOOR: [44, 45, 46, 47], // VOOR
-  OVER: [40, 41, 42, 43], // OVER
+  VOOR: [18, 19, 20, 21], // VOOR
+  VOOR2: [44, 45, 46, 47], // VOOR
+  OVER: [22, 23, 24, 25], // OVER
   KWART: [27, 28, 29, 30, 31], // KWART
   UUR: [107, 108, 109], // UUR
 };
@@ -50,11 +51,16 @@ function getLocaleWordKeys(_hours: number, minutes: number) {
   const wordKeys: WordKeys<typeof localeWords>[] = ['HET', 'IS'];
 
   // Determine whether to use "OVER" or "VOOR" based on minutes
-  if (minutes >= 35) {
+  if (minutes >= 45 && minutes < 55) wordKeys.push('VOOR2');
+  else if ((minutes >= 20 && minutes < 30) || minutes >= 45) {
     // Use "VOOR" (before) and move to the next hour
     wordKeys.push('VOOR');
-  } else if (minutes < 30) {
+  } else if ((minutes >= 5 && minutes < 20) || (minutes >= 35 && minutes < 45)) {
     wordKeys.push('OVER');
+  }
+
+  if ((minutes >= 20 && minutes < 25) || (minutes >= 40 && minutes < 45)) {
+    wordKeys.push('HALF');
   }
 
   // Use "UUR" for on-the-hour times
@@ -68,6 +74,10 @@ function getLocaleWordKeys(_hours: number, minutes: number) {
 export default {
   grid,
   getLocaleWordKeys,
-  commonWords,
-  localeWords,
+  clockWords: {
+    ...commonWords,
+    ...localeWords,
+  },
+  secondaryChars: [0, 1, 2, 4, 5],
+  hourMark: 20,
 } satisfies LocaleGridConfig;
