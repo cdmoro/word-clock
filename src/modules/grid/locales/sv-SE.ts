@@ -30,7 +30,14 @@ const commonWords: CommonWords = {
   TEN_MIN: [17, 18, 19], // TIO (ten minutes)
   QUARTER_MIN: [22, 23, 24, 25, 26], // KVART (quarter)
   TWENTY_MIN: [33, 34, 35, 36, 37], // TJUGO (twenty)
-  TWENTYFIVE_MIN: [[11, 12, 13], [39], [51, 52, 53, 54]],
+  TWENTYFIVE_MIN: (_hours, minutes) =>
+    minutes >= 25 && minutes < 30
+      ? [[11, 12, 13], [39], [51, 52, 53, 54]]
+      : [
+          [11, 12, 13],
+          [44, 45, 46, 47],
+          [51, 52, 53, 54],
+        ],
   HALF: [51, 52, 53, 54], // HALV
 };
 
@@ -38,17 +45,18 @@ const localeWords = {
   KLOCKAN: [0, 1, 2, 3, 4, 5, 6], // KLOCKAN
   ÄR: [8, 9], // ÄR
   ÖVER: [44, 45, 46, 47], // ÖVER
+  I: [39],
 };
 
 function getLocaleWordKeys(_hours: number, minutes: number) {
   const wordKeys: WordKeys<typeof localeWords>[] = ['KLOCKAN', 'ÄR'];
 
-  // Determine whether to use "ÖVER" or "HALV" based on minutes
-  if (minutes >= 35 && minutes < 40) {
-    // Use "HALV" for half-past times and round up to the next hour
-    wordKeys.push('HALF');
-  } else if (minutes >= 5 && minutes < 25) {
+  if (minutes >= 5 && minutes < 25) {
     wordKeys.push('ÖVER');
+  }
+
+  if (minutes >= 40) {
+    wordKeys.push('I');
   }
 
   return wordKeys;
