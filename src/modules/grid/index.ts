@@ -1,29 +1,8 @@
 import { store } from '../../store';
-import { LocaleGridConfig, Locale } from '../../types';
+import { Locale } from '../../types';
 import { HOURS, MINUTES } from './constants';
-import enUS from './en-US';
-import esES from './es-ES';
-import frFR from './fr-FR';
-import itIT from './it-IT';
-import ptPT from './pt-PT';
-import elGR from './el-GR';
-import deDE from './de-DE';
-import nlNL from './nl-NL';
-
-const LOCALE_CONFIG: Record<Locale, LocaleGridConfig> = {
-  'en-US': enUS,
-  'es-ES': esES,
-  'it-IT': itIT,
-  'fr-FR': frFR,
-  'pt-PT': ptPT,
-  'el-GR': elGR,
-  'de-DE': deDE,
-  'nl-NL': nlNL,
-};
-
-export function getLocaleConfig(locale: Locale) {
-  return LOCALE_CONFIG[locale];
-}
+import { getTime } from '../../utils';
+import { getLocaleConfig } from './locales';
 
 function getCommonCharCoords(locale: Locale, time: string) {
   const { getLocaleWordKeys } = getLocaleConfig(locale);
@@ -66,9 +45,12 @@ export function getCharCoords(locale: Locale, time: string) {
   return charCoords;
 }
 
-export function highlightGrid(time: string) {
-  document.querySelector('#clock')?.classList.add('loading');
+export function highlightGrid(time: string = getTime()) {
   document.documentElement.style.removeProperty('--longest-word');
+
+  if (store.get('solid') && store.get('fuzzy')) {
+    document.body?.classList.add('no-transitions');
+  }
 
   const locale = store.get('locale');
   const words = getCharCoords(locale, time);
@@ -78,6 +60,7 @@ export function highlightGrid(time: string) {
   chars.forEach((cell) => cell.classList.remove('active'));
 
   setTimeout(() => {
+    document.body?.classList.remove('no-transitions');
     words.forEach((word, wordIdx) => {
       longestWord = Math.max(word.length, longestWord);
 
@@ -103,7 +86,6 @@ export function highlightGrid(time: string) {
         .join('')
         .trim();
 
-      document.querySelector('#clock')?.classList.remove('loading');
       document.querySelector('#clock')?.setAttribute('aria-label', time);
       document.querySelector('#clock')?.setAttribute('aria-description', ariaDescription);
     });
@@ -140,3 +122,5 @@ export function drawGrid() {
 export function initGrid() {
   drawGrid();
 }
+
+window.highlightGrid = highlightGrid;

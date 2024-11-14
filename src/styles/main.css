@@ -68,6 +68,14 @@ body:not(.show-time) #time-clock {
   font-weight: var(--clock-font-weight, normal);
 }
 
+body.no-transitions #clock {
+  transition: none;
+}
+
+body.no-transitions #clock .char {
+  transition: none;
+}
+
 .char {
   padding: 1.5vw 2vw;
   text-align: center;

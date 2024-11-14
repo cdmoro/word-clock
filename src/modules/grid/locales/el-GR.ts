@@ -1,4 +1,4 @@
-import { CommonWords, LocaleGridConfig, WordKeys } from '../../types';
+import { CommonWords, LocaleGridConfig, WordKeys } from '../../../types';
 
 const grid = [
   'ΗΧΩΡΑΤΕΙΝΑΙ', // 0-10 ("Η ΧΩΡΑ ΤΕΙΝΑΙ" - General grid, start of "Η" - It is)
