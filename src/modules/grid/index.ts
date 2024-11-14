@@ -5,13 +5,13 @@ import { getTime } from '../../utils';
 import { getLocaleConfig } from './locales';
 
 function getCommonCharCoords(locale: Locale, time: string) {
-  const { getLocaleWordKeys } = getLocaleConfig(locale);
+  const { getLocaleWordKeys, hourMark = 35 } = getLocaleConfig(locale);
   const wordKeys = [];
 
   // eslint-disable-next-line prefer-const
   let [hours, minutes] = time.split(':').map((t) => parseInt(t));
 
-  if (minutes >= 35) {
+  if (minutes >= hourMark) {
     hours = (hours + 1) % 12 || 12;
   }
 

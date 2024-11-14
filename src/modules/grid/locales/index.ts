@@ -5,6 +5,7 @@ import enUS from './en-US';
 import esES from './es-ES';
 import frFR from './fr-FR';
 import itIT from './it-IT';
+import nlNL from './nl-NL';
 import ptPT from './pt-PT';
 
 const LOCALE_CONFIG: Record<Locale, LocaleGridConfig> = {
@@ -15,6 +16,7 @@ const LOCALE_CONFIG: Record<Locale, LocaleGridConfig> = {
   'pt-PT': ptPT,
   'el-GR': elGR,
   'de-DE': deDE,
+  'nl-NL': nlNL,
 };
 
 export function getLocaleConfig(locale: Locale) {

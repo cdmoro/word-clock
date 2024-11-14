@@ -37,6 +37,24 @@ const testCases: Record<Locale, Record<string, string>> = {
     '17:05': 'Η ΩΡΑ ΕΙΝΑΙ ΠΕΝΤΕ ΚΑΙ ΠΕΝΤΕ',
     '20:26': 'Η ΩΡΑ ΕΙΝΑΙ ΟΧΤΩ ΚΑΙ ΕΙΚΟΣΙ ΠΕΝΤΕ',
   },
+  'nl-NL': {
+    '01:00': 'HET IS ÉÉN UUR',
+    '01:05': 'HET IS VIJF OVER ÉÉN',
+    '01:10': 'HET IS TIEN OVER ÉÉN',
+    '01:15': 'HET IS OVER KWART ÉÉN',
+    '01:20': 'HET IS TIEN VOOR HALF TWEE',
+    '01:25': 'HET IS VIJF VOOR HALF TWEE',
+    '01:30': 'HET IS HALF TWEE',
+    '01:35': 'HET IS VIJF OVER HALF TWEE',
+    '01:40': 'HET IS TIEN OVER HALF TWEE',
+    '01:45': 'HET IS KWART VOOR TWEE',
+    '01:50': 'HET IS TIEN VOOR TWEE',
+    '01:55': 'HET IS VIJF VOOR TWEE',
+    '02:00': 'HET IS TWEE UUR',
+    '14:00': 'HET IS TWEE UUR',
+    '05:55': 'HET IS VIJF VOOR ZES',
+    '17:55': 'HET IS VIJF VOOR ZES',
+  },
 };
 
 describe('getWordsKeys', () =>

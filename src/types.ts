@@ -45,4 +45,5 @@ export interface LocaleGridConfig {
   getLocaleWordKeys: (hours: number, minutes: number) => string[];
   secondaryChars?: number[];
   getCustomWordKeys?: (time: string) => string[];
+  hourMark?: number;
 }
