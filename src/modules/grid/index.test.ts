@@ -1,6 +1,7 @@
 import { describe, expect, test } from 'vitest';
-import { getCharCoords, getLocaleConfig } from './index';
+import { getCharCoords } from './index';
 import { Locale } from '../../types';
+import { getLocaleConfig } from './locales';
 
 const testCases: Record<Locale, Record<string, string>> = {
   'en-US': {

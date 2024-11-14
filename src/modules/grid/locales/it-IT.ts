@@ -1,4 +1,4 @@
-import { CommonWords, LocaleGridConfig, WordKeys } from '../../types';
+import { CommonWords, LocaleGridConfig, WordKeys } from '../../../types';
 
 const grid = [
   'SONORLEBORE', // 0-10: "SONO", "LE"
