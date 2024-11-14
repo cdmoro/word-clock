@@ -1,13 +1,6 @@
-[data-theme$='dark'] body.focus .char:not(.active),
-[data-theme$='dark'] body.focus .char.secondary {
-  color: color-mix(in srgb, var(--font-color), transparent 90%);
-  background: none;
-  border: none;
-}
-
-[data-theme$='light'] body.focus .char:not(.active),
-[data-theme$='light'] body.focus .char.secondary {
-  color: color-mix(in srgb, var(--font-color), transparent 96%);
+body.focus .char:not(.active),
+body.focus .char.secondary {
+  color: color-mix(in srgb, var(--font-color), transparent 92%);
   background: none;
   border: none;
 }
