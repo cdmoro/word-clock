@@ -143,4 +143,4 @@ export function initGrid() {
   drawGrid();
 }
 
-(<any>window).highlightGrid = highlightGrid;
+window.highlightGrid = highlightGrid;
