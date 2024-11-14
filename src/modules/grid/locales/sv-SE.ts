@@ -18,13 +18,13 @@ const commonWords: CommonWords = {
   ONE: [55, 56, 57], // ETT
   TWO: [63, 64, 65], // TVÅ
   THREE: [66, 67, 68], // TRE
-  FOUR: [72, 73, 74, 75], // FYRA
+  FOUR: [73, 74, 75, 76], // FYRA
   FIVE: [77, 78, 79], // FEM
-  SIX: [84, 85, 86], // SEX
+  SIX: [85, 86, 87], // SEX
   SEVEN: [88, 89, 90], // SJU
   EIGHT: [91, 92, 93, 94], // ÅTTA
-  NINE: [95, 96, 97], // NIO
-  TEN: [11, 12, 13], // TIO
+  NINE: [96, 97, 98], // NIO
+  TEN: [99, 100, 101], // TIO
   ELEVEN: [102, 103, 104, 105], // ELVA
   FIVE_MIN: [11, 12, 13], // FEM (five minutes)
   TEN_MIN: [17, 18, 19], // TIO (ten minutes)
