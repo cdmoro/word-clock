@@ -1,28 +1,8 @@
 import { store } from '../../store';
-import { LocaleGridConfig, Locale } from '../../types';
+import { Locale } from '../../types';
 import { HOURS, MINUTES } from './constants';
-import enUS from './en-US';
-import esES from './es-ES';
-import frFR from './fr-FR';
-import itIT from './it-IT';
-import ptPT from './pt-PT';
-import elGR from './el-GR';
-import deDE from './de-DE';
 import { getTime } from '../../utils';
-
-const LOCALE_CONFIG: Record<Locale, LocaleGridConfig> = {
-  'en-US': enUS,
-  'es-ES': esES,
-  'it-IT': itIT,
-  'fr-FR': frFR,
-  'pt-PT': ptPT,
-  'el-GR': elGR,
-  'de-DE': deDE,
-};
-
-export function getLocaleConfig(locale: Locale) {
-  return LOCALE_CONFIG[locale];
-}
+import { getLocaleConfig } from './locales';
 
 function getCommonCharCoords(locale: Locale, time: string) {
   const { getLocaleWordKeys } = getLocaleConfig(locale);
