@@ -65,7 +65,6 @@ export function getCharCoords(locale: Locale, time: string) {
 }
 
 export function highlightGrid(time: string) {
-  document.querySelector('#clock')?.classList.add('loading');
   document.documentElement.style.removeProperty('--longest-word');
 
   const locale = store.get('locale');
@@ -76,6 +75,7 @@ export function highlightGrid(time: string) {
   chars.forEach((cell) => cell.classList.remove('active'));
 
   setTimeout(() => {
+    document.body?.classList.remove('no-transitions');
     words.forEach((word, wordIdx) => {
       longestWord = Math.max(word.length, longestWord);
 
@@ -101,7 +101,6 @@ export function highlightGrid(time: string) {
         .join('')
         .trim();
 
-      document.querySelector('#clock')?.classList.remove('loading');
       document.querySelector('#clock')?.setAttribute('aria-label', time);
       document.querySelector('#clock')?.setAttribute('aria-description', ariaDescription);
     });

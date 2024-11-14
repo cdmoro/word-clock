@@ -46,6 +46,8 @@ export function initLocale() {
     translateStrings(locale);
     store.set('locale', locale);
     drawGrid();
+
+    document.body?.classList.add('no-transitions');
     highlightGrid(getTime());
   });
 }
