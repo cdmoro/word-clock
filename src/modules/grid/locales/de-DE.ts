@@ -1,4 +1,4 @@
-import { CommonWords, LocaleGridConfig, WordKeys } from '../../types';
+import { CommonWords, LocaleGridConfig, WordKeys } from '../../../types';
 
 const grid = [
   'ESKISTAFÜNF', // 0-10: ES, IST, FÜNF

@@ -1,4 +1,4 @@
-import { CommonWords, LocaleGridConfig, WordKeys } from '../../types';
+import { CommonWords, LocaleGridConfig, WordKeys } from '../../../types';
 
 const grid = [
   'ÉSÃOUMATRÊS', // 0-10: É, SÃO, UMA, TRÊS
