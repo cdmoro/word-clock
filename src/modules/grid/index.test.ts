@@ -55,6 +55,21 @@ const testCases: Record<Locale, Record<string, string>> = {
     '05:55': 'HET IS VIJF VOOR ZES',
     '17:55': 'HET IS VIJF VOOR ZES',
   },
+  'sv-SE': {
+    '01:00': 'KLOCKAN ÄR ETT',
+    '01:05': 'KLOCKAN ÄR FEM ÖVER ETT',
+    '01:10': 'KLOCKAN ÄR TIO ÖVER ETT',
+    '01:15': 'KLOCKAN ÄR KVART ÖVER ETT',
+    '01:20': 'KLOCKAN ÄR TJUGO ÖVER ETT',
+    '01:25': 'KLOCKAN ÄR FEM I HALV TVÅ',
+    '01:30': 'KLOCKAN ÄR HALV TVÅ',
+    // '01:35': 'HET IS VIJF OVER HALF TWEE',
+    // '01:40': 'HET IS TIEN OVER HALF TWEE',
+    // '01:45': 'HET IS KWART VOOR TWEE',
+    // '01:50': 'HET IS TIEN VOOR TWEE',
+    // '01:55': 'HET IS VIJF VOOR TWEE',
+    '02:00': 'KLOCKAN ÄR TVÅ',
+  },
 };
 
 describe('getWordsKeys', () =>

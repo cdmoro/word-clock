@@ -1,4 +1,5 @@
 import { Locale, LocaleGridConfig } from '../../../types';
+import svSE from './sv-SE';
 import deDE from './de-DE';
 import elGR from './el-GR';
 import enUS from './en-US';
@@ -17,6 +18,7 @@ const LOCALE_CONFIG: Record<Locale, LocaleGridConfig> = {
   'el-GR': elGR,
   'de-DE': deDE,
   'nl-NL': nlNL,
+  'sv-SE': svSE,
 };
 
 export function getLocaleConfig(locale: Locale) {
