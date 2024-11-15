@@ -30,6 +30,11 @@
   border-end-end-radius: .5rem;
 }
 
+[data-theme|='retro'] body.focus .char.secondary {
+  color: color-mix(in srgb, var(--font-color), transparent 70%);
+  border-color: transparent;
+}
+
 [data-theme='retro-light'] {
   --accent-color: #daa908;
   --background: #f8f8f8;

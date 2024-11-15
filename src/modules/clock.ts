@@ -26,7 +26,9 @@ function updateTime(forceUpdate?: boolean) {
     document.documentElement.dataset.theme = getRandomThemeColor();
   }
 
-  if (forceUpdate || time.includes(':00') || time.includes(':05')) {
+  const lastTimeChar = time.slice(-1);
+
+  if (forceUpdate || lastTimeChar === '0' || lastTimeChar === '5') {
     highlightGrid(time);
   }
 }
