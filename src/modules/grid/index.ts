@@ -80,7 +80,7 @@ export function highlightGrid(time: string = getTime()) {
       }
     });
 
-    document.querySelectorAll('char.idle').forEach((charIdle) => charIdle.classList.remove('idle'));
+    document.querySelectorAll('.char.idle').forEach((charIdle) => charIdle.classList.remove('idle'));
     const ariaDescription = Array.from(document.querySelectorAll('#clock .char.active'))
       .map(
         (el) =>

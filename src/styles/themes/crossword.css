@@ -1,7 +1,8 @@
 [data-theme|='crossword'] #clock {
-    border: var(--font-color) solid 1px;
+    border: var(--font-color) solid 3px;
     row-gap: 0;
     padding: 0;
+    border-radius: 0;
 }
 
 [data-theme|='crossword'] .char {
@@ -16,14 +17,4 @@
 
 [data-theme|='crossword'] body.focus .char.secondary {
     color: color-mix(in srgb, var(--background), transparent 50%);
-}
-
-[data-theme|='crossword'] body.fuzzy #clock {
-    border: none;
-    row-gap: 5px;
-    padding: .5rem;
-}
-
-[data-theme|='crossword'] body.solid #clock {
-    border-radius: 0;
 }
