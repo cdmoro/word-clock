@@ -6,6 +6,10 @@ body.fuzzy .char:not(.active) {
   display: none;
 }
 
-body.fuzzy .char.active.first {
+body.fuzzy .char.first {
   grid-column: 1;
+}
+
+body.fuzzy .char.idle {
+  display: initial;
 }

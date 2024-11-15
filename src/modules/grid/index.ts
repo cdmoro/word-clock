@@ -55,7 +55,10 @@ export function highlightGrid(time: string = getTime()) {
   let longestWord = 0;
 
   const chars = document.querySelectorAll<HTMLDivElement>('#clock .char');
-  chars.forEach((cell) => cell.classList.remove('active'));
+  chars.forEach((cell) => {
+    cell.classList.toggle('idle', store.get('fuzzy') && cell.classList.contains('active'));
+    cell.classList.remove('active');
+  });
 
   setTimeout(() => {
     document.body?.classList.remove('no-transitions');
@@ -75,18 +78,19 @@ export function highlightGrid(time: string = getTime()) {
       if (longestWord > 0) {
         document.documentElement.style.setProperty('--longest-word', longestWord.toString());
       }
-
-      const ariaDescription = Array.from(document.querySelectorAll('#clock .char.active'))
-        .map(
-          (el) =>
-            `${el.classList.contains('first') ? ' ' : ''}${el.textContent}${el.classList.contains('aphostrophe') ? '’' : ''}`,
-        )
-        .join('')
-        .trim();
-
-      document.querySelector('#clock')?.setAttribute('aria-label', time);
-      document.querySelector('#clock')?.setAttribute('aria-description', ariaDescription);
     });
+
+    document.querySelectorAll('char.idle').forEach((charIdle) => charIdle.classList.remove('idle'));
+    const ariaDescription = Array.from(document.querySelectorAll('#clock .char.active'))
+      .map(
+        (el) =>
+          `${el.classList.contains('first') ? ' ' : ''}${el.textContent}${el.classList.contains('aphostrophe') ? '’' : ''}`,
+      )
+      .join('')
+      .trim();
+
+    document.querySelector('#clock')?.setAttribute('aria-label', time);
+    document.querySelector('#clock')?.setAttribute('aria-description', ariaDescription);
   }, 500);
 }
 
