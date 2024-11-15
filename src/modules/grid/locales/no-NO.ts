@@ -26,11 +26,11 @@ const commonWords: CommonWords = {
   NINE: [95, 96], // NI
   TEN: [97, 98], // TI
   ELEVEN: [99, 100, 101, 102, 103, 104], // ELLEVE
-  FIVE_MIN: [11, 12, 13], // FEM (cinco minutos)
-  TEN_MIN: [22, 23], // TI (diez minutos)
-  QUARTER_MIN: [33, 34, 35, 36, 37], // KVART (cuarto de hora)
-  TWENTY_MIN: [22, 23, 24, 25, 26], // TJUE (veinte minutos)
-  TWENTYFIVE_MIN: [],
+  FIVE_MIN: [11, 12, 13], // FEM
+  TEN_MIN: [22, 23], // TI
+  QUARTER_MIN: [33, 34, 35, 36, 37], // KVART
+  TWENTY_MIN: [22, 23], // TI
+  TWENTYFIVE_MIN: [11, 12, 13],
   HALF: [55, 56, 57, 58], // HALV
 };
 
@@ -39,22 +39,22 @@ const localeWords = {
   ER: [8, 9], // ER
   OVER: [44, 45, 46, 47], // OVER
   HALV: [55, 56, 57, 58], // HALV
-  PÅ: [11, 12], // PÅ
-  TIL: [22, 23, 24], // TIL
+  PÅ: [39, 40], // PÅ
+  TIL: [22, 23], // TI
 };
 
 function getLocaleWordKeys(_hours: number, minutes: number) {
   const wordKeys: WordKeys<typeof localeWords>[] = ['KLOKKEN', 'ER'];
 
   // Determine if "OVER" or "PÅ" should be used based on minutes
-  if (minutes > 30 && minutes < 60) {
+  if ((minutes >= 20 && minutes < 30) || (minutes >= 45 && minutes < 60)) {
     wordKeys.push('PÅ');
-  } else if (minutes > 0 && minutes <= 30) {
+  } else if ((minutes >= 5 && minutes < 20) || (minutes >= 35 && minutes < 45)) {
     wordKeys.push('OVER');
   }
 
   // Add "HALV" if it's a half-past time, and round up to the next hour
-  if (minutes >= 25 && minutes <= 35) {
+  if ((minutes >= 20 && minutes < 30) || (minutes >= 35 && minutes < 45)) {
     wordKeys.push('HALV');
   }
 
