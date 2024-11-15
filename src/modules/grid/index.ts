@@ -46,8 +46,6 @@ export function getCharCoords(locale: Locale, time: string) {
 }
 
 export function highlightGrid(time: string = getTime()) {
-  document.documentElement.style.removeProperty('--longest-word');
-
   if (store.get('solid') && store.get('fuzzy')) {
     document.body?.classList.add('no-transitions');
   }

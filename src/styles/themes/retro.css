@@ -11,28 +11,22 @@
 
 [data-theme|='retro'] .char.active {
   background: var(--accent-color);
-  border-left: none;
-  border-right: none;
   color: #000;
 }
 
-[data-theme|='retro'] .char.active.first {
-  border: var(--accent-color) solid 1px;
-  border-right: none;
+[data-theme|='retro'] .char.first {
   border-start-start-radius: .5rem;
   border-end-start-radius: .5rem;
 }
 
-[data-theme|='retro'] .char.active.last {
-  border: var(--accent-color) solid 1px;
-  border-left: none;
+[data-theme|='retro'] .char.last {
   border-start-end-radius: .5rem;
   border-end-end-radius: .5rem;
 }
 
-[data-theme|='retro'] body.focus .char.secondary {
-  color: color-mix(in srgb, var(--font-color), transparent 70%);
-  border-color: transparent;
+[data-theme|='retro'] body.focus .char.secondary.active {
+  color: color-mix(in srgb, #000, transparent 60%);
+  background-color: color-mix(in srgb, var(--accent-color), transparent 50%);
 }
 
 [data-theme='retro-light'] {

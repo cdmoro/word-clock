@@ -18,6 +18,7 @@ const testCases: Record<Locale, Record<string, string>> = {
     '12:30': 'SONO LE DODICI E MEZZA',
     '12:32': 'SONO LE DODICI E MEZZA',
     '12:35': 'È LUNA MENO VENTICINQUE',
+    '22:58': 'SONO LE UNDICI MENO CINQUE',
   },
   'pt-PT': {
     '12:30': 'SÃO MEIO DIA E MEIA',

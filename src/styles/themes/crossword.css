@@ -9,20 +9,13 @@
     color: var(--font-color);
 }
 
-[data-theme|='crossword'] .char.active,
-[data-theme|='crossword'] body.focus .char.active {
+[data-theme|='crossword'] .char.active {
     background-color: var(--font-color);
     color: var(--background);
 }
 
-[data-theme|='crossword'] body.focus .char {
-    color: color-mix(in srgb, var(--font-color), transparent 92%);
-    border: var(--font-color) solid 1px;
-}
-
 [data-theme|='crossword'] body.focus .char.secondary {
     color: color-mix(in srgb, var(--background), transparent 50%);
-    border: var(--font-color) solid 1px;
 }
 
 [data-theme|='crossword'] body.fuzzy #clock {

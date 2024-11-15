@@ -73,5 +73,5 @@ export default {
     ...commonWords,
     ...localeWords,
   },
-  secondaryChars: [0, 1, 2, 3, 4, 5, 6, 11],
+  secondaryChars: [0, 1, 2, 3, 5, 6, 11, 13, 14, 15, 16],
 } satisfies LocaleGridConfig;

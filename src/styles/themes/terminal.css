@@ -44,6 +44,10 @@
   animation: flicker 0.5s infinite;
 }
 
+[data-theme|='terminal'] .char {
+  border: transparent solid 1px;
+}
+
 [data-theme|='terminal'] .char.active {
   border: var(--accent-color) solid 1px;
   border-left: none;
@@ -66,6 +70,10 @@
 
 [data-theme|='terminal'] body.solid #clock {
   border-radius: 0;
+}
+
+[data-theme|='terminal'] body.focus .char.secondary.active {
+  border-color: color-mix(in srgb, var(--accent-color), transparent 60%);
 }
 
 [data-theme='terminal-light'] {
