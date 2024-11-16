@@ -42,7 +42,7 @@ export function getCharCoords(locale: Locale, time: string) {
       else charCoords.push(item as number[]);
     });
 
-  return charCoords;
+  return charCoords.sort((a, b) => a[0] - b[0]);
 }
 
 export function highlightGrid(time: string = getTime()) {
@@ -56,8 +56,9 @@ export function highlightGrid(time: string = getTime()) {
 
   const chars = document.querySelectorAll<HTMLDivElement>('#clock .char');
   chars.forEach((cell) => {
+    cell.className = 'char';
     cell.classList.toggle('idle', store.get('fuzzy') && cell.classList.contains('active'));
-    cell.classList.remove('active');
+    // cell.classList.remove('active');
   });
 
   setTimeout(() => {
@@ -68,17 +69,28 @@ export function highlightGrid(time: string = getTime()) {
       word.forEach((index, pos) => {
         const char = chars[index];
 
-        char.classList.add('active');
+        char.classList.add('active', `row-${wordIdx + 1}`, `col-${pos + 1}`);
         char.classList.toggle('first', pos === 0);
         char.classList.toggle('last', pos === word.length - 1);
 
         char.dataset.word = wordIdx.toString();
       });
-
-      if (longestWord > 0) {
-        document.documentElement.style.setProperty('--longest-word', longestWord.toString());
-      }
     });
+
+    if (longestWord > 0) {
+      document.documentElement.style.setProperty('--longest-word', longestWord.toString());
+
+      if (store.get('fuzzy')) {
+        document.querySelectorAll('.first').forEach((_el, row) => {
+          const chars = document.querySelectorAll(`[data-word="${row}"]`).length;
+          const remainingChars = longestWord - chars;
+
+          for (let i = 0; i < remainingChars; i++) {
+            document.querySelector('.char:not(.active):not(.filler)')?.classList.add('filler', `row-${row + 1}`);
+          }
+        });
+      }
+    }
 
     document.querySelectorAll('.char.idle').forEach((charIdle) => charIdle.classList.remove('idle'));
     const ariaDescription = Array.from(document.querySelectorAll('#clock .char.active'))
