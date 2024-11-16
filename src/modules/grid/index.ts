@@ -56,13 +56,13 @@ export function highlightGrid(time: string = getTime()) {
 
   const chars = document.querySelectorAll<HTMLDivElement>('#clock .char');
   chars.forEach((cell) => {
-    cell.className = 'char';
+    cell.classList.add('char');
     cell.classList.toggle(
       'idle',
       ((store.get('mini') || store.get('fuzzy')) && cell.classList.contains('active')) ||
         (store.get('mini') && cell.classList.contains('tertiary')),
     );
-    // cell.classList.remove('active', 'tertiary');
+    cell.classList.remove('active', 'tertiary', 'first', 'last');
   });
 
   setTimeout(() => {
@@ -74,13 +74,11 @@ export function highlightGrid(time: string = getTime()) {
       word.forEach((index, pos) => {
         const char = chars[index];
 
-        // char.classList.add('active', `row-${wordIdx + 1}`, `col-${pos + 1}`);
         char.classList.add('active');
         char.style.setProperty('--row', (wordIdx + 1).toString());
         char.style.setProperty('--col', (pos + 1).toString());
         char.classList.toggle('first', pos === 0);
         char.classList.toggle('last', pos === word.length - 1);
-
         char.dataset.word = wordIdx.toString();
       });
     });
@@ -135,6 +133,9 @@ export function drawGrid() {
       charEl.classList.toggle('aphostrophe', !!charsWithAphostrophe?.includes(index));
       charEl.classList.toggle('secondary', !!secondaryChars?.includes(index));
       charEl.textContent = char;
+      charEl.removeAttribute('style');
+      delete charEl.dataset.word;
+      delete charEl.dataset.index;
 
       if (!gridExists) {
         clock?.appendChild(charEl);
