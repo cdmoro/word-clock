@@ -56,9 +56,9 @@ export function highlightGrid(time: string = getTime()) {
 
   const chars = document.querySelectorAll<HTMLDivElement>('#clock .char');
   chars.forEach((cell) => {
-    cell.className = 'char';
+    // cell.className = 'char';
     cell.classList.toggle('idle', store.get('fuzzy') && cell.classList.contains('active'));
-    // cell.classList.remove('active');
+    cell.classList.remove('active');
   });
 
   setTimeout(() => {
@@ -80,16 +80,16 @@ export function highlightGrid(time: string = getTime()) {
     if (longestWord > 0) {
       document.documentElement.style.setProperty('--longest-word', longestWord.toString());
 
-      if (store.get('fuzzy')) {
-        document.querySelectorAll('.first').forEach((_el, row) => {
-          const chars = document.querySelectorAll(`[data-word="${row}"]`).length;
-          const remainingChars = longestWord - chars;
+      // if (store.get('fuzzy') || store.get('mini')) {
+      document.querySelectorAll('.first').forEach((_el, row) => {
+        const chars = document.querySelectorAll(`[data-word="${row}"]`).length;
+        const remainingChars = longestWord - chars;
 
-          for (let i = 0; i < remainingChars; i++) {
-            document.querySelector('.char:not(.active):not(.filler)')?.classList.add('filler', `row-${row + 1}`);
-          }
-        });
-      }
+        for (let i = 0; i < remainingChars; i++) {
+          document.querySelector('.char:not(.active):not(.filler)')?.classList.add('filler', `row-${row + 1}`);
+        }
+      });
+      // }
     }
 
     document.querySelectorAll('.char.idle').forEach((charIdle) => charIdle.classList.remove('idle'));

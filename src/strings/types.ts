@@ -38,6 +38,7 @@ export type Translations = {
   language: string;
   light: string;
   made_by: string;
+  mini: string;
   'nl-NL': string;
   'no-NO': string;
   orange: string;
