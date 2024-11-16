@@ -11,6 +11,7 @@ export type Translations = {
   copy_mode_copied: string;
   copy_title: string;
   crossword: string;
+  'cs-CZ': string;
   dark: string;
   'de-DE': string;
   default_font: string;

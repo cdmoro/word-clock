@@ -86,6 +86,21 @@ const testCases: Record<Locale, Record<string, string>> = {
     '01:55': 'KLOKKEN ER FEM PÅ TO',
     '02:00': 'KLOKKEN ER TO',
   },
+  'cs-CZ': {
+    '01:00': 'JE JEDNA',
+    // '01:05': 'JE PĚT PO JEDNÉ',
+    // '01:10': 'JE DESET PO JEDNÉ',
+    // '01:15': 'JE ČTVRT PO JEDNÉ',
+    // '01:20': 'JE DVACET PO JEDNÉ',
+    // '01:25': 'JE DVACET PĚT PO JEDNÉ',
+    // '01:30': 'JE JEDNA TŘICET',
+    // '01:35': 'JE TŘICET PĚT PO JEDNÉ',
+    // '01:40': 'JE ČTYŘICET PO JEDNÉ',
+    // '01:45': 'JE TŘI ČTVRTĚ NA DVĚ',
+    // '01:50': 'JE DESET DO DVOU',
+    // '01:55': 'JE PĚT DO DVOU',
+    '02:00': 'JE DVĚ',
+  },
 };
 
 describe('getWordsKeys', () =>

@@ -16,6 +16,7 @@ export const DOMINANT_LOCALES: Record<string, Locale> = {
   nl: 'nl-NL',
   sv: 'sv-SE',
   no: 'no-NO',
+  cs: 'cs-CZ',
 } as const;
 
 export function resolveLocale(locale = navigator.language): Locale {
