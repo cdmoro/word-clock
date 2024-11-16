@@ -56,13 +56,18 @@ export function highlightGrid(time: string = getTime()) {
 
   const chars = document.querySelectorAll<HTMLDivElement>('#clock .char');
   chars.forEach((cell) => {
-    // cell.className = 'char';
-    cell.classList.toggle('idle', store.get('fuzzy') && cell.classList.contains('active'));
-    cell.classList.remove('active');
+    cell.className = 'char';
+    cell.classList.toggle(
+      'idle',
+      ((store.get('mini') || store.get('fuzzy')) && cell.classList.contains('active')) ||
+        (store.get('mini') && cell.classList.contains('tertiary')),
+    );
+    // cell.classList.remove('active', 'tertiary');
   });
 
   setTimeout(() => {
     document.body?.classList.remove('no-transitions');
+
     words.forEach((word, wordIdx) => {
       longestWord = Math.max(word.length, longestWord);
 
@@ -80,25 +85,23 @@ export function highlightGrid(time: string = getTime()) {
       });
     });
 
+    document.querySelectorAll('.char.idle').forEach((charIdle) => charIdle.classList.remove('idle'));
+
     if (longestWord > 0) {
       document.documentElement.style.setProperty('--longest-word', longestWord.toString());
 
-      // if (store.get('fuzzy') || store.get('mini')) {
-      document.querySelectorAll('.first').forEach((_el, row) => {
+      document.querySelectorAll('.first.active').forEach((_el, row) => {
         const chars = document.querySelectorAll(`[data-word="${row}"]`).length;
         const remainingChars = longestWord - chars;
 
         for (let i = 0; i < remainingChars; i++) {
-          document.querySelector('.char:not(.active):not(.tertiary)')?.classList.add('tertiary');
-          document
-            .querySelector<HTMLDivElement>('.char:not(.active)')
-            ?.style.setProperty('--row', (row + 1).toString());
+          const tertiaryChar = document.querySelector<HTMLDivElement>('.char:not(.active):not(.tertiary)');
+          tertiaryChar?.classList.add('tertiary');
+          tertiaryChar?.style.setProperty('--row', (row + 1).toString());
         }
       });
-      // }
     }
 
-    document.querySelectorAll('.char.idle').forEach((charIdle) => charIdle.classList.remove('idle'));
     const ariaDescription = Array.from(document.querySelectorAll('#clock .char.active'))
       .map(
         (el) =>
