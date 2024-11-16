@@ -32,7 +32,7 @@ const commonWords: CommonWords = {
       : [
           [99, 100, 101, 102, 103, 104, 105],
           [107, 108, 109],
-        ], // PĚT
+        ], // PĚT (cinco minutos)
   TEN_MIN: (_hours, minutes) => (minutes < 30 ? [33, 34, 35, 36, 37] : [99, 100, 101, 102, 103, 104, 105]), // DESET (diez minutos)
   QUARTER_MIN: (_hours, minutes) =>
     minutes < 30
@@ -40,7 +40,7 @@ const commonWords: CommonWords = {
       : [
           [90, 91, 92, 93, 94, 95, 96, 97],
           [107, 108, 109],
-        ], // PATNÁCT
+        ], // PATNÁCT (quince minutos)
   TWENTY_MIN: (_hours, minutes) => (minutes < 30 ? [66, 67, 68, 69, 70, 71] : [90, 91, 92, 93, 94, 95, 96, 97]), // DVACET (veinte minutos)
   TWENTYFIVE_MIN: (_hours, minutes) =>
     minutes < 30
@@ -60,8 +60,9 @@ const localeWords = {
   JSOU: [2, 3, 4, 5], // JSOU
 };
 
-function getLocaleWordKeys(_hours: number, _minutes: number) {
-  const wordKeys: WordKeys<typeof localeWords>[] = ['JE'];
+function getLocaleWordKeys(hours: number, _minutes: number) {
+  const wordKeys: WordKeys<typeof localeWords>[] = hours >= 2 && hours <= 4 ? ['JSOU'] : ['JE'];
+  // const wordKeys: WordKeys<typeof localeWords>[] = ['JE'];
   return wordKeys;
 }
 
