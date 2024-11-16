@@ -62,7 +62,10 @@ export function highlightGrid(time: string = getTime()) {
       ((store.get('mini') || store.get('fuzzy')) && cell.classList.contains('active')) ||
         (store.get('mini') && cell.classList.contains('tertiary')),
     );
-    cell.classList.remove('active', 'tertiary', 'first', 'last');
+    cell.classList.remove('active', 'tertiary', 'last');
+    if (store.get('mini')) {
+      cell.classList.remove('first');
+    }
   });
 
   setTimeout(() => {
