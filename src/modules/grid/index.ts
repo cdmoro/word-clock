@@ -69,7 +69,10 @@ export function highlightGrid(time: string = getTime()) {
       word.forEach((index, pos) => {
         const char = chars[index];
 
-        char.classList.add('active', `row-${wordIdx + 1}`, `col-${pos + 1}`);
+        // char.classList.add('active', `row-${wordIdx + 1}`, `col-${pos + 1}`);
+        char.classList.add('active');
+        char.style.setProperty('--row', (wordIdx + 1).toString());
+        char.style.setProperty('--col', (pos + 1).toString());
         char.classList.toggle('first', pos === 0);
         char.classList.toggle('last', pos === word.length - 1);
 
@@ -86,7 +89,10 @@ export function highlightGrid(time: string = getTime()) {
         const remainingChars = longestWord - chars;
 
         for (let i = 0; i < remainingChars; i++) {
-          document.querySelector('.char:not(.active):not(.filler)')?.classList.add('filler', `row-${row + 1}`);
+          document.querySelector('.char:not(.active):not(.tertiary)')?.classList.add('tertiary');
+          document
+            .querySelector<HTMLDivElement>('.char:not(.active)')
+            ?.style.setProperty('--row', (row + 1).toString());
         }
       });
       // }
