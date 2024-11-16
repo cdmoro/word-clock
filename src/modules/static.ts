@@ -4,7 +4,7 @@ let mouseTimeout: NodeJS.Timeout;
 
 export function initStaticMode() {
   if (store.get('static')) {
-    document.querySelector('footer #menu')?.remove();
+    document.querySelector('footer')?.remove();
   } else {
     document.addEventListener('mousemove', onMouseMove);
   }
