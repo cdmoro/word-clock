@@ -67,7 +67,7 @@ function getLocaleWordKeys(hours: number, minutes: number) {
 
 export default {
   grid,
-  charsWithAphostrophe: [13],
+  charsWithApostrophe: [13],
   getLocaleWordKeys,
   clockWords: {
     ...commonWords,

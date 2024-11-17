@@ -3,7 +3,8 @@
   --clock-line-height: 1.2;
 }
 
-[data-theme|='frame'] #clock {
+[data-theme|='frame'] #clock,
+[data-theme|='frame'] #fuzzy-clock {
   border-radius: 1rem;
   border: 2px solid var(--accent-color);
 }

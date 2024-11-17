@@ -3,6 +3,7 @@ import { Locale } from '../../types';
 import { HOURS, MINUTES } from './constants';
 import { getTime } from '../../utils';
 import { getLocaleConfig } from './locales';
+import { generateFuzzyClockTime } from '../fuzzy';
 
 function getCommonCharCoords(locale: Locale, time: string) {
   const { getLocaleWordKeys, hourMark = 35 } = getLocaleConfig(locale);
@@ -66,6 +67,7 @@ export function highlightGrid(time: string = getTime()) {
     if (store.get('mini')) {
       cell.classList.remove('first');
     }
+    delete cell.dataset.word;
   });
 
   setTimeout(() => {
@@ -106,10 +108,12 @@ export function highlightGrid(time: string = getTime()) {
     const ariaDescription = Array.from(document.querySelectorAll('#clock .char.active'))
       .map(
         (el) =>
-          `${el.classList.contains('first') ? ' ' : ''}${el.textContent}${el.classList.contains('aphostrophe') ? '’' : ''}`,
+          `${el.classList.contains('first') ? ' ' : ''}${el.textContent}${el.classList.contains('apostrophe') ? '’' : ''}`,
       )
       .join('')
       .trim();
+
+    generateFuzzyClockTime();
 
     document.querySelector('#clock')?.setAttribute('aria-label', time);
     document.querySelector('#clock')?.setAttribute('aria-description', ariaDescription);
@@ -119,7 +123,7 @@ export function highlightGrid(time: string = getTime()) {
 export function drawGrid() {
   const clock = document.querySelector<HTMLDivElement>('#clock');
   const gridExists = !!document.querySelector<HTMLDivElement>('#clock .char');
-  const { grid, charsWithAphostrophe, secondaryChars } = getLocaleConfig(store.get('locale'));
+  const { grid, charsWithApostrophe, secondaryChars } = getLocaleConfig(store.get('locale'));
 
   grid
     .join('')
@@ -133,7 +137,7 @@ export function drawGrid() {
 
       charEl.classList.add('char');
       charEl.dataset.index = index.toString();
-      charEl.classList.toggle('aphostrophe', !!charsWithAphostrophe?.includes(index));
+      charEl.classList.toggle('apostrophe', !!charsWithApostrophe?.includes(index));
       charEl.classList.toggle('secondary', !!secondaryChars?.includes(index));
       charEl.textContent = char;
       charEl.removeAttribute('style');
