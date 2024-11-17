@@ -240,7 +240,7 @@ button:disabled {
   padding: 0.2rem;
   background-color: var(--accent-color);
   border-radius: 50%;
-  margin-bottom: .5rem;
+  margin-bottom: 1rem;
   transition: opacity .5s;
 }
 
