@@ -40,7 +40,7 @@ export type WordKeys<T> = CommonWordsKey | keyof T;
 
 export interface LocaleGridConfig {
   grid: string[];
-  charsWithAphostrophe?: number[];
+  charsWithApostrophe?: number[];
   clockWords: CommonWords & Record<string, Word>;
   getLocaleWordKeys: (hours: number, minutes: number) => string[];
   secondaryChars?: number[];

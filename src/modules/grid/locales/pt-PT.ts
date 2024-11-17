@@ -80,5 +80,5 @@ export default {
     ...commonWords,
     ...localeWords,
   },
-  secondaryChars: [0, 1, 2, 3, 103],
+  secondaryChars: [0, 1, 2, 3],
 } satisfies LocaleGridConfig;
