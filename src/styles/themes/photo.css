@@ -28,6 +28,10 @@
   border-radius: .5rem;
 }
 
+[data-theme|='photo'] body:not(.zen) footer {
+  padding: 1rem;
+}
+
 [data-theme='photo-light'] #time-clock {
   color: #111111;
 }

@@ -11,13 +11,13 @@ export function initStaticMode() {
 }
 
 function onMouseMove() {
-  const footer = document.querySelector<HTMLElement>('footer #menu');
+  const footer = document.querySelector<HTMLElement>('footer');
   footer?.classList.remove('hidden');
 
   clearTimeout(mouseTimeout);
 
   mouseTimeout = setTimeout(() => {
-    if (!footer?.matches(':hover')) {
+    if (!footer?.matches(':hover') || store.get('zen')) {
       footer?.classList.add('hidden');
     }
   }, 3000);
