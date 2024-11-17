@@ -5,6 +5,13 @@
     border-radius: 0;
 }
 
+[data-theme|='crossword'] #fuzzy-clock {
+    background-color: var(--font-color) !important;
+    color: var(--background);
+    border-radius: 0;
+    padding: 1.5vw 2.5vw;
+}
+
 [data-theme|='crossword'] .char {
     border: var(--font-color) solid 1px;
     color: var(--font-color);

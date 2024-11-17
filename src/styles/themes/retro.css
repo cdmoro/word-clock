@@ -29,6 +29,11 @@
   background-color: color-mix(in srgb, var(--accent-color), transparent 50%);
 }
 
+[data-theme|='retro'] body.fuzzy #fuzzy-clock {
+  background-color: var(--accent-color);
+  color: #000;
+}
+
 [data-theme='retro-light'] {
   --accent-color: #daa908;
   --background: #f8f8f8;

@@ -47,8 +47,8 @@ export function generateFuzzyClockTime() {
   });
 
   // Create a new `div` to hold the grouped words
-  const newDiv = document.createElement('div');
-  newDiv.classList.add('active-words');
+  const wrapper = document.createElement('div');
+  wrapper.classList.add('fuzzy-wrapper');
 
   // Iterate over the grouped words and construct the resulting HTML
   Object.values(words).forEach(({ text, isSecondary }) => {
@@ -57,16 +57,16 @@ export function generateFuzzyClockTime() {
       const span = document.createElement('span');
       span.textContent = text;
       span.classList.add('secondary');
-      newDiv.appendChild(span);
+      wrapper.appendChild(span);
     } else if (text) {
       // Append neutral words as plain text
-      newDiv.appendChild(document.createTextNode(text));
+      wrapper.appendChild(document.createTextNode(text));
     }
     // Add a space between words
-    newDiv.appendChild(document.createTextNode(' '));
+    wrapper.appendChild(document.createTextNode(' '));
   });
 
   // Append the constructed `div` to the document body or a specific container
   // document.body.appendChild(newDiv);
-  document.querySelector('#fuzzy-clock')!.appendChild(newDiv);
+  document.querySelector('#fuzzy-clock')!.appendChild(wrapper);
 }
