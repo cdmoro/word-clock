@@ -52,6 +52,7 @@ const localeWords = {
   MEIO: [11, 12, 13, 14],
   DIA: [16, 17, 18],
   HORAS: [66, 67, 68, 69, 70],
+  HORA: [66, 67, 68, 69],
   E: [73],
   MENOS: [72, 73, 74, 75, 76],
 };
@@ -65,10 +66,8 @@ function getLocaleWordKeys(hours: number, minutes: number) {
   // Use "É" for one o'clock, otherwise use "SÃO" for other hours
   wordKeys.push(hours % 12 === 1 ? 'É' : 'SÃO');
 
-  // Map hour value to the corresponding word
-  // if (hours === 12) wordKeys.push('MEIO', 'DIA');
-  // else if (hours === 0) wordKeys.push('MEIA', 'NOITE');
-  // if (hours !== 12) wordKeys.push('HORAS');
+  if (hours === 1) wordKeys.push('HORA');
+  else if (hours !== 12) wordKeys.push('HORAS');
 
   return wordKeys;
 }

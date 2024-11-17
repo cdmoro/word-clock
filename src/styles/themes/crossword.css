@@ -22,6 +22,7 @@
     color: var(--background);
 }
 
-[data-theme|='crossword'] body.focus .secondary {
+[data-theme|='crossword'] body.focus .char.secondary.active,
+[data-theme|='crossword'] body.fuzzy.focus #fuzzy-clock .secondary {
     color: color-mix(in srgb, var(--background), transparent 50%);
 }
