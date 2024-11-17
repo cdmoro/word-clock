@@ -51,22 +51,33 @@ body:not(.show-time) #time-clock {
   display: none;
 }
 
-#clock {
+#clock,
+#fuzzy-clock {
   margin: 0 auto;
   max-width: 80vw;
   position: relative;
-  display: grid;
-  grid-template-columns: repeat(11, 1fr);
-  row-gap: 5px;
-  margin: 0 auto;
   z-index: 2;
   padding: .7rem .5rem;
   font-family: var(--override-quote-font-family, var(--clock-font-family));
-  font-size: 2.5vw;
   line-height: var(--clock-line-height, 1);
   transition: all .5s;
   font-weight: var(--clock-font-weight, normal);
   border-radius: 0.5rem;
+}
+
+#clock {
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+  row-gap: 5px;
+  font-size: 2.5vw;
+}
+
+#fuzzy-clock {
+  font-size: 5vw;
+  text-wrap: balance;
+  color: var(--accent-color);
+  padding: 1.5vw 2vw;
+  text-align: center;
 }
 
 body.no-transitions #clock,

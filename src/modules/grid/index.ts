@@ -89,6 +89,7 @@ export function highlightGrid(time: string = getTime()) {
       .join('')
       .trim();
 
+    document.querySelector('#fuzzy-clock')!.textContent = ariaDescription;
     document.querySelector('#clock')?.setAttribute('aria-label', time);
     document.querySelector('#clock')?.setAttribute('aria-description', ariaDescription);
   }, 500);

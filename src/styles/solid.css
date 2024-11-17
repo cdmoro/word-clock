@@ -1,14 +1,17 @@
 body.solid #clock:has(.active),
-body.solid #clock:has(.idle) {
+body.solid #clock:has(.idle),
+body.solid #fuzzy-clock {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 [data-theme$='light'] body.solid #clock:has(.active),
-[data-theme$='light'] body.solid #clock:has(.idle) {
+[data-theme$='light'] body.solid #clock:has(.idle),
+[data-theme$='light'] body.solid #fuzzy-clock {
   background-color: #fffa;
 }
 
 [data-theme$='dark'] body.solid #clock:has(.active),
-[data-theme$='dark'] body.solid #clock:has(.idle) {
+[data-theme$='dark'] body.solid #clock:has(.idle),
+[data-theme$='dark'] body.solid #fuzzy-clock {
   background-color: #0009;
 }
