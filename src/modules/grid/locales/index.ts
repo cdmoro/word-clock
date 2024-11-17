@@ -9,6 +9,7 @@ import itIT from './it-IT';
 import nlNL from './nl-NL';
 import ptPT from './pt-PT';
 import noNO from './no-NO';
+import csCZ from './cs-CZ';
 
 const LOCALE_CONFIG: Record<Locale, LocaleGridConfig> = {
   'en-US': enUS,
@@ -21,6 +22,7 @@ const LOCALE_CONFIG: Record<Locale, LocaleGridConfig> = {
   'nl-NL': nlNL,
   'sv-SE': svSE,
   'no-NO': noNO,
+  'cs-CZ': csCZ,
 };
 
 export function getLocaleConfig(locale: Locale) {
