@@ -1,7 +1,3 @@
 body.focus .char:not(.active) {
   color: color-mix(in srgb, var(--font-color), transparent 92%);
 }
-
-body.focus .char.secondary.active {
-  color: color-mix(in srgb, var(--accent-color), transparent 60%);
-}
