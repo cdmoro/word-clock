@@ -80,6 +80,7 @@ body:not(.show-time) #time-clock {
   text-align: center;
   line-height: var(--clock-line-height, 1.3);
   word-spacing: .3rem;
+  letter-spacing: .4rem;
 }
 
 body.no-transitions #clock,
