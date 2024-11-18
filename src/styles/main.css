@@ -320,7 +320,9 @@ footer {
 
 @media only screen and (max-width: 500px) {
   #fuzzy-clock {
-    max-width: 70vw;
+    max-width: unset;
+    margin: 0 1rem;
+    text-wrap: unset;
   }
 }
 

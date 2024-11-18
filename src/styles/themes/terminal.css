@@ -46,6 +46,7 @@
 
 [data-theme|='terminal'] .char {
   border: transparent solid 1px;
+  padding: 1vh 1.5vw
 }
 
 [data-theme|='terminal'] .char.active {
