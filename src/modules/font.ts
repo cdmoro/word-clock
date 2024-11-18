@@ -7,7 +7,7 @@ export const THEME_FONTS: Record<string, string[]> = {
   elegant: ['Playfair Display'],
   festive: ['Leckerli One'],
   bohemian: ['Comfortaa'],
-  handwriting: ['Indie Flower', 'Mynerve'],
+  handwriting: ['Mynerve'],
   anaglyph: ['Anton'],
   whatsapp: ['Roboto'],
   terminal: ['B612 Mono'],
@@ -15,7 +15,7 @@ export const THEME_FONTS: Record<string, string[]> = {
   subtle: ['Unna'],
   poster: ['Averia Serif Libre', 'Allura'],
   dynamic: ['Caveat', 'Indie Flower', 'Yeseva One', 'Sacramento'],
-  photo: ['Abril Fatface'],
+  photo: ['Geologica'],
   kindle: ['Noto Serif'],
 };
 
