@@ -48,7 +48,7 @@ export function getCharCoords(locale: Locale, time: string) {
 
 export function highlightGrid(time: string = getTime()) {
   if (store.get('solid') && store.get('fuzzy')) {
-    document.body?.classList.add('no-transitions');
+    document.body?.classList.add('loading');
   }
 
   const locale = store.get('locale');
@@ -63,7 +63,7 @@ export function highlightGrid(time: string = getTime()) {
   });
 
   setTimeout(() => {
-    document.body?.classList.remove('no-transitions');
+    document.body?.classList.remove('loading');
     words.forEach((word, wordIdx) => {
       longestWord = Math.max(word.length, longestWord);
 

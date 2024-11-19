@@ -84,8 +84,8 @@ body:not(.show-time) #time-clock {
   letter-spacing: .4rem;
 }
 
-body.no-transitions #clock,
-body.no-transitions #clock .char {
+body.loading #clock,
+body.loading #clock .char {
   transition: none;
 }
 

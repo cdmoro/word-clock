@@ -6,7 +6,17 @@ interface WordData {
 }
 
 export function initFuzzy() {
-  document.getElementById('fuzzy')?.addEventListener('click', () => store.toggle('fuzzy'));
+  checkMini();
+  document.getElementById('fuzzy')?.addEventListener('click', () => {
+    checkMini();
+    store.toggle('fuzzy');
+  });
+}
+
+function checkMini() {
+  if (store.get('mini')) {
+    store.set('mini', false);
+  }
 }
 
 export function generateFuzzyClockTime() {
