@@ -10,12 +10,6 @@ body.mini .char.first {
   grid-column: 1;
 }
 
-body.mini .char.idle,
-body.mini .char.tertiary {
+body.mini .char.idle {
   display: initial;
-}
-
-body.mini .char {
-  grid-row: var(--row);
-  grid-column: var(--col);
 }

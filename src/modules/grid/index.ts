@@ -57,22 +57,13 @@ export function highlightGrid(time: string = getTime()) {
 
   const chars = document.querySelectorAll<HTMLDivElement>('#clock .char');
   chars.forEach((cell) => {
-    cell.classList.add('char');
-    cell.classList.toggle(
-      'idle',
-      ((store.get('mini') || store.get('fuzzy')) && cell.classList.contains('active')) ||
-        (store.get('mini') && cell.classList.contains('tertiary')),
-    );
-    cell.classList.remove('active', 'tertiary', 'last');
-    if (store.get('mini')) {
-      cell.classList.remove('first');
-    }
+    cell.classList.toggle('idle', cell.classList.contains('active'));
+    cell.classList.remove('active');
     delete cell.dataset.word;
   });
 
   setTimeout(() => {
     document.body?.classList.remove('no-transitions');
-
     words.forEach((word, wordIdx) => {
       longestWord = Math.max(word.length, longestWord);
 
@@ -80,31 +71,18 @@ export function highlightGrid(time: string = getTime()) {
         const char = chars[index];
 
         char.classList.add('active');
-        char.style.setProperty('--row', (wordIdx + 1).toString());
-        char.style.setProperty('--col', (pos + 1).toString());
         char.classList.toggle('first', pos === 0);
         char.classList.toggle('last', pos === word.length - 1);
+
         char.dataset.word = wordIdx.toString();
       });
+
+      if (longestWord > 0) {
+        document.documentElement.style.setProperty('--longest-word', longestWord.toString());
+      }
     });
 
     document.querySelectorAll('.char.idle').forEach((charIdle) => charIdle.classList.remove('idle'));
-
-    if (longestWord > 0) {
-      document.documentElement.style.setProperty('--longest-word', longestWord.toString());
-
-      document.querySelectorAll('.first.active').forEach((_el, row) => {
-        const chars = document.querySelectorAll(`[data-word="${row}"]`).length;
-        const remainingChars = longestWord - chars;
-
-        for (let i = 0; i < remainingChars; i++) {
-          const tertiaryChar = document.querySelector<HTMLDivElement>('.char:not(.active):not(.tertiary)');
-          tertiaryChar?.classList.add('tertiary');
-          tertiaryChar?.style.setProperty('--row', (row + 1).toString());
-        }
-      });
-    }
-
     const ariaDescription = Array.from(document.querySelectorAll('#clock .char.active'))
       .map(
         (el) =>
@@ -140,9 +118,6 @@ export function drawGrid() {
       charEl.classList.toggle('apostrophe', !!charsWithApostrophe?.includes(index));
       charEl.classList.toggle('secondary', !!secondaryChars?.includes(index));
       charEl.textContent = char;
-      charEl.removeAttribute('style');
-      delete charEl.dataset.word;
-      delete charEl.dataset.index;
 
       if (!gridExists) {
         clock?.appendChild(charEl);
