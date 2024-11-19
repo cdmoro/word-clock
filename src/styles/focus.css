@@ -2,6 +2,7 @@ body.focus .char:not(.active) {
   color: color-mix(in srgb, var(--font-color), transparent 92%);
 }
 
-body.focus .char.secondary.active {
+body.focus .char.secondary.active,
+body.focus #fuzzy-clock .secondary {
   color: color-mix(in srgb, var(--accent-color), transparent 60%);
 }

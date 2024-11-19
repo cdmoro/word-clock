@@ -1,15 +1,16 @@
 [data-theme|='handwriting'] {
-  --clock-font-family: 'Indie Flower', sans-serif;
+  --clock-font-family: 'Mynerve', sans-serif;
   --clock-line-height: 1;
   --accent-color: #077fc6;
 }
 
-[data-theme|='handwriting'][lang=el] {
-  --clock-font-family: 'Mynerve', sans-serif;
+[data-theme|='handwriting'] .char,
+[data-theme|='handwriting'] .fuzzy-wrapper {
+  border-bottom: solid 1px color-mix(in srgb, var(--font-color), transparent 75%);
 }
 
-[data-theme|='handwriting'] .char {
-  border-bottom: solid 1px color-mix(in srgb, var(--font-color), transparent 75%);
+[data-theme|='handwriting'] .fuzzy-wrapper {
+  padding: .5rem 1rem;
 }
 
 [data-theme='handwriting-light'] {

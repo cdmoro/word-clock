@@ -23,7 +23,7 @@ const testCases: Record<Locale, Record<string, string>> = {
   'pt-PT': {
     '12:30': 'SÃO MEIO DIA E MEIA',
     '12:32': 'SÃO MEIO DIA E MEIA',
-    '12:35': 'É UMA MENOS VINTE E CINCO',
+    '12:35': 'É UMA HORA MENOS VINTE E CINCO',
   },
   'fr-FR': {
     '12:30': 'IL EST MIDI ET DEMIE',
@@ -133,7 +133,6 @@ describe('getWordsKeys', () =>
           const output = getCharCoords(locale as Locale, time);
 
           const outputPhrase = output
-            .sort((a, b) => a[0] - b[0])
             .map((word) =>
               word
                 .map((index) => {

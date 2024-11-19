@@ -1,15 +1,21 @@
-body.fuzzy #clock {
-  grid-template-columns: repeat(var(--longest-word, 11), 1fr);
-}
-
-body.fuzzy .char:not(.active) {
+#fuzzy-clock {
   display: none;
 }
 
-body.fuzzy .char.first {
-  grid-column: 1;
+body.fuzzy #fuzzy-clock {
+  display: block;
 }
 
-body.fuzzy .char.idle {
-  display: initial;
+body.fuzzy #clock {
+  display: none;
+}
+
+body.fuzzy #fuzzy-clock .secondary {
+  transition: color .5s;
+}
+
+@media only screen and (max-width: 500px) {
+  #fuzzy-clock {
+    font-size: 2.5rem;
+  }
 }

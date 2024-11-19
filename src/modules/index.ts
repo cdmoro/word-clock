@@ -10,6 +10,7 @@ import { initGrid } from './grid';
 import { initFocus } from './focus';
 import { initFuzzy } from './fuzzy';
 import { initSolid } from './solid';
+import { initMiniMode } from './mini';
 
 const MODULES = [
   initStaticMode,
@@ -24,6 +25,7 @@ const MODULES = [
   initFocus,
   initFuzzy,
   initSolid,
+  initMiniMode,
 ];
 
 export function initModules() {

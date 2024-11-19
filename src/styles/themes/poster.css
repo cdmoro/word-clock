@@ -5,12 +5,14 @@
   --clock-line-height: 1;
 }
 
-[data-theme|='poster'] #clock {
+[data-theme|='poster'] #clock,
+[data-theme|='poster'] #fuzzy-clock {
   border-width: 1rem;
   border-style: solid;
   padding: 1.5rem;
   overflow: hidden;
   background-image: url('/assets/poster-bg.png');
+  border-radius: 0;
 }
 
 [data-theme|='poster'] body.solid #clock {
@@ -18,10 +20,13 @@
 }
 
 [data-theme|='poster'] .char:not(.active) {
-  color: color-mix(in srgb, var(--font-color), transparent 70%)
+  color: color-mix(in srgb, var(--font-color), transparent 60%)
 }
 
-[data-theme='poster-light'] #clock {
+[data-theme='poster-light'] #clock,
+[data-theme='poster-light'] #fuzzy-clock,
+[data-theme='poster-light'] body.solid #clock,
+[data-theme='poster-light'] body.solid #fuzzy-clock {
   border-color: #111111;
   box-shadow:
     5px 5px 10px #333333 inset,
@@ -29,12 +34,14 @@
   background: #ffffff;
 }
 
-[data-theme='poster-dark'] #clock {
+[data-theme='poster-dark'] #clock,
+[data-theme='poster-dark'] #fuzzy-clock,
+[data-theme='poster-dark'] body.solid #clock,
+[data-theme='poster-dark'] body.solid #fuzzy-clock {
   border-color: #dfab5d;
   box-shadow:
     5px 5px 15px #000000 inset,
     10px 10px 25px #000000;
-  color: #ffffff;
   background-color: #000000;
   background-blend-mode: hard-light;
 }
