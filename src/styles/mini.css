@@ -1,0 +1,15 @@
+body.mini #clock {
+  grid-template-columns: repeat(var(--longest-word, 11), 1fr);
+}
+
+body.mini .char:not(.active) {
+  display: none;
+}
+
+body.mini .char.first {
+  grid-column: 1;
+}
+
+body.mini .char.idle {
+  display: initial;
+}

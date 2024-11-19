@@ -114,7 +114,6 @@ describe('getWordsKeys', () =>
           const output = getCharCoords(locale as Locale, time);
 
           const outputPhrase = output
-            .sort((a, b) => a[0] - b[0])
             .map((word) =>
               word
                 .map((index) => {

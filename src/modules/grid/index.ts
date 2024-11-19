@@ -57,7 +57,7 @@ export function highlightGrid(time: string = getTime()) {
 
   const chars = document.querySelectorAll<HTMLDivElement>('#clock .char');
   chars.forEach((cell) => {
-    cell.classList.toggle('idle', store.get('fuzzy') && cell.classList.contains('active'));
+    cell.classList.toggle('idle', cell.classList.contains('active'));
     cell.classList.remove('active');
     delete cell.dataset.word;
   });
