@@ -21,6 +21,8 @@ const testCases: Record<Locale, Record<string, string>> = {
     '22:58': 'SONO LE UNDICI MENO CINQUE',
   },
   'pt-PT': {
+    '00:00': 'SÃO MEIA NOITE',
+    '12:00': 'SÃO MEIO DIA',
     '12:30': 'SÃO MEIO DIA E MEIA',
     '12:32': 'SÃO MEIO DIA E MEIA',
     '12:35': 'É UMA HORA MENOS VINTE E CINCO',
@@ -31,9 +33,26 @@ const testCases: Record<Locale, Record<string, string>> = {
     '12:35': 'IL EST UNE HEURES MOINS VINGT-CINQ',
   },
   'de-DE': {
-    '17:05': 'ES IST FÜNF NACH FÜNF',
-    '20:26': 'ES IST FÜNF ZWANZIG NACH ACHT',
-  },
+     '01:00': 'ES IST EINS UHR',
+     '01:05': 'ES IST FÜNF NACH EINS',
+     '01:10': 'ES IST ZEHN NACH EINS',
+     '01:15': 'ES IST VIERTEL NACH EINS',
+     '01:20': 'ES IST ZWANZIG NACH EINS',
+     '01:25': 'ES IST FÜNF ZWANZIG NACH EINS',
+     '01:30': 'ES IST HALB EINS',
+     '01:35': 'ES IST FÜNF ZWANZIG VOR ZWEI',
+     '01:40': 'ES IST ZWANZIG VOR ZWEI',
+     '01:45': 'ES IST VIERTEL VOR ZWEI',
+     '01:50': 'ES IST ZEHN VOR ZWEI',
+     '01:55': 'ES IST FÜNF VOR ZWEI',
+     '02:00': 'ES IST ZWEI UHR',
+     '07:30': 'ES IST HALB SIEBE',
+     '10:00': 'ES IST ZEHN UHR',
+     '12:00': 'ES IST ZWÖLF UHR',
+     '12:30': 'ES IST HALB ZWÖLF',
+     '17:05': 'ES IST FÜNF NACH FÜNF',
+     '20:26': 'ES IST FÜNF ZWANZIG NACH ACHT',
+   },
   'el-GR': {
     '17:05': 'Η ΩΡΑ ΕΙΝΑΙ ΠΕΝΤΕ ΚΑΙ ΠΕΝΤΕ',
     '20:26': 'Η ΩΡΑ ΕΙΝΑΙ ΟΧΤΩ ΚΑΙ ΕΙΚΟΣΙ ΠΕΝΤΕ',
@@ -116,11 +135,7 @@ describe('getWordsKeys', () =>
           const outputPhrase = output
             .map((word) =>
               word
-                .map((index) => {
-                  const row = Math.floor(index / 11);
-                  const col = index % 11;
-                  return grid[row][col];
-                })
+                .map((index) => grid[Math.floor(index / 11)][index % 11])
                 .join(''),
             )
             .join(' ');
