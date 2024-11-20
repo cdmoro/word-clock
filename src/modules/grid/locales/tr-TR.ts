@@ -14,18 +14,18 @@ const grid = [
 ];
 
 const commonWords: CommonWords = {
-  ONE: [0, 1, 2], // BİRİ
-  TWO: [22, 23, 24], // İKİYİ
-  THREE: [33, 34, 35], // ÜÇÜ
-  FOUR: [44, 45], // DÖRDÜ
-  FIVE: [55, 56], // BEŞİ
-  SIX: [66, 67], // ALTI
-  SEVEN: [77, 78], // YEDİ
-  EIGHT: [88, 89], // SEKİZİ
-  NINE: [99, 100], // DOKUZ
+  ONE: [11, 12, 13], // BİR
+  TWO: [22, 23, 24], // İKİ
+  THREE: [8, 9, 10], // ÜÇÜ
+  FOUR: [33, 34, 35, 36, 37], // DÖRDÜ
+  FIVE: [62, 63, 64, 65], // BEŞİ
+  SIX: [15, 16, 17, 18], // ALTI
+  SEVEN: [38, 39, 40, 41], // YEDİ
+  EIGHT: [44, 45, 46, 47, 48, 49], // SEKİZİ
+  NINE: [27, 28, 29, 30, 31], // DOKUZ
   TEN: [5, 6], // ON
-  ELEVEN: [122, 123], // BİRİ
-  TWELVE: [22, 23, 24, 25, 26], // ON İKİ
+  ELEVEN: [[5, 6], [11, 12, 13]], // ON BİR
+  TWELVE: [[5, 6], [22, 23, 24]], // ON İKİ
   FIVE_MIN: [99, 100, 101], // BEŞ (five minutes)
   TEN_MIN: [81, 82], // ON (ten minutes)
   QUARTER_MIN: [93, 94, 95, 96, 97, 98], // ÇEYREK (quarter)
@@ -53,7 +53,7 @@ function getLocaleWordKeys(_hours: number, minutes: number) {
   else if (minutes >= 40 && minutes < 45) wordKeys.push('KIRK')
   else if (minutes >= 45 && minutes < 50) wordKeys.push('KIRK', 'FIVE_MIN')
   else if (minutes >= 50 && minutes < 55) wordKeys.push('ELLI')
-  else wordKeys.push('ELLI', 'FIVE_MIN')
+  else if (minutes >= 55) wordKeys.push('ELLI', 'FIVE_MIN')
   // Si es hora exacta (minutos = 0), no necesitamos "YARIM"
   // if (minutes === 0) {
   //   wordKeys.push('RONU'); // Si es en punto, agregar RONU

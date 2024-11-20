@@ -103,7 +103,7 @@ const testCases: Record<Locale, Record<string, string>> = {
     '07:30': 'JE SEDM TŘICET',
   },
   'tr-TR': {
-    '01:00': 'SAATRON SAA UÜ UÜ', // 'SAAT BİRİ',
+    '01:00': 'SAAT BİR', // 'SAAT BİRİ',
     // '01:05': 'SAAT BİRİ BEŞ',
     // '01:10': 'SAAT BİRİ ON',
     // '01:15': 'SAAT BİRİ ÇEYREK',
