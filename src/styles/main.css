@@ -75,7 +75,7 @@ body:not(.show-time) #time-clock {
 #fuzzy-clock {
   max-width: 50vw;
   font-size: 4vw;
-  text-wrap: balance;
+  /* text-wrap: balance; */
   color: var(--accent-color);
   padding: 1.5vw 2vw;
   text-align: center;
