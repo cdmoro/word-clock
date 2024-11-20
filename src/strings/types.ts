@@ -53,6 +53,7 @@ export type Translations = {
   random: string;
   report_error: string;
   retro: string;
+  'ro-RO': string;
   screensaver_mode: string;
   share: string;
   subtle: string;
