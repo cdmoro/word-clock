@@ -1,4 +1,4 @@
-import { CommonWords, LocaleGridConfig, WordKeys } from '../../../types';
+import { CommonWords, HourKey, LocaleGridConfig, WordKeys } from '../../../types';
 import { HOURS } from '../constants';
 
 const grid = [
@@ -15,18 +15,18 @@ const grid = [
 ];
 
 const commonWords: CommonWords = {
+  TWELVE: [[5, 6], [22, 23, 24]], // ON İKİ
   ONE: [11, 12, 13], // BİR
   TWO: [22, 23, 24], // İKİ
-  THREE: [8, 9, 10], // ÜÇÜ
-  FOUR: [33, 34, 35, 36, 37], // DÖRDÜ
-  FIVE: [62, 63, 64, 65], // BEŞİ
+  THREE: [8, 9], // ÜÇ
+  FOUR: [55, 56, 57, 58], // DÖRT
+  FIVE: [62, 63, 64], // BEŞ
   SIX: [15, 16, 17, 18], // ALTI
   SEVEN: [38, 39, 40, 41], // YEDİ
-  EIGHT: [44, 45, 46, 47, 48, 49], // SEKİZİ
+  EIGHT: [44, 45, 46, 47, 48], // SEKİZ
   NINE: [27, 28, 29, 30, 31], // DOKUZ
   TEN: [5, 6], // ON
   ELEVEN: [[5, 6], [11, 12, 13]], // ON BİR
-  TWELVE: [[5, 6], [22, 23, 24]], // ON İKİ
   FIVE_MIN: [99, 100, 101], // BEŞ (five minutes)
   TEN_MIN: [81, 82], // ON (ten minutes)
   QUARTER_MIN: [93, 94, 95, 96, 97, 98], // ÇEYREK
@@ -35,21 +35,43 @@ const commonWords: CommonWords = {
   HALF: [88, 89, 90, 91, 92], // BUÇUK
 };
 
+const ACUSATIVE_HOURS = {
+  TWELVE_AC: [[5, 6], [22, 23, 24, 25, 26]], // ON İKİYİ
+  ONE_AC: [11, 12, 13, 14], // BİRİ
+  TWO_AC: [22, 23, 24, 25, 26], // İKİYİ
+  THREE_AC: [8, 9, 10], // ÜÇÜ
+  FOUR_AC: [33, 34, 35, 36, 37], // DÖRDÜ
+  FIVE_AC: [62, 63, 64, 65], // BEŞİ
+  SIX_AC: [15, 16, 17, 18, 19, 20], // ALTIYI
+  SEVEN_AC: [38, 39, 40, 41, 42, 43], // YEDİYİ
+  EIGHT_AC: [44, 45, 46, 47, 48, 49], // SEKİZİ
+  NINE_AC: [27, 28, 29, 30, 31, 32], // DOKUZU
+  TEN_AC: [5, 6, 7], // ONU
+  ELEVEN_AC: [[5, 6], [11, 12, 13, 14]], // ON BİRİ
+}
+
 const localeWords = {
   SAAT: [0, 1, 2, 3], // SAAT
   OTUZ: [69, 70, 71, 72], // THIRTY
   KIRK: [73, 74, 75, 76], // FORTY
   ELLI: [77, 78, 79, 80], // FIFTY
   GEÇİYOR: [103, 104, 105, 106, 107, 108, 109], // PAST
+  ...ACUSATIVE_HOURS,
 };
 
 function getCustomWordKeys(time: string) {
   const [hours, minutes] = time.split(':').map((t) => parseInt(t));
   const wordKeys: WordKeys<typeof localeWords>[] = ['SAAT'];
 
-  wordKeys.push(HOURS[hours % 12]);
+  let hourKey = HOURS[hours % 12]
 
-  if (minutes !== 0 && minutes !== 30) wordKeys.push('GEÇİYOR')
+  if ((minutes >=5 && minutes < 30) || minutes >= 35) {
+    hourKey += '_AC'
+  }
+
+  wordKeys.push(hourKey as HourKey);
+
+  if ((minutes >= 5 && minutes < 30) || minutes >= 35) wordKeys.push('GEÇİYOR')
 
   if (minutes >= 5 && minutes < 10) wordKeys.push('FIVE_MIN')
   else if (minutes >= 10 && minutes < 15) wordKeys.push('TEN_MIN')
