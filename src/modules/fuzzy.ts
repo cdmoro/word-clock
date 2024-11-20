@@ -1,9 +1,11 @@
 import { store } from '../store';
 
 interface WordData {
-  text: string;
+  word: string;
   isSecondary: boolean;
 }
+
+const CAPITALIZE_WORDS = ["UHR"];
 
 export function initFuzzy() {
   checkMini();
@@ -33,12 +35,12 @@ export function generateFuzzyClockTime() {
     const isApostrophe = char.classList.contains('apostrophe');
 
     if (!words[wordIndex]) {
-      words[wordIndex] = { text: '', isSecondary: true };
+      words[wordIndex] = { word: '', isSecondary: true };
     }
 
-    words[wordIndex].text += char.textContent || '';
+    words[wordIndex].word += char.textContent || '';
     if (isApostrophe) {
-      words[wordIndex].text += '’';
+      words[wordIndex].word += '’';
     }
 
     if (!isSecondary) {
@@ -48,8 +50,10 @@ export function generateFuzzyClockTime() {
 
   const content: string[] = [];
 
-  Object.values(words).forEach(({ text, isSecondary }) =>
-    content.push(isSecondary ? `<span class="secondary">${text}</span>` : text),
+  Object.values(words).forEach(({ word, isSecondary }, index) => {
+    word = index === 0 || CAPITALIZE_WORDS.includes(word) ? word.charAt(0) + word.slice(1).toLowerCase() : word.toLowerCase();
+    content.push(isSecondary ? `<span class="secondary">${word}</span>` : word);
+    }
   );
 
   document.querySelector('#fuzzy-clock')!.innerHTML = `<div class="fuzzy-wrapper">${content.join(' ')}</div>`;
