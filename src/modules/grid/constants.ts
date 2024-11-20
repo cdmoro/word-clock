@@ -1,4 +1,4 @@
-import { HourKey, MinuteKey } from "../../types";
+import { HourKey, MinuteKey } from '../../types';
 
 export const HOURS: HourKey[] = [
   'TWELVE',

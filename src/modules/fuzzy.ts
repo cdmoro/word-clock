@@ -5,7 +5,7 @@ interface WordData {
   isSecondary: boolean;
 }
 
-const CAPITALIZE_WORDS = ["UHR"];
+const CAPITALIZE_WORDS = ['UHR'];
 const SPECIAL_WORDS = {
   'o’clock': 'O’Clock',
 };
@@ -54,15 +54,17 @@ export function generateFuzzyClockTime() {
   const content: string[] = [];
 
   Object.values(words).forEach(({ word, isSecondary }, index) => {
-    word = index === 0 || CAPITALIZE_WORDS.includes(word) ? word.charAt(0) + word.slice(1).toLowerCase() : word.toLowerCase();
+    word =
+      index === 0 || CAPITALIZE_WORDS.includes(word)
+        ? word.charAt(0) + word.slice(1).toLowerCase()
+        : word.toLowerCase();
 
     if (word in SPECIAL_WORDS) {
       word = SPECIAL_WORDS[word as keyof typeof SPECIAL_WORDS];
     }
 
     content.push(isSecondary ? `<span class="secondary">${word}</span>` : word);
-    }
-  );
+  });
 
   document.querySelector('#fuzzy-clock')!.innerHTML = `<div class="fuzzy-wrapper">${content.join(' ')}</div>`;
 }

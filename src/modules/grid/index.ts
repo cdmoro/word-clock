@@ -16,7 +16,7 @@ function getCommonCharCoords(locale: Locale, time: string) {
     hours = (hours + 1) % 12 || 12;
   }
 
-  wordKeys.push(...getLocaleWordKeys?.(hours, minutes) || []);
+  wordKeys.push(...(getLocaleWordKeys?.(hours, minutes) || []));
   wordKeys.push(HOURS[hours % 12]);
 
   if (minutes >= 5) {

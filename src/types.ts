@@ -10,7 +10,8 @@ declare global {
 
 export type Locale = keyof typeof TRANSLATIONS;
 
-export type HourKey = | 'ONE'
+export type HourKey =
+  | 'ONE'
   | 'TWO'
   | 'THREE'
   | 'FOUR'
@@ -21,14 +22,9 @@ export type HourKey = | 'ONE'
   | 'NINE'
   | 'TEN'
   | 'ELEVEN'
-  | 'TWELVE'
+  | 'TWELVE';
 
-export type MinuteKey = 'FIVE_MIN'
-  | 'TEN_MIN'
-  | 'QUARTER_MIN'
-  | 'TWENTY_MIN'
-  | 'TWENTYFIVE_MIN'
-  | 'HALF'
+export type MinuteKey = 'FIVE_MIN' | 'TEN_MIN' | 'QUARTER_MIN' | 'TWENTY_MIN' | 'TWENTYFIVE_MIN' | 'HALF';
 
 export type CommonWordsKey = HourKey | MinuteKey;
 

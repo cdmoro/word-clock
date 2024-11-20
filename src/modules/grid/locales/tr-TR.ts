@@ -15,7 +15,10 @@ const grid = [
 ];
 
 const commonWords: CommonWords = {
-  TWELVE: [[5, 6], [22, 23, 24]], // ON İKİ
+  TWELVE: [
+    [5, 6],
+    [22, 23, 24],
+  ], // ON İKİ
   ONE: [11, 12, 13], // BİR
   TWO: [22, 23, 24], // İKİ
   THREE: [8, 9], // ÜÇ
@@ -26,17 +29,26 @@ const commonWords: CommonWords = {
   EIGHT: [44, 45, 46, 47, 48], // SEKİZ
   NINE: [27, 28, 29, 30, 31], // DOKUZ
   TEN: [5, 6], // ON
-  ELEVEN: [[5, 6], [11, 12, 13]], // ON BİR
+  ELEVEN: [
+    [5, 6],
+    [11, 12, 13],
+  ], // ON BİR
   FIVE_MIN: [99, 100, 101], // BEŞ (five minutes)
   TEN_MIN: [81, 82], // ON (ten minutes)
   QUARTER_MIN: [93, 94, 95, 96, 97, 98], // ÇEYREK
   TWENTY_MIN: [83, 84, 85, 86, 87], // YİRMİ
-  TWENTYFIVE_MIN: [[83, 84, 85, 86, 87], [99, 100, 101]], // YİRMİ BEŞ
+  TWENTYFIVE_MIN: [
+    [83, 84, 85, 86, 87],
+    [99, 100, 101],
+  ], // YİRMİ BEŞ
   HALF: [88, 89, 90, 91, 92], // BUÇUK
 };
 
 const ACUSATIVE_HOURS = {
-  TWELVE_AC: [[5, 6], [22, 23, 24, 25, 26]], // ON İKİYİ
+  TWELVE_AC: [
+    [5, 6],
+    [22, 23, 24, 25, 26],
+  ], // ON İKİYİ
   ONE_AC: [11, 12, 13, 14], // BİRİ
   TWO_AC: [22, 23, 24, 25, 26], // İKİYİ
   THREE_AC: [8, 9, 10], // ÜÇÜ
@@ -47,8 +59,11 @@ const ACUSATIVE_HOURS = {
   EIGHT_AC: [44, 45, 46, 47, 48, 49], // SEKİZİ
   NINE_AC: [27, 28, 29, 30, 31, 32], // DOKUZU
   TEN_AC: [5, 6, 7], // ONU
-  ELEVEN_AC: [[5, 6], [11, 12, 13, 14]], // ON BİRİ
-}
+  ELEVEN_AC: [
+    [5, 6],
+    [11, 12, 13, 14],
+  ], // ON BİRİ
+};
 
 const localeWords = {
   SAAT: [0, 1, 2, 3], // SAAT
@@ -63,27 +78,27 @@ function getCustomWordKeys(time: string) {
   const [hours, minutes] = time.split(':').map((t) => parseInt(t));
   const wordKeys: WordKeys<typeof localeWords>[] = ['SAAT'];
 
-  let hourKey = HOURS[hours % 12]
+  let hourKey = HOURS[hours % 12];
 
-  if ((minutes >=5 && minutes < 30) || minutes >= 35) {
-    hourKey += '_AC'
+  if ((minutes >= 5 && minutes < 30) || minutes >= 35) {
+    hourKey += '_AC';
   }
 
   wordKeys.push(hourKey as HourKey);
 
-  if ((minutes >= 5 && minutes < 30) || minutes >= 35) wordKeys.push('GEÇİYOR')
+  if ((minutes >= 5 && minutes < 30) || minutes >= 35) wordKeys.push('GEÇİYOR');
 
-  if (minutes >= 5 && minutes < 10) wordKeys.push('FIVE_MIN')
-  else if (minutes >= 10 && minutes < 15) wordKeys.push('TEN_MIN')
-  else if (minutes >= 15 && minutes < 20) wordKeys.push('QUARTER_MIN')
-  else if (minutes >= 20 && minutes < 25) wordKeys.push('TWENTY_MIN')
-  else if (minutes >= 25 && minutes < 30) wordKeys.push('TWENTYFIVE_MIN')
-  else if (minutes >= 30 && minutes < 35) wordKeys.push('HALF')
-  else if (minutes >= 35 && minutes < 40) wordKeys.push('OTUZ', 'FIVE_MIN')
-  else if (minutes >= 40 && minutes < 45) wordKeys.push('KIRK')
-  else if (minutes >= 45 && minutes < 50) wordKeys.push('KIRK', 'FIVE_MIN')
-  else if (minutes >= 50 && minutes < 55) wordKeys.push('ELLI')
-  else if (minutes >= 55) wordKeys.push('ELLI', 'FIVE_MIN')
+  if (minutes >= 5 && minutes < 10) wordKeys.push('FIVE_MIN');
+  else if (minutes >= 10 && minutes < 15) wordKeys.push('TEN_MIN');
+  else if (minutes >= 15 && minutes < 20) wordKeys.push('QUARTER_MIN');
+  else if (minutes >= 20 && minutes < 25) wordKeys.push('TWENTY_MIN');
+  else if (minutes >= 25 && minutes < 30) wordKeys.push('TWENTYFIVE_MIN');
+  else if (minutes >= 30 && minutes < 35) wordKeys.push('HALF');
+  else if (minutes >= 35 && minutes < 40) wordKeys.push('OTUZ', 'FIVE_MIN');
+  else if (minutes >= 40 && minutes < 45) wordKeys.push('KIRK');
+  else if (minutes >= 45 && minutes < 50) wordKeys.push('KIRK', 'FIVE_MIN');
+  else if (minutes >= 50 && minutes < 55) wordKeys.push('ELLI');
+  else if (minutes >= 55) wordKeys.push('ELLI', 'FIVE_MIN');
 
   return wordKeys;
 }

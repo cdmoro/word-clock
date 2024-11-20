@@ -155,11 +155,7 @@ describe('getWordsKeys', () =>
           const output = getCharCoords(locale as Locale, time);
 
           const outputPhrase = output
-            .map((word) =>
-              word
-                .map((index) => grid[Math.floor(index / 11)][index % 11])
-                .join(''),
-            )
+            .map((word) => word.map((index) => grid[Math.floor(index / 11)][index % 11]).join(''))
             .join(' ');
 
           expect(outputPhrase).toEqual(phrase);
