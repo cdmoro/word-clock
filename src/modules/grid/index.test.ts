@@ -121,6 +121,28 @@ const testCases: Record<Locale, Record<string, string>> = {
     '02:00': 'JSOU DVĚ',
     '07:30': 'JE SEDM TŘICET',
   },
+  'tr-TR': {
+    '01:00': 'SAAT BİR',
+    '01:05': 'SAAT BİRİ BEŞ GEÇİYOR',
+    '01:10': 'SAAT BİRİ ON GEÇİYOR',
+    '01:15': 'SAAT BİRİ ÇEYREK GEÇİYOR',
+    '01:20': 'SAAT BİRİ YİRMİ GEÇİYOR',
+    '01:25': 'SAAT BİRİ YİRMİ BEŞ GEÇİYOR',
+    '01:30': 'SAAT BİR BUÇUK',
+    '01:35': 'SAAT BİRİ OTUZ BEŞ GEÇİYOR',
+    '01:40': 'SAAT BİRİ KIRK GEÇİYOR',
+    '01:45': 'SAAT BİRİ KIRK BEŞ GEÇİYOR',
+    '01:50': 'SAAT BİRİ ELLİ GEÇİYOR',
+    '01:55': 'SAAT BİRİ ELLİ BEŞ GEÇİYOR',
+    '02:00': 'SAAT İKİ',
+    '02:05': 'SAAT İKİYİ BEŞ GEÇİYOR',
+    '07:30': 'SAAT YEDİ BUÇUK',
+    '10:00': 'SAAT ON',
+    '10:10': 'SAAT ONU ON GEÇİYOR',
+    '12:00': 'SAAT ON İKİ',
+    '12:05': 'SAAT ON İKİYİ BEŞ GEÇİYOR',
+    '12:30': 'SAAT ON İKİ BUÇUK',
+  },
 };
 
 describe('getWordsKeys', () =>
