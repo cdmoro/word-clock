@@ -23,35 +23,41 @@ const commonWords: CommonWords = {
   SEVEN: [77, 78], // YEDİ
   EIGHT: [88, 89], // SEKİZİ
   NINE: [99, 100], // DOKUZ
-  TEN: [111, 112], // ON
+  TEN: [5, 6], // ON
   ELEVEN: [122, 123], // BİRİ
-  TWELVE: [133, 134], // ON İKİ
-  FIVE_MIN: [77, 78, 79], // BEŞ (five minutes)
-  TEN_MIN: [11, 12, 13], // ON (ten minutes)
-  QUARTER_MIN: [22, 23, 24, 25, 26], // ÇEYREK (quarter)
-  TWENTY_MIN: [111, 112, 113], // YİRMİ (twenty minutes)
-  TWENTYFIVE_MIN: [121, 122, 123], // YİRMİ BEŞ (twenty-five minutes)
-  HALF: [21, 22], // YARIM (half)
+  TWELVE: [22, 23, 24, 25, 26], // ON İKİ
+  FIVE_MIN: [99, 100, 101], // BEŞ (five minutes)
+  TEN_MIN: [81, 82], // ON (ten minutes)
+  QUARTER_MIN: [93, 94, 95, 96, 97, 98], // ÇEYREK (quarter)
+  TWENTY_MIN: [83, 84, 85, 86, 87], // YİRMİ (twenty minutes)
+  TWENTYFIVE_MIN: [[83, 84, 85, 86, 87], [99, 100, 101]], // YİRMİ BEŞ (twenty-five minutes)
+  HALF: [88, 89, 90, 91, 92], // BUÇUK
 };
 
 const localeWords = {
-  SAAT: [0, 1, 2, 3, 4, 5, 6], // SAAT
+  SAAT: [0, 1, 2, 3], // SAAT
   RONU: [7, 8], // RONU
-  YARIM: [21, 22], // YARIM
+  OTUZ: [69, 70, 71, 72],
+  KIRK: [73, 74, 75, 76],
+  ELLI: [77, 78, 79, 80],
+  GEÇİYOR: [103, 104, 105, 106, 107, 108, 109],
 };
 
 function getLocaleWordKeys(_hours: number, minutes: number) {
-  const wordKeys: WordKeys<typeof localeWords>[] = ['SAAT', 'RONU'];
+  const wordKeys: WordKeys<typeof localeWords>[] = ['SAAT'];
 
   // Determinar si se debe usar "YARIM" para media hora
-  if (minutes === 30) {
-    wordKeys.push('YARIM'); // Si son 30 minutos, agregar YARIM
-  }
+  if (minutes !== 0 && minutes !== 30) wordKeys.push('GEÇİYOR')
 
+  if (minutes >= 35 && minutes < 40) wordKeys.push('OTUZ', 'FIVE_MIN')
+  else if (minutes >= 40 && minutes < 45) wordKeys.push('KIRK')
+  else if (minutes >= 45 && minutes < 50) wordKeys.push('KIRK', 'FIVE_MIN')
+  else if (minutes >= 50 && minutes < 55) wordKeys.push('ELLI')
+  else wordKeys.push('ELLI', 'FIVE_MIN')
   // Si es hora exacta (minutos = 0), no necesitamos "YARIM"
-  if (minutes === 0) {
-    wordKeys.push('RONU'); // Si es en punto, agregar RONU
-  }
+  // if (minutes === 0) {
+  //   wordKeys.push('RONU'); // Si es en punto, agregar RONU
+  // }
 
   return wordKeys;
 }
@@ -63,4 +69,6 @@ export default {
     ...commonWords,
     ...localeWords,
   },
+  secondaryChars: [0, 1, 2, 3],
+  hourMark: 60,
 } satisfies LocaleGridConfig;

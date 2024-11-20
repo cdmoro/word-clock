@@ -63,7 +63,6 @@ export type Translations = {
   themes: string;
   time_mode: string;
   title: string;
-  'tr-TR': string;
   whatsapp: string;
   work_mode: string;
   work_mode_title: string;
