@@ -21,6 +21,8 @@ const testCases: Record<Locale, Record<string, string>> = {
     '22:58': 'SONO LE UNDICI MENO CINQUE',
   },
   'pt-PT': {
+    '00:00': 'SÃO MEIA NOITE',
+    '12:00': 'SÃO MEIO DIA',
     '12:30': 'SÃO MEIO DIA E MEIA',
     '12:32': 'SÃO MEIO DIA E MEIA',
     '12:35': 'É UMA HORA MENOS VINTE E CINCO',
@@ -31,6 +33,23 @@ const testCases: Record<Locale, Record<string, string>> = {
     '12:35': 'IL EST UNE HEURES MOINS VINGT-CINQ',
   },
   'de-DE': {
+    '01:00': 'ES IST EINS UHR',
+    '01:05': 'ES IST FÜNF NACH EINS',
+    '01:10': 'ES IST ZEHN NACH EINS',
+    '01:15': 'ES IST VIERTEL NACH EINS',
+    '01:20': 'ES IST ZWANZIG NACH EINS',
+    '01:25': 'ES IST FÜNF ZWANZIG NACH EINS',
+    '01:30': 'ES IST HALB EINS',
+    '01:35': 'ES IST FÜNF ZWANZIG VOR ZWEI',
+    '01:40': 'ES IST ZWANZIG VOR ZWEI',
+    '01:45': 'ES IST VIERTEL VOR ZWEI',
+    '01:50': 'ES IST ZEHN VOR ZWEI',
+    '01:55': 'ES IST FÜNF VOR ZWEI',
+    '02:00': 'ES IST ZWEI UHR',
+    '07:30': 'ES IST HALB SIEBE',
+    '10:00': 'ES IST ZEHN UHR',
+    '12:00': 'ES IST ZWÖLF UHR',
+    '12:30': 'ES IST HALB ZWÖLF',
     '17:05': 'ES IST FÜNF NACH FÜNF',
     '20:26': 'ES IST FÜNF ZWANZIG NACH ACHT',
   },
@@ -103,23 +122,23 @@ const testCases: Record<Locale, Record<string, string>> = {
     '07:30': 'JE SEDM TŘICET',
   },
   'tr-TR': {
-    '01:00': 'SAAT BİR', // 'SAAT BİRİ',
-    // '01:05': 'SAAT BİRİ BEŞ',
-    // '01:10': 'SAAT BİRİ ON',
-    // '01:15': 'SAAT BİRİ ÇEYREK',
-    // '01:20': 'SAAT BİRİ YİRMİ',
-    // '01:25': 'SAAT BİRİ YİRMİ BEŞ',
-    // '01:30': 'SAAT BİRİ BUÇUK',
-    // '01:35': 'SAAT BİRİ YARIM BEŞ',
-    // '01:40': 'SAAT BİRİ KIRK',
-    // '01:45': 'SAAT BİRİ ÇEYREK KALDI',
-    // '01:50': 'SAAT BİRİ ELLİ',
-    // '01:55': 'SAAT BİRİ ELLİ BEŞ',
-    // '02:00': 'SAAT İKİ',
-    // '07:30': 'SAAT YEDİ BUÇUK',
-    // '10:00': 'SAAT ON',
-    // '12:00': 'SAAT ON İKİ',
-    // '12:30': 'SAAT ON İKİ BUÇUK',
+    '01:00': 'SAAT BİR',
+    '01:05': 'SAAT BİR BEŞ GEÇİYOR',
+    '01:10': 'SAAT BİR ON GEÇİYOR',
+    '01:15': 'SAAT BİR ÇEYREK GEÇİYOR',
+    '01:20': 'SAAT BİR YİRMİ GEÇİYOR',
+    '01:25': 'SAAT BİR YİRMİ BEŞ GEÇİYOR',
+    '01:30': 'SAAT BİR BUÇUK',
+    '01:35': 'SAAT BİR OTUZ BEŞ GEÇİYOR',
+    '01:40': 'SAAT BİR KIRK GEÇİYOR',
+    '01:45': 'SAAT BİR KIRK BEŞ GEÇİYOR',
+    '01:50': 'SAAT BİR ELLİ GEÇİYOR',
+    '01:55': 'SAAT BİR ELLİ BEŞ GEÇİYOR',
+    '02:00': 'SAAT İKİ',
+    '07:30': 'SAAT YEDİ BUÇUK',
+    '10:00': 'SAAT ON',
+    '12:00': 'SAAT ON İKİ',
+    '12:30': 'SAAT ON İKİ BUÇUK',
   },
 };
 
@@ -135,11 +154,7 @@ describe('getWordsKeys', () =>
           const outputPhrase = output
             .map((word) =>
               word
-                .map((index) => {
-                  const row = Math.floor(index / 11);
-                  const col = index % 11;
-                  return grid[row][col];
-                })
+                .map((index) => grid[Math.floor(index / 11)][index % 11])
                 .join(''),
             )
             .join(' ');

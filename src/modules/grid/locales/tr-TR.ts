@@ -1,8 +1,9 @@
 import { CommonWords, LocaleGridConfig, WordKeys } from '../../../types';
+import { HOURS } from '../constants';
 
 const grid = [
-  'SAATRONUÜÇÜ', // 0-10 ("SAAT", "RONU", "ÜÇÜ") - 1:00 (SAAT BİRİ RONU)
-  'BİRİALTIYID', // 11-21 ("BİRİ", "ALTIYI", "D") - 1:30 (SAAT BİRİ ALTIYI DOKUZ)
+  'SAATRONUÜÇÜ', // 0-10 ("SAAT", "RONU", "ÜÇÜ")
+  'BİRİALTIYID', // 11-21 ("BİRİ", "ALTIYI", "D")
   'İKİYİDOKUZU', // 22-32 ("İKİYİ", "DOKUZU")
   'DÖRDÜYEDİYİ', // 33-43 ("DÖRDÜ", "YEDİYİ")
   'SEKİZİYARIM', // 44-54 ("SEKİZİ", "YARIM")
@@ -28,47 +29,49 @@ const commonWords: CommonWords = {
   TWELVE: [[5, 6], [22, 23, 24]], // ON İKİ
   FIVE_MIN: [99, 100, 101], // BEŞ (five minutes)
   TEN_MIN: [81, 82], // ON (ten minutes)
-  QUARTER_MIN: [93, 94, 95, 96, 97, 98], // ÇEYREK (quarter)
-  TWENTY_MIN: [83, 84, 85, 86, 87], // YİRMİ (twenty minutes)
-  TWENTYFIVE_MIN: [[83, 84, 85, 86, 87], [99, 100, 101]], // YİRMİ BEŞ (twenty-five minutes)
+  QUARTER_MIN: [93, 94, 95, 96, 97, 98], // ÇEYREK
+  TWENTY_MIN: [83, 84, 85, 86, 87], // YİRMİ
+  TWENTYFIVE_MIN: [[83, 84, 85, 86, 87], [99, 100, 101]], // YİRMİ BEŞ
   HALF: [88, 89, 90, 91, 92], // BUÇUK
 };
 
 const localeWords = {
   SAAT: [0, 1, 2, 3], // SAAT
-  RONU: [7, 8], // RONU
-  OTUZ: [69, 70, 71, 72],
-  KIRK: [73, 74, 75, 76],
-  ELLI: [77, 78, 79, 80],
-  GEÇİYOR: [103, 104, 105, 106, 107, 108, 109],
+  OTUZ: [69, 70, 71, 72], // THIRTY
+  KIRK: [73, 74, 75, 76], // FORTY
+  ELLI: [77, 78, 79, 80], // FIFTY
+  GEÇİYOR: [103, 104, 105, 106, 107, 108, 109], // PAST
 };
 
-function getLocaleWordKeys(_hours: number, minutes: number) {
+function getCustomWordKeys(time: string) {
+  const [hours, minutes] = time.split(':').map((t) => parseInt(t));
   const wordKeys: WordKeys<typeof localeWords>[] = ['SAAT'];
 
-  // Determinar si se debe usar "YARIM" para media hora
+  wordKeys.push(HOURS[hours % 12]);
+
   if (minutes !== 0 && minutes !== 30) wordKeys.push('GEÇİYOR')
 
-  if (minutes >= 35 && minutes < 40) wordKeys.push('OTUZ', 'FIVE_MIN')
+  if (minutes >= 5 && minutes < 10) wordKeys.push('FIVE_MIN')
+  else if (minutes >= 10 && minutes < 15) wordKeys.push('TEN_MIN')
+  else if (minutes >= 15 && minutes < 20) wordKeys.push('QUARTER_MIN')
+  else if (minutes >= 20 && minutes < 25) wordKeys.push('TWENTY_MIN')
+  else if (minutes >= 25 && minutes < 30) wordKeys.push('TWENTYFIVE_MIN')
+  else if (minutes >= 30 && minutes < 35) wordKeys.push('HALF')
+  else if (minutes >= 35 && minutes < 40) wordKeys.push('OTUZ', 'FIVE_MIN')
   else if (minutes >= 40 && minutes < 45) wordKeys.push('KIRK')
   else if (minutes >= 45 && minutes < 50) wordKeys.push('KIRK', 'FIVE_MIN')
   else if (minutes >= 50 && minutes < 55) wordKeys.push('ELLI')
   else if (minutes >= 55) wordKeys.push('ELLI', 'FIVE_MIN')
-  // Si es hora exacta (minutos = 0), no necesitamos "YARIM"
-  // if (minutes === 0) {
-  //   wordKeys.push('RONU'); // Si es en punto, agregar RONU
-  // }
 
   return wordKeys;
 }
 
 export default {
   grid,
-  getLocaleWordKeys,
+  getCustomWordKeys,
   clockWords: {
     ...commonWords,
     ...localeWords,
   },
   secondaryChars: [0, 1, 2, 3],
-  hourMark: 60,
 } satisfies LocaleGridConfig;

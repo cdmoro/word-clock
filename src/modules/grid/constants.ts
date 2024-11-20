@@ -1,4 +1,6 @@
-export const HOURS = [
+import { HourKey, MinuteKey } from "../../types";
+
+export const HOURS: HourKey[] = [
   'TWELVE',
   'ONE',
   'TWO',
@@ -13,7 +15,7 @@ export const HOURS = [
   'ELEVEN',
 ];
 
-export const MINUTES = [
+export const MINUTES: MinuteKey[] = [
   'FIVE_MIN',
   'TEN_MIN',
   'QUARTER_MIN',

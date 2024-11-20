@@ -10,8 +10,7 @@ declare global {
 
 export type Locale = keyof typeof TRANSLATIONS;
 
-export type CommonWordsKey =
-  | 'ONE'
+export type HourKey = | 'ONE'
   | 'TWO'
   | 'THREE'
   | 'FOUR'
@@ -23,12 +22,15 @@ export type CommonWordsKey =
   | 'TEN'
   | 'ELEVEN'
   | 'TWELVE'
-  | 'FIVE_MIN'
+
+export type MinuteKey = 'FIVE_MIN'
   | 'TEN_MIN'
   | 'QUARTER_MIN'
   | 'TWENTY_MIN'
   | 'TWENTYFIVE_MIN'
-  | 'HALF';
+  | 'HALF'
+
+export type CommonWordsKey = HourKey | MinuteKey;
 
 type Word = number[] | number[][] | ((hours: number, minutes: number) => Word);
 
@@ -42,7 +44,7 @@ export interface LocaleGridConfig {
   grid: string[];
   charsWithApostrophe?: number[];
   clockWords: CommonWords & Record<string, Word>;
-  getLocaleWordKeys: (hours: number, minutes: number) => string[];
+  getLocaleWordKeys?: (hours: number, minutes: number) => string[];
   secondaryChars?: number[];
   getCustomWordKeys?: (time: string) => string[];
   hourMark?: number;

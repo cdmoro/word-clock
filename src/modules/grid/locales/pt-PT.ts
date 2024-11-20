@@ -67,7 +67,7 @@ function getLocaleWordKeys(hours: number, minutes: number) {
   wordKeys.push(hours % 12 === 1 ? 'É' : 'SÃO');
 
   if (hours === 1) wordKeys.push('HORA');
-  else if (hours !== 12) wordKeys.push('HORAS');
+  else if (hours !== 0 && hours !== 12) wordKeys.push('HORAS');
 
   return wordKeys;
 }
