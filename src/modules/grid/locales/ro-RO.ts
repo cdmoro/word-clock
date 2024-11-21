@@ -14,7 +14,10 @@ const grid = [
 ];
 
 const commonWords: CommonWords = {
-  TWELVE: [22, 23, 24], // DOUĂSPREZECE
+  TWELVE: [
+    [11, 12, 13, 14],
+    [24, 25, 26, 27, 28, 29, 30, 31],
+  ], // DOUĂSPREZECE
   ONE: [48, 49, 50], // UNU
   TWO: [11, 12, 13, 14], // DOUĂ
   THREE: [51, 52, 53, 54], // TREI
