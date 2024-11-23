@@ -8,15 +8,13 @@ export const THEME_FONTS: Record<string, string[]> = {
   festive: ['Leckerli One'],
   bohemian: ['Comfortaa'],
   handwriting: ['Mynerve'],
-  anaglyph: ['Anton'],
-  whatsapp: ['Roboto'],
   terminal: ['B612 Mono'],
   frame: ['Playfair Display'],
-  subtle: ['Unna'],
   poster: ['Averia Serif Libre', 'Allura'],
-  dynamic: ['Caveat', 'Indie Flower', 'Yeseva One', 'Sacramento'],
   photo: ['Geologica'],
   kindle: ['Noto Serif'],
+  crossword: ['Inter'],
+  x: ['JetBrains Mono'],
 };
 
 export const INITIAL_THEME_FONT_SIZE = {

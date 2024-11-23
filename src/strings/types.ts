@@ -68,6 +68,7 @@ export type Translations = {
   whatsapp: string;
   work_mode: string;
   work_mode_title: string;
+  x: string;
   zen_mode: string;
   zen_mode_title: string;
 };

@@ -1,0 +1,17 @@
+[data-theme|='x'] {
+    --clock-font-family: 'JetBrains Mono', sans-serif;
+}
+
+[data-theme|='x'] .char {
+  position: relative;
+}
+
+[data-theme|='x'] .char:not(.active):before {
+  content: "✕";
+  font-weight: bold;
+  position: absolute;
+  font-size: 2.5vw;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
