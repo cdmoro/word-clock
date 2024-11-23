@@ -1,0 +1,14 @@
+[data-theme|='numbers'] .char:not(.active) {
+    position: relative;
+    color: transparent;
+}
+
+[data-theme|='numbers'] .char:not(.active)::after {
+    content: attr(data-index);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: color-mix(in srgb, var(--font-color), transparent 80%);
+    font-size: 50%;
+}

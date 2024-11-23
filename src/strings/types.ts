@@ -43,6 +43,7 @@ export type Translations = {
   mini: string;
   'nl-NL': string;
   'no-NO': string;
+  numbers: string;
   orange: string;
   photo: string;
   pink: string;
