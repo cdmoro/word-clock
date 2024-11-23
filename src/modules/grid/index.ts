@@ -47,6 +47,8 @@ export function getCharCoords(locale: Locale, time: string) {
 }
 
 export function highlightGrid(time: string = getTime()) {
+  const { secondaryChars } = getLocaleConfig(store.get('locale'));
+
   if (store.get('solid') && store.get('fuzzy')) {
     document.body?.classList.add('loading');
   }
@@ -58,7 +60,7 @@ export function highlightGrid(time: string = getTime()) {
   const chars = document.querySelectorAll<HTMLDivElement>('#clock .char');
   chars.forEach((cell) => {
     cell.classList.toggle('idle', cell.classList.contains('active'));
-    cell.classList.remove('active');
+    cell.classList.remove('active', 'secondary', 'first', 'last');
     delete cell.dataset.word;
   });
 
@@ -71,6 +73,7 @@ export function highlightGrid(time: string = getTime()) {
         const char = chars[index];
 
         char.classList.add('active');
+        char.classList.toggle('secondary', !!secondaryChars?.includes(index));
         char.classList.toggle('first', pos === 0);
         char.classList.toggle('last', pos === word.length - 1);
 
@@ -101,7 +104,7 @@ export function highlightGrid(time: string = getTime()) {
 export function drawGrid() {
   const clock = document.querySelector<HTMLDivElement>('#clock');
   const gridExists = !!document.querySelector<HTMLDivElement>('#clock .char');
-  const { grid, charsWithApostrophe, secondaryChars } = getLocaleConfig(store.get('locale'));
+  const { grid, charsWithApostrophe } = getLocaleConfig(store.get('locale'));
 
   grid
     .join('')
@@ -116,7 +119,6 @@ export function drawGrid() {
       charEl.classList.add('char');
       charEl.dataset.index = index.toString();
       charEl.classList.toggle('apostrophe', !!charsWithApostrophe?.includes(index));
-      charEl.classList.toggle('secondary', !!secondaryChars?.includes(index));
       charEl.textContent = char;
 
       if (!gridExists) {
