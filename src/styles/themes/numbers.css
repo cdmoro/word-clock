@@ -11,4 +11,13 @@
     transform: translate(-50%, -50%);
     color: color-mix(in srgb, var(--font-color), transparent 80%);
     font-size: 50%;
+    transition: opacity 1s, color .5s, background .5s;
+}
+
+[data-theme|='numbers'] body.focus .char:not(.active) {
+    color: transparent;
+}
+
+[data-theme|='numbers'] body.focus .char:not(.active)::after {
+    color: color-mix(in srgb, var(--font-color), transparent 92%);
 }
