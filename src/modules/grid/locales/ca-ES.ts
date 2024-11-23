@@ -51,6 +51,7 @@ const localeWords: LocaleWords = {
   MENYS_2: [99, 100, 101, 102, 103], // MENYS
   I: [38], // I
   I_2: [89],
+  I_3: [104],
   QUART: [26, 27, 28, 29, 30], // QUART
   QUARTS: [26, 27, 28, 29, 30, 31],
   DE: [44, 45],
@@ -81,10 +82,8 @@ function getCustomWordKeys(time: string) {
   } else if (minutes >= 10 && minutes < 25) wordKeys.push('ÉS');
   else wordKeys.push('SON');
 
-  if (minutes >= 5 && minutes < 10) {
-    if (hours === 0 || hours === 11 || hours === 12) wordKeys.push('I_2', 'CINC_3');
-    else wordKeys.push('I', 'FIVE_MIN');
-  } else if (minutes >= 10 && minutes < 15) wordKeys.push('MENYS', 'FIVE_MIN');
+  if (minutes >= 5 && minutes < 10) wordKeys.push('I_3', 'CINC_3');
+  else if (minutes >= 10 && minutes < 15) wordKeys.push('MENYS', 'FIVE_MIN');
   else if (minutes >= 20 && minutes < 25) wordKeys.push('I', 'FIVE_MIN');
   else if (minutes >= 25 && minutes < 30) wordKeys.push('MENYS', 'FIVE_MIN');
   else if (minutes >= 35 && minutes < 40) wordKeys.push('I', 'FIVE_MIN');
