@@ -16,7 +16,8 @@ const grid = [
 
 const commonWords: CommonWords = {
   TWELVE: [72, 73, 74, 75, 76], // DOTZE
-  ONE: (hours, minutes) => (hours === 12 && minutes >= 10 && minutes < 55 ? [46, 47, 48, 49] : [8, 9, 10]), // UNA
+  ONE: (hours, minutes) =>
+    (hours === 0 || hours === 12) && minutes >= 10 && minutes < 55 ? [46, 47, 48, 49] : [8, 9, 10], // UNA
   TWO: [55, 56, 57, 58], // DUES
   THREE: [59, 60, 61, 62], // TRES
   FOUR: [66, 67, 68, 69, 70, 71], // QUATRE
@@ -28,8 +29,8 @@ const commonWords: CommonWords = {
   TEN: [93, 94, 95], // DEU (es necesario añadirlo en la grilla si es requerido)
   ELEVEN: [84, 85, 86, 87], // ONZE
   FIVE_MIN: (hours, minutes) => {
-    if (hours === 12 && minutes >= 10 && minutes < 55) return [40, 41, 42, 43];
-    if (hours === 12 || minutes >= 55) return [106, 107, 108, 109];
+    if ((hours === 0 || hours === 12) && minutes >= 10 && minutes < 55) return [40, 41, 42, 43];
+    if (hours === 0 || hours === 12 || minutes >= 55) return [106, 107, 108, 109];
     else return [40, 41, 42, 43];
   }, // CINC (cinco minutos)
   TEN_MIN: [93, 94, 95], // DEU (diez minutos, puede ser "I" o "MENYS")
@@ -81,7 +82,7 @@ function getCustomWordKeys(time: string) {
   else wordKeys.push('SON');
 
   if (minutes >= 5 && minutes < 10) {
-    if (hours === 11 || hours === 12) wordKeys.push('I_2', 'CINC_3');
+    if (hours === 0 || hours === 11 || hours === 12) wordKeys.push('I_2', 'CINC_3');
     else wordKeys.push('I', 'FIVE_MIN');
   } else if (minutes >= 10 && minutes < 15) wordKeys.push('MENYS', 'FIVE_MIN');
   else if (minutes >= 20 && minutes < 25) wordKeys.push('I', 'FIVE_MIN');

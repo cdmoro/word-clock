@@ -229,6 +229,18 @@ const testCases: Record<Locale, Record<string, string>> = {
     '12:45': 'SÓN TRES QUARTS D’UNA',
     '12:50': 'SÓN TRES QUARTS I CINC D’UNA',
     '12:55': 'ÉS LA UNA MENYS CINC',
+    '00:00': 'SÓN LES DOTZE',
+    '00:05': 'SÓN LES DOTZE I CINC',
+    '00:10': 'ÉS UN QUART MENYS CINC D’UNA',
+    '00:15': 'ÉS UN QUART D’UNA',
+    '00:20': 'ÉS UN QUART I CINC D’UNA',
+    '00:25': 'SÓN DOS QUARTS MENYS CINC D’UNA',
+    '00:30': 'SÓN DOS QUARTS D’UNA',
+    '00:35': 'SÓN DOS QUARTS I CINC D’UNA',
+    '00:40': 'SÓN TRES QUARTS MENYS CINC D’UNA',
+    '00:45': 'SÓN TRES QUARTS D’UNA',
+    '00:50': 'SÓN TRES QUARTS I CINC D’UNA',
+    '00:55': 'ÉS LA UNA MENYS CINC',
   },
 };
 
