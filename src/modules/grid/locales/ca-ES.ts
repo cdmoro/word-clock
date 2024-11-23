@@ -6,7 +6,7 @@ const grid = [
   'DOSLESNTRES', // 11-21 ("DOS", "TRES")
   'CINCQUARTSU', // 22-32 ("CINC", "QUARTS")
   'MENYSIECINC', // 33-43 ("MENYS", "I", "CINC")
-  'DEDRUNAONZE', // 44-54 ("DE", "UNA", "ONZE")
+  'DEDUNARONZE', // 44-54 ("DE", "UNA", "ONZE")
   'DUESTRESETD', // 55-65 ("DUES", "TRES", "SET")
   'QUATREDOTZE', // 66-76 ("QUATRE", "DOTZE")
   'VUITNOUONZE', // 77-87 ("VUIT", "NOU", "ONZE")
@@ -16,18 +16,22 @@ const grid = [
 
 const commonWords: CommonWords = {
   TWELVE: [72, 73, 74, 75, 76], // DOTZE
-  ONE: [8, 9, 10], // UNA
+  ONE: (hours, minutes) => (hours === 12 && minutes >= 10 && minutes < 55 ? [46, 47, 48, 49] : [8, 9, 10]), // UNA
   TWO: [55, 56, 57, 58], // DUES
   THREE: [59, 60, 61, 62], // TRES
   FOUR: [66, 67, 68, 69, 70, 71], // QUATRE
-  FIVE: [40, 41, 42, 43], // CINC
+  FIVE: (hours, minutes) => (hours === 4 && minutes >= 10 && minutes < 55 ? [106, 107, 108, 109] : [40, 41, 42, 43]), // CINC
   SIX: [88, 89, 90], // SIS
   SEVEN: [62, 63, 64], // SET
   EIGHT: [77, 78, 79, 80], // VUIT
   NINE: [81, 82, 83], // NOU
   TEN: [93, 94, 95], // DEU (es necesario añadirlo en la grilla si es requerido)
   ELEVEN: [84, 85, 86, 87], // ONZE
-  FIVE_MIN: (hours, minutes) => (hours === 12 || minutes >= 55 ? [106, 107, 108, 109] : [40, 41, 42, 43]), // CINC (cinco minutos)
+  FIVE_MIN: (hours, minutes) => {
+    if (hours === 12 && minutes >= 10 && minutes < 55) return [40, 41, 42, 43];
+    if (hours === 12 || minutes >= 55) return [106, 107, 108, 109];
+    else return [40, 41, 42, 43];
+  }, // CINC (cinco minutos)
   TEN_MIN: [93, 94, 95], // DEU (diez minutos, puede ser "I" o "MENYS")
   QUARTER_MIN: [26, 27, 28, 29, 30], // QUARTS (un cuarto)
   TWENTY_MIN: [33, 34, 35, 36, 37], // VINT (necesario añadirlo si se usa)
@@ -44,43 +48,31 @@ const localeWords: LocaleWords = {
   LES: [14, 15, 16],
   MENYS: [33, 34, 35, 36, 37], // MENYS
   MENYS_2: [99, 100, 101, 102, 103], // MENYS
-  I: (hours) => (hours === 12 ? [89] : [38]), // I
+  I: [38], // I
+  I_2: [89],
   QUART: [26, 27, 28, 29, 30], // QUART
+  QUARTS: [26, 27, 28, 29, 30, 31],
   DE: [44, 45],
+  D: [46],
   LA: [5, 6],
-  UNA: [48, 49, 50],
+  UNA: [47, 48, 49],
   UN: [8, 9],
   DOS: [11, 12, 13],
   TRES: [18, 19, 20, 21],
-  QUARTS: [26, 27, 28, 29, 30, 31],
-  D: [46],
+  CINC_3: [106, 107, 108, 109],
 };
 
-function getLocaleWordKeys(hours: number, minutes: number) {
+function getCustomWordKeys(time: string) {
   const wordKeys: WordKeys<typeof localeWords>[] = [];
 
-  // Determine whether to use "I" or "MENYS" based on minutes
-  // if (minutes >= 35) {
-  // Use "MENYS" (before) and increment hour
-  // wordKeys.push('MENYS');
-  // }
-  //   else if (minutes >= 5) {
-  //     wordKeys.push('I');
-  //   }
-  // if (minutes >= 30) {
-  //   wordKeys.push('DE');
-  // }
+  // eslint-disable-next-line prefer-const
+  let [hours, minutes] = time.split(':').map((t) => parseInt(t));
 
-  // Use "ÉS" for one o'clock, otherwise use "SON" for other hours
-  // wordKeys.push(hours % 12 === 1 ? 'ÉS' : 'SON');
-  // if (hours === 1 && minutes >= 15 && minutes < 20) wordKeys.push('ÉS', 'UN', 'D', 'UNA');
-  // // else if (hours === 1) wordKeys.push('ÉS', 'LA');
-  // else if (minutes >= 15 && minutes < 20) wordKeys.push('ÉS');
-  // else if (minutes >= 25 && minutes < 55) wordKeys.push('SON');
-  // else if (hours > 1 && ((minutes >= 0 && minutes < 15) || (minutes >= 25 && minutes < 55)))
-  //   wordKeys.push('SON', 'LES');
-  // else if (minutes >= 55) wordKeys.push('SON', 'LES');
-  // else wordKeys.push('SON', 'LES');
+  if (minutes >= 10) {
+    hours = (hours + 1) % 12 || 12;
+  }
+
+  wordKeys.push(HOURS[hours % 12]);
 
   if ((minutes >= 0 && minutes < 10) || minutes >= 55) {
     if (hours === 1) wordKeys.push('ÉS', 'LA');
@@ -88,53 +80,29 @@ function getLocaleWordKeys(hours: number, minutes: number) {
   } else if (minutes >= 10 && minutes < 25) wordKeys.push('ÉS');
   else wordKeys.push('SON');
 
-  if (minutes >= 5 && minutes < 10) wordKeys.push('I', 'FIVE_MIN');
-  else if (minutes >= 10 && minutes < 15) wordKeys.push('UN', 'QUART', 'MENYS', 'FIVE_MIN');
-  else if (minutes >= 15 && minutes < 20) wordKeys.push('UN', 'QUART');
-  else if (minutes >= 20 && minutes < 25) wordKeys.push('UN', 'QUART', 'I', 'FIVE_MIN');
-  else if (minutes >= 25 && minutes < 30) wordKeys.push('DOS', 'QUARTS', 'MENYS', 'FIVE_MIN');
-  else if (minutes >= 30 && minutes < 35) wordKeys.push('DOS', 'QUARTS');
-  else if (minutes >= 35 && minutes < 40) wordKeys.push('DOS', 'QUARTS', 'I', 'FIVE_MIN');
-  else if (minutes >= 40 && minutes < 45) wordKeys.push('TRES', 'QUARTS', 'MENYS', 'FIVE_MIN');
-  else if (minutes >= 45 && minutes < 50) wordKeys.push('TRES', 'QUARTS');
-  else if (minutes >= 50 && minutes < 55) wordKeys.push('TRES', 'QUARTS', 'I', 'FIVE_MIN');
+  if (minutes >= 5 && minutes < 10) {
+    if (hours === 11 || hours === 12) wordKeys.push('I_2', 'CINC_3');
+    else wordKeys.push('I', 'FIVE_MIN');
+  } else if (minutes >= 10 && minutes < 15) wordKeys.push('MENYS', 'FIVE_MIN');
+  else if (minutes >= 20 && minutes < 25) wordKeys.push('I', 'FIVE_MIN');
+  else if (minutes >= 25 && minutes < 30) wordKeys.push('MENYS', 'FIVE_MIN');
+  else if (minutes >= 35 && minutes < 40) wordKeys.push('I', 'FIVE_MIN');
+  else if (minutes >= 40 && minutes < 45) wordKeys.push('MENYS', 'FIVE_MIN');
+  else if (minutes >= 50 && minutes < 55) wordKeys.push('I', 'FIVE_MIN');
   else if (minutes >= 55) wordKeys.push('MENYS_2', 'FIVE_MIN');
 
-  if (minutes >= 10 && minutes < 55) {
-    wordKeys.push(hours === 1 ? 'D' : 'DE');
+  if (minutes >= 10 && minutes < 25) wordKeys.push('UN');
+  else if (minutes >= 25 && minutes < 40) wordKeys.push('DOS');
+  else if (minutes >= 40 && minutes < 55) wordKeys.push('TRES');
+
+  if (minutes >= 10 && minutes < 25) wordKeys.push('QUART');
+  else if (minutes >= 25 && minutes < 55) wordKeys.push('QUARTS');
+
+  if (hours !== 1 && minutes >= 10 && minutes < 55) {
+    wordKeys.push('DE');
   }
 
-  // if (hours === 1 && minutes >= 30 && minutes < 35) wordKeys.push('SON', 'UNA');
-  // else if (hours === 1) wordKeys.push('LA');
-  // else if (minutes !== 30) wordKeys.push('SON', 'LES');
-  // else wordKeys.push('SON');
-
-  return wordKeys.map((word) => {
-    if (hours === 11 && word === 'MENYS') {
-      return `${word}_2`;
-    }
-
-    return word;
-  });
-}
-
-export function getCustomWordKeys(time: string) {
-  const wordKeys = [];
-
-  // eslint-disable-next-line prefer-const
-  let [hours, minutes] = time.split(':').map((t) => parseInt(t));
-  // hours = (hours + (minutes >= 15 ? 1 : 0)) % 12 || 12;
-
-  if (minutes >= 10) {
-    hours = (hours + 1) % 12 || 12;
-  }
-
-  wordKeys.push(HOURS[hours % 12]);
-  // if (minutes >= 5) {
-  //   wordKeys.push(MINUTES[Math.floor(minutes / 5) - 1]);
-  // }
-
-  return [...getLocaleWordKeys(hours, minutes), ...wordKeys];
+  return wordKeys;
 }
 
 export default {
