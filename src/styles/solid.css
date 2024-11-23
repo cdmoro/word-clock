@@ -1,3 +1,7 @@
+body.solid #fuzzy-clock {
+  text-shadow: none;
+}
+
 body.solid #clock:has(.active),
 body.solid #clock:has(.idle),
 body.solid #fuzzy-clock {

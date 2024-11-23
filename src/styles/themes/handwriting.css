@@ -4,6 +4,10 @@
   --accent-color: #077fc6;
 }
 
+[data-theme|='handwriting'] #fuzzy-clock {
+  text-shadow: none;
+}
+
 [data-theme|='handwriting'] .char,
 [data-theme|='handwriting'] .fuzzy-wrapper {
   border-bottom: solid 1px color-mix(in srgb, var(--font-color), transparent 75%);

@@ -44,6 +44,10 @@
   animation: flicker 0.5s infinite;
 }
 
+[data-theme|='terminal'] #fuzzy-clock {
+  text-shadow: none;
+}
+
 [data-theme|='terminal'] .char {
   border: transparent solid 1px;
   padding: 1vh 1.5vw

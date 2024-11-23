@@ -19,10 +19,6 @@
   content: none;
 }
 
-[data-theme|='photo'] #progress-bar {
-  z-index: 3;
-}
-
 [data-theme|='photo'] #clock {
   background: color-mix(in srgb, var(--background), transparent 20%);
   border-radius: .5rem;

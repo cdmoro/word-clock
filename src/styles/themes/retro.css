@@ -3,10 +3,8 @@
   --clock-line-height: 1;
 }
 
-[data-theme|='retro'] #progress-bar {
-  height: 100vh;
-  opacity: 0.15;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0), var(--accent-color));
+[data-theme|='retro'] #fuzzy-clock {
+  text-shadow: none;
 }
 
 [data-theme|='retro'] .char.active {
