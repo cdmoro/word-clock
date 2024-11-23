@@ -58,6 +58,7 @@ export type Translations = {
   'ro-RO': string;
   screensaver_mode: string;
   share: string;
+  solid: string;
   subtle: string;
   'sv-SE': string;
   system: string;
