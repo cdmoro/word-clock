@@ -17,6 +17,7 @@ export type Translations = {
   'de-DE': string;
   default_font: string;
   document_title: string;
+  dots: string;
   download: string;
   dynamic: string;
   'el-GR': string;

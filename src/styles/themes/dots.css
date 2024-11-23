@@ -1,0 +1,34 @@
+[data-theme|='dots'] #clock {
+    column-gap: 5px;
+}
+
+[data-theme|='dots'] .char {
+    width: 2.5vw;
+    height: 2.5vw;
+    padding: 1.25vw;
+}
+
+[data-theme|='dots'] .char:not(.active) {
+    color: transparent;
+    background-color: color-mix(in srgb, var(--font-color), transparent 80%);
+    border-radius: 50%;
+}
+
+
+[data-theme|='dots'] .char.random {
+    background-color: color-mix(in srgb, var(--font-color), transparent 95%);
+}
+
+[data-theme|='dots'] body.focus .char:not(.active) {
+    color: transparent;
+    background-color: color-mix(in srgb, var(--font-color), transparent 95%);
+}
+
+
+@media screen and (min-width: 1000px) {
+    [data-theme|='dots'] .char {
+        width: 2vw;
+        height: 2vw;
+        padding: .5vw;
+    }   
+}
