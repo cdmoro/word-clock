@@ -70,6 +70,7 @@
     "whatsapp": "Whatsapp",
     "work_mode": "Work",
     "work_mode_title": "Show only safe for work quotes",
+    "x": "X",
     "zen_mode": "Zen",
     "zen_mode_title": "Remove everything that distracts you"
   },
@@ -144,6 +145,7 @@
     "whatsapp": "Whatsapp",
     "work_mode": "Trabajo",
     "work_mode_title": "Mostrar solo citas seguras para el trabajo",
+    "x": "X",
     "zen_mode": "Zen",
     "zen_mode_title": "Elimina todo lo que te distrae"
   },
@@ -218,6 +220,7 @@
     "whatsapp": "Whatsapp",
     "work_mode": "Trabalho",
     "work_mode_title": "Mostrar apenas citações seguras para o trabalho",
+    "x": "X",
     "zen_mode": "Zen",
     "zen_mode_title": "Remova tudo o que te distrai"
   },
@@ -292,6 +295,7 @@
     "whatsapp": "Whatsapp",
     "work_mode": "Travail",
     "work_mode_title": "Afficher uniquement des citations appropriées pour le travail",
+    "x": "X",
     "zen_mode": "Zen",
     "zen_mode_title": "Supprimez tout ce qui vous distrait"
   },
@@ -366,6 +370,7 @@
     "whatsapp": "Whatsapp",
     "work_mode": "Lavoro",
     "work_mode_title": "Mostra solo citazioni appropriate per il lavoro",
+    "x": "X",
     "zen_mode": "Zen",
     "zen_mode_title": "Rimuovi tutto ciò che ti distrae"
   },
@@ -440,6 +445,7 @@
     "whatsapp": "Whatsapp",
     "work_mode": "Εργασία",
     "work_mode_title": "Εμφάνιση μόνο ασφαλούς για εισαγωγικά",
+    "x": "X",
     "zen_mode": "Ζενός",
     "zen_mode_title": "Αφαιρέστε όλα όσα σας αποσπούν την προσοχή σας"
   },
@@ -514,6 +520,7 @@
     "whatsapp": "Whatsapp",
     "work_mode": "Arbeit",
     "work_mode_title": "Nur sichere Zitate für die Arbeit anzeigen",
+    "x": "X",
     "zen_mode": "Zen",
     "zen_mode_title": "Entferne alles, was dich ablenkt"
   },
@@ -588,6 +595,7 @@
     "whatsapp": "Whatsapp",
     "work_mode": "Werk",
     "work_mode_title": "Toon alleen veilig voor werkcitaten",
+    "x": "X",
     "zen_mode": "Zen",
     "zen_mode_title": "Verwijder alles wat u afleidt"
   },
@@ -662,6 +670,7 @@
     "whatsapp": "Whatsapp",
     "work_mode": "Arbete",
     "work_mode_title": "Visa endast säkra för arbetscitat",
+    "x": "X",
     "zen_mode": "Zen",
     "zen_mode_title": "Ta bort allt som distraherar dig"
   },
@@ -736,6 +745,7 @@
     "whatsapp": "WhatsApp",
     "work_mode": "Arbeid",
     "work_mode_title": "Vis bare trygt for arbeid sitater",
+    "x": "X",
     "zen_mode": "Zen",
     "zen_mode_title": "Fjern alt som distraherer deg"
   },
@@ -810,6 +820,7 @@
     "whatsapp": "Whatsapp",
     "work_mode": "Práce",
     "work_mode_title": "Zobrazit pouze bezpečné pro pracovní nabídky",
+    "x": "X",
     "zen_mode": "Zen",
     "zen_mode_title": "Odstraňte vše, co vás rozptyluje"
   },
@@ -884,6 +895,7 @@
     "whatsapp": "Whatsapp",
     "work_mode": "İş",
     "work_mode_title": "Sadece iş teklifleri için güvenli göster",
+    "x": "X",
     "zen_mode": "Zen",
     "zen_mode_title": "Sizi rahatsız eden her şeyi kaldır"
   },
@@ -958,6 +970,7 @@
     "whatsapp": "WhatsApp",
     "work_mode": "Lucru",
     "work_mode_title": "Afișați doar în siguranță pentru citate de lucru",
+    "x": "X",
     "zen_mode": "Zen",
     "zen_mode_title": "Eliminați tot ceea ce vă distrage"
   },

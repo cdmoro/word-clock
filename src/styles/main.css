@@ -37,7 +37,6 @@ body[data-loading] {
   display: none;
 }
 
-body.zen:not(.screensaver) #progress-bar,
 body.zen:not(.screensaver) #time-clock,
 body.zen:not(.screensaver) footer #menu {
   display: none !important;
@@ -82,6 +81,7 @@ body:not(.show-time) #time-clock {
   line-height: 1.3;
   word-spacing: .3rem;
   letter-spacing: .4rem;
+  text-shadow: 2px 3px 5px rgba(0,0,0,0.5)
 }
 
 body.loading #clock,

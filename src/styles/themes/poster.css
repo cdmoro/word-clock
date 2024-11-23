@@ -15,6 +15,10 @@
   border-radius: 0;
 }
 
+[data-theme|='poster'] #fuzzy-clock {
+  text-shadow: none;
+}
+
 [data-theme|='poster'] body.solid #clock {
   border-radius: 0;
 }

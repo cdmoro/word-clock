@@ -1,3 +1,7 @@
+[data-theme|='crossword'] {
+    --clock-font-family: Inter, sans-serif;
+}
+
 [data-theme|='crossword'] #clock {
     border: var(--font-color) solid 3px;
     row-gap: 0;
@@ -10,6 +14,7 @@
     color: var(--background);
     border-radius: 0;
     padding: 1.5vw 2.5vw;
+    text-shadow: none;
 }
 
 [data-theme|='crossword'] .char {
