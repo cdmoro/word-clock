@@ -26,21 +26,13 @@ const commonWords: CommonWords = {
   SEVEN: [62, 63, 64], // SET
   EIGHT: [77, 78, 79, 80], // VUIT
   NINE: [81, 82, 83], // NOU
-  TEN: [93, 94, 95], // DEU (es necesario añadirlo en la grilla si es requerido)
+  TEN: [93, 94, 95], // DEU
   ELEVEN: [84, 85, 86, 87], // ONZE
   FIVE_MIN: (hours, minutes) => {
     if ((hours === 0 || hours === 12) && minutes >= 10 && minutes < 55) return [40, 41, 42, 43];
     if (hours === 0 || hours === 12 || minutes >= 55) return [106, 107, 108, 109];
     else return [40, 41, 42, 43];
-  }, // CINC (cinco minutos)
-  TEN_MIN: [93, 94, 95], // DEU (diez minutos, puede ser "I" o "MENYS")
-  QUARTER_MIN: [26, 27, 28, 29, 30], // QUARTS (un cuarto)
-  TWENTY_MIN: [33, 34, 35, 36, 37], // VINT (necesario añadirlo si se usa)
-  TWENTYFIVE_MIN: [], // VINT I CINC (veinte y cinco)
-  HALF: [
-    // [11, 12, 13],
-    // [26, 27, 28, 29, 30, 31],
-  ], // MENYS (media)
+  }, // CINC
 };
 
 const localeWords: LocaleWords = {
@@ -50,18 +42,15 @@ const localeWords: LocaleWords = {
   MENYS: [33, 34, 35, 36, 37], // MENYS
   MENYS_2: [99, 100, 101, 102, 103], // MENYS
   I: [38], // I
-  I_2: [89],
-  I_3: [104],
+  I_2: [104],
   QUART: [26, 27, 28, 29, 30], // QUART
   QUARTS: [26, 27, 28, 29, 30, 31],
   DE: [44, 45],
-  D: [46],
   LA: [5, 6],
-  UNA: [47, 48, 49],
   UN: [8, 9],
   DOS: [11, 12, 13],
   TRES: [18, 19, 20, 21],
-  CINC_3: [106, 107, 108, 109],
+  CINC_2: [106, 107, 108, 109],
 };
 
 function getCustomWordKeys(time: string) {
@@ -82,7 +71,7 @@ function getCustomWordKeys(time: string) {
   } else if (minutes >= 10 && minutes < 25) wordKeys.push('ÉS');
   else wordKeys.push('SON');
 
-  if (minutes >= 5 && minutes < 10) wordKeys.push('I_3', 'CINC_3');
+  if (minutes >= 5 && minutes < 10) wordKeys.push('I_2', 'CINC_2');
   else if (minutes >= 10 && minutes < 15) wordKeys.push('MENYS', 'FIVE_MIN');
   else if (minutes >= 20 && minutes < 25) wordKeys.push('I', 'FIVE_MIN');
   else if (minutes >= 25 && minutes < 30) wordKeys.push('MENYS', 'FIVE_MIN');
