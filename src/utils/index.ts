@@ -1,4 +1,3 @@
-import { CITE_FACTOR, INITIAL_THEME_FONT_SIZE } from '../modules/font';
 import { store } from '../store';
 
 export function getTime() {
@@ -8,39 +7,6 @@ export function getTime() {
   const minutes = now.getMinutes();
 
   return testTime || `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
-}
-
-export function doFitQuote() {
-  const [theme] = store.get('theme').split('-');
-  const quote = document.querySelector<HTMLElement>('blockquote p');
-  const cite = document.querySelector<HTMLElement>('blockquote cite');
-  let fontSize: number = INITIAL_THEME_FONT_SIZE[theme as keyof typeof INITIAL_THEME_FONT_SIZE] || 75;
-  const citeFactor: number = CITE_FACTOR[theme as keyof typeof CITE_FACTOR] || 0.7;
-
-  if (quote) {
-    quote.style.fontSize = `${fontSize}px`;
-    const safeClientHeight = quote.clientHeight - 10;
-
-    while (quote.scrollHeight > safeClientHeight) {
-      quote.style.fontSize = `${fontSize}px`;
-      if (cite) {
-        cite.style.fontSize = `${fontSize < 19 ? 10 : fontSize * citeFactor}px`;
-      }
-      fontSize -= 1;
-
-      if (fontSize < 10) {
-        quote.style.fontSize = '10px';
-        break;
-      }
-    }
-  }
-}
-
-export function fitQuote() {
-  const interval = setInterval(doFitQuote, 1);
-  setTimeout(() => {
-    clearInterval(interval);
-  }, 500);
 }
 
 export function loadFontIfNotExists(font: string) {
