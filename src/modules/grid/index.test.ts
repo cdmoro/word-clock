@@ -248,6 +248,9 @@ const testCases: Record<Locale, Record<string, string>> = {
     '00:50': 'SÓN TRES QUARTS I CINC D’UNA',
     '00:55': 'ÉS LA UNA MENYS CINC',
   },
+  'ru-RU': {
+    '07:30': 'ТЫ АТ  ', // It shoduld say 'СЕМЬ ЧАСОВ ТРИД ЦАТЬ МИНУТ',
+  },
 };
 
 describe('getWordsKeys', () =>
