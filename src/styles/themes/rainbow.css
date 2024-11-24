@@ -1,0 +1,100 @@
+[data-theme|='rainbow'] {
+  --red: #f21332;
+  --orange: #f27225;
+  --pink: #e20b88;
+  --yellow: #f2ad24;
+  --green: #00b249;
+  --blue: #1844b5;
+  --purple: #a033b3;
+}
+
+[data-theme|='rainbow'] #clock {
+  column-gap: 5px;
+}
+
+[data-theme|='rainbow'] .char {
+  width: 2.5vw;
+  height: 2.5vw;
+  padding: 1.25vw;
+  border-radius: 50%;
+}
+
+[data-theme|='rainbow'] .char:nth-of-type(7n + 1) {
+  background-color: color-mix(in srgb, var(--red), transparent var(--transparency));
+}
+
+[data-theme|='rainbow'] .char:nth-of-type(7n + 2) {
+  background-color: color-mix(in srgb, var(--orange), transparent var(--transparency));
+}
+
+[data-theme|='rainbow'] .char:nth-of-type(7n + 3) {
+  background-color: color-mix(in srgb, var(--pink), transparent var(--transparency));
+}
+
+[data-theme|='rainbow'] .char:nth-of-type(7n + 4) {
+  background-color: color-mix(in srgb, var(--yellow), transparent var(--transparency));
+}
+
+[data-theme|='rainbow'] .char:nth-of-type(7n + 5) {
+  background-color: color-mix(in srgb, var(--green), transparent var(--transparency));
+}
+
+[data-theme|='rainbow'] .char:nth-of-type(7n + 6) {
+  background-color: color-mix(in srgb, var(--blue), transparent var(--transparency));
+}
+
+[data-theme|='rainbow'] .char:nth-of-type(7n + 7) {
+  background-color: color-mix(in srgb, var(--purple), transparent var(--transparency));
+}
+
+@media screen and (min-width: 1000px) {
+  [data-theme|='rainbow'] .char {
+    width: 2vw;
+    height: 2vw;
+    padding: 0.5vw;
+  }
+}
+
+[data-theme='rainbow-light'] {
+    --accent-color: #000a;
+}
+
+[data-theme='rainbow-light'] .char.active {
+    --transparency: 20%;
+  }
+  
+  [data-theme='rainbow-light'] .char:not(.active) {
+    color: transparent;
+    --transparency: 60%;
+  }
+  
+  [data-theme='rainbow-light'] body.focus .char:not(.active) {
+    color: transparent;
+    --transparency: 80%;
+  }
+  
+  [data-theme='rainbow-light'] body.focus .char.active.secondary {
+    --transparency: 40%;
+  }
+
+[data-theme='rainbow-dark'] {
+    --accent-color: #fffc;
+}
+
+[data-theme='rainbow-dark'] .char.active {
+    --transparency: 30%;
+  }
+  
+  [data-theme='rainbow-dark'] .char:not(.active) {
+    color: transparent;
+    --transparency: 60%;
+  }
+  
+  [data-theme='rainbow-dark'] body.focus .char:not(.active) {
+    color: transparent;
+    --transparency: 90%;
+  }
+  
+  [data-theme='rainbow-dark'] body.focus .char.active.secondary {
+    --transparency: 50%;
+  }

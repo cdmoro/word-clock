@@ -14,11 +14,6 @@
     border-radius: 50%;
 }
 
-
-[data-theme|='dots'] .char.random {
-    background-color: color-mix(in srgb, var(--font-color), transparent 95%);
-}
-
 [data-theme|='dots'] body.focus .char:not(.active) {
     color: transparent;
     background-color: color-mix(in srgb, var(--font-color), transparent 95%);

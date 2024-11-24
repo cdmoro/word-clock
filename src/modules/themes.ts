@@ -1,5 +1,5 @@
 import { THEME_FONTS, resetFont } from './font';
-import { doFitQuote, fitQuote, loadFontIfNotExists } from '../utils';
+import { loadFontIfNotExists } from '../utils';
 import { store } from '../store';
 
 export function getRandomThemeColor() {
@@ -36,7 +36,6 @@ export function initTheme() {
   }
   document.documentElement.dataset.theme = `${theme}-${variant}`;
 
-  window.addEventListener('resize', doFitQuote);
   themeSelect?.addEventListener('change', () => setTheme());
   variantSelect?.addEventListener('change', () => setTheme({ isVariantChange: true }));
   preferDarkThemes.addEventListener('change', (e) => {
@@ -81,7 +80,6 @@ export function setTheme({ isVariantChange = false, syncToUrl = true } = {}) {
   }
 
   document.documentElement.dataset.theme = `${theme}-${variant}`;
-  fitQuote();
 }
 
 export function setDynamicBackgroundPicture() {

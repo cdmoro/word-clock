@@ -4,11 +4,6 @@
   --accent-color: #1abc9c;
 }
 
-[data-theme|='bohemian'] blockquote:before,
-[data-theme|='bohemian'] blockquote:after {
-  content: none;
-}
-
 [data-theme='bohemian-light'] {
   --background: #fef9e7;
 }

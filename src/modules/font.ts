@@ -1,4 +1,4 @@
-import { fitQuote, loadFontIfNotExists } from '../utils';
+import { loadFontIfNotExists } from '../utils';
 import { store } from '../store';
 
 export const THEME_FONTS: Record<string, string[]> = {
@@ -31,7 +31,7 @@ export const CITE_FACTOR = {
 } as const;
 
 const FONTS = [...new Set(Object.values(THEME_FONTS))].flat();
-const CSS_FONT_VARIABLE = '--override-quote-font-family';
+const CSS_FONT_VARIABLE = '--override-clock-font-family';
 
 function createOption(value: string) {
   const option = document.createElement('option');
@@ -87,8 +87,6 @@ function setFont() {
       root?.style.setProperty(CSS_FONT_VARIABLE, `'${font}', sans-serif`);
     }
   }
-
-  fitQuote();
 }
 
 export function resetFont() {

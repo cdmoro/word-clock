@@ -53,6 +53,7 @@ export type Translations = {
   project: string;
   'pt-PT': string;
   purple: string;
+  rainbow: string;
   random: string;
   report_error: string;
   retro: string;
