@@ -35,12 +35,7 @@ Developer settings
 
 ## Languages
 
-There is support for the following languages (by default, it will try to use the system language):
-
-- English
-- Spanish
-- French
-- Italian
+There is support for 15 languages (by default, it will try to use the system language).
 
 Want to implement a new language? Sure thing, ping me and let's talk about it!
 
@@ -64,6 +59,15 @@ If you want to use this clock as a screensaver there are several ways to address
 
 ## Themes
 
+Some nice themes, locale and font combinations!
+
+### Photo
+
+https://wordoclock.netlify.app/?theme=photo-system
+
+|Fuzzy| Fuzzy + Solid |
+|---|---|
+|![image](https://github.com/user-attachments/assets/05c47c65-a885-4222-9cf4-22f521b8c524)|![image](https://github.com/user-attachments/assets/b3ef48fd-8e45-4932-a682-0239a93b15e3)|
 
 ## Development
 
