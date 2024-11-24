@@ -1,4 +1,5 @@
-import { CommonWords, LocaleGridConfig } from '../../../types';
+import { CommonWords, LocaleGridConfig, WordKeys } from '../../../types';
+import { HOURS } from '../constants';
 
 const grid = [
   'ОДИНПЯТЬДВА', // 0-10   "ОДИН" (one), "ПЯТЬ" (five), "ДВА" (two)
@@ -13,61 +14,86 @@ const grid = [
   'ПЯТЬЯРМИНУТ', // 99-109 "ПЯТЬ" (five), "МИНУТ" (minutes)
 ];
 
-const commonWords: CommonWords = {
+const commonWords: Partial<CommonWords> = {
   ONE: [0, 1, 2, 3], // "ОДИН" (one)
   TWO: [8, 9, 10], // "ДВА" (two)
   THREE: [21, 22, 23], // "ТРИ" (three)
-  FOUR: [], // Not explicitly in the grid
+  FOUR: [
+    [24, 25], // ЧЕ
+    [33, 34], // ТЫ
+    [38, 39], // РЕ
+  ], // ЧЕТЫРЕ *
   FIVE: [4, 5, 6, 7], // "ПЯТЬ" (five)
-  SIX: [12, 13, 14, 15], // "ШЕСТЬ" (six)
+  SIX: [13, 14, 15, 16, 17], // "ШЕСТЬ" (six)
   SEVEN: [26, 27, 28, 29], // СЕМЬ
-  EIGHT: [18, 19, 20], // "ВОСЕМЬ" (eight)
-  NINE: [27, 28, 29], // "ДЕВЯТЬ" (nine)
-  TEN: [32, 33, 34], // "ДЕСЯТЬ" (ten)
+  EIGHT: [
+    [22, 23],
+    [26, 27, 28, 29],
+  ], // "ВОСЕМЬ" (eight) *
+  NINE: [
+    [11, 12],
+    [18, 19, 20, 21],
+  ], // "ДЕВЯТЬ" (nine) *
+  TEN: [
+    [11, 12],
+    [40, 41, 42, 43],
+  ], // "ДЕСЯТЬ" (ten) *
   ELEVEN: [
-    [0, 1, 2, 3],
-    [44, 45, 46, 47, 48, 59, 50],
+    [0, 1, 2, 3], // ОДИН
+    [44, 45, 46, 47, 48, 49, 50], // НАДЦАТЬ
   ],
-  FIVE_MIN: [99, 100, 101, 102],
-  HALF: [
-    [66, 67, 68, 69],
-    [84, 85, 86, 87],
-  ],
-  QUARTER_MIN: (_hours, minutes) =>
-    minutes >= 15 && minutes < 20
-      ? [77, 78, 79, 80, 81, 82]
-      : [
-          [61, 62, 63, 64, 65],
-          [99, 100, 101, 102],
-        ],
-  TEN_MIN: [],
   TWELVE: [
-    [35, 36, 37],
-    [44, 45, 46, 47, 48, 59, 50],
+    [35, 36, 37], // ДВЕ
+    [44, 45, 46, 47, 48, 49, 50], // НАДЦАТЬ
   ],
-  TWENTY_MIN: [],
-  TWENTYFIVE_MIN: [],
+  FIVE_MIN: [99, 100, 101, 102], // ПЯТЬ
+  TEN_MIN: [90, 91, 92, 93, 95, 94],
 };
 
 const localeWords = {
-  PAST: [33, 34], // Not explicitly in the grid; placeholder for "после" (past)
-  TO: [44, 45], // Not explicitly in the grid; placeholder for "до" (to)
-  TWENTY: [30, 31, 32, 33], // Fragment in "ДВАДЦАТЬ" (twenty)
-  THIRTY: [55, 56, 57], // Fragment in "ТРИДЦАТЬ" (thirty)
+  FIFTEEN: [77, 78, 79, 80, 81, 82],
+  TWENTY: [
+    [69, 70, 71],
+    [84, 85, 86, 87],
+  ], // Fragment in "ДВАЦАТЬ" (twenty)
+  THIRTY: [
+    [66, 67, 68, 69],
+    [84, 85, 86, 87],
+  ], // Fragment in "ТРИДЦАТЬ" (thirty)
+  FORTY: [61, 62, 63, 64, 65],
+  FIFTY: [
+    [73, 74, 75, 76],
+    [90, 91, 92, 93, 94],
+  ],
   HOUR: [51, 52, 53], // "ЧАС" (hour)
   HOURS: [51, 52, 53, 54], // "ЧАСА" (hours)
   HOURS_2: [55, 56, 57, 58, 59], // "ЧАСОВ" (hours)
   MINUTES: [105, 106, 107, 108, 109], // "МИНУТ" (minutes)
 };
 
-function getLocaleWordKeys(hours: number, _minutes: number) {
-  const wordKeys = [];
+function getCustomWordKeys(time: string) {
+  const [hours, minutes] = time.split(':').map((t) => parseInt(t));
+  const wordKeys: WordKeys<typeof localeWords>[] = [];
+
+  wordKeys.push(HOURS[hours % 12]);
 
   if (hours === 1) wordKeys.push('HOUR');
   else if (hours >= 2 && hours < 5) wordKeys.push('HOURS');
   else wordKeys.push('HOURS_2');
 
-  wordKeys.push('MINUTES');
+  if (minutes >= 5 && minutes < 10) wordKeys.push('FIVE_MIN');
+  if (minutes >= 10 && minutes < 15) wordKeys.push('TEN_MIN');
+  if (minutes >= 15 && minutes < 20) wordKeys.push('FIFTEEN');
+  if (minutes >= 20 && minutes < 25) wordKeys.push('TWENTY');
+  if (minutes >= 25 && minutes < 30) wordKeys.push('TWENTY', 'FIVE_MIN');
+  if (minutes >= 30 && minutes < 35) wordKeys.push('THIRTY');
+  if (minutes >= 35 && minutes < 40) wordKeys.push('THIRTY', 'FIVE_MIN');
+  if (minutes >= 40 && minutes < 45) wordKeys.push('FORTY');
+  if (minutes >= 45 && minutes < 50) wordKeys.push('FORTY', 'FIVE_MIN');
+  if (minutes >= 50 && minutes < 55) wordKeys.push('FIFTY');
+  if (minutes >= 55) wordKeys.push('FIFTY', 'FIVE_MIN');
+
+  if (minutes >= 5) wordKeys.push('MINUTES');
 
   return wordKeys;
 }
@@ -78,6 +104,6 @@ export default {
     ...commonWords,
     ...localeWords,
   },
-  getLocaleWordKeys,
+  getCustomWordKeys,
   secondaryChars: [105, 106, 107, 108, 109],
 } satisfies LocaleGridConfig;
