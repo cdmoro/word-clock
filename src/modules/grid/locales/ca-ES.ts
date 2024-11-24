@@ -14,7 +14,7 @@ const grid = [
   'MENYSIACINC', // 99-109 ("MENYS", "I", "CINC")
 ];
 
-const commonWords: CommonWords = {
+const commonWords: Partial<CommonWords> = {
   TWELVE: [72, 73, 74, 75, 76], // DOTZE
   ONE: (hours, minutes) =>
     (hours === 0 || hours === 12) && minutes >= 10 && minutes < 55 ? [46, 47, 48, 49] : [8, 9, 10], // UNA

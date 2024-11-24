@@ -30,7 +30,7 @@ export type CommonWordsKey = HourKey | MinuteKey;
 
 type Word = number[] | number[][] | ((hours: number, minutes: number) => Word);
 
-export type CommonWords = Partial<Record<CommonWordsKey, Word>>;
+export type CommonWords = Record<CommonWordsKey, Word>;
 
 export type LocaleWords = Record<string, Word>;
 
@@ -39,7 +39,7 @@ export type WordKeys<T> = CommonWordsKey | keyof T;
 export interface LocaleGridConfig {
   grid: string[];
   charsWithApostrophe?: number[];
-  clockWords: CommonWords & Record<string, Word>;
+  clockWords: Record<string, Word>;
   getLocaleWordKeys?: (hours: number, minutes: number) => string[];
   secondaryChars?: number[];
   getCustomWordKeys?: (time: string) => string[];
