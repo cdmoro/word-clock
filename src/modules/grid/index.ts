@@ -102,18 +102,11 @@ export function highlightGrid(time: string = getTime()) {
 
     document.querySelectorAll('.char.idle').forEach((c) => c.classList.remove('idle'));
     setRandomChars();
-    const ariaDescription = Array.from(document.querySelectorAll('#clock .char.active'))
-      .map(
-        (el) =>
-          `${el.classList.contains('first') ? ' ' : ''}${el.textContent}${el.classList.contains('apostrophe') ? '’' : ''}`,
-      )
-      .join('')
-      .trim();
 
-    generateFuzzyClockTime();
+    const fuzzyTime = generateFuzzyClockTime(locale);
 
     document.querySelector('#clock')?.setAttribute('aria-label', time);
-    document.querySelector('#clock')?.setAttribute('aria-description', ariaDescription);
+    document.querySelector('#clock')?.setAttribute('aria-description', fuzzyTime);
   }, 500);
 }
 

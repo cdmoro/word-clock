@@ -44,4 +44,7 @@ export interface LocaleGridConfig {
   secondaryChars?: number[];
   getCustomWordKeys?: (time: string) => string[];
   hourMark?: number;
+  fuzzyCapitalWords?: string[];
+  fuzzyDictionary?: Record<string, string>;
+  testCases?: Record<string, string>;
 }

@@ -80,4 +80,11 @@ export default {
     ...localeWords,
   },
   secondaryChars: [0, 1, 2, 3],
+  testCases: {
+    '00:00': 'SÃO MEIA NOITE',
+    '12:00': 'SÃO MEIO DIA',
+    '12:30': 'SÃO MEIO DIA E MEIA',
+    '12:32': 'SÃO MEIO DIA E MEIA',
+    '12:35': 'É UMA HORA MENOS VINTE E CINCO',
+  },
 } satisfies LocaleGridConfig;
