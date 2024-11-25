@@ -67,4 +67,12 @@ export default {
     ...localeWords,
   },
   secondaryChars: [0, 1, 3, 4],
+  fuzzyDictionary: {
+    'O’CLOCK': 'O’Clock',
+  },
+  testCases: {
+    '12:30': 'IT IS HALF PAST TWELVE',
+    '12:32': 'IT IS HALF PAST TWELVE',
+    '12:35': 'IT IS TWENTYFIVE TO ONE',
+  },
 } satisfies LocaleGridConfig;
