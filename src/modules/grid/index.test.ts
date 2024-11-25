@@ -16,22 +16,24 @@ import csCZ from './locales/cs-CZ';
 import trTR from './locales/tr-TR';
 import roRO from './locales/ro-RO';
 import caES from './locales/ca-ES';
+import ruRU from './locales/ru-RU';
 
 const TEST_CASES: Record<Locale, Record<string, string>> = {
-  'en-US': enUS.testCases,
-  'es-ES': esES.testCases,
-  'it-IT': itIT.testCases,
-  'pt-PT': ptPT.testCases,
-  'fr-FR': frFR.testCases,
-  'de-DE': deDE.testCases,
-  'el-GR': elGR.testCases,
-  'nl-NL': nlNL.testCases,
-  'sv-SE': svSE.testCases,
-  'no-NO': noNO.testCases,
-  'cs-CZ': csCZ.testCases,
-  'tr-TR': trTR.testCases,
-  'ro-RO': roRO.testCases,
-  'ca-ES': caES.testCases,
+  'en-US': enUS.examples,
+  'es-ES': esES.examples,
+  'it-IT': itIT.examples,
+  'pt-PT': ptPT.examples,
+  'fr-FR': frFR.examples,
+  'de-DE': deDE.examples,
+  'el-GR': elGR.examples,
+  'nl-NL': nlNL.examples,
+  'sv-SE': svSE.examples,
+  'no-NO': noNO.examples,
+  'cs-CZ': csCZ.examples,
+  'tr-TR': trTR.examples,
+  'ro-RO': roRO.examples,
+  'ca-ES': caES.examples,
+  'ru-RU': ruRU.examples,
 };
 
 describe('getWordsKeys', () =>

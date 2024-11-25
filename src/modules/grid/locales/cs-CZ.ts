@@ -74,7 +74,7 @@ export default {
     ...localeWords,
   },
   secondaryChars: [0, 1, 2, 3, 4],
-  testCases: {
+  examples: {
     '01:00': 'JE JEDNA',
     '01:05': 'JE JEDNA PĚT',
     '01:10': 'JE JEDNA DESET',

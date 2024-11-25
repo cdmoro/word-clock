@@ -70,7 +70,7 @@ export default {
   },
   secondaryChars: [0, 1, 2, 3, 4, 5, 6, 8, 9],
   hourMark: 20,
-  testCases: {
+  examples: {
     '01:00': 'KLOKKEN ER ETT',
     '01:05': 'KLOKKEN ER FEM OVER ETT',
     '01:10': 'KLOKKEN ER TI OVER ETT',

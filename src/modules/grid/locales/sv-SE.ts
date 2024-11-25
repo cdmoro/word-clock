@@ -71,7 +71,7 @@ export default {
   },
   secondaryChars: [0, 1, 2, 3, 4, 5, 6, 8, 9],
   hourMark: 25,
-  testCases: {
+  examples: {
     '01:00': 'KLOCKAN ÄR ETT',
     '01:05': 'KLOCKAN ÄR FEM ÖVER ETT',
     '01:10': 'KLOCKAN ÄR TIO ÖVER ETT',

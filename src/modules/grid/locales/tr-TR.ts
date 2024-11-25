@@ -111,7 +111,7 @@ export default {
     ...localeWords,
   },
   secondaryChars: [0, 1, 2, 3],
-  testCases: {
+  examples: {
     '01:00': 'SAAT BİR',
     '01:05': 'SAAT BİRİ BEŞ GEÇİYOR',
     '01:10': 'SAAT BİRİ ON GEÇİYOR',

@@ -74,7 +74,7 @@ export default {
     ...localeWords,
   },
   secondaryChars: [0, 1, 2, 3, 5, 6, 11, 13, 14, 15, 16],
-  testCases: {
+  examples: {
     '12:30': 'SONO LE DODICI E MEZZA',
     '12:32': 'SONO LE DODICI E MEZZA',
     '12:35': 'È L’UNA MENO VENTICINQUE',

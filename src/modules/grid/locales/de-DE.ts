@@ -74,7 +74,7 @@ export default {
   },
   secondaryChars: [0, 1, 3, 4, 5],
   fuzzyCapitalWords: ['UHR'],
-  testCases: {
+  examples: {
     '01:00': 'ES IST EINS UHR',
     '01:05': 'ES IST FÜNF NACH EINS',
     '01:10': 'ES IST ZEHN NACH EINS',

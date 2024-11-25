@@ -80,7 +80,7 @@ export default {
   },
   secondaryChars: [0, 1, 2, 4, 5],
   hourMark: 20,
-  testCases: {
+  examples: {
     '01:00': 'HET IS ÉÉN UUR',
     '01:05': 'HET IS VIJF OVER ÉÉN',
     '01:10': 'HET IS TIEN OVER ÉÉN',

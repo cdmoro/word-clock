@@ -71,7 +71,7 @@ export default {
     ...localeWords,
   },
   secondaryChars: [0, 1, 2, 3, 5, 6, 7],
-  testCases: {
+  examples: {
     '01:00': 'ESTE ORA UNU',
     '01:05': 'ESTE ORA UNU ȘI CINCI',
     '01:10': 'ESTE ORA UNU ȘI ZECE',
