@@ -2,7 +2,14 @@ body.focus .char:not(.active) {
   color: color-mix(in srgb, var(--font-color), transparent 92%);
 }
 
-body.focus .char.secondary.active,
-body.focus #fuzzy-clock .secondary {
+body.focus .char.secondary.active {
   color: color-mix(in srgb, var(--accent-color), transparent 60%);
+}
+
+[data-theme$='light'] body.focus #fuzzy-clock .secondary {
+  color: color-mix(in srgb, var(--accent-color), #FFF 20%);
+}
+
+[data-theme$='dark'] body.focus #fuzzy-clock .secondary {
+  color: color-mix(in srgb, var(--accent-color), #000 40%);
 }
