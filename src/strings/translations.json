@@ -77,7 +77,8 @@
     "work_mode_title": "Show only safe for work quotes",
     "x": "X",
     "zen_mode": "Zen",
-    "zen_mode_title": "Remove everything that distracts you"
+    "zen_mode_title": "Remove everything that distracts you",
+    "zh-CN": "中文（简化） (zh-CN)"
   },
   "es-ES": {
     "add_quote": "Agregar cita",
@@ -157,7 +158,8 @@
     "work_mode_title": "Mostrar solo citas seguras para el trabajo",
     "x": "X",
     "zen_mode": "Zen",
-    "zen_mode_title": "Elimina todo lo que te distrae"
+    "zen_mode_title": "Elimina todo lo que te distrae",
+    "zh-CN": "中文（简化） (zh-CN)"
   },
   "pt-PT": {
     "add_quote": "Adicionar citação",
@@ -237,7 +239,8 @@
     "work_mode_title": "Mostrar apenas citações seguras para o trabalho",
     "x": "X",
     "zen_mode": "Zen",
-    "zen_mode_title": "Remova tudo o que te distrai"
+    "zen_mode_title": "Remova tudo o que te distrai",
+    "zh-CN": "中文（简化） (zh-CN)"
   },
   "fr-FR": {
     "add_quote": "Ajouter une citation",
@@ -317,7 +320,8 @@
     "work_mode_title": "Afficher uniquement des citations appropriées pour le travail",
     "x": "X",
     "zen_mode": "Zen",
-    "zen_mode_title": "Supprimez tout ce qui vous distrait"
+    "zen_mode_title": "Supprimez tout ce qui vous distrait",
+    "zh-CN": "中文（简化） (zh-CN)"
   },
   "it-IT": {
     "add_quote": "Aggiungi citazione",
@@ -397,7 +401,8 @@
     "work_mode_title": "Mostra solo citazioni appropriate per il lavoro",
     "x": "X",
     "zen_mode": "Zen",
-    "zen_mode_title": "Rimuovi tutto ciò che ti distrae"
+    "zen_mode_title": "Rimuovi tutto ciò che ti distrae",
+    "zh-CN": "中文（简化） (zh-CN)"
   },
   "el-GR": {
     "add_quote": "Προσθέστε προσφορά",
@@ -477,7 +482,8 @@
     "work_mode_title": "Εμφάνιση μόνο ασφαλούς για εισαγωγικά",
     "x": "X",
     "zen_mode": "Ζενός",
-    "zen_mode_title": "Αφαιρέστε όλα όσα σας αποσπούν την προσοχή σας"
+    "zen_mode_title": "Αφαιρέστε όλα όσα σας αποσπούν την προσοχή σας",
+    "zh-CN": "中文（简化） (zh-CN)"
   },
   "de-DE": {
     "add_quote": "Zitat hinzufügen",
@@ -557,7 +563,8 @@
     "work_mode_title": "Nur sichere Zitate für die Arbeit anzeigen",
     "x": "X",
     "zen_mode": "Zen",
-    "zen_mode_title": "Entferne alles, was dich ablenkt"
+    "zen_mode_title": "Entferne alles, was dich ablenkt",
+    "zh-CN": "中文（简化） (zh-CN)"
   },
   "nl-NL": {
     "add_quote": "Citaat toevoegen",
@@ -637,7 +644,8 @@
     "work_mode_title": "Toon alleen veilig voor werkcitaten",
     "x": "X",
     "zen_mode": "Zen",
-    "zen_mode_title": "Verwijder alles wat u afleidt"
+    "zen_mode_title": "Verwijder alles wat u afleidt",
+    "zh-CN": "中文（简化） (zh-CN)"
   },
   "sv-SE": {
     "add_quote": "Lägg till offert",
@@ -717,7 +725,8 @@
     "work_mode_title": "Visa endast säkra för arbetscitat",
     "x": "X",
     "zen_mode": "Zen",
-    "zen_mode_title": "Ta bort allt som distraherar dig"
+    "zen_mode_title": "Ta bort allt som distraherar dig",
+    "zh-CN": "中文（简化） (zh-CN)"
   },
   "no-NO": {
     "add_quote": "Legg til sitat",
@@ -797,7 +806,8 @@
     "work_mode_title": "Vis bare trygt for arbeid sitater",
     "x": "X",
     "zen_mode": "Zen",
-    "zen_mode_title": "Fjern alt som distraherer deg"
+    "zen_mode_title": "Fjern alt som distraherer deg",
+    "zh-CN": "中文（简化） (zh-CN)"
   },
   "cs-CZ": {
     "add_quote": "Přidat nabídku",
@@ -877,7 +887,8 @@
     "work_mode_title": "Zobrazit pouze bezpečné pro pracovní nabídky",
     "x": "X",
     "zen_mode": "Zen",
-    "zen_mode_title": "Odstraňte vše, co vás rozptyluje"
+    "zen_mode_title": "Odstraňte vše, co vás rozptyluje",
+    "zh-CN": "中文（简化） (zh-CN)"
   },
   "tr-TR": {
     "add_quote": "Alıntı ekle",
@@ -957,7 +968,8 @@
     "work_mode_title": "Sadece iş teklifleri için güvenli göster",
     "x": "X",
     "zen_mode": "Zen",
-    "zen_mode_title": "Sizi rahatsız eden her şeyi kaldır"
+    "zen_mode_title": "Sizi rahatsız eden her şeyi kaldır",
+    "zh-CN": "中文（简化） (zh-CN)"
   },
   "ro-RO": {
     "add_quote": "Adăugați citat",
@@ -1037,7 +1049,8 @@
     "work_mode_title": "Afișați doar în siguranță pentru citate de lucru",
     "x": "X",
     "zen_mode": "Zen",
-    "zen_mode_title": "Eliminați tot ceea ce vă distrage"
+    "zen_mode_title": "Eliminați tot ceea ce vă distrage",
+    "zh-CN": "中文（简化） (zh-CN)"
   },
   "ca-ES": {
     "add_quote": "Afegiu pressupost",
@@ -1117,7 +1130,8 @@
     "work_mode_title": "Mostra només segur per a les cotitzacions de la feina",
     "x": "X",
     "zen_mode": "Zen",
-    "zen_mode_title": "Traieu tot el que us distreu"
+    "zen_mode_title": "Traieu tot el que us distreu",
+    "zh-CN": "中文（简化） (zh-CN)"
   },
   "ru-RU": {
     "add_quote": "Добавить цитату",
@@ -1197,6 +1211,88 @@
     "work_mode_title": "Покажите только безопасные для рабочих цитат",
     "x": "Х",
     "zen_mode": "Дзен",
-    "zen_mode_title": "Удалите все, что вас отвлекает"
+    "zen_mode_title": "Удалите все, что вас отвлекает",
+    "zh-CN": "中文（简化） (zh-CN)"
+  },
+  "zh-CN": {
+    "add_quote": "添加报价",
+    "anaglyph": "催血",
+    "author": "作者",
+    "base": "根据",
+    "blue": "蓝色的",
+    "bohemian": "波西米亚人",
+    "ca-ES": "Calalan (ca-ES)",
+    "color": "随机颜色",
+    "colors": "颜色",
+    "copy_mode": "复制",
+    "copy_mode_copied": "报价复制了！",
+    "copy_title": "复制到剪贴板",
+    "crossword": "填字游戏",
+    "cs-CZ": "Čeština (cs-CZ)",
+    "dark": "黑暗的",
+    "de-DE": "Deutsch (de-DE)",
+    "default_font": "默认",
+    "document_title": "Word O’Clock",
+    "dots": "点",
+    "download": "下载",
+    "dynamic": "动态的",
+    "el-GR": "Ελληνικά (el-GR)",
+    "elegant": "优雅的",
+    "en-US": "English (en-US)",
+    "es-ES": "Español (es-ES)",
+    "exit_zen_title": "退出ZEN模式",
+    "fade_mode": "褪色",
+    "festive": "节日",
+    "focus_mode": "重点",
+    "font": "字体",
+    "fr-FR": "Français (fr-FR)",
+    "frame": "框架",
+    "fullscreen_mode": "全屏模式",
+    "fuzzy_mode": "模糊",
+    "gray": "灰色的",
+    "green": "绿色的",
+    "handwriting": "手写",
+    "it-IT": "Italiano (it-IT)",
+    "kindle": "点燃",
+    "language": "语言",
+    "light": "光",
+    "made_by": "由",
+    "mini": "小网格",
+    "nl-NL": "Nederlands (nl-NL)",
+    "no-NO": "Norsk (no-NO)",
+    "numbers": "数字",
+    "orange": "橙子",
+    "photo": "照片",
+    "pink": "粉色的",
+    "poster": "海报",
+    "progressbar_mode": "显示/隐藏进度栏",
+    "project": "项目",
+    "pt-PT": "Português (pt-PT)",
+    "purple": "紫色的",
+    "rainbow": "彩虹",
+    "random": "随机语言",
+    "report_error": "报告错误",
+    "retro": "复古的",
+    "ro-RO": "România (ro-RO)",
+    "ru-RU": "Русский (ru-RU)",
+    "screensaver_mode": "屏幕保护程序",
+    "share": "分享",
+    "solid": "坚硬的",
+    "subtle": "微妙的",
+    "sv-SE": "Svensk (sv-SE)",
+    "system": "系统",
+    "terminal": "终端",
+    "theme": "主题",
+    "themes": "主题",
+    "time_mode": "开演时间",
+    "title": "标题",
+    "tr-TR": "Türkçe (tr-TR)",
+    "whatsapp": "WhatsApp",
+    "work_mode": "工作",
+    "work_mode_title": "仅显示安全报价的安全",
+    "x": "x",
+    "zen_mode": "禅",
+    "zen_mode_title": "删除分散您注意力的一切",
+    "zh-CN": "中文（简化） (zh-CN)"
   }
 }
