@@ -80,7 +80,7 @@ export default {
     ...localeWords,
   },
   secondaryChars: [0, 1, 2, 3],
-  testCases: {
+  examples: {
     '00:00': 'SÃO MEIA NOITE',
     '12:00': 'SÃO MEIO DIA',
     '12:30': 'SÃO MEIO DIA E MEIA',

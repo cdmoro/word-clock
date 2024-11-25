@@ -46,5 +46,5 @@ export interface LocaleGridConfig {
   hourMark?: number;
   fuzzyCapitalWords?: string[];
   fuzzyDictionary?: Record<string, string>;
-  testCases?: Record<string, string>;
+  examples: Record<string, string>;
 }

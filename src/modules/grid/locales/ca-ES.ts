@@ -103,7 +103,7 @@ export default {
     ...localeWords,
   },
   getCustomWordKeys,
-  testCases: {
+  examples: {
     '01:00': 'ÉS LA UNA',
     '01:05': 'ÉS LA UNA I CINC',
     '01:10': 'ÉS UN QUART MENYS CINC DE DUES',

@@ -69,7 +69,7 @@ export default {
     ...commonWords,
     ...localeWords,
   },
-  testCases: {
+  examples: {
     '12:30': 'SON LAS DOCE Y MEDIA',
     '12:32': 'SON LAS DOCE Y MEDIA',
     '12:35': 'ES LA UNA MENOS VEINTICINCO',

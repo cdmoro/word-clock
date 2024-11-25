@@ -54,20 +54,22 @@ export function generateFuzzyClockTime(locale: Locale) {
   const fuzzyTimeRaw: string[] = [];
 
   Object.values(words).forEach(({ word, isSecondary }, index) => {
-    if (fuzzyDictionary && word in fuzzyDictionary) {
-      word = fuzzyDictionary[word as keyof typeof fuzzyDictionary];
-    } else {
-      word =
-        index === 0 || fuzzyCapitalWords?.includes(word)
-          ? word.charAt(0) + word.slice(1).toLowerCase()
-          : word.toLowerCase();
-    }
+    word =
+      index === 0 || fuzzyCapitalWords?.includes(word)
+        ? word.charAt(0) + word.slice(1).toLowerCase()
+        : word.toLowerCase();
 
     fuzzyTimeRaw.push(word);
     fuzzyTime.push(isSecondary ? `<span class="secondary">${word}</span>` : word);
   });
 
-  fuzzyClock!.innerHTML = `<div class="fuzzy-wrapper">${fuzzyTime.join(' ')}</div>`;
+  let fuzzyTimeString = fuzzyTime.join(' ');
+
+  Object.entries(fuzzyDictionary || {}).forEach(
+    ([key, value]) => (fuzzyTimeString = fuzzyTimeString.replace(key, value)),
+  );
+
+  fuzzyClock!.innerHTML = `<div class="fuzzy-wrapper">${fuzzyTimeString}</div>`;
 
   return fuzzyTimeRaw.join(' ');
 }

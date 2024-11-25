@@ -58,6 +58,7 @@ export type Translations = {
   report_error: string;
   retro: string;
   'ro-RO': string;
+  'ru-RU': string;
   screensaver_mode: string;
   share: string;
   solid: string;

@@ -67,7 +67,7 @@ export default {
     ...localeWords,
   },
   secondaryChars: [0, 2, 3, 4, 6, 7, 8, 9, 10],
-  testCases: {
+  examples: {
     '17:05': 'Η ΩΡΑ ΕΙΝΑΙ ΠΕΝΤΕ ΚΑΙ ΠΕΝΤΕ',
     '20:26': 'Η ΩΡΑ ΕΙΝΑΙ ΟΧΤΩ ΚΑΙ ΕΙΚΟΣΙ ΠΕΝΤΕ',
   },

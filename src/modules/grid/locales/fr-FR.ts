@@ -70,7 +70,7 @@ export default {
     ...localeWords,
   },
   secondaryChars: [0, 1, 3, 4, 5],
-  testCases: {
+  examples: {
     '12:30': 'IL EST MIDI ET DEMIE',
     '12:32': 'IL EST MIDI ET DEMIE',
     '12:35': 'IL EST UNE HEURES MOINS VINGT-CINQ',
