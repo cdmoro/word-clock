@@ -71,19 +71,6 @@ body:not(.show-time) #time-clock {
   max-width: 80vw;
 }
 
-#fuzzy-clock {
-  max-width: 80vw;
-  font-size: 4vw;
-  color: var(--accent-color);
-  padding: 1.5vw 2vw;
-  margin: 0 1rem;
-  text-align: center;
-  line-height: 1.3;
-  word-spacing: .3rem;
-  letter-spacing: .4rem;
-  text-shadow: 2px 3px 5px rgba(0,0,0,0.5)
-}
-
 body.loading #clock,
 body.loading #clock .char {
   transition: none;
