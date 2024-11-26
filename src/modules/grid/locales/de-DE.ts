@@ -26,7 +26,7 @@ const commonWords: CommonWords = {
   TEN: [99, 100, 101, 102], // ZEHN
   ELEVEN: [49, 50, 51], // ELF
   TWELVE: [94, 95, 96, 97, 98], // ZWÖLF
-  FIVE_MIN: [7, 8, 9, 10], // FÜNF (reutilizando la palabra "cinco")
+  FIVE_MIN: [7, 8, 9, 10], // FÜNF
   TEN_MIN: [11, 12, 13, 14], // ZEHN
   QUARTER_MIN: [26, 27, 28, 29, 30, 31, 32], // VIERTEL
   TWENTY_MIN: [15, 16, 17, 18, 19, 20, 21], // ZWANZIG
@@ -73,7 +73,9 @@ export default {
     ...localeWords,
   },
   secondaryChars: [0, 1, 3, 4, 5],
-  fuzzyCapitalWords: ['UHR'],
+  fuzzyDictionary: {
+    'uhr': 'Uhr',
+  },
   examples: {
     '01:00': 'ES IST EINS UHR',
     '01:05': 'ES IST FÜNF NACH EINS',

@@ -2,6 +2,19 @@
   display: none;
 }
 
+#fuzzy-clock {
+  max-width: 80vw;
+  font-size: 4vw;
+  color: var(--accent-color);
+  padding: 1.5vw 2vw;
+  margin: 0 1rem;
+  text-align: center;
+  line-height: 1.3;
+  word-spacing: .3rem;
+  letter-spacing: .4rem;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
+
 body.fuzzy #fuzzy-clock {
   display: block;
 }
@@ -17,5 +30,10 @@ body.fuzzy #fuzzy-clock .secondary {
 @media only screen and (max-width: 500px) {
   #fuzzy-clock {
     font-size: 2.5rem;
+  }
+}
+@media screen and (min-width: 1800px) {
+  #fuzzy-clock {
+    font-size: 6rem;
   }
 }
