@@ -4,6 +4,10 @@
   --accent-color: #077fc6;
 }
 
+[data-theme|='handwriting'][lang='zh'] {
+  --clock-font-family: 'LXGW WenKai Mono TC', sans-serif;
+}
+
 [data-theme|='handwriting'] #fuzzy-clock {
   text-shadow: none;
 }
