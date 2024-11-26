@@ -63,26 +63,22 @@ function getCustomWordKeys(time: string) {
   const wordKeys: WordKeys<typeof localeWords>[] = ['NOW', 'TIME'];
   const [hours, minutes] = time.split(':').map((t) => parseInt(t));
 
-  console.log(hours);
+  wordKeys.push(hours >= 0 && hours <= 11 ? 'AM' : 'PM');
 
-  if (hours >= 0 && hours <= 11) wordKeys.push('AM')
-  else wordKeys.push('PM');
-
-  let hoursKey = HOURS[hours % 12];
-
+  const hoursKey = HOURS[hours % 12];
   wordKeys.push(hoursKey);
 
   if (minutes >= 5 && minutes < 10) wordKeys.push('FIVE_MIN');
   else if (minutes >= 10 && minutes < 15) wordKeys.push('TEN_MIN');
   else if (minutes >= 15 && minutes < 20) wordKeys.push('QUARTER_MIN');
   else if (minutes >= 20 && minutes < 25) wordKeys.push('TWENTY_MIN');
-  else if (minutes >= 25 && minutes < 30) wordKeys.push('TWENTYFIVE_MIN')
+  else if (minutes >= 25 && minutes < 30) wordKeys.push('TWENTYFIVE_MIN');
   else if (minutes >= 30 && minutes < 35) wordKeys.push(`${hoursKey}_HALF`);
   else if (minutes >= 35 && minutes < 40) wordKeys.push('THIRTY_FIVE');
   else if (minutes >= 40 && minutes < 45) wordKeys.push('FORTY');
   else if (minutes >= 45 && minutes < 50) wordKeys.push('FORTY_FIVE');
   else if (minutes >= 50 && minutes < 55) wordKeys.push('FIFTY');
-  else if (minutes >= 55) wordKeys.push('FIFTY_FIVE')
+  else if (minutes >= 55) wordKeys.push('FIFTY_FIVE');
 
   return wordKeys;
 }

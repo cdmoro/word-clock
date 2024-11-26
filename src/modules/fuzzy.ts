@@ -65,17 +65,17 @@ export function generateFuzzyClockTime(locale: Locale) {
     fuzzyTime.push(isSecondary ? `<span class="secondary">${word}</span>` : word);
   });
 
-  let fuzzyTimeString = fuzzyTime.join(' ');
+  let fuzzyTimeStr = fuzzyTime.join(' ');
+  let fuzzyTimeRawStr = fuzzyTimeRaw.join(' ');
 
   if (NO_SPACE_LOCALES.includes(locale)) {
-    fuzzyTimeString = fuzzyTimeString.replaceAll(' ', '');
+    fuzzyTimeStr = fuzzyTime.join('');
+    fuzzyTimeRawStr = fuzzyTimeRaw.join('');
   }
 
-  Object.entries(fuzzyDictionary || {}).forEach(
-    ([key, value]) => (fuzzyTimeString = fuzzyTimeString.replace(key, value)),
-  );
+  Object.entries(fuzzyDictionary || {}).forEach(([key, value]) => (fuzzyTimeStr = fuzzyTimeStr.replace(key, value)));
 
-  fuzzyClock!.innerHTML = `<div class="fuzzy-wrapper">${fuzzyTimeString}</div>`;
+  fuzzyClock!.innerHTML = `<div class="fuzzy-wrapper">${fuzzyTimeStr}</div>`;
 
-  return fuzzyTimeRaw.join(' ');
+  return fuzzyTimeRawStr;
 }
