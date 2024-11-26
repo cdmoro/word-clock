@@ -14,6 +14,7 @@ export type Translations = {
   crossword: string;
   'cs-CZ': string;
   dark: string;
+  'de-CH': string;
   'de-DE': string;
   default_font: string;
   document_title: string;
