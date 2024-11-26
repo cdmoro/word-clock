@@ -5,6 +5,10 @@
   --clock-font-family: 'Tektur', sans-serif; /* Gugi */
 }
 
+[lang='zh'] {
+  --clock-font-family: 'LXGW WenKai Mono TC', sans-serif;
+}
+
 [data-theme$='light'] {
   --font-color: #2f2e2c;
   --background: #eaeaec;
