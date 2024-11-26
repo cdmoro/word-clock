@@ -1,4 +1,5 @@
 import { CommonWords, LocaleGridConfig, WordKeys } from '../../../types';
+import { HOURS } from '../constants';
 
 const grid = [
   '现在是时间昼上午下午夜', // 0-10   "现在是" = "It is", "时间" = "time"
@@ -13,7 +14,7 @@ const grid = [
   '二十分八四十分三十五分', // 99-109 "三十五分" = "thirty-five minutes"
 ];
 
-const commonWords: CommonWords = {
+const commonWords: Partial<CommonWords> = {
   ONE: [12, 13], // 一点 (1 o'clock)
   TWO: [62, 63], // 二点 (2 o'clock)
   THREE: [56, 57], // 三点 (3 o'clock)
@@ -26,12 +27,11 @@ const commonWords: CommonWords = {
   TEN: [66, 67], // 十点 (10 o'clock)
   ELEVEN: [11, 12, 13], // 十一点 (11 o'clock)
   TWELVE: [61, 62, 63], // 十二点 (12 o'clock)
-  HALF: [], // 半 (half past)
-  FIVE_MIN: [],
-  QUARTER_MIN: [],
-  TEN_MIN: [],
-  TWENTY_MIN: [],
-  TWENTYFIVE_MIN: [],
+  FIVE_MIN: [75, 76],
+  QUARTER_MIN: [84, 85, 86],
+  TEN_MIN: [71, 72],
+  TWENTY_MIN: [96, 97, 98],
+  TWENTYFIVE_MIN: [83, 84, 85, 86],
 };
 
 const localeWords = {
@@ -52,39 +52,51 @@ const localeWords = {
   TWELVE_HALF: [64], // 半
   AM: [6, 7],
   PM: [8, 9],
-  '5': [38, 39], // 五分 (5 minutes)
-  '10': [42, 43], // 十分 (10 minutes)
-  '15': [32, 33, 34, 35], // 十五分 (15 minutes)
-  '20': [50, 51], // 二十分 (20 minutes)
-  '25': [54, 55], // 二十五分 (25 minutes)
-  '30': [46, 47], // 三十分 (30 minutes)
-  '35': [68, 69], // 三十五分 (35 minutes)
-  '40': [12, 13], // 四十分 (40 minutes)
-  '45': [26, 27], // 四十五分 (45 minutes)
-  '50': [52, 53], // 五十分 (50 minutes)
-  '55': [64, 65], // 五十五分 (55 minutes)
+  THIRTY_FIVE: [106, 107, 108, 109],
+  FORTY: [103, 104, 105],
+  FORTY_FIVE: [98, 90, 91, 92],
+  FIFTY: [93, 94, 95],
+  FIFTY_FIVE: [79, 80, 81, 82],
 };
 
-function getLocaleWordKeys(_hours: number, minutes: number) {
+function getCustomWordKeys(time: string) {
   const wordKeys: WordKeys<typeof localeWords>[] = ['NOW', 'TIME'];
+  const [hours, minutes] = time.split(':').map((t) => parseInt(t));
 
-  if (minutes >= 0 && minutes < 5) {
-    wordKeys.push('EXACT');
-  }
+  console.log(hours);
+
+  if (hours >= 0 && hours <= 11) wordKeys.push('AM')
+  else wordKeys.push('PM');
+
+  let hoursKey = HOURS[hours % 12];
+
+  wordKeys.push(hoursKey);
+
+  if (minutes >= 5 && minutes < 10) wordKeys.push('FIVE_MIN');
+  else if (minutes >= 10 && minutes < 15) wordKeys.push('TEN_MIN');
+  else if (minutes >= 15 && minutes < 20) wordKeys.push('QUARTER_MIN');
+  else if (minutes >= 20 && minutes < 25) wordKeys.push('TWENTY_MIN');
+  else if (minutes >= 25 && minutes < 30) wordKeys.push('TWENTYFIVE_MIN')
+  else if (minutes >= 30 && minutes < 35) wordKeys.push(`${hoursKey}_HALF`);
+  else if (minutes >= 35 && minutes < 40) wordKeys.push('THIRTY_FIVE');
+  else if (minutes >= 40 && minutes < 45) wordKeys.push('FORTY');
+  else if (minutes >= 45 && minutes < 50) wordKeys.push('FORTY_FIVE');
+  else if (minutes >= 50 && minutes < 55) wordKeys.push('FIFTY');
+  else if (minutes >= 55) wordKeys.push('FIFTY_FIVE')
 
   return wordKeys;
 }
 
 export default {
   grid,
-  getLocaleWordKeys,
   clockWords: {
     ...commonWords,
     ...localeWords,
   },
   secondaryChars: [0, 1, 3, 4],
-  hourMark: 60,
+  getCustomWordKeys,
   examples: {
-    '07:30': '现在 时间 七点 ', // 现在 时间 上午 七点半
+    '07:30': '现在 时间 上午 七点 半', // 现在 时间 上午 七点半
+    '19:30': '现在 时间 下午 七点 半', // 现在 时间 上午 七点半
   },
 } satisfies LocaleGridConfig;
