@@ -15,6 +15,7 @@ import roRO from './ro-RO';
 import caES from './ca-ES';
 import ruRU from './ru-RU';
 import zhCN from './zh-CN';
+import zhTW from './zh-TW';
 
 const LOCALE_CONFIG: Record<Locale, LocaleGridConfig> = {
   'en-US': enUS,
@@ -33,6 +34,7 @@ const LOCALE_CONFIG: Record<Locale, LocaleGridConfig> = {
   'ca-ES': caES,
   'ru-RU': ruRU,
   'zh-CN': zhCN,
+  'zh-TW': zhTW,
 };
 
 export function getLocaleConfig(locale: Locale) {

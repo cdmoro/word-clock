@@ -2,13 +2,13 @@ import { CommonWords, LocaleGridConfig, WordKeys } from '../../../types';
 import { HOURS } from '../constants';
 
 const grid = [
-  '现在是时间昼上午下午夜', // 0-10   "现在是" = "It is", "时间" = "time"
-  '十一点半四点五点半六八', // 11-21  "十一" = "eleven", "点" = "o'clock", "半" = "half", etc.
-  '七点半一九点半四十五分', // 22-32  "七" = "seven", "九" = "nine", "四十五分" = "forty-five minutes"
+  '現在是時間畫上午下午夜', // 0-10   "现在是" = "It is", "时间" = "time"
+  '十一點半四點五點半六八', // 11-21  "十一" = "eleven", "点" = "o'clock", "半" = "half", etc.
+  '七點半一九點半四十五分', // 22-32  "七" = "seven", "九" = "nine", "四十五分" = "forty-five minutes"
   '四十分三十五分零五分七', // 33-43  "四十" = "forty", "零五分" = "five minutes"
   '六二十五分二十分五十分', // 44-54  "二十" = "twenty", "五十" = "fifty"
-  '五三点半六点十二点半点', // 55-65  "十二" = "twelve", "三点半" = "three-thirty"
-  '十点八点三十分一零五分', // 66-76  "三十分" = "thirty minutes"
+  '五三點半六點十二點半點', // 55-65  "十二" = "twelve", "三点半" = "three-thirty"
+  '十點八點三十分一零五分', // 66-76  "三十分" = "thirty minutes"
   '六三五十五分二十五分整', // 77-87  "五十五分" = "fifty-five minutes"
   '三四十五分五十分二十分', // 88-98  "四十五分" = "forty-five minutes"
   '二十分八四十分三十五分', // 99-109 "三十五分" = "thirty-five minutes"
@@ -92,7 +92,7 @@ export default {
   secondaryChars: [0, 1, 3, 4],
   getCustomWordKeys,
   examples: {
-    '07:30': '现在 时间 上午 七点 半',
-    '19:30': '现在 时间 下午 七点 半',
+    '07:30': '現在 時間 上午 七點 半',
+    '19:30': '現在 時間 下午 七點 半',
   },
 } satisfies LocaleGridConfig;

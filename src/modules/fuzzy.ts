@@ -7,7 +7,7 @@ interface WordData {
   isSecondary: boolean;
 }
 
-const NO_SPACE_LOCALES: Locale[] = ['zh-CN'];
+const NO_SPACE_LOCALES: Locale[] = ['zh-CN', 'zh-TW'];
 
 export function initFuzzy() {
   checkMini();
