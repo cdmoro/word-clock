@@ -73,7 +73,9 @@ export default {
     ...localeWords,
   },
   secondaryChars: [0, 1, 3, 4, 5],
-  fuzzyCapitalWords: ['UHR'],
+  fuzzyDictionary: {
+    'uhr': 'Uhr',
+  },
   examples: {
     '01:00': 'ES IST EINS UHR',
     '01:05': 'ES IST FÜNF NACH EINS',

@@ -321,6 +321,16 @@ footer {
   }
 }
 
+@media screen and (min-width: 1600px) {
+  #clock {
+    font-size: 3rem;
+  }
+
+  .char {
+    padding: 2rem;
+  }
+}
+
 @media only screen and (max-width: 750px) {
   #clock {
     font-size: 3vw;

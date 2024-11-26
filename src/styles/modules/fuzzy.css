@@ -32,3 +32,8 @@ body.fuzzy #fuzzy-clock .secondary {
     font-size: 2.5rem;
   }
 }
+@media screen and (min-width: 1800px) {
+  #fuzzy-clock {
+    font-size: 6rem;
+  }
+}
