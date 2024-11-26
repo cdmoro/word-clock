@@ -19,6 +19,7 @@ import caES from './locales/ca-ES';
 import ruRU from './locales/ru-RU';
 import zhCN from './locales/zh-CN';
 import zhTW from './locales/zh-TW';
+import deCH from './locales/de-CH';
 
 const TEST_CASES: Record<Locale, Record<string, string>> = {
   'en-US': enUS.examples,
@@ -38,6 +39,7 @@ const TEST_CASES: Record<Locale, Record<string, string>> = {
   'ru-RU': ruRU.examples,
   'zh-CN': zhCN.examples,
   'zh-TW': zhTW.examples,
+  'de-CH': deCH.examples,
 };
 
 describe('getWordsKeys', () =>
