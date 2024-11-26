@@ -78,7 +78,7 @@
     "x": "X",
     "zen_mode": "Zen",
     "zen_mode_title": "Remove everything that distracts you",
-    "zh-CN": "中文（简化）(zh-CN)"
+    "zh-CN": "简体中文 (zh-CN)"
   },
   "es-ES": {
     "add_quote": "Agregar cita",
@@ -159,7 +159,7 @@
     "x": "X",
     "zen_mode": "Zen",
     "zen_mode_title": "Elimina todo lo que te distrae",
-    "zh-CN": "中文（简化）(zh-CN)"
+    "zh-CN": "简体中文 (zh-CN)"
   },
   "pt-PT": {
     "add_quote": "Adicionar citação",
@@ -240,7 +240,7 @@
     "x": "X",
     "zen_mode": "Zen",
     "zen_mode_title": "Remova tudo o que te distrai",
-    "zh-CN": "中文（简化）(zh-CN)"
+    "zh-CN": "简体中文 (zh-CN)"
   },
   "fr-FR": {
     "add_quote": "Ajouter une citation",
@@ -321,7 +321,7 @@
     "x": "X",
     "zen_mode": "Zen",
     "zen_mode_title": "Supprimez tout ce qui vous distrait",
-    "zh-CN": "中文（简化）(zh-CN)"
+    "zh-CN": "简体中文 (zh-CN)"
   },
   "it-IT": {
     "add_quote": "Aggiungi citazione",
@@ -402,7 +402,7 @@
     "x": "X",
     "zen_mode": "Zen",
     "zen_mode_title": "Rimuovi tutto ciò che ti distrae",
-    "zh-CN": "中文（简化）(zh-CN)"
+    "zh-CN": "简体中文 (zh-CN)"
   },
   "el-GR": {
     "add_quote": "Προσθέστε προσφορά",
@@ -483,7 +483,7 @@
     "x": "X",
     "zen_mode": "Ζενός",
     "zen_mode_title": "Αφαιρέστε όλα όσα σας αποσπούν την προσοχή σας",
-    "zh-CN": "中文（简化）(zh-CN)"
+    "zh-CN": "简体中文 (zh-CN)"
   },
   "de-DE": {
     "add_quote": "Zitat hinzufügen",
@@ -564,7 +564,7 @@
     "x": "X",
     "zen_mode": "Zen",
     "zen_mode_title": "Entferne alles, was dich ablenkt",
-    "zh-CN": "中文（简化）(zh-CN)"
+    "zh-CN": "简体中文 (zh-CN)"
   },
   "nl-NL": {
     "add_quote": "Citaat toevoegen",
@@ -645,7 +645,7 @@
     "x": "X",
     "zen_mode": "Zen",
     "zen_mode_title": "Verwijder alles wat u afleidt",
-    "zh-CN": "中文（简化）(zh-CN)"
+    "zh-CN": "简体中文 (zh-CN)"
   },
   "sv-SE": {
     "add_quote": "Lägg till offert",
@@ -726,7 +726,7 @@
     "x": "X",
     "zen_mode": "Zen",
     "zen_mode_title": "Ta bort allt som distraherar dig",
-    "zh-CN": "中文（简化）(zh-CN)"
+    "zh-CN": "简体中文 (zh-CN)"
   },
   "no-NO": {
     "add_quote": "Legg til sitat",
@@ -807,7 +807,7 @@
     "x": "X",
     "zen_mode": "Zen",
     "zen_mode_title": "Fjern alt som distraherer deg",
-    "zh-CN": "中文（简化）(zh-CN)"
+    "zh-CN": "简体中文 (zh-CN)"
   },
   "cs-CZ": {
     "add_quote": "Přidat nabídku",
@@ -888,7 +888,7 @@
     "x": "X",
     "zen_mode": "Zen",
     "zen_mode_title": "Odstraňte vše, co vás rozptyluje",
-    "zh-CN": "中文（简化）(zh-CN)"
+    "zh-CN": "简体中文 (zh-CN)"
   },
   "tr-TR": {
     "add_quote": "Alıntı ekle",
@@ -969,7 +969,7 @@
     "x": "X",
     "zen_mode": "Zen",
     "zen_mode_title": "Sizi rahatsız eden her şeyi kaldır",
-    "zh-CN": "中文（简化）(zh-CN)"
+    "zh-CN": "简体中文 (zh-CN)"
   },
   "ro-RO": {
     "add_quote": "Adăugați citat",
@@ -1050,7 +1050,7 @@
     "x": "X",
     "zen_mode": "Zen",
     "zen_mode_title": "Eliminați tot ceea ce vă distrage",
-    "zh-CN": "中文（简化）(zh-CN)"
+    "zh-CN": "简体中文 (zh-CN)"
   },
   "ca-ES": {
     "add_quote": "Afegiu pressupost",
@@ -1131,7 +1131,7 @@
     "x": "X",
     "zen_mode": "Zen",
     "zen_mode_title": "Traieu tot el que us distreu",
-    "zh-CN": "中文（简化）(zh-CN)"
+    "zh-CN": "简体中文 (zh-CN)"
   },
   "ru-RU": {
     "add_quote": "Добавить цитату",
@@ -1212,7 +1212,7 @@
     "x": "Х",
     "zen_mode": "Дзен",
     "zen_mode_title": "Удалите все, что вас отвлекает",
-    "zh-CN": "中文（简化）(zh-CN)"
+    "zh-CN": "简体中文 (zh-CN)"
   },
   "zh-CN": {
     "add_quote": "添加报价",
@@ -1293,6 +1293,6 @@
     "x": "x",
     "zen_mode": "禅",
     "zen_mode_title": "删除分散您注意力的一切",
-    "zh-CN": "中文（简化）(zh-CN)"
+    "zh-CN": "简体中文 (zh-CN)"
   }
 }
