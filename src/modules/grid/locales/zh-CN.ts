@@ -54,7 +54,7 @@ const localeWords = {
   PM: [8, 9],
   THIRTY_FIVE: [106, 107, 108, 109],
   FORTY: [103, 104, 105],
-  FORTY_FIVE: [98, 90, 91, 92],
+  FORTY_FIVE: [89, 90, 91, 92], // 四十五分
   FIFTY: [93, 94, 95],
   FIFTY_FIVE: [79, 80, 81, 82],
 };
