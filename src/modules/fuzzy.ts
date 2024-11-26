@@ -7,6 +7,8 @@ interface WordData {
   isSecondary: boolean;
 }
 
+const NO_SPACE_LOCALES: Locale[] = ['zh-CN', 'zh-TW'];
+
 export function initFuzzy() {
   checkMini();
   document.getElementById('fuzzy')?.addEventListener('click', () => {
@@ -63,13 +65,17 @@ export function generateFuzzyClockTime(locale: Locale) {
     fuzzyTime.push(isSecondary ? `<span class="secondary">${word}</span>` : word);
   });
 
-  let fuzzyTimeString = fuzzyTime.join(' ');
+  let fuzzyTimeStr = fuzzyTime.join(' ');
+  let fuzzyTimeRawStr = fuzzyTimeRaw.join(' ');
 
-  Object.entries(fuzzyDictionary || {}).forEach(
-    ([key, value]) => (fuzzyTimeString = fuzzyTimeString.replace(key, value)),
-  );
+  if (NO_SPACE_LOCALES.includes(locale)) {
+    fuzzyTimeStr = fuzzyTime.join('');
+    fuzzyTimeRawStr = fuzzyTimeRaw.join('');
+  }
 
-  fuzzyClock!.innerHTML = `<div class="fuzzy-wrapper">${fuzzyTimeString}</div>`;
+  Object.entries(fuzzyDictionary || {}).forEach(([key, value]) => (fuzzyTimeStr = fuzzyTimeStr.replace(key, value)));
 
-  return fuzzyTimeRaw.join(' ');
+  fuzzyClock!.innerHTML = `<div class="fuzzy-wrapper">${fuzzyTimeStr}</div>`;
+
+  return fuzzyTimeRawStr;
 }

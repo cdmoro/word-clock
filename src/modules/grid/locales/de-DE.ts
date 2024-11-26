@@ -74,7 +74,7 @@ export default {
   },
   secondaryChars: [0, 1, 3, 4, 5],
   fuzzyDictionary: {
-    'uhr': 'Uhr',
+    uhr: 'Uhr',
   },
   examples: {
     '01:00': 'ES IST EINS UHR',

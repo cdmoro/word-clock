@@ -2,6 +2,10 @@
   --clock-font-family: 'Geologica', sans-serif;
 }
 
+[data-theme|='photo'][lang='zh'] {
+  --clock-font-family: 'LXGW WenKai Mono TC', sans-serif;
+}
+
 [data-theme|='photo'] body {
   background-size: cover;
   background-position: center;

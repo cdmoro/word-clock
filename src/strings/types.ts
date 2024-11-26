@@ -77,4 +77,6 @@ export type Translations = {
   x: string;
   zen_mode: string;
   zen_mode_title: string;
+  'zh-CN': string;
+  'zh-TW': string;
 };

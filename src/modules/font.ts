@@ -7,7 +7,7 @@ export const THEME_FONTS: Record<string, string[]> = {
   elegant: ['Playfair Display'],
   festive: ['Leckerli One'],
   bohemian: ['Comfortaa'],
-  handwriting: ['Mynerve'],
+  handwriting: ['Mynerve', 'LXGW WenKai Mono TC'],
   terminal: ['B612 Mono'],
   frame: ['Playfair Display'],
   poster: ['Averia Serif Libre', 'Allura'],
