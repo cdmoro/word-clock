@@ -7,6 +7,8 @@ interface WordData {
   isSecondary: boolean;
 }
 
+const NO_SPACE_LOCALES: Locale[] = ['zh-CN'];
+
 export function initFuzzy() {
   checkMini();
   document.getElementById('fuzzy')?.addEventListener('click', () => {
@@ -64,6 +66,10 @@ export function generateFuzzyClockTime(locale: Locale) {
   });
 
   let fuzzyTimeString = fuzzyTime.join(' ');
+
+  if (NO_SPACE_LOCALES.includes(locale)) {
+    fuzzyTimeString = fuzzyTimeString.replaceAll(' ', '');
+  }
 
   Object.entries(fuzzyDictionary || {}).forEach(
     ([key, value]) => (fuzzyTimeString = fuzzyTimeString.replace(key, value)),
