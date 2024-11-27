@@ -91,7 +91,7 @@ export default {
     ...commonWords,
     ...localeWords,
   },
-  secondaryChars: [0, 1, 3, 4, 5],
+  secondaryChars: [0, 1, 2, 3, 4, 5],
   getCustomWordKeys,
   examples: {
     '01:00': '現在の時刻は 一時 です',
