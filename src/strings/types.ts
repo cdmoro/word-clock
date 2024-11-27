@@ -37,6 +37,7 @@ export type Translations = {
   gray: string;
   green: string;
   handwriting: string;
+  'he-IL': string;
   'it-IT': string;
   'ja-JP': string;
   kindle: string;
