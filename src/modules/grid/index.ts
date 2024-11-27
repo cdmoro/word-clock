@@ -4,6 +4,7 @@ import { HOURS, MINUTES } from './constants';
 import { getTime } from '../../utils';
 import { getLocaleConfig } from './locales';
 import { generateFuzzyClockTime } from '../fuzzy';
+import arAE from './locales/ar-AE';
 
 function getCommonCharCoords(locale: Locale, time: string) {
   const { getLocaleWordKeys, hourMark = 35 } = getLocaleConfig(locale);
@@ -134,8 +135,29 @@ export function drawGrid() {
     });
 }
 
+function drawFlexGrid() {
+  const flexClock = document.querySelector<HTMLDivElement>('#flex-clock');
+  const { flexGrid, secondaryWords } = arAE;
+
+  flexGrid.forEach((row, i) => {
+    const div = document.createElement('div');
+    div.classList.add('row', `row-${i}`);
+
+    row.forEach((word, j) => {
+      const wordEl = document.createElement('div');
+      wordEl.innerText = word;
+      wordEl.classList.toggle('secondary', secondaryWords[i]?.includes(j));
+
+      div.appendChild(wordEl);
+    });
+
+    flexClock?.appendChild(div);
+  });
+}
+
 export function initGrid() {
-  drawGrid();
+  // drawGrid();
+  drawFlexGrid();
 }
 
 window.highlightGrid = highlightGrid;
