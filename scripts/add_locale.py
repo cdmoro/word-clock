@@ -16,7 +16,7 @@ translator = Translator()
 
 # Translate the locale name from English to the new locale's language
 try:
-    translation = translator.translate(locale_name_english, dest=new_locale)
+    translation = translator.translate(locale_name_english, dest=new_locale.split('-')[0])
     new_locale_name = translation.text
     print(f"Translated '{locale_name_english}' to '{new_locale_name}' for '{new_locale}'.")
 except Exception as e:
@@ -44,7 +44,7 @@ for key, text in data['en-US'].items():
         print(f"Copied '{key}': '{text}' (manual copy)")
     else:
         try:
-            translation = translator.translate(text, dest=new_locale)
+            translation = translator.translate(text, dest=new_locale.split('-')[0])
             new_translations[key] = translation.text
             print(f"Translated '{text}' -> '{translation.text}'")
             time.sleep(0.5)  # Throttle requests to avoid rate limits

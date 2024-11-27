@@ -8,6 +8,10 @@
   --clock-font-family: 'LXGW WenKai Mono TC', sans-serif;
 }
 
+[data-theme|='handwriting'][lang='ja'] {
+  --clock-font-family: 'Yuji Boku', sans-serif;
+}
+
 [data-theme|='handwriting'] #fuzzy-clock {
   text-shadow: none;
 }

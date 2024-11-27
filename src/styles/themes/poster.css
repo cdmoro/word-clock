@@ -5,6 +5,10 @@
   --clock-line-height: 1;
 }
 
+[data-theme|='poster'][lang='ja'] {
+  --clock-font-family: 'Potta One', sans-serif;
+}
+
 [data-theme|='poster'] #clock,
 [data-theme|='poster'] #fuzzy-clock {
   border-width: 1rem;

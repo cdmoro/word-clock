@@ -17,6 +17,7 @@ import ruRU from './ru-RU';
 import zhCN from './zh-CN';
 import zhTW from './zh-TW';
 import deCH from './de-CH';
+import jaJP from './ja-JP';
 
 const LOCALE_CONFIG: Record<Locale, LocaleGridConfig> = {
   'en-US': enUS,
@@ -37,6 +38,7 @@ const LOCALE_CONFIG: Record<Locale, LocaleGridConfig> = {
   'zh-CN': zhCN,
   'zh-TW': zhTW,
   'de-CH': deCH,
+  'ja-JP': jaJP,
 };
 
 export function getLocaleConfig(locale: Locale) {
