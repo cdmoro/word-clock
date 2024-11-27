@@ -5,6 +5,8 @@ import { Translations } from '../types';
 import { store } from '../store';
 import { drawGrid, highlightGrid } from './grid';
 
+const RTL_LOCALES: Locale[] = ['he-IL'];
+
 export const DOMINANT_LOCALES: Record<string, Locale> = {
   en: 'en-US',
   es: 'es-ES',
@@ -21,6 +23,7 @@ export const DOMINANT_LOCALES: Record<string, Locale> = {
   ro: 'ro-RO',
   ca: 'ca-ES',
   ru: 'ru-RU',
+  he: 'he-IL',
 } as const;
 
 export function resolveLocale(locale = navigator.language): Locale {
@@ -40,19 +43,20 @@ export function resolveLocale(locale = navigator.language): Locale {
 }
 
 export function initLocale() {
-  const locale = store.get('locale');
   const localeSelect = document.querySelector<HTMLSelectElement>('#locale-select');
-
-  if (localeSelect) {
-    localeSelect.value = locale;
-  }
+  const locale = store.get('locale');
 
   translateStrings(locale);
+  localeSelect!.value = locale;
+  document.documentElement.dir = RTL_LOCALES.includes(locale) ? 'rtl' : 'ltr';
 
   localeSelect?.addEventListener('change', (e) => {
     const locale = (e.target as HTMLInputElement).value as Locale;
+
     translateStrings(locale);
     store.set('locale', locale);
+    document.documentElement.dir = RTL_LOCALES.includes(locale) ? 'rtl' : 'ltr';
+
     drawGrid();
 
     document.body?.classList.add('no-transitions');
