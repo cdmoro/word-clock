@@ -1,10 +1,9 @@
 import { store } from '../../store';
 import { Locale } from '../../types';
-import { HOURS, MINUTES } from './constants';
+import { FLEX_CLOCK_LOCALES, HOURS, MINUTES } from './constants';
 import { getTime } from '../../utils';
 import { getLocaleConfig } from './locales';
-import { generateFuzzyClockTime } from '../fuzzy';
-import arAE from './locales/ar-AE';
+import { generateFlexFuzzyClockTime, generateFuzzyClockTime } from '../fuzzy';
 
 function getCommonCharCoords(locale: Locale, time: string) {
   const { getLocaleWordKeys, hourMark = 35 } = getLocaleConfig(locale);
@@ -67,6 +66,58 @@ function setRandomChars() {
   selected.forEach((char) => char.classList.add('random'));
 }
 
+export function highlightFlexGrid(time: string = getTime()) {
+  document.body?.classList.add('loading');
+  const locale = store.get('locale');
+  const { getLocaleWordKeys, clockWords, secondaryWords } = getLocaleConfig(locale);
+  let wordCoords: number[][] = [];
+  const [hours, minutes] = time.split(':').map((t) => parseInt(t));
+  const wordKeys = [];
+
+  wordKeys.push(HOURS[hours % 12]);
+  wordKeys.push(...(getLocaleWordKeys?.(hours, minutes) || []));
+
+  wordKeys
+    .filter((word) => word.length > 0)
+    .map((word) => clockWords[word as keyof typeof clockWords])
+    .forEach((item) => {
+      if (typeof item === 'function') {
+        const [hours, minutes] = time.split(':').map((t) => parseInt(t));
+        item = item(hours, minutes);
+      }
+      if (Array.isArray(item) && Array.isArray(item[0])) wordCoords = wordCoords.concat(item);
+      else wordCoords.push(item as number[]);
+    });
+
+  wordCoords.sort((a, b) => a[0] - b[0]);
+
+  const flexClockWords = document.querySelectorAll<HTMLDivElement>('#flex-clock .row div');
+  flexClockWords.forEach((word) => {
+    word.classList.remove('active', 'secondary');
+  });
+
+  setTimeout(() => {
+    document.body?.classList.remove('loading');
+
+    secondaryWords?.forEach(([row, word]) =>
+      document
+        .querySelector(`#flex-clock .row:nth-child(${row + 1}) div:nth-child(${word + 1})`)
+        ?.classList.add('secondary'),
+    );
+
+    wordCoords.forEach(([rowIdx, wordIdx]) => {
+      document
+        .querySelector(`#flex-clock .row:nth-child(${rowIdx + 1}) div:nth-child(${wordIdx + 1})`)
+        ?.classList.add('active');
+    });
+
+    const fuzzyTime = generateFlexFuzzyClockTime(locale);
+
+    document.querySelector('#flex-clock')?.setAttribute('aria-label', time);
+    document.querySelector('#flex-clock')?.setAttribute('aria-description', fuzzyTime);
+  }, 500);
+}
+
 export function highlightGrid(time: string = getTime()) {
   document.body?.classList.add('loading');
 
@@ -117,7 +168,7 @@ export function drawGrid() {
   const { grid, charsWithApostrophe, secondaryChars } = getLocaleConfig(store.get('locale'));
 
   grid
-    .join('')
+    ?.join('')
     .split('')
     .forEach((char, index) => {
       const charEl =
@@ -135,18 +186,21 @@ export function drawGrid() {
     });
 }
 
-function drawFlexGrid() {
+export function drawFlexGrid() {
   const flexClock = document.querySelector<HTMLDivElement>('#flex-clock');
-  const { flexGrid, secondaryWords } = arAE;
+  const { flexGrid } = getLocaleConfig(store.get('locale'));
 
-  flexGrid.forEach((row, i) => {
+  flexClock!.innerHTML = '';
+
+  flexGrid?.forEach((row, i) => {
     const div = document.createElement('div');
-    div.classList.add('row', `row-${i}`);
+    div.classList.add('row');
+    div.dataset.row = i.toString();
 
-    row.forEach((word, j) => {
+    row.forEach((word) => {
       const wordEl = document.createElement('div');
+      wordEl.classList.add('word');
       wordEl.innerText = word;
-      wordEl.classList.toggle('secondary', secondaryWords[i]?.includes(j));
 
       div.appendChild(wordEl);
     });
@@ -156,8 +210,13 @@ function drawFlexGrid() {
 }
 
 export function initGrid() {
-  // drawGrid();
-  drawFlexGrid();
+  if (FLEX_CLOCK_LOCALES.includes(store.get('locale'))) {
+    document.body.classList.add('flex-grid');
+    drawFlexGrid();
+  } else {
+    document.body.classList.remove('flex-grid');
+    drawGrid();
+  }
 }
 
 window.highlightGrid = highlightGrid;

@@ -1,7 +1,8 @@
 import { getTime, updateFavicon } from '../utils';
 import { store } from '../store';
-import { highlightGrid } from './grid';
+import { highlightFlexGrid, highlightGrid } from './grid';
 import { getRandomThemeColor } from './themes';
+import { FLEX_CLOCK_LOCALES } from './grid/constants';
 
 function getMillisecondsToNextMinute() {
   const now = new Date();
@@ -29,7 +30,13 @@ function updateTime(forceUpdate?: boolean) {
   const lastTimeChar = time.slice(-1);
 
   if (forceUpdate || lastTimeChar === '0' || lastTimeChar === '5') {
-    highlightGrid(time);
+    if (FLEX_CLOCK_LOCALES.includes(store.get('locale'))) {
+      document.body.classList.add('flex-grid');
+      highlightFlexGrid(time);
+    } else {
+      document.body.classList.remove('flex-grid');
+      highlightGrid(time);
+    }
   }
 }
 

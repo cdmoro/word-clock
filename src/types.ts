@@ -37,11 +37,13 @@ export type LocaleWords = Record<string, Word>;
 export type WordKeys<T> = CommonWordsKey | keyof T;
 
 export interface LocaleGridConfig {
-  grid: string[];
+  grid?: string[];
+  flexGrid?: string[][];
   charsWithApostrophe?: number[];
   clockWords: Record<string, Word>;
-  getLocaleWordKeys?: (hours: number, minutes: number) => string[];
   secondaryChars?: number[];
+  secondaryWords?: number[][];
+  getLocaleWordKeys?: (hours: number, minutes: number) => string[];
   getCustomWordKeys?: (time: string) => string[];
   hourMark?: number;
   fuzzyCapitalWords?: string[];

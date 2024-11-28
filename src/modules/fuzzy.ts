@@ -23,6 +23,51 @@ function checkMini() {
   }
 }
 
+export function generateFlexFuzzyClockTime(locale: Locale) {
+  const { fuzzyCapitalWords, fuzzyDictionary } = getLocaleConfig(locale);
+  const fuzzyClock = document.querySelector('#fuzzy-clock');
+  fuzzyClock!.textContent = '';
+
+  const words: WordData[] = [];
+  const activeWords = document.querySelectorAll<HTMLDivElement>('#flex-clock .row .word.active');
+
+  activeWords.forEach((word) => {
+    const isSecondary = word.classList.contains('secondary');
+
+    words.push({
+      word: word.textContent || '',
+      isSecondary,
+    });
+  });
+
+  const fuzzyTime: string[] = [];
+  const fuzzyTimeRaw: string[] = [];
+
+  Object.values(words).forEach(({ word, isSecondary }, index) => {
+    word =
+      index === 0 || fuzzyCapitalWords?.includes(word)
+        ? word.charAt(0) + word.slice(1).toLowerCase()
+        : word.toLowerCase();
+
+    fuzzyTimeRaw.push(word);
+    fuzzyTime.push(isSecondary ? `<span class="secondary">${word}</span>` : word);
+  });
+
+  let fuzzyTimeStr = fuzzyTime.join(' ');
+  let fuzzyTimeRawStr = fuzzyTimeRaw.join(' ');
+
+  if (NO_SPACE_LOCALES.includes(locale)) {
+    fuzzyTimeStr = fuzzyTime.join('');
+    fuzzyTimeRawStr = fuzzyTimeRaw.join('');
+  }
+
+  Object.entries(fuzzyDictionary || {}).forEach(([key, value]) => (fuzzyTimeStr = fuzzyTimeStr.replace(key, value)));
+
+  fuzzyClock!.innerHTML = `<div class="fuzzy-wrapper">${fuzzyTimeStr}</div>`;
+
+  return fuzzyTimeRawStr;
+}
+
 export function generateFuzzyClockTime(locale: Locale) {
   const { fuzzyCapitalWords, fuzzyDictionary } = getLocaleConfig(locale);
   const fuzzyClock = document.querySelector('#fuzzy-clock');

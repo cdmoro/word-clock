@@ -22,8 +22,9 @@ import zhTW from './locales/zh-TW';
 import deCH from './locales/de-CH';
 import jaJP from './locales/ja-JP';
 import heIL from './locales/he-IL';
+// import arAE from './locales/ar-AE';
 
-const TEST_CASES: Record<Locale, Record<string, string>> = {
+const GRID_TEST_CASES: Partial<Record<Locale, Record<string, string>>> = {
   'en-US': enUS.examples,
   'es-ES': esES.examples,
   'it-IT': itIT.examples,
@@ -46,17 +47,21 @@ const TEST_CASES: Record<Locale, Record<string, string>> = {
   'he-IL': heIL.examples,
 };
 
+// const FLEX_TEST_CASES: Partial<Record<Locale, Record<string, string>>> = {
+//   'ar-AE': arAE.examples,
+// };
+
 describe('getWordsKeys', () =>
-  Object.keys(TEST_CASES).forEach((locale) =>
+  Object.keys(GRID_TEST_CASES).forEach((locale) =>
     describe(`${locale}`, () => {
       const { grid } = getLocaleConfig(locale as Locale);
 
-      Object.entries(TEST_CASES[locale as Locale]).forEach(([time, phrase]) =>
+      Object.entries(GRID_TEST_CASES[locale as Locale]!).forEach(([time, phrase]) =>
         test(`${time} - ${phrase}`, () => {
           const output = getCharCoords(locale as Locale, time);
 
           const outputPhrase = output
-            .map((word) => word.map((index) => grid[Math.floor(index / 11)][index % 11]).join(''))
+            .map((word) => word.map((index) => grid?.[Math.floor(index / 11)][index % 11]).join(''))
             .join(' ');
 
           expect(outputPhrase).toEqual(phrase.replace(/’/g, ''));

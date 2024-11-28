@@ -4,6 +4,7 @@
 @import url(modules/fuzzy.css);
 @import url(modules/solid.css);
 @import url(modules/mini.css);
+@import url(modules/flex-grid.css);
 
 @import url(themes/base.css);
 @import url(themes/bohemian.css);

@@ -69,13 +69,19 @@ body:not(.show-time) #time-clock {
   flex-direction: column;
   row-gap: .5rem;
   width: 50vw;
-  font-size: 4vw;
+  font-size: 3.5vw;
+  padding: 1.5rem;
 }
 
 #flex-clock .row {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
+}
+
+#flex-clock .row .word {
+  color: color-mix(in srgb, var(--font-color), transparent 80%);
+  transition: opacity 1s, color .5s, background .5s, border-radius .5s;
 }
 
 #clock {
@@ -98,7 +104,8 @@ body.loading #clock .char {
   transition: opacity 1s, color .5s, background .5s, border-radius .5s;
 }
 
-.char.active {
+.char.active,
+#flex-clock .row .word.active {
   color: var(--accent-color);
 }
 

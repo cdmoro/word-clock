@@ -1,6 +1,7 @@
 export type Translations = {
   add_quote: string;
   anaglyph: string;
+  'ar-AE': string;
   author: string;
   base: string;
   blue: string;

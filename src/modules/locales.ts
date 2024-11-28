@@ -3,9 +3,10 @@ import { Locale } from '../types';
 import { getTime } from '../utils';
 import { Translations } from '../types';
 import { store } from '../store';
-import { drawGrid, highlightGrid } from './grid';
+import { drawFlexGrid, drawGrid, highlightFlexGrid, highlightGrid } from './grid';
+import { FLEX_CLOCK_LOCALES } from './grid/constants';
 
-const RTL_LOCALES: Locale[] = ['he-IL'];
+const RTL_LOCALES: Locale[] = ['he-IL', 'ar-AE'];
 
 export const DOMINANT_LOCALES: Record<string, Locale> = {
   en: 'en-US',
@@ -24,6 +25,7 @@ export const DOMINANT_LOCALES: Record<string, Locale> = {
   ca: 'ca-ES',
   ru: 'ru-RU',
   he: 'he-IL',
+  ar: 'ar-AE',
 } as const;
 
 export function resolveLocale(locale = navigator.language): Locale {
@@ -57,10 +59,23 @@ export function initLocale() {
     store.set('locale', locale);
     document.documentElement.dir = RTL_LOCALES.includes(locale) ? 'rtl' : 'ltr';
 
-    drawGrid();
+    if (FLEX_CLOCK_LOCALES.includes(locale)) {
+      document.body.classList.add('flex-grid');
+      drawFlexGrid();
+    } else {
+      document.body.classList.remove('flex-grid');
+      drawGrid();
+    }
 
     document.body?.classList.add('no-transitions');
-    highlightGrid(getTime());
+
+    if (FLEX_CLOCK_LOCALES.includes(locale)) {
+      document.body.classList.add('flex-grid');
+      highlightFlexGrid(getTime());
+    } else {
+      document.body.classList.remove('flex-grid');
+      highlightGrid(getTime());
+    }
   });
 }
 

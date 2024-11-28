@@ -13,3 +13,19 @@ body.mini .char.first {
 body.mini .char.idle {
   display: initial;
 }
+
+body.mini #flex-clock {
+  width: unset;
+}
+
+body.mini #flex-clock .row {
+  flex-direction: column;
+}
+
+body.mini #flex-clock .row .word:not(.active) {
+  display: none;
+}
+
+body.mini #flex-clock .row:not(:has(.active)) {
+  display: none;
+}

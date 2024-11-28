@@ -1,4 +1,6 @@
-import { HourKey, MinuteKey } from '../../types';
+import { HourKey, Locale, MinuteKey } from '../../types';
+
+export const FLEX_CLOCK_LOCALES: Locale[] = ['ar-AE'];
 
 export const HOURS: HourKey[] = [
   'TWELVE',

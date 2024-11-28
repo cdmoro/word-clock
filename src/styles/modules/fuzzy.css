@@ -15,11 +15,19 @@
   text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
 }
 
+body.flex-grid #fuzzy-clock {
+  letter-spacing: 0;
+}
+
 body.fuzzy #fuzzy-clock {
   display: block;
 }
 
 body.fuzzy #clock {
+  display: none;
+}
+
+body.fuzzy #flex-clock {
   display: none;
 }
 
