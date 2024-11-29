@@ -1,4 +1,4 @@
-import { CommonWords, LocaleGridConfig, WordKeys } from '../../../types';
+import { CommonWords, GridConfig, WordKeys } from '../../../types';
 import { HOURS } from '../constants';
 
 const grid = [
@@ -73,6 +73,7 @@ function getCustomWordKeys(time: string) {
 }
 
 export default {
+  type: 'grid',
   grid,
   getCustomWordKeys,
   clockWords: {
@@ -107,4 +108,4 @@ export default {
     '11:15': 'השעה אחת עשרה רבע',
     '12:15': 'השעה שתײם עשרה רבע',
   },
-} satisfies LocaleGridConfig;
+} satisfies GridConfig;

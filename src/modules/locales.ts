@@ -58,23 +58,20 @@ export function initLocale() {
     translateStrings(locale);
     store.set('locale', locale);
     document.documentElement.dir = RTL_LOCALES.includes(locale) ? 'rtl' : 'ltr';
+    store.set('flex', FLEX_CLOCK_LOCALES.includes(locale));
 
-    if (FLEX_CLOCK_LOCALES.includes(locale)) {
-      document.body.classList.add('flex-grid');
+    if (store.get('flex')) {
       drawFlexGrid();
     } else {
-      document.body.classList.remove('flex-grid');
       drawGrid();
     }
 
     document.body?.classList.add('no-transitions');
 
-    if (FLEX_CLOCK_LOCALES.includes(locale)) {
-      document.body.classList.add('flex-grid');
-      highlightFlexGrid(getTime());
+    if (store.get('flex')) {
+      highlightFlexGrid();
     } else {
-      document.body.classList.remove('flex-grid');
-      highlightGrid(getTime());
+      highlightGrid();
     }
   });
 }

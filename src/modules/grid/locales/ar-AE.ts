@@ -1,6 +1,6 @@
-import { CommonWords, LocaleGridConfig, WordKeys } from '../../../types';
+import { CommonWords, FlexConfig, WordKeys } from '../../../types';
 
-const flexGrid = [
+const grid = [
   ['الساعة', 'الآن', 'الحادية', 'الا', 'الثانية', 'عشر'],
   ['الثانية', 'الواحدة', 'السادسة', 'السابعة'],
   ['الثالثة', 'العاشرة', 'الخامسة', 'أو', 'الرابعة'],
@@ -67,7 +67,8 @@ function getLocaleWordKeys(_hours: number, minutes: number) {
 }
 
 export default {
-  flexGrid,
+  type: 'flex',
+  grid,
   getLocaleWordKeys,
   clockWords: {
     ...commonWords,
@@ -80,4 +81,4 @@ export default {
   examples: {
     '7:30': 'الساعة الآن السابعة والنصف',
   },
-} satisfies LocaleGridConfig;
+} satisfies FlexConfig;

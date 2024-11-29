@@ -1,4 +1,4 @@
-import { CommonWords, LocaleGridConfig, WordKeys } from '../../../types';
+import { CommonWords, GridConfig, WordKeys } from '../../../types';
 import { HOURS } from '../constants';
 
 const grid = [
@@ -86,6 +86,7 @@ function getCustomWordKeys(time: string) {
 }
 
 export default {
+  type: 'grid',
   grid,
   clockWords: {
     ...commonWords,
@@ -115,4 +116,4 @@ export default {
     '07:30': '現在の時刻は 七時 半 です',
     '19:30': '現在の時刻は 七時 半 です',
   },
-} satisfies LocaleGridConfig;
+} satisfies GridConfig;

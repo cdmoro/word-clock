@@ -36,6 +36,32 @@ export type LocaleWords = Record<string, Word>;
 
 export type WordKeys<T> = CommonWordsKey | keyof T;
 
+interface CommonConfig {
+  clockWords: Record<string, Word>;
+  getLocaleWordKeys?: (hours: number, minutes: number) => string[];
+  getCustomWordKeys?: (time: string) => string[];
+  hourMark?: number;
+  fuzzyCapitalWords?: string[];
+  fuzzyDictionary?: Record<string, string>;
+  examples: Record<string, string>;
+}
+
+export interface GridConfig extends CommonConfig {
+  type: 'grid';
+  grid: string[];
+  charsWithApostrophe?: number[];
+  secondaryChars?: number[];
+}
+
+export interface FlexConfig extends CommonConfig {
+  type: 'flex';
+  grid: string[][];
+  clockWords: Record<string, Word>;
+  secondaryWords?: number[][];
+}
+
+export type ClockConfig = GridConfig | FlexConfig;
+
 export interface LocaleGridConfig {
   grid?: string[];
   flexGrid?: string[][];

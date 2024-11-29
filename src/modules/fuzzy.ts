@@ -18,7 +18,7 @@ export function initFuzzy() {
 }
 
 function checkMini() {
-  if (store.get('mini')) {
+  if (store.get('mini') && store.get('fuzzy')) {
     store.set('mini', false);
   }
 }

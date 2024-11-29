@@ -1,4 +1,4 @@
-import { CommonWords, LocaleGridConfig, WordKeys } from '../../../types';
+import { CommonWords, GridConfig, WordKeys } from '../../../types';
 
 const grid = [
   'ESKISCHAFÜF', // 0-10: ES, ISCH, FÜF
@@ -65,6 +65,7 @@ function getLocaleWordKeys(_hours: number, minutes: number) {
 }
 
 export default {
+  type: 'grid',
   grid,
   getLocaleWordKeys,
   clockWords: {
@@ -96,4 +97,4 @@ export default {
     '17:05': 'ES ISCH FÜF AB FÜF', // 5 past 5
     '20:26': 'ES ISCH FÜF ZWÄNZ AB ACHTI', // 5 before half-past 8
   },
-} satisfies LocaleGridConfig;
+} satisfies GridConfig;

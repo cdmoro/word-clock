@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { getCharCoords } from './index';
+import { getCharCoords, getWordCoords } from './index';
 import { Locale } from '../../types';
 import { getLocaleConfig } from './locales';
 import enUS from './locales/en-US';
@@ -22,9 +22,9 @@ import zhTW from './locales/zh-TW';
 import deCH from './locales/de-CH';
 import jaJP from './locales/ja-JP';
 import heIL from './locales/he-IL';
-// import arAE from './locales/ar-AE';
+import arAE from './locales/ar-AE';
 
-const GRID_TEST_CASES: Partial<Record<Locale, Record<string, string>>> = {
+const TEST_CASES: Record<Locale, Record<string, string>> = {
   'en-US': enUS.examples,
   'es-ES': esES.examples,
   'it-IT': itIT.examples,
@@ -45,24 +45,36 @@ const GRID_TEST_CASES: Partial<Record<Locale, Record<string, string>>> = {
   'de-CH': deCH.examples,
   'ja-JP': jaJP.examples,
   'he-IL': heIL.examples,
+  'ar-AE': arAE.examples,
 };
 
-// const FLEX_TEST_CASES: Partial<Record<Locale, Record<string, string>>> = {
-//   'ar-AE': arAE.examples,
-// };
-
 describe('getWordsKeys', () =>
-  Object.keys(GRID_TEST_CASES).forEach((locale) =>
+  Object.keys(TEST_CASES).forEach((locale) =>
     describe(`${locale}`, () => {
-      const { grid } = getLocaleConfig(locale as Locale);
+      const { type, grid } = getLocaleConfig(locale as Locale);
 
-      Object.entries(GRID_TEST_CASES[locale as Locale]!).forEach(([time, phrase]) =>
+      Object.entries(TEST_CASES[locale as Locale]!).forEach(([time, phrase]) =>
         test(`${time} - ${phrase}`, () => {
-          const output = getCharCoords(locale as Locale, time);
+          let output;
+          let outputPhrase;
 
-          const outputPhrase = output
-            .map((word) => word.map((index) => grid?.[Math.floor(index / 11)][index % 11]).join(''))
-            .join(' ');
+          switch (type) {
+            case 'grid': {
+              output = getCharCoords(locale as Locale, time);
+
+              outputPhrase = output
+                .map((word) => word.map((index) => grid?.[Math.floor(index / 11)][index % 11]).join(''))
+                .join(' ');
+              break;
+            }
+            case 'flex': {
+              output = getWordCoords(locale as Locale, time);
+              outputPhrase = output.map(([row, pos]) => grid[row][pos]).join(' ');
+              break;
+            }
+            default:
+              throw new Error(`Unsopported type: ${type}`);
+          }
 
           expect(outputPhrase).toEqual(phrase.replace(/’/g, ''));
         }),

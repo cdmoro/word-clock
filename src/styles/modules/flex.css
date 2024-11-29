@@ -1,0 +1,7 @@
+body.flex #clock {
+    display: none;
+}
+
+body:not(.flex) #flex-clock {
+    display: none;
+}

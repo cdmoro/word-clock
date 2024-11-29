@@ -1,6 +1,6 @@
 import { store } from '../../store';
 import { Locale } from '../../types';
-import { FLEX_CLOCK_LOCALES, HOURS, MINUTES } from './constants';
+import { HOURS, MINUTES } from './constants';
 import { getTime } from '../../utils';
 import { getLocaleConfig } from './locales';
 import { generateFlexFuzzyClockTime, generateFuzzyClockTime } from '../fuzzy';
@@ -66,11 +66,10 @@ function setRandomChars() {
   selected.forEach((char) => char.classList.add('random'));
 }
 
-export function highlightFlexGrid(time: string = getTime()) {
-  document.body?.classList.add('loading');
-  const locale = store.get('locale');
-  const { getLocaleWordKeys, clockWords, secondaryWords } = getLocaleConfig(locale);
+export function getWordCoords(locale: Locale, time: string) {
+  const { getLocaleWordKeys, clockWords } = getLocaleConfig(locale);
   let wordCoords: number[][] = [];
+
   const [hours, minutes] = time.split(':').map((t) => parseInt(t));
   const wordKeys = [];
 
@@ -89,7 +88,23 @@ export function highlightFlexGrid(time: string = getTime()) {
       else wordCoords.push(item as number[]);
     });
 
-  wordCoords.sort((a, b) => a[0] - b[0]);
+  return wordCoords.sort((a, b) => a[0] - b[0]);
+}
+
+export function highlightFlexGrid(time: string = getTime()) {
+  store.set('flex', true);
+  document.body?.classList.add('loading');
+  const locale = store.get('locale');
+  const config = getLocaleConfig(locale);
+
+  if (config.type !== 'flex') {
+    throw new Error(`Locale config type is not flex: ${config.type}`);
+  }
+
+  const { secondaryWords } = config;
+
+  const wordCoords: number[][] = getWordCoords(locale, time);
+  
 
   const flexClockWords = document.querySelectorAll<HTMLDivElement>('#flex-clock .row div');
   flexClockWords.forEach((word) => {
@@ -119,6 +134,7 @@ export function highlightFlexGrid(time: string = getTime()) {
 }
 
 export function highlightGrid(time: string = getTime()) {
+  store.set('flex', false);
   document.body?.classList.add('loading');
 
   const locale = store.get('locale');
@@ -163,9 +179,16 @@ export function highlightGrid(time: string = getTime()) {
 }
 
 export function drawGrid() {
+  store.set('flex', false);
   const clock = document.querySelector<HTMLDivElement>('#clock');
   const gridExists = !!document.querySelector<HTMLDivElement>('#clock .char');
-  const { grid, charsWithApostrophe, secondaryChars } = getLocaleConfig(store.get('locale'));
+  const config = getLocaleConfig(store.get('locale'));
+
+  if (config.type !== 'grid') {
+    throw new Error(`Locale config type is not grid: ${config.type}`);
+  }
+
+  const { grid, charsWithApostrophe, secondaryChars } = config;
 
   grid
     ?.join('')
@@ -187,12 +210,19 @@ export function drawGrid() {
 }
 
 export function drawFlexGrid() {
+  store.set('flex', true);
   const flexClock = document.querySelector<HTMLDivElement>('#flex-clock');
-  const { flexGrid } = getLocaleConfig(store.get('locale'));
+  const config = getLocaleConfig(store.get('locale'));
+
+  if (config.type !== 'flex') {
+    return;
+  }
+
+  const { grid } = config;
 
   flexClock!.innerHTML = '';
 
-  flexGrid?.forEach((row, i) => {
+  grid?.forEach((row, i) => {
     const div = document.createElement('div');
     div.classList.add('row');
     div.dataset.row = i.toString();
@@ -210,11 +240,9 @@ export function drawFlexGrid() {
 }
 
 export function initGrid() {
-  if (FLEX_CLOCK_LOCALES.includes(store.get('locale'))) {
-    document.body.classList.add('flex-grid');
+  if (store.get('flex')) {
     drawFlexGrid();
   } else {
-    document.body.classList.remove('flex-grid');
     drawGrid();
   }
 }

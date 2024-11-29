@@ -1,4 +1,4 @@
-import { Locale, LocaleGridConfig } from '../../../types';
+import { ClockConfig, Locale } from '../../../types';
 import svSE from './sv-SE';
 import deDE from './de-DE';
 import elGR from './el-GR';
@@ -21,7 +21,7 @@ import jaJP from './ja-JP';
 import heIL from './he-IL';
 import arAE from './ar-AE';
 
-const LOCALE_CONFIG: Record<Locale, LocaleGridConfig> = {
+const LOCALE_CONFIG: Record<Locale, ClockConfig> = {
   'en-US': enUS,
   'es-ES': esES,
   'it-IT': itIT,

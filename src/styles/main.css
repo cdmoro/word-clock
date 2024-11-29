@@ -70,7 +70,7 @@ body:not(.show-time) #time-clock {
   row-gap: .5rem;
   width: 50vw;
   font-size: 3.5vw;
-  padding: 1.5rem;
+  padding: .7rem;
 }
 
 #flex-clock .row {
@@ -80,8 +80,15 @@ body:not(.show-time) #time-clock {
 }
 
 #flex-clock .row .word {
-  color: color-mix(in srgb, var(--font-color), transparent 80%);
   transition: opacity 1s, color .5s, background .5s, border-radius .5s;
+}
+
+[data-theme$="light"] #flex-clock .row .word {
+  color: color-mix(in srgb, var(--font-color), #FFF 80%);
+}
+
+[data-theme$="dark"] #flex-clock .row .word {
+  color: color-mix(in srgb, var(--font-color), #000 70%);
 }
 
 #clock {

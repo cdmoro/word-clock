@@ -1,4 +1,4 @@
-import { CommonWords, LocaleGridConfig, WordKeys } from '../../../types';
+import { CommonWords, GridConfig, WordKeys } from '../../../types';
 
 const grid = [
   'ESONELASUNA', // 0-10
@@ -62,6 +62,7 @@ function getLocaleWordKeys(hours: number, minutes: number) {
 }
 
 export default {
+  type: 'grid',
   grid,
   getLocaleWordKeys,
   secondaryChars: [0, 1, 2, 3, 5, 6, 7],
@@ -74,4 +75,4 @@ export default {
     '12:32': 'SON LAS DOCE Y MEDIA',
     '12:35': 'ES LA UNA MENOS VEINTICINCO',
   },
-} satisfies LocaleGridConfig;
+} satisfies GridConfig;

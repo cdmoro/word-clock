@@ -1,4 +1,4 @@
-import { CommonWords, LocaleGridConfig, WordKeys } from '../../../types';
+import { CommonWords, GridConfig, WordKeys } from '../../../types';
 
 const grid = [
   'ESTEZORAPMO', // 0-10 ("ESTE", "ORA")
@@ -64,6 +64,7 @@ function getLocaleWordKeys(_hours: number, minutes: number) {
 }
 
 export default {
+  type: 'grid',
   grid,
   getLocaleWordKeys,
   clockWords: {
@@ -95,4 +96,4 @@ export default {
     '18:00': 'ESTE ORA ȘASE',
     '18:35': 'ESTE ORA ȘAPTE FĂRĂ DOUĂZECI ȘI CINCI',
   },
-} satisfies LocaleGridConfig;
+} satisfies GridConfig;

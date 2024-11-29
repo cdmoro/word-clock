@@ -1,3 +1,4 @@
+import { FLEX_CLOCK_LOCALES } from '../modules/grid/constants';
 import { resolveLocale } from '../modules/locales';
 import { Locale } from '../types';
 
@@ -18,6 +19,7 @@ export interface Stateless {
   time?: string;
   scene?: string;
   static?: boolean;
+  flex?: boolean,
 }
 
 type State = Stateful & Stateless;
@@ -77,6 +79,8 @@ export class Store {
     if (urlParams.has('locale') && urlParams.get('locale') !== this.state.locale) {
       this.syncToUrl('locale', this.state.locale);
     }
+
+    this.state.flex = FLEX_CLOCK_LOCALES.includes(this.state.locale);
 
     Object.entries(this.state).forEach(([key, value]) => {
       if (typeof value === 'boolean') {
@@ -187,5 +191,6 @@ export function createStore() {
     fuzzy: false,
     solid: true,
     mini: false,
+    flex: false,
   });
 }
