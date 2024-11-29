@@ -68,7 +68,7 @@ function getLocaleWordKeys(_hours: number, minutes: number) {
   }
 
   if (minutes >= 5 && minutes < 30) wordKeys.push('PAST');
-  else wordKeys.push('TO');
+  else if (minutes >= 35) wordKeys.push('TO');
 
   return wordKeys;
 }
