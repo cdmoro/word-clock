@@ -67,11 +67,15 @@ function setRandomChars() {
 }
 
 export function getWordCoords(locale: Locale, time: string) {
-  const { getLocaleWordKeys, clockWords } = getLocaleConfig(locale);
+  const { getLocaleWordKeys, clockWords, hourMark = 35 } = getLocaleConfig(locale);
   let wordCoords: number[][] = [];
 
-  const [hours, minutes] = time.split(':').map((t) => parseInt(t));
+  let [hours, minutes] = time.split(':').map((t) => parseInt(t));
   const wordKeys = [];
+
+  if (minutes >= hourMark) {
+    hours = (hours + 1) % 12 || 12;
+  }
 
   wordKeys.push(HOURS[hours % 12]);
   wordKeys.push(...(getLocaleWordKeys?.(hours, minutes) || []));
