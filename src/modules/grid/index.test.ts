@@ -1,7 +1,9 @@
 import { describe, expect, test } from 'vitest';
-import { getCharCoords, getWordCoords } from './index';
-import { Locale } from '../../types';
+import { ClockType, Locale } from '../../types';
 import { getLocaleConfig } from './locales';
+import { getCharCoords } from './types/grid';
+import { getWordCoords } from './types/flex';
+
 import enUS from './locales/en-US';
 import esES from './locales/es-ES';
 import itIT from './locales/it-IT';
@@ -48,35 +50,30 @@ const TEST_CASES: Record<Locale, Record<string, string>> = {
   'ar-AE': arAE.examples,
 };
 
-describe('getWordsKeys', () =>
-  Object.keys(TEST_CASES).forEach((locale) =>
-    describe(`${locale}`, () => {
-      const { type, grid } = getLocaleConfig(locale as Locale);
+function getOutput(locale: Locale, type: ClockType, grid: string[] | string[][], time: string) {
+  if (type === ClockType.grid) {
+    return getCharCoords(locale, time).map((word) =>
+      word.map((index) => grid?.[Math.floor(index / 11)][index % 11]).join(''),
+    );
+  }
 
-      Object.entries(TEST_CASES[locale as Locale]!).forEach(([time, phrase]) =>
+  if (type === ClockType.flex) {
+    return getWordCoords(locale, time).map(([row, pos]) => grid[row][pos]);
+  }
+
+  throw new Error(`Unsopported clock type: ${type}`);
+}
+
+describe('Times', () =>
+  (Object.keys(TEST_CASES) as Locale[]).forEach((locale) =>
+    describe(`Locale: ${locale}`, () => {
+      const { type, grid } = getLocaleConfig(locale);
+
+      Object.entries(TEST_CASES[locale]).forEach(([time, phrase]) =>
         test(`${time} - ${phrase}`, () => {
-          let output;
-          let outputPhrase;
+          const output = getOutput(locale, type, grid, time).join(' ');
 
-          switch (type) {
-            case 'grid': {
-              output = getCharCoords(locale as Locale, time);
-
-              outputPhrase = output
-                .map((word) => word.map((index) => grid?.[Math.floor(index / 11)][index % 11]).join(''))
-                .join(' ');
-              break;
-            }
-            case 'flex': {
-              output = getWordCoords(locale as Locale, time);
-              outputPhrase = output.map(([row, pos]) => grid[row][pos]).join(' ');
-              break;
-            }
-            default:
-              throw new Error(`Unsopported type: ${type}`);
-          }
-
-          expect(outputPhrase).toEqual(phrase.replace(/’/g, ''));
+          expect(output).toEqual(phrase.replace(/’/g, ''));
         }),
       );
     }),

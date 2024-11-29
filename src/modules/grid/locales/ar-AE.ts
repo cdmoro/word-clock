@@ -1,4 +1,4 @@
-import { CommonWords, FlexConfig, WordKeys } from '../../../types';
+import { ClockType, CommonWords, FlexConfig, WordKeys } from '../../../types';
 
 const grid = [
   ['الساعة', 'الآن', 'الحادية', 'الا', 'الثانية', 'عشر'],
@@ -43,7 +43,7 @@ const commonWords: Partial<CommonWords> = {
 const localeWords = {
   TIME: [0, 0],
   IS: [0, 1],
-  PAST: [5, 4],
+  AND: [5, 4],
   TO: [5, 2],
   MINUTES: [9, 2],
 };
@@ -51,30 +51,18 @@ const localeWords = {
 function getLocaleWordKeys(_hours: number, minutes: number) {
   const wordKeys: WordKeys<typeof localeWords>[] = ['TIME', 'IS'];
 
-  if (minutes >= 5 && minutes < 10) wordKeys.push('FIVE_MIN');
-  else if (minutes >= 10 && minutes < 15) wordKeys.push('TEN_MIN');
-  else if (minutes >= 15 && minutes < 20) wordKeys.push('QUARTER_MIN');
-  else if (minutes >= 20 && minutes < 25) wordKeys.push('TWENTY_MIN');
-  else if (minutes >= 25 && minutes < 30) wordKeys.push('TWENTYFIVE_MIN');
-  else if (minutes >= 30 && minutes < 35) wordKeys.push('HALF');
-  else if (minutes >= 35 && minutes < 40) wordKeys.push('TWENTYFIVE_MIN');
-  else if (minutes >= 40 && minutes < 45) wordKeys.push('TWENTY_MIN');
-  else if (minutes >= 45 && minutes < 50) wordKeys.push('QUARTER_MIN');
-  else if (minutes >= 50 && minutes < 55) wordKeys.push('TEN_MIN');
-  else if (minutes >= 55) wordKeys.push('FIVE_MIN');
-
   if ((minutes >= 5 && minutes < 30) || minutes >= 35) {
     wordKeys.push('MINUTES');
   }
 
-  if (minutes >= 5 && minutes < 30) wordKeys.push('PAST');
+  if (minutes >= 5 && minutes < 30) wordKeys.push('AND');
   else if (minutes >= 35) wordKeys.push('TO');
 
   return wordKeys;
 }
 
 export default {
-  type: 'flex',
+  type: ClockType.flex,
   grid,
   getLocaleWordKeys,
   clockWords: {

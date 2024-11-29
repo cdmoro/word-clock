@@ -19,7 +19,7 @@ export interface Stateless {
   time?: string;
   scene?: string;
   static?: boolean;
-  flex?: boolean,
+  flex?: boolean;
 }
 
 type State = Stateful & Stateless;

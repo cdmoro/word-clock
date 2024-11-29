@@ -3,8 +3,9 @@ import { Locale } from '../types';
 import { getTime } from '../utils';
 import { Translations } from '../types';
 import { store } from '../store';
-import { drawFlexGrid, drawGrid, highlightFlexGrid, highlightGrid } from './grid';
+import { drawGrid, highlightGrid } from './grid/types/grid';
 import { FLEX_CLOCK_LOCALES } from './grid/constants';
+import { drawFlexGrid, highlightFlexGrid } from './grid/types/flex';
 
 const RTL_LOCALES: Locale[] = ['he-IL', 'ar-AE'];
 

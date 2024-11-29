@@ -1,4 +1,4 @@
-import { CommonWords, GridConfig, WordKeys } from '../../../types';
+import { ClockType, CommonWords, GridConfig, WordKeys } from '../../../types';
 
 const grid = [
   'KLOKKENVERM', // 0-10 ("KLOKKEN", "ER")
@@ -62,7 +62,7 @@ function getLocaleWordKeys(_hours: number, minutes: number) {
 }
 
 export default {
-  type: 'grid',
+  type: ClockType.grid,
   grid,
   getLocaleWordKeys,
   clockWords: {

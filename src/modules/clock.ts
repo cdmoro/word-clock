@@ -1,7 +1,8 @@
 import { getTime, updateFavicon } from '../utils';
 import { store } from '../store';
-import { highlightFlexGrid, highlightGrid } from './grid';
 import { getRandomThemeColor } from './themes';
+import { highlightFlexGrid } from './grid/types/flex';
+import { highlightGrid } from './grid/types/grid';
 
 function getMillisecondsToNextMinute() {
   const now = new Date();
