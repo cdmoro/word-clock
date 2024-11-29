@@ -35,12 +35,16 @@ const commonWords: Partial<CommonWords> = {
   FIVE_MIN: [9, 0],
   TEN_MIN: [8, 0],
   QUARTER_MIN: [8, 2],
+  TWENTY_MIN: [6, 4],
+  TWENTYFIVE_MIN: [8, 4],
   HALF: [6, 1],
 };
 
 const localeWords = {
   TIME: [0, 0],
   IS: [0, 1],
+  PAST: [5, 4],
+  TO: [5, 2],
   MINUTES: [9, 2],
 };
 
@@ -50,18 +54,21 @@ function getLocaleWordKeys(_hours: number, minutes: number) {
   if (minutes >= 5 && minutes < 10) wordKeys.push('FIVE_MIN');
   else if (minutes >= 10 && minutes < 15) wordKeys.push('TEN_MIN');
   else if (minutes >= 15 && minutes < 20) wordKeys.push('QUARTER_MIN');
-  // else if (minutes >= 20 && minutes < 25) wordKeys.push('TWENTY_MIN');
-  // else if (minutes >= 25 && minutes < 30) wordKeys.push('TWENTYFIVE_MIN');
+  else if (minutes >= 20 && minutes < 25) wordKeys.push('TWENTY_MIN');
+  else if (minutes >= 25 && minutes < 30) wordKeys.push('TWENTYFIVE_MIN');
   else if (minutes >= 30 && minutes < 35) wordKeys.push('HALF');
-  // else if (minutes >= 35 && minutes < 40) wordKeys.push('THIRTY_FIVE');
-  // else if (minutes >= 40 && minutes < 45) wordKeys.push('FORTY');
-  // else if (minutes >= 45 && minutes < 50) wordKeys.push('FORTY_FIVE');
-  // else if (minutes >= 50 && minutes < 55) wordKeys.push('FIFTY');
-  // else if (minutes >= 55) wordKeys.push('FIFTY_FIVE');
+  else if (minutes >= 35 && minutes < 40) wordKeys.push('TWENTYFIVE_MIN');
+  else if (minutes >= 40 && minutes < 45) wordKeys.push('TWENTY_MIN');
+  else if (minutes >= 45 && minutes < 50) wordKeys.push('QUARTER_MIN');
+  else if (minutes >= 50 && minutes < 55) wordKeys.push('TEN_MIN');
+  else if (minutes >= 55) wordKeys.push('FIVE_MIN');
 
   if ((minutes >= 5 && minutes < 30) || minutes >= 35) {
     wordKeys.push('MINUTES');
   }
+
+  if (minutes >= 5 && minutes < 30) wordKeys.push('PAST');
+  else wordKeys.push('TO');
 
   return wordKeys;
 }
