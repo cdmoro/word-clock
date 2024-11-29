@@ -3,4 +3,4 @@
 
 npm run typecheck
 npm run lint
-npm run test -- -t getWordsKeys --run
+npm run test -- -t Times --run
