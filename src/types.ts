@@ -43,6 +43,7 @@ export enum ClockType {
 }
 
 interface CommonConfig {
+  type: ClockType;
   clockWords: Record<string, Word>;
   getLocaleWordKeys?: (hours: number, minutes: number) => string[];
   getCustomWordKeys?: (time: string) => string[];
@@ -67,18 +68,3 @@ export interface FlexConfig extends CommonConfig {
 }
 
 export type ClockConfig = GridConfig | FlexConfig;
-
-export interface LocaleGridConfig {
-  grid?: string[];
-  flexGrid?: string[][];
-  charsWithApostrophe?: number[];
-  clockWords: Record<string, Word>;
-  secondaryChars?: number[];
-  secondaryWords?: number[][];
-  getLocaleWordKeys?: (hours: number, minutes: number) => string[];
-  getCustomWordKeys?: (time: string) => string[];
-  hourMark?: number;
-  fuzzyCapitalWords?: string[];
-  fuzzyDictionary?: Record<string, string>;
-  examples: Record<string, string>;
-}

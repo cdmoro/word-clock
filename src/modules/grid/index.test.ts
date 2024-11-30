@@ -1,8 +1,7 @@
 import { describe, expect, test } from 'vitest';
-import { ClockType, Locale } from '../../types';
+import { ClockConfig, ClockType, Locale } from '../../types';
 import { getLocaleConfig } from './locales';
-import { getCharCoords } from './types/grid';
-import { getWordCoords } from './types/flex';
+import { getCoords } from './utils';
 
 import enUS from './locales/en-US';
 import esES from './locales/es-ES';
@@ -50,30 +49,34 @@ const TEST_CASES: Record<Locale, Record<string, string>> = {
   'ar-AE': arAE.examples,
 };
 
-function getOutput(locale: Locale, type: ClockType, grid: string[] | string[][], time: string) {
-  if (type === ClockType.grid) {
-    return getCharCoords(locale, time).map((word) =>
-      word.map((index) => grid?.[Math.floor(index / 11)][index % 11]).join(''),
-    );
-  }
+function getOutput(coords: number[][], config: ClockConfig) {
+  const { type, grid } = config;
 
-  if (type === ClockType.flex) {
-    return getWordCoords(locale, time).map(([row, pos]) => grid[row][pos]);
+  switch (type) {
+    case ClockType.grid: {
+      const { charsWithApostrophe } = config;
+      return coords.map((word) =>
+        word.map((i) => `${grid[Math.floor(i / 11)][i % 11]}${charsWithApostrophe?.includes(i) ? '’' : ''}`).join(''),
+      );
+    }
+    case ClockType.flex:
+      return coords.map(([row, pos]) => grid[row][pos]);
+    default:
+      throw new Error(`Unsopported clock type: ${type}`);
   }
-
-  throw new Error(`Unsopported clock type: ${type}`);
 }
 
 describe('Times', () =>
   (Object.keys(TEST_CASES) as Locale[]).forEach((locale) =>
     describe(`Locale: ${locale}`, () => {
-      const { type, grid } = getLocaleConfig(locale);
+      const config = getLocaleConfig(locale);
 
       Object.entries(TEST_CASES[locale]).forEach(([time, phrase]) =>
         test(`${time} - ${phrase}`, () => {
-          const output = getOutput(locale, type, grid, time).join(' ');
+          const coords = getCoords(locale, time);
+          const output = getOutput(coords, config).join(' ');
 
-          expect(output).toEqual(phrase.replace(/’/g, ''));
+          expect(output).toEqual(phrase);
         }),
       );
     }),

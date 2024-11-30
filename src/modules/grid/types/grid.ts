@@ -1,50 +1,9 @@
 import { store } from '../../../store';
-import { ClockType, Locale } from '../../../types';
+import { ClockType } from '../../../types';
 import { getTime } from '../../../utils';
 import { generateFuzzyClockTime } from '../../fuzzy';
-import { HOURS, MINUTES } from '../constants';
 import { getLocaleConfig } from '../locales';
-
-function getCommonCharKeys(locale: Locale, time: string) {
-  const { getLocaleWordKeys, hourMark = 35 } = getLocaleConfig(locale);
-  const wordKeys = [];
-
-  // eslint-disable-next-line prefer-const
-  let [hours, minutes] = time.split(':').map((t) => parseInt(t));
-
-  if (minutes >= hourMark) {
-    hours = (hours + 1) % 12 || 12;
-  }
-
-  wordKeys.push(...(getLocaleWordKeys?.(hours, minutes) || []));
-  wordKeys.push(HOURS[hours % 12]);
-
-  if (minutes >= 5) {
-    wordKeys.push(MINUTES[Math.floor(minutes / 5) - 1]);
-  }
-
-  return wordKeys;
-}
-
-export function getCharCoords(locale: Locale, time: string) {
-  const { clockWords, getCustomWordKeys } = getLocaleConfig(locale);
-  let charCoords: number[][] = [];
-  const wordKeys = getCustomWordKeys?.(time) || getCommonCharKeys(locale, time);
-
-  wordKeys
-    .filter((word) => word.length > 0)
-    .map((word) => clockWords[word as keyof typeof clockWords])
-    .forEach((item) => {
-      if (typeof item === 'function') {
-        const [hours, minutes] = time.split(':').map((t) => parseInt(t));
-        item = item(hours, minutes);
-      }
-      if (Array.isArray(item) && Array.isArray(item[0])) charCoords = charCoords.concat(item);
-      else charCoords.push(item as number[]);
-    });
-
-  return charCoords.sort((a, b) => a[0] - b[0]);
-}
+import { getCoords } from '../utils';
 
 function setRandomChars() {
   document.querySelectorAll<HTMLDivElement>('#clock .char.random').forEach((char) => char.classList.remove('random'));
@@ -71,7 +30,7 @@ export function highlightGrid(time: string = getTime()) {
   document.body?.classList.add('loading');
 
   const locale = store.get('locale');
-  const words = getCharCoords(locale, time);
+  const words = getCoords(locale, time);
   let longestWord = 0;
 
   const chars = document.querySelectorAll<HTMLDivElement>('#clock .char');
