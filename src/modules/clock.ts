@@ -1,7 +1,7 @@
 import { getTime, updateFavicon } from '../utils';
 import { store } from '../store';
-import { highlightGrid } from './grid';
 import { getRandomThemeColor } from './themes';
+import { getClockMethods } from './grid/types';
 
 function getMillisecondsToNextMinute() {
   const now = new Date();
@@ -29,7 +29,8 @@ function updateTime(forceUpdate?: boolean) {
   const lastTimeChar = time.slice(-1);
 
   if (forceUpdate || lastTimeChar === '0' || lastTimeChar === '5') {
-    highlightGrid(time);
+    const { highlightClock } = getClockMethods();
+    highlightClock();
   }
 }
 

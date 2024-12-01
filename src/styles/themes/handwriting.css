@@ -12,11 +12,16 @@
   --clock-font-family: 'Yuji Boku', sans-serif;
 }
 
+[data-theme|='handwriting'][lang='ar'] {
+  --clock-font-family: 'Amiri', sans-serif;
+}
+
 [data-theme|='handwriting'] #fuzzy-clock {
   text-shadow: none;
 }
 
 [data-theme|='handwriting'] .char,
+[data-theme|='handwriting'] .row,
 [data-theme|='handwriting'] .fuzzy-wrapper {
   border-bottom: solid 1px color-mix(in srgb, var(--font-color), transparent 75%);
 }

@@ -5,6 +5,7 @@ export type { Translations } from './strings/types';
 declare global {
   interface Window {
     highlightGrid: (time: string) => void;
+    highlightFlexGrid: (time: string) => void;
   }
 }
 
@@ -36,15 +37,34 @@ export type LocaleWords = Record<string, Word>;
 
 export type WordKeys<T> = CommonWordsKey | keyof T;
 
-export interface LocaleGridConfig {
-  grid: string[];
-  charsWithApostrophe?: number[];
+export enum ClockType {
+  grid = 'grid',
+  flex = 'flex',
+}
+
+interface CommonConfig {
+  type: ClockType;
   clockWords: Record<string, Word>;
   getLocaleWordKeys?: (hours: number, minutes: number) => string[];
-  secondaryChars?: number[];
   getCustomWordKeys?: (time: string) => string[];
   hourMark?: number;
   fuzzyCapitalWords?: string[];
   fuzzyDictionary?: Record<string, string>;
   examples: Record<string, string>;
 }
+
+export interface GridConfig extends CommonConfig {
+  type: ClockType.grid;
+  grid: string[];
+  charsWithApostrophe?: number[];
+  secondaryChars?: number[];
+}
+
+export interface FlexConfig extends CommonConfig {
+  type: ClockType.flex;
+  grid: string[][];
+  clockWords: Record<string, Word>;
+  secondaryWords?: number[][];
+}
+
+export type ClockConfig = GridConfig | FlexConfig;

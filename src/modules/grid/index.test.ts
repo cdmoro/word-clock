@@ -1,7 +1,8 @@
 import { describe, expect, test } from 'vitest';
-import { getCharCoords } from './index';
-import { Locale } from '../../types';
+import { ClockConfig, ClockType, Locale } from '../../types';
 import { getLocaleConfig } from './locales';
+import { getCoords } from './utils';
+
 import enUS from './locales/en-US';
 import esES from './locales/es-ES';
 import itIT from './locales/it-IT';
@@ -22,6 +23,7 @@ import zhTW from './locales/zh-TW';
 import deCH from './locales/de-CH';
 import jaJP from './locales/ja-JP';
 import heIL from './locales/he-IL';
+import arAE from './locales/ar-AE';
 
 const TEST_CASES: Record<Locale, Record<string, string>> = {
   'en-US': enUS.examples,
@@ -44,22 +46,37 @@ const TEST_CASES: Record<Locale, Record<string, string>> = {
   'de-CH': deCH.examples,
   'ja-JP': jaJP.examples,
   'he-IL': heIL.examples,
+  'ar-AE': arAE.examples,
 };
 
-describe('getWordsKeys', () =>
-  Object.keys(TEST_CASES).forEach((locale) =>
-    describe(`${locale}`, () => {
-      const { grid } = getLocaleConfig(locale as Locale);
+function getOutput(coords: number[][], config: ClockConfig) {
+  const { type, grid } = config;
 
-      Object.entries(TEST_CASES[locale as Locale]).forEach(([time, phrase]) =>
+  switch (type) {
+    case ClockType.grid: {
+      const { charsWithApostrophe } = config;
+      return coords.map((word) =>
+        word.map((i) => `${grid[Math.floor(i / 11)][i % 11]}${charsWithApostrophe?.includes(i) ? '’' : ''}`).join(''),
+      );
+    }
+    case ClockType.flex:
+      return coords.map(([row, pos]) => grid[row][pos]);
+    default:
+      throw new Error(`Unsopported clock type: ${type}`);
+  }
+}
+
+describe('Times', () =>
+  (Object.keys(TEST_CASES) as Locale[]).forEach((locale) =>
+    describe(`Locale: ${locale}`, () => {
+      const config = getLocaleConfig(locale);
+
+      Object.entries(TEST_CASES[locale]).forEach(([time, phrase]) =>
         test(`${time} - ${phrase}`, () => {
-          const output = getCharCoords(locale as Locale, time);
+          const coords = getCoords(locale, time);
+          const output = getOutput(coords, config).join(' ');
 
-          const outputPhrase = output
-            .map((word) => word.map((index) => grid[Math.floor(index / 11)][index % 11]).join(''))
-            .join(' ');
-
-          expect(outputPhrase).toEqual(phrase.replace(/’/g, ''));
+          expect(output).toEqual(phrase);
         }),
       );
     }),

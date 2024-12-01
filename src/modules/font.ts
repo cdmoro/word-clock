@@ -3,12 +3,12 @@ import { store } from '../store';
 
 export const THEME_FONTS: Record<string, string[]> = {
   base: ['Tektur'],
-  retro: ['VT323', 'DotGothic16'],
+  retro: ['VT323', 'DotGothic16', 'Handjet'],
   elegant: ['Playfair Display'],
-  festive: ['Leckerli One'],
+  festive: ['Leckerli One', 'Baloo Bhaijaan 2'],
   bohemian: ['Comfortaa'],
-  handwriting: ['Mynerve', 'Yuji Boku'],
-  terminal: ['B612 Mono'],
+  handwriting: ['Mynerve', 'Yuji Boku', 'Amiri'],
+  terminal: ['B612 Mono', 'Handjet'],
   frame: ['Playfair Display'],
   poster: ['Averia Serif Libre', 'Allura', 'Potta One'],
   photo: ['Geologica'],

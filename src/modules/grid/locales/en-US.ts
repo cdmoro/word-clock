@@ -1,4 +1,4 @@
-import { CommonWords, LocaleGridConfig, WordKeys } from '../../../types';
+import { ClockType, CommonWords, GridConfig, WordKeys } from '../../../types';
 
 const grid = [
   'ITLISASAMPM', // 0-10
@@ -59,6 +59,7 @@ function getLocaleWordKeys(_hours: number, minutes: number) {
 }
 
 export default {
+  type: ClockType.grid,
   grid,
   charsWithApostrophe: [104],
   getLocaleWordKeys,
@@ -75,4 +76,4 @@ export default {
     '12:32': 'IT IS HALF PAST TWELVE',
     '12:35': 'IT IS TWENTYFIVE TO ONE',
   },
-} satisfies LocaleGridConfig;
+} satisfies GridConfig;

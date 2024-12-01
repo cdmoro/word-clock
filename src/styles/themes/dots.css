@@ -14,11 +14,17 @@
     border-radius: 50%;
 }
 
-[data-theme|='dots'] body.focus .char:not(.active) {
+[data-theme|='dots'] body.focus .char:not(.active),
+[data-theme|='dots'] body.focus #flex-clock .row .word:not(.active) {
     color: transparent;
     background-color: color-mix(in srgb, var(--font-color), transparent 95%);
 }
 
+[data-theme|='dots'] #flex-clock .row .word:not(.active) {
+    color: transparent;
+    background-color: color-mix(in srgb, var(--font-color), transparent 80%);
+    border-radius: .5rem;
+}
 
 @media screen and (min-width: 1000px) {
     [data-theme|='dots'] .char {

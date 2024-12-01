@@ -4,6 +4,10 @@
   --accent-color: #e74c3c;
 }
 
+[data-theme|='festive'][lang='ar'] {
+  --clock-font-family: 'Baloo Bhaijaan 2', sans-serif;
+}
+
 [data-theme='festive-light'] {
   --background: #fad0c4;
   --background-image: linear-gradient(to top right, var(--background) 0%, #ffd1ff 100%);

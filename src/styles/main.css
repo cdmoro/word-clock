@@ -51,7 +51,8 @@ body:not(.show-time) #time-clock {
 }
 
 #clock,
-#fuzzy-clock {
+#fuzzy-clock,
+#flex-clock {
   margin: 0 auto;
   position: relative;
   z-index: 2;
@@ -61,6 +62,25 @@ body:not(.show-time) #time-clock {
   transition: all .5s;
   font-weight: var(--clock-font-weight, normal);
   border-radius: 0.5rem;
+}
+
+#flex-clock {
+  display: flex;
+  flex-direction: column;
+  row-gap: .5rem;
+  width: 50vw;
+  font-size: 3.5vw;
+  padding: .7rem;
+}
+
+#flex-clock .row {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+#flex-clock .row .word {
+  transition: opacity 1s, color .5s, background .5s, border-radius .5s;
 }
 
 #clock {
@@ -83,7 +103,12 @@ body.loading #clock .char {
   transition: opacity 1s, color .5s, background .5s, border-radius .5s;
 }
 
-.char.active {
+#flex-clock .row .word {
+  color: color-mix(in srgb, var(--font-color), transparent 80%);
+}
+
+.char.active,
+#flex-clock .row .word.active {
   color: var(--accent-color);
 }
 

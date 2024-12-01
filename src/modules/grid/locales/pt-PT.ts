@@ -1,4 +1,4 @@
-import { CommonWords, LocaleGridConfig, WordKeys } from '../../../types';
+import { ClockType, CommonWords, GridConfig, WordKeys } from '../../../types';
 
 const grid = [
   'ÉSÃOUMATRÊS', // 0-10: É, SÃO, UMA, TRÊS
@@ -73,6 +73,7 @@ function getLocaleWordKeys(hours: number, minutes: number) {
 }
 
 export default {
+  type: ClockType.grid,
   grid,
   getLocaleWordKeys,
   clockWords: {
@@ -87,4 +88,4 @@ export default {
     '12:32': 'SÃO MEIO DIA E MEIA',
     '12:35': 'É UMA HORA MENOS VINTE E CINCO',
   },
-} satisfies LocaleGridConfig;
+} satisfies GridConfig;

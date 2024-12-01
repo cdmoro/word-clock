@@ -1,4 +1,4 @@
-import { CommonWords, LocaleGridConfig, WordKeys } from '../../../types';
+import { ClockType, CommonWords, GridConfig, WordKeys } from '../../../types';
 
 const grid = [
   'ESKISTAFÜNF', // 0-10: ES, IST, FÜNF
@@ -66,6 +66,7 @@ function getLocaleWordKeys(_hours: number, minutes: number) {
 }
 
 export default {
+  type: ClockType.grid,
   grid,
   getLocaleWordKeys,
   clockWords: {
@@ -97,4 +98,4 @@ export default {
     '17:05': 'ES IST FÜNF NACH FÜNF',
     '20:26': 'ES IST FÜNF ZWANZIG NACH ACHT',
   },
-} satisfies LocaleGridConfig;
+} satisfies GridConfig;

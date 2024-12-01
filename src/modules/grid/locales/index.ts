@@ -1,4 +1,4 @@
-import { Locale, LocaleGridConfig } from '../../../types';
+import { ClockConfig, Locale } from '../../../types';
 import svSE from './sv-SE';
 import deDE from './de-DE';
 import elGR from './el-GR';
@@ -19,8 +19,9 @@ import zhTW from './zh-TW';
 import deCH from './de-CH';
 import jaJP from './ja-JP';
 import heIL from './he-IL';
+import arAE from './ar-AE';
 
-const LOCALE_CONFIG: Record<Locale, LocaleGridConfig> = {
+const LOCALE_CONFIG: Record<Locale, ClockConfig> = {
   'en-US': enUS,
   'es-ES': esES,
   'it-IT': itIT,
@@ -41,7 +42,12 @@ const LOCALE_CONFIG: Record<Locale, LocaleGridConfig> = {
   'de-CH': deCH,
   'ja-JP': jaJP,
   'he-IL': heIL,
+  'ar-AE': arAE,
 };
+
+export function getLocaleClockType(locale: Locale) {
+  return LOCALE_CONFIG[locale].type;
+}
 
 export function getLocaleConfig(locale: Locale) {
   return LOCALE_CONFIG[locale];

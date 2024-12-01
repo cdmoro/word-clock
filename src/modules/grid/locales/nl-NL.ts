@@ -1,4 +1,4 @@
-import { CommonWords, LocaleGridConfig, WordKeys } from '../../../types';
+import { ClockType, CommonWords, GridConfig, WordKeys } from '../../../types';
 
 const grid = [
   'HETKISAVIJF', // 0-10 ("HET", "IS", "VIJF")
@@ -72,6 +72,7 @@ function getLocaleWordKeys(_hours: number, minutes: number) {
 }
 
 export default {
+  type: ClockType.grid,
   grid,
   getLocaleWordKeys,
   clockWords: {
@@ -98,4 +99,4 @@ export default {
     '05:55': 'HET IS VIJF VOOR ZES',
     '17:55': 'HET IS VIJF VOOR ZES',
   },
-} satisfies LocaleGridConfig;
+} satisfies GridConfig;

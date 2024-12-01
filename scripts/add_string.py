@@ -25,22 +25,25 @@ def translate_text(text, target_lang, retries=3, delay=1):
 
 def add_and_translate_key(new_key, english_text):
     """
-    Add a new key to the JSON file and translate it to other languages.
+    Add or update a key in the JSON file and translate it to other languages.
     """
     # Load the JSON file
     with open(json_path, "r", encoding="utf-8") as file:
         translations = json.load(file)
 
-    # Add English text to the en-US dictionary
+    # Update or add English text in the en-US dictionary
     translations["en-US"][new_key] = english_text
 
-    # Translate and add to other languages
+    # Translate and update other languages
     for lang_code in translations:
         if lang_code != "en-US":
-            # Google Translate uses 2-letter codes, so we extract the first two characters
-            translations[lang_code][new_key] = translate_text(
-                english_text, lang_code[:2]
-            )
+            # Check if the key already exists in the current language
+            current_translation = translations[lang_code].get(new_key)
+            # Only update if the translation is missing or differs from the new English text
+            if not current_translation or current_translation != english_text:
+                translations[lang_code][new_key] = translate_text(
+                    english_text, lang_code[:2]
+                )
 
     # Sort translations alphabetically by key
     sorted_translations = {
@@ -55,6 +58,7 @@ def add_and_translate_key(new_key, english_text):
     # Regenerate TypeScript types
     subprocess.run(["python", "scripts/generate_strings_type.py"])
 
+print("Add/Update key")
 new_key = input("Key: ").lower().replace(" ", "_")
 english_text = input("Content: ")
 add_and_translate_key(new_key, english_text)

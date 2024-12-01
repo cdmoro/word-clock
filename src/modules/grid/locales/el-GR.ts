@@ -1,4 +1,4 @@
-import { CommonWords, LocaleGridConfig, WordKeys } from '../../../types';
+import { ClockType, CommonWords, GridConfig, WordKeys } from '../../../types';
 
 const grid = [
   'ΗΧΩΡΑΤΕΙΝΑΙ', // 0-10 ("Η ΧΩΡΑ ΤΕΙΝΑΙ" - General grid, start of "Η" - It is)
@@ -60,6 +60,7 @@ function getLocaleWordKeys(_hours: number, minutes: number) {
 }
 
 export default {
+  type: ClockType.grid,
   grid,
   getLocaleWordKeys,
   clockWords: {
@@ -71,4 +72,4 @@ export default {
     '17:05': 'Η ΩΡΑ ΕΙΝΑΙ ΠΕΝΤΕ ΚΑΙ ΠΕΝΤΕ',
     '20:26': 'Η ΩΡΑ ΕΙΝΑΙ ΟΧΤΩ ΚΑΙ ΕΙΚΟΣΙ ΠΕΝΤΕ',
   },
-} satisfies LocaleGridConfig;
+} satisfies GridConfig;

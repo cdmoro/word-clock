@@ -1,4 +1,4 @@
-import { CommonWords, LocaleGridConfig, WordKeys } from '../../../types';
+import { ClockType, CommonWords, GridConfig, WordKeys } from '../../../types';
 
 const grid = [
   'KLOCKANTÄRK', // 0-10 ("KLOCKAN", "ÄR")
@@ -63,6 +63,7 @@ function getLocaleWordKeys(_hours: number, minutes: number) {
 }
 
 export default {
+  type: ClockType.grid,
   grid,
   getLocaleWordKeys,
   clockWords: {
@@ -86,4 +87,4 @@ export default {
     '01:55': 'KLOCKAN ÄR FEM I TVÅ',
     '02:00': 'KLOCKAN ÄR TVÅ',
   },
-} satisfies LocaleGridConfig;
+} satisfies GridConfig;
