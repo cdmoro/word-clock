@@ -3,6 +3,10 @@
   --clock-line-height: 1.3;
 }
 
+[data-theme|='terminal'][lang='ar'] {
+  --clock-font-family: 'Handjet', sans-serif;
+}
+
 [data-theme|='terminal'] body,
 [data-theme|='terminal'] select,
 [data-theme|='terminal'] button {

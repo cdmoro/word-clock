@@ -7,6 +7,10 @@
   --clock-font-family: 'DotGothic16', sans-serif;
 }
 
+[data-theme|='retro'][lang='ar'] {
+  --clock-font-family: 'Handjet', sans-serif;
+}
+
 [data-theme|='retro'] #fuzzy-clock {
   text-shadow: none;
 }
