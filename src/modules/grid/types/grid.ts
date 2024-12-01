@@ -26,7 +26,7 @@ function setRandomChars() {
 }
 
 export function highlightGrid(time: string = getTime()) {
-  store.set('flex', false);
+  store.set('clock_type', ClockType.grid);
   document.body?.classList.add('loading');
 
   const locale = store.get('locale');
@@ -56,7 +56,7 @@ export function highlightGrid(time: string = getTime()) {
       });
 
       if (longestWord > 0) {
-        document.documentElement.style.setProperty('--longest-word', longestWord.toString());
+        document.querySelector<HTMLDivElement>('#clock')!.style.setProperty('--columns', longestWord.toString());
       }
     });
 
@@ -71,7 +71,7 @@ export function highlightGrid(time: string = getTime()) {
 }
 
 export function drawGrid() {
-  store.set('flex', false);
+  store.set('clock_type', ClockType.grid);
   const clock = document.querySelector<HTMLDivElement>('#clock');
   const gridExists = !!document.querySelector<HTMLDivElement>('#clock .char');
   const config = getLocaleConfig(store.get('locale'));

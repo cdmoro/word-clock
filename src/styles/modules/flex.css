@@ -1,7 +1,7 @@
-body.flex #clock {
+html:not([data-clock-type="grid"]) #clock {
     display: none;
 }
 
-body:not(.flex) #flex-clock {
+html:not([data-clock-type="flex"]) #flex-clock {
     display: none;
 }

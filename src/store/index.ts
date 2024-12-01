@@ -1,6 +1,7 @@
-import { FLEX_CLOCK_LOCALES } from '../modules/grid/constants';
+// import { FLEX_CLOCK_LOCALES } from '../modules/grid/constants';
+import { getLocaleClockType } from '../modules/grid/locales';
 import { resolveLocale } from '../modules/locales';
-import { Locale } from '../types';
+import { ClockType, Locale } from '../types';
 
 interface Stateful {
   locale: Locale;
@@ -19,14 +20,14 @@ export interface Stateless {
   time?: string;
   scene?: string;
   static?: boolean;
-  flex?: boolean;
+  clock_type?: ClockType;
 }
 
 type State = Stateful & Stateless;
 
 type Listener = (newState: State, oldState: State) => void;
 
-const IGNORE_FROM_URL: (keyof State)[] = ['custom-font'];
+const IGNORE_FROM_URL: (keyof State)[] = ['custom-font', 'clock_type'];
 const REMOVE_VALUES_FROM_URL: Partial<State> = {
   font: 'default',
   theme: 'base-system',
@@ -80,7 +81,10 @@ export class Store {
       this.syncToUrl('locale', this.state.locale);
     }
 
-    this.state.flex = FLEX_CLOCK_LOCALES.includes(this.state.locale);
+    this.state.clock_type = getLocaleClockType(this.state.locale);
+    document.documentElement.setAttribute('data-clock-type', this.state.clock_type.toString());
+
+    // this.state.flex = FLEX_CLOCK_LOCALES.includes(this.state.locale);
 
     Object.entries(this.state).forEach(([key, value]) => {
       if (typeof value === 'boolean') {
@@ -191,6 +195,5 @@ export function createStore() {
     fuzzy: false,
     solid: true,
     mini: false,
-    flex: false,
   });
 }

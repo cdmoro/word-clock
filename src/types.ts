@@ -38,8 +38,8 @@ export type LocaleWords = Record<string, Word>;
 export type WordKeys<T> = CommonWordsKey | keyof T;
 
 export enum ClockType {
-  grid,
-  flex,
+  grid = 'grid',
+  flex = 'flex',
 }
 
 interface CommonConfig {

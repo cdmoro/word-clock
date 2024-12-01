@@ -3,9 +3,7 @@ import { Locale } from '../types';
 import { getTime } from '../utils';
 import { Translations } from '../types';
 import { store } from '../store';
-import { drawGrid, highlightGrid } from './grid/types/grid';
-import { FLEX_CLOCK_LOCALES } from './grid/constants';
-import { drawFlexGrid, highlightFlexGrid } from './grid/types/flex';
+import { getClockMethods, setClockType } from './grid/types';
 
 const RTL_LOCALES: Locale[] = ['he-IL', 'ar-AE'];
 
@@ -55,25 +53,19 @@ export function initLocale() {
 
   localeSelect?.addEventListener('change', (e) => {
     const locale = (e.target as HTMLInputElement).value as Locale;
+    setClockType(locale);
+    const { drawClock, highlightClock } = getClockMethods();
 
     translateStrings(locale);
     store.set('locale', locale);
     document.documentElement.dir = RTL_LOCALES.includes(locale) ? 'rtl' : 'ltr';
-    store.set('flex', FLEX_CLOCK_LOCALES.includes(locale));
+    // store.set('flex', FLEX_CLOCK_LOCALES.includes(locale));
 
-    if (store.get('flex')) {
-      drawFlexGrid();
-    } else {
-      drawGrid();
-    }
+    drawClock();
 
     document.body?.classList.add('no-transitions');
 
-    if (store.get('flex')) {
-      highlightFlexGrid();
-    } else {
-      highlightGrid();
-    }
+    highlightClock();
   });
 }
 

@@ -1,11 +1,6 @@
-import { store } from '../../store';
-import { drawFlexGrid } from './types/flex';
-import { drawGrid } from './types/grid';
+import { getClockMethods } from './types';
 
 export function initGrid() {
-  if (store.get('flex')) {
-    drawFlexGrid();
-  } else {
-    drawGrid();
-  }
+  const { drawClock } = getClockMethods();
+  drawClock();
 }

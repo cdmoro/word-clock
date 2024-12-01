@@ -23,6 +23,13 @@ function checkMini() {
   }
 }
 
+export function generateFuzzyTime(time: string, locale: Locale) {
+  const fuzzyTime = generateFlexFuzzyClockTime(locale);
+
+  document.querySelector('#clock')?.setAttribute('aria-label', time);
+  document.querySelector('#clock')?.setAttribute('aria-description', fuzzyTime);
+}
+
 export function generateFlexFuzzyClockTime(locale: Locale) {
   const { fuzzyCapitalWords, fuzzyDictionary } = getLocaleConfig(locale);
   const fuzzyClock = document.querySelector('#fuzzy-clock');

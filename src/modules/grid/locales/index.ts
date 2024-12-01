@@ -45,6 +45,10 @@ const LOCALE_CONFIG: Record<Locale, ClockConfig> = {
   'ar-AE': arAE,
 };
 
+export function getLocaleClockType(locale: Locale) {
+  return LOCALE_CONFIG[locale].type;
+}
+
 export function getLocaleConfig(locale: Locale) {
   return LOCALE_CONFIG[locale];
 }

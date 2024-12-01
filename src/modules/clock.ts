@@ -1,8 +1,7 @@
 import { getTime, updateFavicon } from '../utils';
 import { store } from '../store';
 import { getRandomThemeColor } from './themes';
-import { highlightFlexGrid } from './grid/types/flex';
-import { highlightGrid } from './grid/types/grid';
+import { getClockMethods } from './grid/types';
 
 function getMillisecondsToNextMinute() {
   const now = new Date();
@@ -30,11 +29,8 @@ function updateTime(forceUpdate?: boolean) {
   const lastTimeChar = time.slice(-1);
 
   if (forceUpdate || lastTimeChar === '0' || lastTimeChar === '5') {
-    if (store.get('flex')) {
-      highlightFlexGrid(time);
-    } else {
-      highlightGrid(time);
-    }
+    const { highlightClock } = getClockMethods();
+    highlightClock();
   }
 }
 
