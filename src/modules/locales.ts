@@ -54,7 +54,7 @@ export function initLocale() {
   localeSelect?.addEventListener('change', (e) => {
     const locale = (e.target as HTMLInputElement).value as Locale;
     setClockType(locale);
-    const { drawClock, highlightClock } = getClockMethods();
+    const { drawClock, highlightClock } = getClockMethods(locale);
 
     translateStrings(locale);
     store.set('locale', locale);

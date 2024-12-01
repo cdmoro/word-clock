@@ -83,14 +83,6 @@ body:not(.show-time) #time-clock {
   transition: opacity 1s, color .5s, background .5s, border-radius .5s;
 }
 
-[data-theme$="light"] #flex-clock .row .word {
-  color: color-mix(in srgb, var(--font-color), #FFF 80%);
-}
-
-[data-theme$="dark"] #flex-clock .row .word {
-  color: color-mix(in srgb, var(--font-color), #000 70%);
-}
-
 #clock {
   display: grid;
   grid-template-columns: repeat(11, 1fr);
@@ -109,6 +101,10 @@ body.loading #clock .char {
   text-align: center;
   color: color-mix(in srgb, var(--font-color), transparent 80%);
   transition: opacity 1s, color .5s, background .5s, border-radius .5s;
+}
+
+#flex-clock .row .word {
+  color: color-mix(in srgb, var(--font-color), transparent 80%);
 }
 
 .char.active,

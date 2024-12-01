@@ -19,8 +19,8 @@ export function setClockType(locale?: Locale) {
   store.set('clock_type', clockType);
 }
 
-export function getClockMethods(): GetClockMethods {
-  const type = getClockType();
+export function getClockMethods(locale?: Locale): GetClockMethods {
+  const type = getClockType(locale);
 
   switch (type) {
     case ClockType.grid:
