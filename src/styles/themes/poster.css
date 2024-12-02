@@ -10,6 +10,7 @@
 }
 
 [data-theme|='poster'] #clock,
+[data-theme|='poster'] #flex-clock,
 [data-theme|='poster'] #fuzzy-clock {
   border-width: 1rem;
   border-style: solid;
@@ -33,6 +34,7 @@
 
 [data-theme='poster-light'] #clock,
 [data-theme='poster-light'] #fuzzy-clock,
+[data-theme='poster-light'] #flex-clock,
 [data-theme='poster-light'] body.solid #clock,
 [data-theme='poster-light'] body.solid #fuzzy-clock {
   border-color: #111111;
@@ -44,6 +46,7 @@
 
 [data-theme='poster-dark'] #clock,
 [data-theme='poster-dark'] #fuzzy-clock,
+[data-theme='poster-dark'] #flex-clock,
 [data-theme='poster-dark'] body.solid #clock,
 [data-theme='poster-dark'] body.solid #fuzzy-clock {
   border-color: #dfab5d;

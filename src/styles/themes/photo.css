@@ -18,12 +18,14 @@
   transition: all 0.5s;
 }
 
-[data-theme|='photo'] #clock {
+[data-theme|='photo'] #clock,
+[data-theme|='photo'] #flex-clock {
   background: color-mix(in srgb, var(--background), transparent 20%);
   border-radius: .5rem;
 }
 
-[data-theme|='photo'] body.solid #clock:has(.active) {
+[data-theme|='photo'] body.solid #clock:has(.active),
+[data-theme|='photo'] body.solid #flex-clock {
   background-color: color-mix(in srgb, var(--background), transparent 5%);
 }
 

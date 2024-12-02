@@ -4,9 +4,14 @@
 }
 
 [data-theme|='frame'] #clock,
+[data-theme|='frame'] #flex-clock,
 [data-theme|='frame'] #fuzzy-clock {
   border-radius: 1rem;
   border: 2px solid var(--accent-color);
+}
+
+[data-theme|='frame'] #flex-clock {
+  padding: 1rem 1.5rem;
 }
 
 [data-theme='frame-light'] {

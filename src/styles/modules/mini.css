@@ -20,6 +20,8 @@ body.mini #flex-clock {
 
 body.mini #flex-clock .row {
   flex-direction: column;
+  gap: .5rem;
+  align-items: start;
 }
 
 body.mini #flex-clock .row .word:not(.active) {

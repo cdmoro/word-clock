@@ -59,17 +59,23 @@ export function drawFlex() {
 
   flexClock!.innerHTML = '';
 
+  let index = 0;
+
   grid?.forEach((row, i) => {
     const div = document.createElement('div');
     div.classList.add('row');
     div.dataset.row = i.toString();
 
-    row.forEach((word) => {
+    row.forEach((word, j) => {
       const wordEl = document.createElement('div');
       wordEl.classList.add('word');
+      wordEl.classList.toggle('first', j === 0);
+      wordEl.classList.toggle('last', row.length - 1 === j);
+      wordEl.dataset.index = index.toString();
       wordEl.innerText = word;
 
       div.appendChild(wordEl);
+      index++;
     });
 
     flexClock?.appendChild(div);

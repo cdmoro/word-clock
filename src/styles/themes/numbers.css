@@ -1,9 +1,11 @@
-[data-theme|='numbers'] .char:not(.active) {
+[data-theme|='numbers'] .char:not(.active),
+[data-theme|='numbers'] #flex-clock .row .word:not(.active) {
     position: relative;
     color: transparent;
 }
 
-[data-theme|='numbers'] .char:not(.active)::after {
+[data-theme|='numbers'] .char:not(.active):after,
+[data-theme|='numbers'] .word:not(.active):after {
     content: attr(data-index);
     position: absolute;
     left: 50%;
@@ -14,10 +16,11 @@
     transition: opacity 1s, color .5s, background .5s;
 }
 
-[data-theme|='numbers'] body.focus .char:not(.active) {
+[data-theme|='numbers'] body.focus .char:not(.active),
+[data-theme|='numbers'] body.focus #flex-clock .row .word:not(.active) {
     color: transparent;
 }
 
-[data-theme|='numbers'] body.focus .char:not(.active)::after {
+[data-theme|='numbers'] body.focus .char:not(.active):after {
     color: color-mix(in srgb, var(--font-color), transparent 92%);
 }

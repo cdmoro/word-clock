@@ -2,7 +2,12 @@
     --clock-font-family: Inter, sans-serif;
 }
 
-[data-theme|='crossword'] #clock {
+[data-theme|='crossword'] #flex-clock {
+    width: 60vw;
+}
+
+[data-theme|='crossword'] #clock,
+[data-theme|='crossword'] #flex-clock {
     border: var(--font-color) solid 3px;
     row-gap: 0;
     padding: 0;
@@ -17,12 +22,19 @@
     text-shadow: none;
 }
 
-[data-theme|='crossword'] .char {
+[data-theme|='crossword'] .char,
+[data-theme|='crossword'] .word {
     border: var(--font-color) solid 1px;
     color: var(--font-color);
 }
 
-[data-theme|='crossword'] .char.active {
+[data-theme|='crossword'] #flex-clock .row .word {
+    flex: 1;
+    padding: .5vw 1vw;
+}
+
+[data-theme|='crossword'] .char.active,
+[data-theme|='crossword'] #flex-clock .row .word.active {
     background-color: var(--font-color);
     color: var(--background);
 }
@@ -30,4 +42,12 @@
 [data-theme|='crossword'] body.focus .char.secondary.active,
 [data-theme|='crossword'] body.fuzzy.focus #fuzzy-clock .secondary {
     color: color-mix(in srgb, var(--background), transparent 50%);
+}
+
+[data-theme|='crossword'] body.mini #flex-clock {
+    background: var(--font-color);
+}
+
+[data-theme|='crossword'] body.mini #flex-clock .row {
+    gap: 0;
 }

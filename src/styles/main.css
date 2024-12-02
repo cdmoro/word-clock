@@ -68,7 +68,7 @@ body:not(.show-time) #time-clock {
   display: flex;
   flex-direction: column;
   row-gap: .5rem;
-  width: 50vw;
+  width: 55vw;
   font-size: 3.5vw;
   padding: .7rem;
 }
@@ -104,6 +104,7 @@ body.loading #clock .char {
 }
 
 #flex-clock .row .word {
+  padding: .5vw 0vw;
   color: color-mix(in srgb, var(--font-color), transparent 80%);
 }
 

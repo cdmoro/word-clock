@@ -85,6 +85,11 @@
   border-color: color-mix(in srgb, var(--accent-color), transparent 60%);
 }
 
+[data-theme|='terminal'] #flex-clock .row .word.active {
+  border: 2px solid color-mix(in srgb, var(--accent-color), transparent 60%);
+  padding: .5vw 1.5vw;
+}
+
 [data-theme='terminal-light'] {
   --font-color: #181702;
   --background: #fff6ae;

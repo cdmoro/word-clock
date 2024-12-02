@@ -4,8 +4,8 @@ import { store } from '../store';
 export const THEME_FONTS: Record<string, string[]> = {
   base: ['Tektur'],
   retro: ['VT323', 'DotGothic16', 'Handjet'],
-  elegant: ['Playfair Display'],
-  festive: ['Leckerli One', 'Baloo Bhaijaan 2'],
+  elegant: ['Playfair Display', 'Kufam'],
+  festive: ['Leckerli One', 'Marhey'],
   bohemian: ['Comfortaa'],
   handwriting: ['Mynerve', 'Yuji Boku', 'Amiri'],
   terminal: ['B612 Mono', 'Handjet'],

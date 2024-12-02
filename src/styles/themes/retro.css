@@ -15,7 +15,8 @@
   text-shadow: none;
 }
 
-[data-theme|='retro'] .char.active {
+[data-theme|='retro'] .char.active,
+[data-theme|='retro'] #flex-clock .row .word.active {
   background: var(--accent-color);
   color: #000;
 }
@@ -28,6 +29,11 @@
 [data-theme|='retro'] .char.last {
   border-start-end-radius: .5rem;
   border-end-end-radius: .5rem;
+}
+
+[data-theme|='retro'] #flex-clock .row .word.active {
+  border-radius: .5rem;
+  padding: .5vw 1.5vw;
 }
 
 [data-theme|='retro'] body.focus .char.secondary.active {
