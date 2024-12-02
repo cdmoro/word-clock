@@ -112,6 +112,12 @@
 [data-theme|='rainbow'] #flex-clock .row .word:not(.active) {
   color: transparent;
   border-radius: .5rem;
+  flex: 1;
+  margin: 0 .25rem;
+}
+
+[data-theme|='rainbow'] #flex-clock .row .word.active {
+  margin: 0 .5rem;
 }
 
 [data-theme|='rainbow'] body.focus .char:not(.active),

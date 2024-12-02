@@ -1,7 +1,13 @@
+[data-theme|='numbers'] #clock {
+    column-gap: 5px;
+}
+
 [data-theme|='numbers'] .char:not(.active),
 [data-theme|='numbers'] #flex-clock .row .word:not(.active) {
     position: relative;
     color: transparent;
+    border: solid 1px color-mix(in srgb, var(--font-color), transparent 95%);
+    border-radius: .25rem;
 }
 
 [data-theme|='numbers'] .char:not(.active):after,
@@ -16,11 +22,21 @@
     transition: opacity 1s, color .5s, background .5s;
 }
 
+[data-theme|='numbers'] #flex-clock .row .word:not(.active) {
+    flex: 1;
+    margin: 0 .25rem;
+}
+
+[data-theme|='numbers'] #flex-clock .row .word.active {
+    margin: 0 .5rem;
+}
+
 [data-theme|='numbers'] body.focus .char:not(.active),
 [data-theme|='numbers'] body.focus #flex-clock .row .word:not(.active) {
     color: transparent;
 }
 
-[data-theme|='numbers'] body.focus .char:not(.active):after {
+[data-theme|='numbers'] body.focus .char:not(.active):after,
+[data-theme|='numbers'] body.focus #flex-clock .row .word:not(.active):after {
     color: color-mix(in srgb, var(--font-color), transparent 92%);
 }

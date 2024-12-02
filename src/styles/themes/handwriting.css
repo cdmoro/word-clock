@@ -37,3 +37,12 @@
 [data-theme='handwriting-dark'] {
   --background: #111111;
 }
+
+[data-theme|='handwriting'] body.mini .row {
+  border-bottom: none;
+}
+
+[data-theme|='handwriting'] body.mini .row .word {
+  border-bottom: solid 1px color-mix(in srgb, var(--font-color), transparent 75%);
+  flex: 1;
+}

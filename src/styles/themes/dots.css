@@ -24,6 +24,12 @@
     color: transparent;
     background-color: color-mix(in srgb, var(--font-color), transparent 80%);
     border-radius: .5rem;
+    flex: 1;
+    margin: 0 .25rem;
+}
+
+[data-theme|='dots'] #flex-clock .row .word.active {
+    margin: 0 .5rem;
 }
 
 @media screen and (min-width: 1000px) {
