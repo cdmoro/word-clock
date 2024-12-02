@@ -22,6 +22,10 @@
     text-shadow: none;
 }
 
+[data-theme|='crossword'] #flex-clock .row {
+    gap: 0;
+}
+
 [data-theme|='crossword'] .char,
 [data-theme|='crossword'] .word {
     border: var(--font-color) solid 1px;
@@ -46,8 +50,4 @@
 
 [data-theme|='crossword'] body.mini #flex-clock {
     background: var(--font-color);
-}
-
-[data-theme|='crossword'] body.mini #flex-clock .row {
-    gap: 0;
 }

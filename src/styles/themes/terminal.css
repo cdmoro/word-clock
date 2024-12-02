@@ -3,6 +3,10 @@
   --clock-line-height: 1.3;
 }
 
+[data-theme|='terminal'][data-clock-type="flex"] {
+  --clock-line-height: 1;
+}
+
 [data-theme|='terminal'][lang='ar'] {
   --clock-font-family: 'Handjet', sans-serif;
 }

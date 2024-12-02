@@ -4,6 +4,10 @@
   --accent-color: #1abc9c;
 }
 
+[data-theme|='bohemian'][data-clock-type="flex"] {
+  --clock-line-height: 1;
+}
+
 [data-theme='bohemian-light'] {
   --background: #fef9e7;
 }

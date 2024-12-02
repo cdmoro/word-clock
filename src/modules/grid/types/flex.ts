@@ -33,10 +33,12 @@ export function highlightFlex(time: string = getTime()) {
         ?.classList.add('secondary'),
     );
 
-    wordCoords.forEach(([rowIdx, wordIdx]) => {
-      document
-        .querySelector(`#flex-clock .row:nth-child(${rowIdx + 1}) div:nth-child(${wordIdx + 1})`)
-        ?.classList.add('active');
+    wordCoords.forEach(([rowIdx, wordIdx], index) => {
+      const word = document.querySelector<HTMLDivElement>(
+        `#flex-clock .row:nth-child(${rowIdx + 1}) div:nth-child(${wordIdx + 1})`,
+      )!;
+      word.classList.add('active');
+      word.dataset.word = index.toString();
     });
 
     const fuzzyTime = generateFlexFuzzyClockTime(locale);

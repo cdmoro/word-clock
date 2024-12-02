@@ -3,6 +3,10 @@
   --clock-line-height: 1.2;
 }
 
+[data-theme|='frame'][data-clock-type="flex"] {
+  --clock-line-height: 1;
+}
+
 [data-theme|='frame'] #clock,
 [data-theme|='frame'] #flex-clock,
 [data-theme|='frame'] #fuzzy-clock {
