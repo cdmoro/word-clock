@@ -24,7 +24,7 @@ const commonWords: CommonWords = {
   SEVEN: [22, 23, 24, 25], // SEDM
   EIGHT: [44, 45, 46], // OSM
   NINE: [11, 12, 13, 14, 15], // DEVĚT
-  TEN: [61, 62, 63, 64, 54], // DESET
+  TEN: [61, 62, 63, 64, 65], // DESET
   ELEVEN: [47, 48, 49, 50, 51, 52, 53, 54], // JEDENÁCT
   FIVE_MIN: (_hours, minutes) =>
     minutes < 30
@@ -32,16 +32,16 @@ const commonWords: CommonWords = {
       : [
           [99, 100, 101, 102, 103, 104, 105],
           [107, 108, 109],
-        ], // PĚT (cinco minutos)
-  TEN_MIN: (_hours, minutes) => (minutes < 30 ? [33, 34, 35, 36, 37] : [99, 100, 101, 102, 103, 104, 105]), // DESET (diez minutos)
+        ], // PĚT
+  TEN_MIN: (_hours, minutes) => (minutes < 30 ? [33, 34, 35, 36, 37] : [99, 100, 101, 102, 103, 104, 105]), // DESET
   QUARTER_MIN: (_hours, minutes) =>
     minutes < 30
       ? [77, 78, 79, 80, 81, 82, 83]
       : [
           [90, 91, 92, 93, 94, 95, 96, 97],
           [107, 108, 109],
-        ], // PATNÁCT (quince minutos)
-  TWENTY_MIN: (_hours, minutes) => (minutes < 30 ? [66, 67, 68, 69, 70, 71] : [90, 91, 92, 93, 94, 95, 96, 97]), // DVACET (veinte minutos)
+        ], // PATNÁCT
+  TWENTY_MIN: (_hours, minutes) => (minutes < 30 ? [66, 67, 68, 69, 70, 71] : [90, 91, 92, 93, 94, 95, 96, 97]), // DVACET
   TWENTYFIVE_MIN: (_hours, minutes) =>
     minutes < 30
       ? [
