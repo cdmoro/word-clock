@@ -1,6 +1,6 @@
 # Word O’Clock
 
-
+![image](https://github.com/user-attachments/assets/1b329096-25a4-41b6-9e8b-016953891210)
 
 ## Features
 
